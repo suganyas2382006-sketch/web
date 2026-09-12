@@ -49,11 +49,11 @@
             to { opacity: 1; transform: translateY(0); } 
         }
         
-        .nav-link { position: relative; transition: color 0.2s ease; }
-        .nav-link.active-nav { color: #C59B27; font-weight: 600; }
-        .nav-link.active-nav::after {
+        .nav-icon-btn { position: relative; transition: all 0.2s ease; }
+        .nav-icon-btn.active-nav { color: #C59B27; background-color: #F0ECE1; }
+        .nav-icon-btn.active-nav::after {
             content: ''; position: absolute; width: 100%; height: 2px;
-            bottom: -4px; left: 0; background-color: #C59B27;
+            bottom: -8px; left: 0; background-color: #C59B27;
         }
 
         /* Clean Scrollbar */
@@ -65,16 +65,26 @@
 </head>
 <body class="antialiased min-h-screen flex flex-col selection:bg-editorial-gold selection:text-white overflow-x-hidden">
 
-    <!-- Top Minimalist Text Navigation (No Header Logo, Clean Horizontal Links) -->
+    <!-- Top Minimalist Icon-Only Navigation -->
     <nav class="bg-[#FAF8F5]/90 backdrop-blur-md border-b border-editorial-border sticky top-0 z-50">
         <div class="max-w-4xl mx-auto px-6 lg:px-12">
-            <div class="flex items-center justify-center md:justify-start h-16">
-                <div class="flex items-center space-x-6 sm:space-x-10 text-sm font-medium text-zinc-600 overflow-x-auto py-2">
-                    <button onclick="navigateTo('home')" class="nav-link active-nav hover:text-editorial-dark whitespace-nowrap" data-target="home">Home</button>
-                    <button onclick="navigateTo('services')" class="nav-link hover:text-editorial-dark whitespace-nowrap" data-target="services">Services & Skills</button>
-                    <button onclick="navigateTo('projects')" class="nav-link hover:text-editorial-dark whitespace-nowrap" data-target="projects">Projects</button>
-                    <button onclick="navigateTo('payment')" class="nav-link hover:text-editorial-dark whitespace-nowrap" data-target="payment">Payment</button>
-                    <button onclick="navigateTo('contact')" class="nav-link hover:text-editorial-dark whitespace-nowrap" data-target="contact">Contact</button>
+            <div class="flex items-center justify-center h-16">
+                <div class="flex items-center space-x-3 sm:space-x-8 py-2">
+                    <button onclick="navigateTo('home')" class="nav-icon-btn active-nav w-10 h-10 rounded-xl flex items-center justify-center text-zinc-600 hover:text-editorial-dark hover:bg-editorial-border/40 transition" data-target="home" title="Home">
+                        <i class="fas fa-home text-base"></i>
+                    </button>
+                    <button onclick="navigateTo('services')" class="nav-icon-btn w-10 h-10 rounded-xl flex items-center justify-center text-zinc-600 hover:text-editorial-dark hover:bg-editorial-border/40 transition" data-target="services" title="Services & Skills">
+                        <i class="fas fa-layer-group text-base"></i>
+                    </button>
+                    <button onclick="navigateTo('projects')" class="nav-icon-btn w-10 h-10 rounded-xl flex items-center justify-center text-zinc-600 hover:text-editorial-dark hover:bg-editorial-border/40 transition" data-target="projects" title="Projects">
+                        <i class="fas fa-laptop-code text-base"></i>
+                    </button>
+                    <button onclick="navigateTo('payment')" class="nav-icon-btn w-10 h-10 rounded-xl flex items-center justify-center text-zinc-600 hover:text-editorial-dark hover:bg-editorial-border/40 transition" data-target="payment" title="Payment">
+                        <i class="fas fa-wallet text-base"></i>
+                    </button>
+                    <button onclick="navigateTo('contact')" class="nav-icon-btn w-10 h-10 rounded-xl flex items-center justify-center text-zinc-600 hover:text-editorial-dark hover:bg-editorial-border/40 transition" data-target="contact" title="Contact">
+                        <i class="fas fa-paper-plane text-base"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -125,25 +135,9 @@
                             <button onclick="navigateTo('projects')" class="bg-editorial-dark text-white px-5 py-2.5 rounded-xl font-semibold hover:bg-zinc-800 transition shadow-sm text-xs sm:text-sm">
                                 View My Work
                             </button>
-                            <button onclick="navigateTo('hire-me')" class="bg-editorial-card border border-editorial-border text-editorial-dark px-5 py-2.5 rounded-xl font-semibold hover:border-editorial-dark transition shadow-sm text-xs sm:text-sm">
+                            <button onclick="navigateTo('contact')" class="bg-editorial-card border border-editorial-border text-editorial-dark px-5 py-2.5 rounded-xl font-semibold hover:border-editorial-dark transition shadow-sm text-xs sm:text-sm">
                                 Hire Me
                             </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Resume Card -->
-                <div class="bg-editorial-card border border-editorial-border rounded-2xl p-6 shadow-sm w-full">
-                    <div class="flex items-center justify-between flex-wrap gap-4">
-                        <div>
-                            <h3 class="text-base font-bold text-editorial-dark mb-1 flex items-center">
-                                <i class="far fa-file-alt text-editorial-gold mr-2.5"></i> My Resume
-                            </h3>
-                            <p class="text-zinc-500 text-xs sm:text-sm">Academic background, technical skills, and experience.</p>
-                        </div>
-                        <div class="flex space-x-3">
-                            <a href="assets/cv.pdf" target="_blank" class="bg-editorial-dark text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-medium hover:bg-zinc-800 transition">View CV</a>
-                            <a href="assets/cv.pdf" download class="border border-editorial-border text-editorial-dark px-4 py-2 rounded-xl text-xs sm:text-sm font-medium hover:border-editorial-dark transition">Download</a>
                         </div>
                     </div>
                 </div>
@@ -155,72 +149,80 @@
         <section id="services" class="page-view flex-grow py-12 lg:py-20">
             <div class="max-w-4xl mx-auto px-6 lg:px-12 w-full space-y-16">
                 
-                <!-- Technical Capabilities: Executive Minimalist Matrix -->
+                <!-- Technical Capabilities: Clean Card Grid Style -->
                 <div>
-                    <div class="mb-6">
+                    <div class="mb-8">
                         <h2 class="text-2xl md:text-3xl font-bold text-editorial-dark mb-1">Technical Capabilities</h2>
                         <p class="text-zinc-500 text-xs md:text-sm">Core domains and technical stack expertise.</p>
                     </div>
 
-                    <div class="bg-editorial-card border border-editorial-border rounded-3xl p-6 md:p-8 shadow-sm space-y-8">
-                        <!-- Capability Row 1 -->
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 pb-6 border-b border-editorial-border items-center">
-                            <div class="md:col-span-4 flex items-center space-x-3">
-                                <span class="w-9 h-9 rounded-xl bg-amber-50 text-editorial-gold flex items-center justify-center font-bold text-sm"><i class="fas fa-brain"></i></span>
-                                <h3 class="font-bold text-editorial-dark text-sm md:text-base">AI & Machine Learning</h3>
-                            </div>
-                            <div class="md:col-span-8 flex flex-wrap gap-2">
-                                <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Neural Networks</span>
-                                <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Computer Vision</span>
-                                <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Predictive Modeling</span>
-                                <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Scikit-Learn</span>
-                                <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">TensorFlow</span>
-                                <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">PyTorch</span>
-                            </div>
-                        </div>
-
-                        <!-- Capability Row 2 -->
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 pb-6 border-b border-editorial-border items-center">
-                            <div class="md:col-span-4 flex items-center space-x-3">
-                                <span class="w-9 h-9 rounded-xl bg-zinc-100 text-zinc-800 flex items-center justify-center font-bold text-sm"><i class="fas fa-terminal"></i></span>
-                                <h3 class="font-bold text-editorial-dark text-sm md:text-base">Programming Languages</h3>
-                            </div>
-                            <div class="md:col-span-8 flex flex-wrap gap-2">
-                                <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Python</span>
-                                <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">JavaScript</span>
-                                <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">TypeScript</span>
-                                <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">HTML / CSS</span>
-                                <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">C++</span>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Card 1 -->
+                        <div class="bg-editorial-card border border-editorial-border rounded-2xl p-6 shadow-sm hover:border-editorial-gold transition flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center space-x-3 mb-4">
+                                    <div class="w-10 h-10 rounded-xl bg-amber-50 text-editorial-gold flex items-center justify-center font-bold text-base"><i class="fas fa-brain"></i></div>
+                                    <h3 class="font-bold text-editorial-dark text-base">AI & Machine Learning</h3>
+                                </div>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Neural Networks</span>
+                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Computer Vision</span>
+                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Predictive Modeling</span>
+                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Scikit-Learn</span>
+                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">TensorFlow</span>
+                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">PyTorch</span>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Capability Row 3 -->
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 pb-6 border-b border-editorial-border items-center">
-                            <div class="md:col-span-4 flex items-center space-x-3">
-                                <span class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm"><i class="fas fa-globe"></i></span>
-                                <h3 class="font-bold text-editorial-dark text-sm md:text-base">Web Development</h3>
-                            </div>
-                            <div class="md:col-span-8 flex flex-wrap gap-2">
-                                <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Next.js</span>
-                                <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">React</span>
-                                <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Node.js</span>
-                                <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Tailwind CSS</span>
-                                <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">REST APIs</span>
+                        <!-- Card 2 -->
+                        <div class="bg-editorial-card border border-editorial-border rounded-2xl p-6 shadow-sm hover:border-editorial-gold transition flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center space-x-3 mb-4">
+                                    <div class="w-10 h-10 rounded-xl bg-zinc-100 text-zinc-800 flex items-center justify-center font-bold text-base"><i class="fas fa-terminal"></i></div>
+                                    <h3 class="font-bold text-editorial-dark text-base">Programming Languages</h3>
+                                </div>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Python</span>
+                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">JavaScript</span>
+                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">TypeScript</span>
+                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">HTML / CSS</span>
+                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">C++</span>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Capability Row 4 -->
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
-                            <div class="md:col-span-4 flex items-center space-x-3">
-                                <span class="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-sm"><i class="fas fa-database"></i></span>
-                                <h3 class="font-bold text-editorial-dark text-sm md:text-base">Data & Databases</h3>
+                        <!-- Card 3 -->
+                        <div class="bg-editorial-card border border-editorial-border rounded-2xl p-6 shadow-sm hover:border-editorial-gold transition flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center space-x-3 mb-4">
+                                    <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-base"><i class="fas fa-globe"></i></div>
+                                    <h3 class="font-bold text-editorial-dark text-base">Web Development</h3>
+                                </div>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Next.js</span>
+                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">React</span>
+                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Node.js</span>
+                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Tailwind CSS</span>
+                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">REST APIs</span>
+                                </div>
                             </div>
-                            <div class="md:col-span-8 flex flex-wrap gap-2">
-                                <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Pandas & NumPy</span>
-                                <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Matplotlib</span>
-                                <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">SQL / PostgreSQL</span>
-                                <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Supabase</span>
-                                <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">MongoDB</span>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="bg-editorial-card border border-editorial-border rounded-2xl p-6 shadow-sm hover:border-editorial-gold transition flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center space-x-3 mb-4">
+                                    <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-base"><i class="fas fa-database"></i></div>
+                                    <h3 class="font-bold text-editorial-dark text-base">Data & Databases</h3>
+                                </div>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Pandas & NumPy</span>
+                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Matplotlib</span>
+                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">SQL / PostgreSQL</span>
+                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Supabase</span>
+                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">MongoDB</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -228,7 +230,7 @@
 
                 <!-- Professional Services -->
                 <div>
-                    <div class="mb-6">
+                    <div class="mb-8">
                         <h2 class="text-2xl md:text-3xl font-bold text-editorial-dark mb-1">Services</h2>
                         <p class="text-zinc-500 text-xs md:text-sm">Professional solutions tailored for modern digital needs.</p>
                     </div>
@@ -368,77 +370,7 @@
             </div>
         </section>
 
-        <!-- 4. HIRE ME PAGE -->
-        <section id="hire-me" class="page-view flex-grow py-16 lg:py-24">
-            <div class="max-w-4xl mx-auto px-6 lg:px-12 w-full">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-editorial-dark mb-3">Have a project in mind? Let's build it.</h2>
-                    <p class="text-zinc-600 text-sm md:text-base">Tell me what you need, and let's discuss how I can turn your idea into a working digital solution.</p>
-                </div>
-                
-                <div class="bg-editorial-card border border-editorial-border rounded-3xl p-6 md:p-12 shadow-sm">
-                    <form id="hireForm" class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-sm font-semibold text-zinc-700 mb-2">First Name *</label>
-                                <input type="text" id="name" required class="w-full px-4 py-3 bg-[#FAF8F5] border border-editorial-border rounded-xl focus:ring-1 focus:ring-editorial-gold focus:border-editorial-gold outline-none transition text-sm md:text-base">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold text-zinc-700 mb-2">Email Address *</label>
-                                <input type="email" id="email" required class="w-full px-4 py-3 bg-[#FAF8F5] border border-editorial-border rounded-xl focus:ring-1 focus:ring-editorial-gold focus:border-editorial-gold outline-none transition text-sm md:text-base">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold text-zinc-700 mb-2">Contact Number *</label>
-                                <input type="tel" id="phone" required class="w-full px-4 py-3 bg-[#FAF8F5] border border-editorial-border rounded-xl focus:ring-1 focus:ring-editorial-gold focus:border-editorial-gold outline-none transition text-sm md:text-base">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold text-zinc-700 mb-2">Project Type *</label>
-                                <select id="projectType" required class="w-full px-4 py-3 bg-[#FAF8F5] border border-editorial-border rounded-xl focus:ring-1 focus:ring-editorial-gold focus:border-editorial-gold outline-none transition text-sm md:text-base">
-                                    <option value="">Select project type</option>
-                                    <option value="AI/ML">AI / Machine Learning</option>
-                                    <option value="Web Development">Web Development</option>
-                                    <option value="Data Analytics">Data Analytics / Dashboard</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold text-zinc-700 mb-2">Budget (Estimated) *</label>
-                                <input type="text" id="budget" placeholder="e.g., $1000 or ₹50,000" required class="w-full px-4 py-3 bg-[#FAF8F5] border border-editorial-border rounded-xl focus:ring-1 focus:ring-editorial-gold focus:border-editorial-gold outline-none transition text-sm md:text-base">
-                            </div>
-                            <div class="md:col-span-2">
-                                <label class="block text-sm font-semibold text-zinc-700 mb-2">Project Description *</label>
-                                <textarea id="description" rows="4" required class="w-full px-4 py-3 bg-[#FAF8F5] border border-editorial-border rounded-xl focus:ring-1 focus:ring-editorial-gold focus:border-editorial-gold outline-none transition text-sm md:text-base"></textarea>
-                            </div>
-                            <div class="md:col-span-2">
-                                <label class="block text-sm font-semibold text-zinc-700 mb-2">File Upload (optional)</label>
-                                <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-editorial-border border-dashed rounded-xl hover:border-editorial-gold transition bg-[#FAF8F5]">
-                                    <div class="space-y-1 text-center">
-                                        <i class="fas fa-upload text-zinc-400 text-2xl mb-2"></i>
-                                        <div class="flex text-sm text-zinc-600 justify-center">
-                                            <label for="fileUpload" class="relative cursor-pointer rounded-md font-medium text-editorial-gold hover:text-editorial-goldHover focus-within:outline-none px-1">
-                                                <span>Upload a file</span>
-                                                <input id="fileUpload" name="fileUpload" type="file" class="sr-only">
-                                            </label>
-                                        </div>
-                                        <p class="text-xs text-zinc-500">PDF, DOCX up to 10MB</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="pt-4">
-                            <button type="submit" id="submitBtn" class="w-full md:w-auto bg-editorial-dark hover:bg-zinc-800 text-white font-medium py-3.5 px-8 rounded-xl transition flex justify-center items-center shadow-sm">
-                                <span id="btnText">Submit Project Request &rarr;</span>
-                                <i id="btnSpinner" class="fas fa-spinner fa-spin hidden ml-2"></i>
-                            </button>
-                        </div>
-                        <div id="formMessage" class="hidden mt-4 p-4 rounded-xl text-sm"></div>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. PAYMENT PAGE (GPay / UPI) -->
+        <!-- 4. PAYMENT PAGE (GPay / UPI) -->
         <section id="payment" class="page-view flex-grow py-16 lg:py-24">
             <div class="max-w-3xl mx-auto px-6 lg:px-12 w-full">
                 <div class="bg-editorial-card rounded-3xl shadow-sm overflow-hidden flex flex-col md:flex-row border border-editorial-border">
@@ -482,12 +414,28 @@
             </div>
         </section>
 
-        <!-- 6. CONTACT PAGE -->
+        <!-- 5. CONTACT PAGE -->
         <section id="contact" class="page-view flex-grow py-16 lg:py-24">
-            <div class="max-w-3xl mx-auto px-6 text-center">
+            <div class="max-w-3xl mx-auto px-6 text-center w-full">
                 <h2 class="text-3xl md:text-4xl font-bold text-editorial-dark mb-4">Let's Work Together</h2>
-                <p class="text-zinc-600 mb-12 text-sm md:text-base">Have a project, collaboration, or just want to say hello? I'd love to hear from you.</p>
+                <p class="text-zinc-600 mb-10 text-sm md:text-base">Have a project, collaboration, or just want to say hello? I'd love to hear from you.</p>
                 
+                <!-- Resume Card -->
+                <div class="bg-editorial-card border border-editorial-border rounded-2xl p-6 shadow-sm w-full mb-10 text-left">
+                    <div class="flex items-center justify-between flex-wrap gap-4">
+                        <div>
+                            <h3 class="text-base font-bold text-editorial-dark mb-1 flex items-center">
+                                <i class="far fa-file-alt text-editorial-gold mr-2.5"></i> My Resume
+                            </h3>
+                            <p class="text-zinc-500 text-xs sm:text-sm">Academic background, technical skills, and experience.</p>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="assets/cv.pdf" target="_blank" class="bg-editorial-dark text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-medium hover:bg-zinc-800 transition">View CV</a>
+                            <a href="assets/cv.pdf" download class="border border-editorial-border text-editorial-dark px-4 py-2 rounded-xl text-xs sm:text-sm font-medium hover:border-editorial-dark transition">Download</a>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="flex justify-center gap-4 md:gap-5 mb-12 flex-wrap">
                     
                     <a href="mailto:suganyashenbagam@gmail.com" class="w-14 h-14 md:w-16 md:h-16 bg-editorial-card border border-editorial-border hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-lg md:text-xl shadow-sm transition-all hover:-translate-y-1" title="Email">
@@ -507,10 +455,6 @@
                     </a>
 
                 </div>
-                
-                <button onclick="navigateTo('hire-me')" class="bg-editorial-dark hover:bg-zinc-800 text-white px-8 py-3.5 rounded-xl font-medium transition shadow-sm text-sm md:text-base">
-                    Start a Project &rarr;
-                </button>
             </div>
         </section>
 
@@ -530,73 +474,19 @@
                 page.classList.remove('active');
             });
             
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active-nav', 'text-editorial-gold', 'font-semibold');
+            document.querySelectorAll('.nav-icon-btn').forEach(btn => {
+                btn.classList.remove('active-nav', 'text-editorial-gold');
             });
 
             const targetPage = document.getElementById(pageId);
             if(targetPage) targetPage.classList.add('active');
 
-            document.querySelectorAll(`.nav-link[data-target="${pageId}"]`).forEach(link => {
-                link.classList.add('active-nav', 'text-editorial-gold', 'font-semibold');
+            document.querySelectorAll(`.nav-icon-btn[data-target="${pageId}"]`).forEach(btn => {
+                btn.classList.add('active-nav', 'text-editorial-gold');
             });
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
-        document.getElementById('hireForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const btnText = document.getElementById('btnText');
-            const btnSpinner = document.getElementById('btnSpinner');
-            const submitBtn = document.getElementById('submitBtn');
-            const formMessage = document.getElementById('formMessage');
-            
-            submitBtn.disabled = true;
-            btnText.textContent = 'Submitting...';
-            btnSpinner.classList.remove('hidden');
-            formMessage.classList.add('hidden');
-
-            const formData = new FormData();
-            
-            formData.append("access_key", "98ff650b-d44e-4510-96b9-66420995077d"); 
-            formData.append("Name", document.getElementById('name').value);
-            formData.append("Email", document.getElementById('email').value);
-            formData.append("Contact Number", document.getElementById('phone').value);
-            formData.append("Project Type", document.getElementById('projectType').value);
-            formData.append("Budget Range", document.getElementById('budget').value);
-            formData.append("Description", document.getElementById('description').value);
-
-            const fileInput = document.getElementById('fileUpload');
-            if (fileInput.files.length > 0) {
-                formData.append("attachment", fileInput.files[0]);
-            }
-
-            try {
-                const response = await fetch("https://api.web3forms.com/submit", {
-                    method: "POST",
-                    body: formData
-                });
-
-                const data = await response.json();
-
-                if (data.success) {
-                    formMessage.textContent = 'Project request submitted successfully! I will get back to you soon.';
-                    formMessage.className = 'mt-4 p-4 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 block text-sm';
-                    document.getElementById('hireForm').reset();
-                } else {
-                    throw new Error(data.message || 'Submission failed');
-                }
-
-            } catch (error) {
-                formMessage.textContent = 'Error submitting request. Please try again.';
-                formMessage.className = 'mt-4 p-4 rounded-xl bg-rose-50 text-rose-800 border border-rose-200 block text-sm';
-            } finally {
-                submitBtn.disabled = false;
-                btnText.innerHTML = 'Submit Project Request &rarr;';
-                btnSpinner.classList.add('hidden');
-            }
-        });
     </script>
 </body>
 </html>
