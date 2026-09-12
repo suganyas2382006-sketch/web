@@ -104,11 +104,11 @@
     <main class="flex-grow flex flex-col">
 
         <!-- 1. HOME PAGE -->
-        <section id="home" class="page-view active flex-grow py-8 lg:py-12 items-center">
+        <section id="home" class="page-view active flex-grow py-6 lg:py-10">
             <div class="max-w-4xl mx-auto px-6 lg:px-12 w-full">
                 
                 <!-- Freelance Badge -->
-                <div class="inline-flex items-center space-x-2 bg-editorial-border/60 text-xs font-semibold px-3.5 py-1.5 rounded-full mb-6 text-zinc-700">
+                <div class="inline-flex items-center space-x-2 bg-editorial-border/60 text-xs font-semibold px-3.5 py-1.5 rounded-full mb-4 text-zinc-700">
                     <span class="w-2 h-2 rounded-full bg-editorial-gold"></span>
                     <span>Available for Freelance Projects</span>
                 </div>
@@ -117,22 +117,22 @@
                 <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-editorial-dark mb-1">
                     Suganya Shenbagam
                 </h1>
-                <p class="text-editorial-gold font-semibold text-sm md:text-base mb-8">
+                <p class="text-editorial-gold font-semibold text-sm md:text-base mb-6">
                     Artificial Intelligence & Data Science Student
                 </p>
 
                 <!-- Profile and About Me side-by-side with balanced vertical alignment -->
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center mb-8">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center mb-6">
                     <div class="md:col-span-5 flex justify-center">
-                        <div class="bg-editorial-card p-3 rounded-2xl border border-editorial-border shadow-sm w-48 sm:w-56 md:w-64">
+                        <div class="bg-editorial-card p-2 rounded-2xl border border-editorial-border shadow-sm w-44 sm:w-52 md:w-56">
                             <img src="profile.png" alt="Profile" class="w-full h-auto object-cover rounded-xl" onerror="this.src='https://via.placeholder.com/600x800/EBE7DF/111111?text=Profile'">
                         </div>
                     </div>
                     
                     <div class="md:col-span-7 flex flex-col justify-center">
-                        <h2 class="text-xl md:text-2xl font-bold text-editorial-dark mb-3">About Me</h2>
+                        <h2 class="text-lg md:text-xl font-bold text-editorial-dark mb-2">About Me</h2>
                         
-                        <div class="space-y-3 text-zinc-600 leading-relaxed text-xs sm:text-sm md:text-base mb-6">
+                        <div class="space-y-2.5 text-zinc-600 leading-relaxed text-xs sm:text-sm mb-5">
                             <p>
                                 I am Suganya Shenbagam, a 3rd year Artificial Intelligence & Data Science student, passionate about building intelligent solutions and solving real-world problems. I enjoy working with AI/ML, data analytics, web technologies, and designing clean digital experiences.
                             </p>
@@ -143,10 +143,10 @@
 
                         <!-- Action Buttons -->
                         <div class="flex flex-wrap gap-3">
-                            <button onclick="navigateTo('projects')" class="bg-editorial-dark text-white px-5 py-2.5 rounded-xl font-semibold hover:bg-zinc-800 transition shadow-sm text-xs sm:text-sm">
+                            <button onclick="navigateTo('projects')" class="bg-editorial-dark text-white px-4 py-2 rounded-xl font-semibold hover:bg-zinc-800 transition shadow-sm text-xs">
                                 View My Work
                             </button>
-                            <button onclick="navigateTo('hire-me')" class="bg-editorial-card border border-editorial-border text-editorial-dark px-5 py-2.5 rounded-xl font-semibold hover:border-editorial-dark transition shadow-sm text-xs sm:text-sm">
+                            <button onclick="navigateTo('hire-me')" class="bg-editorial-card border border-editorial-border text-editorial-dark px-4 py-2 rounded-xl font-semibold hover:border-editorial-dark transition shadow-sm text-xs">
                                 Hire Me
                             </button>
                         </div>
@@ -154,17 +154,17 @@
                 </div>
 
                 <!-- Resume Card -->
-                <div class="bg-editorial-card border border-editorial-border rounded-2xl p-6 shadow-sm w-full">
-                    <div class="flex items-center justify-between flex-wrap gap-4">
+                <div class="bg-editorial-card border border-editorial-border rounded-2xl p-4 sm:p-5 shadow-sm w-full">
+                    <div class="flex items-center justify-between flex-wrap gap-3">
                         <div>
-                            <h3 class="text-base font-bold text-editorial-dark mb-1 flex items-center">
-                                <i class="far fa-file-alt text-editorial-gold mr-2.5"></i> My Resume
+                            <h3 class="text-sm font-bold text-editorial-dark mb-0.5 flex items-center">
+                                <i class="far fa-file-alt text-editorial-gold mr-2"></i> My Resume
                             </h3>
-                            <p class="text-zinc-500 text-xs sm:text-sm">Academic background, technical skills, and experience.</p>
+                            <p class="text-zinc-500 text-xs">Academic background, technical skills, and experience.</p>
                         </div>
-                        <div class="flex space-x-3">
-                            <a href="assets/cv.pdf" target="_blank" class="bg-editorial-dark text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-medium hover:bg-zinc-800 transition">View CV</a>
-                            <a href="assets/cv.pdf" download class="border border-editorial-border text-editorial-dark px-4 py-2 rounded-xl text-xs sm:text-sm font-medium hover:border-editorial-dark transition">Download</a>
+                        <div class="flex space-x-2">
+                            <a href="assets/cv.pdf" target="_blank" class="bg-editorial-dark text-white px-3.5 py-1.5 rounded-xl text-xs font-medium hover:bg-zinc-800 transition">View CV</a>
+                            <a href="assets/cv.pdf" download class="border border-editorial-border text-editorial-dark px-3.5 py-1.5 rounded-xl text-xs font-medium hover:border-editorial-dark transition">Download</a>
                         </div>
                     </div>
                 </div>
@@ -547,7 +547,7 @@
             }
 
             try {
-                const response = await flexFetch = await fetch("https://api.web3forms.com/submit", {
+                const response = await fetch("https://api.web3forms.com/submit", {
                     method: "POST",
                     body: formData
                 });
@@ -564,7 +564,7 @@
 
             } catch (error) {
                 formMessage.textContent = 'Error submitting request. Please try again.';
-                formMessage.className = 'mt-4 p-4 rounded-xl bg-rose-50 text-rose-800 border border-rose-200 border border-editorial-border block text-sm';
+                formMessage.className = 'mt-4 p-4 rounded-xl bg-rose-50 text-rose-800 border border-rose-200 block text-sm';
             } finally {
                 submitBtn.disabled = false;
                 btnText.innerHTML = 'Submit Project Request &rarr;';
