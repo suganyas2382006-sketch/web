@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -14,50 +13,48 @@
                 extend: {
                     colors: {
                         editorial: {
-                            bg: '#F5F3EF',
-                            card: '#FFFFFF',
-                            border: '#EAE6DF',
-                            dark: '#111111',
-                            gold: '#C59B27',
-                            goldLight: '#F5EFE0',
-                            goldHover: '#A67C1C'
+                            bg: '#f4f2ed',
+                            card: '#ffffff',
+                            border: '#eae6df',
+                            dark: '#1a1a1a',
+                            gold: '#c9a84c',
+                            goldLight: '#f5efe0',
+                            goldHover: '#a67c1c'
                         }
                     },
                     fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        sans: ['Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
     
-    <!-- Google Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts & Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: #F5F3EF;
-            color: #111111;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #f4f2ed;
+            color: #1a1a1a;
+            line-height: 1.6;
         }
         
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #F5F3EF; }
-        ::-webkit-scrollbar-thumb { background: #D3CEC4; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #A8A296; }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        ::-webkit-scrollbar-track { background: #f4f2ed; }
+        ::-webkit-scrollbar-thumb { background: #d3cec4; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a8a296; }
 
         /* Page Transitions */
         .page-view { display: none; }
         .page-view.active { 
             display: block; 
-            animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+            animation: pageFadeSlide 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
         }
-        @keyframes fadeIn { 
-            from { opacity: 0; transform: translateY(8px); } 
+        @keyframes pageFadeSlide { 
+            from { opacity: 0; transform: translateY(12px); } 
             to { opacity: 1; transform: translateY(0); } 
         }
 
@@ -67,17 +64,24 @@
             position: absolute;
             bottom: 2px;
             height: 2px;
-            background-color: #C59B27;
+            background-color: #c9a84c;
             transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             border-radius: 2px;
         }
         .nav-btn {
             position: relative;
             z-index: 10;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
+        }
+        .nav-btn:hover i {
+            transform: scale(1.15);
+            color: #c9a84c;
+        }
+        .nav-btn i {
+            transition: transform 0.25s ease, color 0.25s ease;
         }
         .nav-btn.active-nav { 
-            color: #111111; 
+            color: #1a1a1a; 
             font-weight: 600;
         }
 
@@ -85,7 +89,7 @@
         .reveal {
             opacity: 0;
             transform: translateY(24px);
-            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .reveal.is-visible {
             opacity: 1;
@@ -94,8 +98,8 @@
 
         /* Modal Backdrop */
         .modal-backdrop {
-            background-color: rgba(17, 17, 17, 0.4);
-            backdrop-filter: blur(4px);
+            background-color: rgba(26, 26, 26, 0.4);
+            backdrop-filter: blur(6px);
         }
 
         /* Tag Hover Effect */
@@ -103,47 +107,448 @@
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .tech-tag:hover {
-            background-color: #111111;
-            color: #F5F3EF;
+            background-color: #1a1a1a;
+            color: #f4f2ed;
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        /* ===== BALANCED HERO SECTION LAYOUT ===== */
+        .home-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 30px 60px;
+        }
+
+        .home-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #ffffff;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #555555;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            animation: badgeEntrance 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .home-badge:hover {
             transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
         }
 
-        /* Profile Photo Frame */
-        .photo-frame {
-            background: #FFFFFF;
-            padding: 12px;
-            border-radius: 20px;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
-        }
-        .photo-frame img {
-            border-radius: 12px;
-            display: block;
+        .home-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #c9a84c;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.7);
+            animation: pulseGlow 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
         }
 
-        /* Hero entrance animations */
-        .hero-fade {
-            opacity: 0;
-            transform: translateY(16px);
-            animation: heroFadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        @keyframes pulseGlow {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.6);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 8px rgba(201, 168, 76, 0);
+            }
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(201, 168, 76, 0);
+            }
         }
-        .hero-fade-1 { animation-delay: 0.05s; }
-        .hero-fade-2 { animation-delay: 0.15s; }
-        .hero-fade-3 { animation-delay: 0.25s; }
-        .hero-fade-4 { animation-delay: 0.35s; }
-        .hero-fade-5 { animation-delay: 0.45s; }
-        
-        @keyframes heroFadeIn {
+
+        @keyframes badgeEntrance {
+            from { opacity: 0; transform: translateY(-8px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-content-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            margin-bottom: 70px;
+            min-height: 470px;
+        }
+
+        .hero-text-box {
+            flex: 1 1 540px;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-text-box h1 {
+            font-size: 50px;
+            font-weight: 800;
+            color: #1a1a1a;
+            line-height: 1.15;
+            margin-bottom: 10px;
+            animation: textEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+        }
+
+        .hero-text-box h2 {
+            font-size: 21px;
+            font-weight: 600;
+            color: #c9a84c;
+            margin-bottom: 22px;
+            animation: textEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+        }
+
+        .hero-text-box p {
+            font-size: 15.5px;
+            color: #666666;
+            line-height: 1.8;
+            margin-bottom: 34px;
+            max-width: 510px;
+            animation: textEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+        }
+
+        @keyframes textEntrance {
+            from { opacity: 0; transform: translateY(14px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            animation: textEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+        }
+
+        .home-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .home-btn-dark {
+            background: #1a1a1a;
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+        }
+
+        .home-btn-dark:hover {
+            background: #2b2b2b;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .home-btn-dark:active {
+            transform: translateY(-1px);
+        }
+
+        .home-btn-light {
+            background: #ffffff;
+            color: #1a1a1a;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .home-btn-light:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            transform: translateY(-3px);
+            background: #fdfdfd;
+        }
+
+        .home-btn-light:active {
+            transform: translateY(-1px);
+        }
+
+        /* ===== PHOTO BORDER & AMBIENT EFFECTS (605x1035 OPTIMIZED) ===== */
+        .hero-image-box {
+            flex: 0 0 auto;
+            position: relative;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image-box::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 28px;
+            background: radial-gradient(circle, rgba(201, 168, 76, 0.35) 0%, rgba(201, 168, 76, 0.08) 55%, transparent 75%);
+            filter: blur(16px);
+            z-index: 0;
+            animation: ambientPulse 5s ease-in-out infinite alternate;
+        }
+
+        @keyframes ambientPulse {
+            0% {
+                opacity: 0.55;
+                transform: scale(0.96) rotate(-1deg);
+            }
+            100% {
+                opacity: 0.95;
+                transform: scale(1.04) rotate(1deg);
+            }
+        }
+
+        .photo-border-wrapper {
+            position: relative;
+            z-index: 1;
+            padding: 3px;
+            border-radius: 22px;
+            background: #eae6df;
+            overflow: hidden;
+            display: inline-block;
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.12);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .photo-border-wrapper:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 22px 50px rgba(201, 168, 76, 0.25), 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .photo-border-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 0deg,
+                transparent 0deg,
+                #c9a84c 60deg,
+                #f5efe0 120deg,
+                transparent 180deg,
+                #c9a84c 240deg,
+                #f5efe0 300deg,
+                transparent 360deg
+            );
+            animation: borderSpin 6s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes borderSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .photo-inner-container {
+            position: relative;
+            width: 270px;
+            max-height: 462px;
+            aspect-ratio: 605 / 1035;
+            background: #ffffff;
+            border-radius: 19px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .photo-inner-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 19px;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .photo-border-wrapper:hover .photo-inner-container img {
+            transform: scale(1.05);
+            filter: contrast(104%) brightness(102%);
+        }
+
+        .photo-inner-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 80%;
+            height: 100%;
+            background: linear-gradient(
+                90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.35), 
+                transparent
+            );
+            transform: skewX(-25deg);
+            pointer-events: none;
+            transition: left 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .photo-border-wrapper:hover .photo-inner-container::after {
+            left: 170%;
+        }
+
+        /* ===== ABOUT ME SECTION ===== */
+        .about-card-box {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .about-card-box:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .section-tagline {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #c9a84c;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .section-tagline::before {
+            content: '';
+            width: 30px;
+            height: 2px;
+            background: #c9a84c;
+            display: inline-block;
+            transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .about-card-box:hover .section-tagline::before {
+            width: 45px;
+        }
+
+        .about-card-box h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 24px;
+        }
+
+        .about-card-box p {
+            font-size: 15px;
+            color: #666666;
+            line-height: 1.8;
+            margin-bottom: 16px;
+            max-width: 700px;
+        }
+
+        .about-card-divider {
+            height: 1px;
+            background: #eeeeee;
+            margin: 36px 0;
+        }
+
+        .stats-wrap {
+            display: flex;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .stat-block {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .stat-block:hover {
+            transform: translateY(-4px);
+        }
+
+        .stat-block h3 {
+            font-size: 36px;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+            transition: color 0.3s ease;
+        }
+
+        .stat-block:hover h3 {
+            color: #c9a84c;
+        }
+
+        .stat-block h3.gold {
+            color: #c9a84c;
+        }
+
+        .stat-block p {
+            font-size: 13px;
+            color: #999999;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 900px) {
+            .hero-content-box {
+                flex-direction: column;
+                text-align: center;
+                min-height: auto;
+                gap: 40px;
+            }
+            .hero-text-box {
+                max-width: 100%;
+            }
+            .hero-text-box p {
+                max-width: 100%;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+            .photo-inner-container {
+                width: 240px;
+            }
+            .hero-text-box h1 {
+                font-size: 38px;
+            }
+            .about-card-box {
+                padding: 30px;
+            }
+            .stats-wrap {
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .photo-inner-container {
+                width: 210px;
+            }
+            .hero-text-box h1 {
+                font-size: 32px;
+            }
+            .hero-text-box h2 {
+                font-size: 17px;
+            }
+            .about-card-box h2 {
+                font-size: 28px;
+            }
+            .stat-block h3 {
+                font-size: 28px;
+            }
         }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col selection:bg-editorial-gold selection:text-white overflow-x-hidden">
 
-    <!-- Fixed Navigation - Pill Style with Icon + Text -->
-    <nav class="bg-[#F5F3EF]/90 backdrop-blur-md sticky top-0 z-40 pt-4 pb-2">
+    <!-- Fixed Navigation -->
+    <nav class="bg-[#f4f2ed]/90 backdrop-blur-md sticky top-0 z-40 pt-4 pb-2">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-center">
-                <div class="nav-wrapper inline-flex items-center bg-white border border-[#EAE6DF] rounded-full px-2 py-2 shadow-sm" id="nav-container">
+                <div class="nav-wrapper inline-flex items-center bg-white border border-[#eae6df] rounded-full px-2 py-2 shadow-sm" id="nav-container">
                     <button onclick="navigateTo('home')" class="nav-btn active-nav px-4 sm:px-5 py-2 rounded-full flex items-center gap-2 text-sm text-zinc-500 hover:text-editorial-dark transition flex-shrink-0" data-target="home" title="Home">
                         <i class="fas fa-home text-xs sm:text-sm"></i>
                         <span class="hidden sm:inline text-sm">Home</span>
@@ -165,7 +570,6 @@
                         <span class="hidden sm:inline text-sm">Contact</span>
                     </button>
                     
-                    <!-- Sliding Indicator -->
                     <div class="nav-indicator" id="nav-indicator"></div>
                 </div>
             </div>
@@ -174,94 +578,74 @@
 
     <main class="flex-grow flex flex-col">
 
-        <!-- 1. HOME PAGE - EXACT MATCH TO REFERENCE -->
+        <!-- 1. HOME PAGE -->
         <section id="home" class="page-view active flex-grow">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 w-full">
+            <div class="home-container">
                 
-                <!-- Hero Section -->
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-12 lg:mb-16">
-                    
-                    <!-- Left Content -->
-                    <div class="lg:col-span-7 space-y-6">
-                        <!-- Availability Badge -->
-                        <div class="hero-fade hero-fade-1 inline-flex items-center gap-2 bg-white border border-[#EAE6DF] rounded-full px-4 py-2 shadow-sm">
-                            <span class="w-2 h-2 rounded-full bg-editorial-gold"></span>
-                            <span class="text-sm font-medium text-zinc-700">Available for Freelance Projects</span>
-                        </div>
+                <!-- Badge -->
+                <div class="home-badge">Available for Freelance Projects</div>
 
-                        <!-- Name and Title -->
-                        <div class="space-y-1">
-                            <h1 class="hero-fade hero-fade-2 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-editorial-dark leading-[1.1]">
-                                Suganya Shenbagam
-                            </h1>
-                            <p class="hero-fade hero-fade-3 text-xl sm:text-2xl text-editorial-gold font-semibold mt-2">
-                                Artificial Intelligence & Data Science Student
-                            </p>
-                        </div>
-
-                        <!-- Description -->
-                        <p class="hero-fade hero-fade-4 text-base sm:text-lg text-zinc-600 leading-relaxed max-w-2xl">
-                            Building pragmatic machine learning pipelines, predictive analytics engines, and elegant web solutions designed to translate raw data into clear business outcomes.
+                <!-- Balanced Hero Section -->
+                <div class="hero-content-box">
+                    <div class="hero-text-box">
+                        <h1>Suganya Shenbagam</h1>
+                        <h2>Artificial Intelligence &amp; Data Science Student</h2>
+                        <p>
+                            Building pragmatic machine learning pipelines, predictive analytics
+                            engines, and elegant web solutions designed to translate raw data
+                            into clear business outcomes.
                         </p>
-
-                        <!-- Buttons -->
-                        <div class="hero-fade hero-fade-5 flex flex-wrap gap-3 pt-2">
-                            <button onclick="navigateTo('projects')" class="bg-editorial-dark text-white px-6 py-3 rounded-xl font-semibold hover:bg-zinc-800 transition shadow-md hover:shadow-lg hover:-translate-y-0.5 duration-300 text-sm sm:text-base flex items-center gap-2">
-                                View My Work <i class="fas fa-arrow-right text-xs"></i>
+                        <div class="hero-actions">
+                            <button onclick="navigateTo('projects')" class="home-btn home-btn-dark">
+                                View My Work &rarr;
                             </button>
-                            <button onclick="navigateTo('contact')" class="bg-white border border-[#EAE6DF] text-editorial-dark px-6 py-3 rounded-xl font-semibold hover:border-editorial-dark hover:bg-editorial-goldLight transition shadow-sm hover:-translate-y-0.5 duration-300 text-sm sm:text-base">
+                            <button onclick="navigateTo('contact')" class="home-btn home-btn-light">
                                 Hire Me
                             </button>
                         </div>
                     </div>
-                    
-                    <!-- Profile Image - Right Side with White Frame -->
-                    <div class="lg:col-span-5 flex justify-center lg:justify-end">
-                        <div class="hero-fade hero-fade-3">
-                            <div class="photo-frame w-64 sm:w-72 lg:w-80">
-                                <img src="profile.png" alt="Suganya Shenbagam" class="w-full h-auto object-cover aspect-[4/5] bg-zinc-100" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
+
+                    <!-- Photo with 605x1035 Ratio, Ambient Glow & Animated Gradient Border -->
+                    <div class="hero-image-box">
+                        <div class="photo-border-wrapper">
+                            <div class="photo-inner-container">
+                                <img src="photo.jpg" alt="Suganya Shenbagam" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'" />
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- About Me Section - White Card -->
-                <div class="reveal bg-white rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm">
-                    <!-- Section Label with Gold Line -->
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="h-px w-8 bg-editorial-gold"></div>
-                        <span class="text-xs font-bold text-editorial-gold uppercase tracking-[0.15em]">Background</span>
-                    </div>
+                <!-- About Me Section -->
+                <div class="about-card-box reveal">
+                    <div class="section-tagline">Background</div>
+                    <h2>About Me</h2>
 
-                    <!-- About Title -->
-                    <h2 class="text-3xl sm:text-4xl font-bold text-editorial-dark mb-6">About Me</h2>
+                    <p>
+                        I am a 3rd-year Artificial Intelligence &amp; Data Science student
+                        dedicated to bridging mathematical rigor and software engineering.
+                        My interests center on neural networks, computer vision, and building
+                        clean, responsive data interfaces.
+                    </p>
+                    <p>
+                        Whether automating large-scale reporting pipelines or architecting
+                        diagnostic deep learning models, I approach every project with an
+                        emphasis on clarity, high code quality, and measurable impact.
+                    </p>
 
-                    <!-- About Text -->
-                    <div class="space-y-4 text-zinc-600 leading-relaxed mb-10 max-w-3xl">
-                        <p class="text-base sm:text-lg">
-                            I am a 3rd-year Artificial Intelligence & Data Science student dedicated to bridging mathematical rigor and software engineering. My interests center on neural networks, computer vision, and building clean, responsive data interfaces.
-                        </p>
-                        <p class="text-base sm:text-lg">
-                            Whether automating large-scale reporting pipelines or architecting diagnostic deep learning models, I approach every project with an emphasis on clarity, high code quality, and measurable impact.
-                        </p>
-                    </div>
+                    <div class="about-card-divider"></div>
 
-                    <!-- Divider -->
-                    <div class="h-px bg-[#EAE6DF] mb-8"></div>
-
-                    <!-- Stats Section -->
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
-                        <div class="text-left">
-                            <div class="text-3xl sm:text-4xl font-bold text-editorial-dark mb-1">06+</div>
-                            <div class="text-sm text-zinc-500">Completed Projects</div>
+                    <div class="stats-wrap">
+                        <div class="stat-block">
+                            <h3>06+</h3>
+                            <p>Completed Projects</p>
                         </div>
-                        <div class="text-left">
-                            <div class="text-3xl sm:text-4xl font-bold text-editorial-dark mb-1">3rd</div>
-                            <div class="text-sm text-zinc-500">Year AI & DS Student</div>
+                        <div class="stat-block">
+                            <h3>3rd</h3>
+                            <p>Year AI &amp; DS Student</p>
                         </div>
-                        <div class="text-left">
-                            <div class="text-3xl sm:text-4xl font-bold text-editorial-gold mb-1">100%</div>
-                            <div class="text-sm text-zinc-500">Dedication to Quality</div>
+                        <div class="stat-block">
+                            <h3 class="gold">100%</h3>
+                            <p>Dedication to Quality</p>
                         </div>
                     </div>
                 </div>
@@ -273,7 +657,6 @@
         <section id="skills" class="page-view flex-grow">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 w-full space-y-24">
                 
-                <!-- Technical Capabilities -->
                 <div>
                     <div class="reveal mb-16">
                         <h2 class="text-4xl sm:text-5xl font-bold text-editorial-dark mb-4">Technical Capabilities</h2>
@@ -352,7 +735,6 @@
                     </div>
                 </div>
 
-                <!-- Professional Services -->
                 <div>
                     <div class="reveal mb-16">
                         <h2 class="text-4xl sm:text-5xl font-bold text-editorial-dark mb-4">Services</h2>
@@ -360,7 +742,7 @@
                     </div>
                     
                     <div class="space-y-12">
-                        <div class="reveal group border-b border-[#EAE6DF] pb-8">
+                        <div class="reveal group border-b border-[#eae6df] pb-8">
                             <div class="flex items-start gap-6">
                                 <div class="w-14 h-14 rounded-full bg-editorial-gold text-white flex items-center justify-center text-2xl flex-shrink-0">
                                     <i class="fas fa-brain"></i>
@@ -372,7 +754,7 @@
                             </div>
                         </div>
 
-                        <div class="reveal group border-b border-[#EAE6DF] pb-8" style="transition-delay: 100ms;">
+                        <div class="reveal group border-b border-[#eae6df] pb-8" style="transition-delay: 100ms;">
                             <div class="flex items-start gap-6">
                                 <div class="w-14 h-14 rounded-full bg-editorial-gold text-white flex items-center justify-center text-2xl flex-shrink-0">
                                     <i class="fas fa-code"></i>
@@ -409,22 +791,20 @@
                     <p class="text-zinc-600 text-sm sm:text-base">AI, analytics, automation, and development solutions.</p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" id="projects-grid">
-                    <!-- Projects injected via JS -->
-                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" id="projects-grid"></div>
             </div>
         </section>
 
         <!-- 4. PAYMENT PAGE -->
         <section id="payment" class="page-view flex-grow">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 w-full">
-                <div class="reveal bg-white rounded-3xl shadow-sm overflow-hidden flex flex-col md:flex-row border border-[#EAE6DF]">
+                <div class="reveal bg-white rounded-3xl shadow-sm overflow-hidden flex flex-col md:flex-row border border-[#eae6df]">
                     
-                    <div class="p-6 sm:p-8 md:w-1/2 border-b md:border-b-0 md:border-r border-[#EAE6DF] flex flex-col justify-center">
+                    <div class="p-6 sm:p-8 md:w-1/2 border-b md:border-b-0 md:border-r border-[#eae6df] flex flex-col justify-center">
                         <h2 class="text-2xl font-bold text-editorial-dark mb-3">Make a Payment</h2>
                         <p class="text-sm text-zinc-600 mb-6 leading-relaxed">Scan the QR code or click the button below to pay directly via Google Pay or your preferred UPI app.</p>
                         
-                        <div class="bg-[#F5F3EF] border border-[#EAE6DF] rounded-2xl p-5 mb-6">
+                        <div class="bg-[#f4f2ed] border border-[#eae6df] rounded-2xl p-5 mb-6">
                             <p class="text-sm text-editorial-dark mb-3 flex items-center font-semibold">
                                 <i class="fas fa-info-circle text-editorial-gold mr-2"></i>Payment Policy
                             </p>
@@ -435,23 +815,23 @@
                             </ul>
                         </div>
                         
-                        <a href="upi://pay?pa=sugannachiyar216@okaxis&pn=Suganya%20Shenbagam&cu=INR" class="w-full bg-[#F5F3EF] border border-[#EAE6DF] hover:border-editorial-dark text-editorial-dark font-semibold py-3.5 px-4 rounded-xl transition shadow-sm flex items-center justify-center group">
+                        <a href="upi://pay?pa=sugannachiyar216@okaxis&pn=Suganya%20Shenbagam&cu=INR" class="w-full bg-[#f4f2ed] border border-[#eae6df] hover:border-editorial-dark text-editorial-dark font-semibold py-3.5 px-4 rounded-xl transition shadow-sm flex items-center justify-center group">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/UPI-Logo-vector.svg" alt="UPI" class="h-4 mr-3 grayscale group-hover:grayscale-0 transition-all duration-300">
                             Pay via UPI App
                         </a>
                     </div>
                     
-                    <div class="p-6 sm:p-8 md:w-1/2 bg-[#F5F3EF] flex flex-col items-center justify-center text-center">
+                    <div class="p-6 sm:p-8 md:w-1/2 bg-[#f4f2ed] flex flex-col items-center justify-center text-center">
                         <h3 class="font-semibold text-editorial-dark mb-5 flex items-center text-sm uppercase tracking-wide">
                             <i class="fab fa-google text-lg mr-2 text-zinc-800"></i>Scan to Pay
                         </h3>
                         
-                        <div class="bg-white p-4 rounded-2xl shadow-sm border border-[#EAE6DF] mb-5 hover:shadow-md transition-shadow duration-300">
+                        <div class="bg-white p-4 rounded-2xl shadow-sm border border-[#eae6df] mb-5 hover:shadow-md transition-shadow duration-300">
                             <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=sugannachiyar216@okaxis&pn=Suganya%20Shenbagam&cu=INR" alt="GPay QR Code" class="w-44 h-44 object-cover rounded-xl">
                         </div>
                         
                         <p class="text-xs text-editorial-gold mb-3 uppercase font-bold tracking-wider">Scan with any UPI App</p>
-                        <div class="bg-white px-5 py-3 border border-[#EAE6DF] rounded-xl w-full max-w-[240px]">
+                        <div class="bg-white px-5 py-3 border border-[#eae6df] rounded-xl w-full max-w-[240px]">
                             <p class="text-[10px] text-zinc-400 mb-0.5 uppercase tracking-wider">UPI ID</p>
                             <p class="text-sm text-editorial-dark font-mono font-medium truncate select-all">sugannachiyar216@okaxis</p>
                         </div>
@@ -469,8 +849,7 @@
                     <p class="text-zinc-600 text-sm sm:text-base max-w-lg mx-auto">Have a project, collaboration, or just want to say hello? I'd love to hear from you.</p>
                 </div>
                 
-                <!-- Resume Card -->
-                <div class="reveal bg-white border border-[#EAE6DF] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow duration-300 mb-12 text-left">
+                <div class="reveal bg-white border border-[#eae6df] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow duration-300 mb-12 text-left">
                     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
                         <div class="flex items-start gap-4">
                             <div class="w-12 h-12 rounded-xl bg-editorial-goldLight text-editorial-gold flex items-center justify-center text-xl flex-shrink-0">
@@ -485,28 +864,24 @@
                             <a href="assets/cv.pdf" target="_blank" class="flex-1 sm:flex-none bg-editorial-dark text-white px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-zinc-800 transition text-center">
                                 View CV
                             </a>
-                            <a href="assets/cv.pdf" download class="flex-1 sm:flex-none border border-[#EAE6DF] text-editorial-dark px-5 py-2.5 rounded-xl text-sm font-medium hover:border-editorial-dark hover:bg-[#F5F3EF] transition text-center">
+                            <a href="assets/cv.pdf" download class="flex-1 sm:flex-none border border-[#eae6df] text-editorial-dark px-5 py-2.5 rounded-xl text-sm font-medium hover:border-editorial-dark hover:bg-[#f4f2ed] transition text-center">
                                 Download
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Social Links -->
                 <div class="reveal flex justify-center gap-4 sm:gap-5 flex-wrap">
-                    <a href="mailto:suganyashenbagam@gmail.com" class="w-14 h-14 sm:w-16 sm:h-16 bg-white border border-[#EAE6DF] hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-xl sm:text-2xl shadow-sm transition-all duration-300 hover:-translate-y-1" title="Email">
+                    <a href="mailto:suganyashenbagam@gmail.com" class="w-14 h-14 sm:w-16 sm:h-16 bg-white border border-[#eae6df] hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-xl sm:text-2xl shadow-sm transition-all duration-300 hover:-translate-y-1" title="Email">
                         <i class="fas fa-envelope"></i>
                     </a>
-                    
-                    <a href="https://www.linkedin.com/in/shruthi-s-5b929b42b?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="w-14 h-14 sm:w-16 sm:h-16 bg-white border border-[#EAE6DF] hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-xl sm:text-2xl shadow-sm transition-all duration-300 hover:-translate-y-1" title="LinkedIn">
+                    <a href="https://www.linkedin.com/in/shruthi-s-5b929b42b?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="w-14 h-14 sm:w-16 sm:h-16 bg-white border border-[#eae6df] hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-xl sm:text-2xl shadow-sm transition-all duration-300 hover:-translate-y-1" title="LinkedIn">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-
-                    <a href="https://github.com/suganyas2382006-sketch" target="_blank" class="w-14 h-14 sm:w-16 sm:h-16 bg-white border border-[#EAE6DF] hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-xl sm:text-2xl shadow-sm transition-all duration-300 hover:-translate-y-1" title="GitHub">
+                    <a href="https://github.com/suganyas2382006-sketch" target="_blank" class="w-14 h-14 sm:w-16 sm:h-16 bg-white border border-[#eae6df] hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-xl sm:text-2xl shadow-sm transition-all duration-300 hover:-translate-y-1" title="GitHub">
                         <i class="fab fa-github"></i>
                     </a>
-
-                    <a href="https://wa.me/qr/QBOT5I4XWEI3L1" target="_blank" class="w-14 h-14 sm:w-16 sm:h-16 bg-white border border-[#EAE6DF] hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-xl sm:text-2xl shadow-sm transition-all duration-300 hover:-translate-y-1" title="WhatsApp">
+                    <a href="https://wa.me/qr/QBOT5I4XWEI3L1" target="_blank" class="w-14 h-14 sm:w-16 sm:h-16 bg-white border border-[#eae6df] hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-xl sm:text-2xl shadow-sm transition-all duration-300 hover:-translate-y-1" title="WhatsApp">
                         <i class="fab fa-whatsapp"></i>
                     </a>
                 </div>
@@ -516,28 +891,25 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-[#F5F3EF] border-t border-[#EAE6DF] text-zinc-500 py-8 text-center text-sm">
+    <footer class="bg-[#f4f2ed] border-t border-[#eae6df] text-zinc-500 py-8 text-center text-sm">
         <p>&copy; <span id="year"></span> Suganya Shenbagam. All rights reserved.</p>
     </footer>
 
     <!-- Project Modal -->
     <div id="project-modal" class="fixed inset-0 z-50 hidden modal-backdrop flex items-center justify-center p-4 sm:p-6">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto border border-[#EAE6DF] transform transition-all scale-95 opacity-0" id="modal-panel">
-            <div class="sticky top-0 bg-white/95 backdrop-blur-sm border-b border-[#EAE6DF] p-4 sm:p-6 flex justify-between items-center z-10">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto border border-[#eae6df] transform transition-all scale-95 opacity-0" id="modal-panel">
+            <div class="sticky top-0 bg-white/95 backdrop-blur-sm border-b border-[#eae6df] p-4 sm:p-6 flex justify-between items-center z-10">
                 <h3 class="text-lg font-bold text-editorial-dark" id="modal-title">Project Details</h3>
-                <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-[#F5F3EF] hover:bg-zinc-200 flex items-center justify-center text-zinc-500 hover:text-editorial-dark transition">
+                <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-[#f4f2ed] hover:bg-zinc-200 flex items-center justify-center text-zinc-500 hover:text-editorial-dark transition">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            <div class="p-4 sm:p-6" id="modal-content">
-                <!-- Content injected via JS -->
-            </div>
+            <div class="p-4 sm:p-6" id="modal-content"></div>
         </div>
     </div>
 
     <!-- Scripts -->
     <script>
-        // Project Data
         const projectsData = [
             {
                 id: 1,
@@ -607,18 +979,17 @@
             }
         ];
 
-        // Render Projects
         const projectsGrid = document.getElementById('projects-grid');
         projectsData.forEach((project, index) => {
             const delay = index * 100;
             const techTags = project.tech.slice(0, 3).map(t => 
-                `<span class="bg-[#F5F3EF] border border-[#EAE6DF] text-zinc-600 text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-md font-medium group-hover:border-editorial-gold/30 group-hover:text-editorial-gold transition-colors duration-300">${t}</span>`
+                `<span class="bg-[#f4f2ed] border border-[#eae6df] text-zinc-600 text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-md font-medium group-hover:border-editorial-gold/30 group-hover:text-editorial-gold transition-colors duration-300">${t}</span>`
             ).join('');
 
             projectsGrid.innerHTML += `
-                <div class="reveal group bg-white border border-[#EAE6DF] rounded-2xl overflow-hidden hover:border-editorial-gold/50 hover:shadow-lg hover:shadow-editorial-gold/5 hover:-translate-y-1 transition-all duration-300" style="transition-delay: ${delay}ms;">
-                    <div class="h-56 bg-gradient-to-br from-editorial-goldLight to-[#F5F3EF] flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 opacity-[0.07] bg-[radial-gradient(#C59B27_1px,transparent_1px)] [background-size:16px_16px] group-hover:scale-110 transition-transform duration-700"></div>
+                <div class="reveal group bg-white border border-[#eae6df] rounded-2xl overflow-hidden hover:border-editorial-gold/50 hover:shadow-lg hover:shadow-editorial-gold/5 hover:-translate-y-1 transition-all duration-300" style="transition-delay: ${delay}ms;">
+                    <div class="h-56 bg-gradient-to-br from-editorial-goldLight to-[#f4f2ed] flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-[0.07] bg-[radial-gradient(#c9a84c_1px,transparent_1px)] [background-size:16px_16px] group-hover:scale-110 transition-transform duration-700"></div>
                         <i class="${project.icon} text-5xl text-editorial-gold/70 group-hover:text-editorial-gold group-hover:scale-110 transition-all duration-300"></i>
                     </div>
                     <div class="p-6">
@@ -630,11 +1001,11 @@
                             ${techTags}
                         </div>
 
-                        <div class="flex items-center justify-between pt-4 border-t border-[#EAE6DF]">
+                        <div class="flex items-center justify-between pt-4 border-t border-[#eae6df]">
                             <a href="${project.github}" target="_blank" class="text-xs font-semibold text-zinc-500 hover:text-editorial-dark flex items-center transition-colors">
                                 <i class="fab fa-github mr-1.5"></i> Code
                             </a>
-                            <button onclick="openModal(${project.id})" class="text-xs font-semibold text-editorial-dark bg-[#F5F3EF] hover:bg-editorial-dark hover:text-white px-4 py-2 rounded-lg transition-all duration-300 flex items-center">
+                            <button onclick="openModal(${project.id})" class="text-xs font-semibold text-editorial-dark bg-[#f4f2ed] hover:bg-editorial-dark hover:text-white px-4 py-2 rounded-lg transition-all duration-300 flex items-center">
                                 View Details <i class="fas fa-arrow-right ml-1.5 text-[10px] transition-transform group-hover:translate-x-0.5"></i>
                             </button>
                         </div>
@@ -643,7 +1014,6 @@
             `;
         });
 
-        // Modal Logic
         const modal = document.getElementById('project-modal');
         const modalPanel = document.getElementById('modal-panel');
         const modalContent = document.getElementById('modal-content');
@@ -656,8 +1026,8 @@
             modalTitle.textContent = project.title;
             modalContent.innerHTML = `
                 <div class="space-y-6">
-                    <div class="h-64 bg-gradient-to-br from-editorial-goldLight to-[#F5F3EF] rounded-xl flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 opacity-[0.07] bg-[radial-gradient(#C59B27_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                    <div class="h-64 bg-gradient-to-br from-editorial-goldLight to-[#f4f2ed] rounded-xl flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-[0.07] bg-[radial-gradient(#c9a84c_1px,transparent_1px)] [background-size:16px_16px]"></div>
                         <i class="${project.icon} text-6xl text-editorial-gold/80"></i>
                     </div>
                     
@@ -681,16 +1051,16 @@
                     <div>
                         <h4 class="font-bold text-editorial-dark mb-3 text-sm uppercase tracking-wide">Technology Stack</h4>
                         <div class="flex flex-wrap gap-2">
-                            ${project.tech.map(t => `<span class="bg-[#F5F3EF] border border-[#EAE6DF] text-zinc-700 text-xs px-3 py-1.5 rounded-lg font-medium">${t}</span>`).join('')}
+                            ${project.tech.map(t => `<span class="bg-[#f4f2ed] border border-[#eae6df] text-zinc-700 text-xs px-3 py-1.5 rounded-lg font-medium">${t}</span>`).join('')}
                         </div>
                     </div>
 
-                    <div class="flex gap-3 pt-4 border-t border-[#EAE6DF]">
+                    <div class="flex gap-3 pt-4 border-t border-[#eae6df]">
                         <a href="${project.github}" target="_blank" class="flex-1 bg-editorial-dark text-white text-center py-3 rounded-xl font-medium hover:bg-zinc-800 transition text-sm">
                             <i class="fab fa-github mr-2"></i>GitHub Repository
                         </a>
                         ${project.demo ? `
-                        <a href="${project.demo}" target="_blank" class="flex-1 border border-[#EAE6DF] text-editorial-dark text-center py-3 rounded-xl font-medium hover:border-editorial-dark hover:bg-[#F5F3EF] transition text-sm">
+                        <a href="${project.demo}" target="_blank" class="flex-1 border border-[#eae6df] text-editorial-dark text-center py-3 rounded-xl font-medium hover:border-editorial-dark hover:bg-[#f4f2ed] transition text-sm">
                             <i class="fas fa-external-link-alt mr-2"></i>Live Demo
                         </a>` : ''}
                     </div>
@@ -718,7 +1088,6 @@
             if (e.target === modal) closeModal();
         });
 
-        // Navigation Logic
         function navigateTo(pageId) {
             document.querySelectorAll('.page-view').forEach(page => {
                 page.classList.remove('active');
@@ -743,7 +1112,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Sliding Indicator Logic
         const navContainer = document.getElementById('nav-container');
         const indicator = document.getElementById('nav-indicator');
 
@@ -796,3 +1164,4 @@
     </script>
 </body>
 </html>
+
