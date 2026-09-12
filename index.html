@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -5,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suganya Shenbagam | AI & Data Science Portfolio</title>
     
-    <!-- Tailwind CSS for styling -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -13,11 +14,12 @@
                 extend: {
                     colors: {
                         editorial: {
-                            bg: '#FAF8F5',       // Warm Off-White Paper
-                            card: '#FFFFFF',     // Crisp White Surface
-                            border: '#EBE7DF',   // Subtle Warm Border
-                            dark: '#111111',     // Deep Editorial Charcoal
-                            gold: '#C59B27',     // Muted Sophisticated Gold
+                            bg: '#F5F3EF',
+                            card: '#FFFFFF',
+                            border: '#EAE6DF',
+                            dark: '#111111',
+                            gold: '#C59B27',
+                            goldLight: '#F5EFE0',
                             goldHover: '#A67C1C'
                         }
                     },
@@ -36,55 +38,135 @@
     <style>
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: #FAF8F5;
+            background-color: #F5F3EF;
             color: #111111;
         }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #F5F3EF; }
+        ::-webkit-scrollbar-thumb { background: #D3CEC4; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #A8A296; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Page Transitions */
         .page-view { display: none; }
         .page-view.active { 
-            display: flex; 
+            display: block; 
             animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
         }
         @keyframes fadeIn { 
             from { opacity: 0; transform: translateY(8px); } 
             to { opacity: 1; transform: translateY(0); } 
         }
-        
-        .nav-icon-btn { position: relative; transition: all 0.2s ease; }
-        .nav-icon-btn.active-nav { color: #C59B27; background-color: #F0ECE1; }
-        .nav-icon-btn.active-nav::after {
-            content: ''; position: absolute; width: 100%; height: 2px;
-            bottom: -8px; left: 0; background-color: #C59B27;
+
+        /* Sliding Nav Indicator */
+        .nav-wrapper { position: relative; }
+        .nav-indicator {
+            position: absolute;
+            bottom: 2px;
+            height: 2px;
+            background-color: #C59B27;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 2px;
+        }
+        .nav-btn {
+            position: relative;
+            z-index: 10;
+            transition: all 0.2s ease;
+        }
+        .nav-btn.active-nav { 
+            color: #111111; 
+            font-weight: 600;
         }
 
-        /* Clean Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #FAF8F5; }
-        ::-webkit-scrollbar-thumb { background: #D3CEC4; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #A8A296; }
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Modal Backdrop */
+        .modal-backdrop {
+            background-color: rgba(17, 17, 17, 0.4);
+            backdrop-filter: blur(4px);
+        }
+
+        /* Tag Hover Effect */
+        .tech-tag {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .tech-tag:hover {
+            background-color: #111111;
+            color: #F5F3EF;
+            transform: translateY(-2px);
+        }
+
+        /* Profile Photo Frame */
+        .photo-frame {
+            background: #FFFFFF;
+            padding: 12px;
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
+        }
+        .photo-frame img {
+            border-radius: 12px;
+            display: block;
+        }
+
+        /* Hero entrance animations */
+        .hero-fade {
+            opacity: 0;
+            transform: translateY(16px);
+            animation: heroFadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .hero-fade-1 { animation-delay: 0.05s; }
+        .hero-fade-2 { animation-delay: 0.15s; }
+        .hero-fade-3 { animation-delay: 0.25s; }
+        .hero-fade-4 { animation-delay: 0.35s; }
+        .hero-fade-5 { animation-delay: 0.45s; }
+        
+        @keyframes heroFadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col selection:bg-editorial-gold selection:text-white overflow-x-hidden">
 
-    <!-- Top Minimalist Icon-Only Navigation -->
-    <nav class="bg-[#FAF8F5]/90 backdrop-blur-md border-b border-editorial-border sticky top-0 z-50">
-        <div class="max-w-4xl mx-auto px-6 lg:px-12">
-            <div class="flex items-center justify-center h-16">
-                <div class="flex items-center space-x-3 sm:space-x-8 py-2">
-                    <button onclick="navigateTo('home')" class="nav-icon-btn active-nav w-10 h-10 rounded-xl flex items-center justify-center text-zinc-600 hover:text-editorial-dark hover:bg-editorial-border/40 transition" data-target="home" title="Home">
-                        <i class="fas fa-home text-base"></i>
+    <!-- Fixed Navigation - Pill Style with Icon + Text -->
+    <nav class="bg-[#F5F3EF]/90 backdrop-blur-md sticky top-0 z-40 pt-4 pb-2">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-center">
+                <div class="nav-wrapper inline-flex items-center bg-white border border-[#EAE6DF] rounded-full px-2 py-2 shadow-sm" id="nav-container">
+                    <button onclick="navigateTo('home')" class="nav-btn active-nav px-4 sm:px-5 py-2 rounded-full flex items-center gap-2 text-sm text-zinc-500 hover:text-editorial-dark transition flex-shrink-0" data-target="home" title="Home">
+                        <i class="fas fa-home text-xs sm:text-sm"></i>
+                        <span class="hidden sm:inline text-sm">Home</span>
                     </button>
-                    <button onclick="navigateTo('services')" class="nav-icon-btn w-10 h-10 rounded-xl flex items-center justify-center text-zinc-600 hover:text-editorial-dark hover:bg-editorial-border/40 transition" data-target="services" title="Services & Skills">
-                        <i class="fas fa-layer-group text-base"></i>
+                    <button onclick="navigateTo('skills')" class="nav-btn px-4 sm:px-5 py-2 rounded-full flex items-center gap-2 text-sm text-zinc-500 hover:text-editorial-dark transition flex-shrink-0" data-target="skills" title="Skills">
+                        <i class="fas fa-layer-group text-xs sm:text-sm"></i>
+                        <span class="hidden sm:inline text-sm">Skills</span>
                     </button>
-                    <button onclick="navigateTo('projects')" class="nav-icon-btn w-10 h-10 rounded-xl flex items-center justify-center text-zinc-600 hover:text-editorial-dark hover:bg-editorial-border/40 transition" data-target="projects" title="Projects">
-                        <i class="fas fa-laptop-code text-base"></i>
+                    <button onclick="navigateTo('projects')" class="nav-btn px-4 sm:px-5 py-2 rounded-full flex items-center gap-2 text-sm text-zinc-500 hover:text-editorial-dark transition flex-shrink-0" data-target="projects" title="Projects">
+                        <i class="fas fa-laptop-code text-xs sm:text-sm"></i>
+                        <span class="hidden sm:inline text-sm">Projects</span>
                     </button>
-                    <button onclick="navigateTo('payment')" class="nav-icon-btn w-10 h-10 rounded-xl flex items-center justify-center text-zinc-600 hover:text-editorial-dark hover:bg-editorial-border/40 transition" data-target="payment" title="Payment">
-                        <i class="fas fa-wallet text-base"></i>
+                    <button onclick="navigateTo('payment')" class="nav-btn px-4 sm:px-5 py-2 rounded-full flex items-center gap-2 text-sm text-zinc-500 hover:text-editorial-dark transition flex-shrink-0" data-target="payment" title="Payment">
+                        <i class="fas fa-wallet text-xs sm:text-sm"></i>
+                        <span class="hidden sm:inline text-sm">Payment</span>
                     </button>
-                    <button onclick="navigateTo('contact')" class="nav-icon-btn w-10 h-10 rounded-xl flex items-center justify-center text-zinc-600 hover:text-editorial-dark hover:bg-editorial-border/40 transition" data-target="contact" title="Contact">
-                        <i class="fas fa-paper-plane text-base"></i>
+                    <button onclick="navigateTo('contact')" class="nav-btn px-4 sm:px-5 py-2 rounded-full flex items-center gap-2 text-sm text-zinc-500 hover:text-editorial-dark transition flex-shrink-0" data-target="contact" title="Contact">
+                        <i class="fas fa-paper-plane text-xs sm:text-sm"></i>
+                        <span class="hidden sm:inline text-sm">Contact</span>
                     </button>
+                    
+                    <!-- Sliding Indicator -->
+                    <div class="nav-indicator" id="nav-indicator"></div>
                 </div>
             </div>
         </div>
@@ -92,52 +174,94 @@
 
     <main class="flex-grow flex flex-col">
 
-        <!-- 1. HOME PAGE -->
-        <section id="home" class="page-view active flex-grow py-8 lg:py-12 items-center">
-            <div class="max-w-4xl mx-auto px-6 lg:px-12 w-full">
+        <!-- 1. HOME PAGE - EXACT MATCH TO REFERENCE -->
+        <section id="home" class="page-view active flex-grow">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 w-full">
                 
-                <!-- Freelance Badge -->
-                <div class="inline-flex items-center space-x-2 bg-editorial-border/60 text-xs font-semibold px-3.5 py-1.5 rounded-full mb-4 text-zinc-700">
-                    <span class="w-2 h-2 rounded-full bg-editorial-gold"></span>
-                    <span>Available for Freelance Projects</span>
-                </div>
+                <!-- Hero Section -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-12 lg:mb-16">
+                    
+                    <!-- Left Content -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <!-- Availability Badge -->
+                        <div class="hero-fade hero-fade-1 inline-flex items-center gap-2 bg-white border border-[#EAE6DF] rounded-full px-4 py-2 shadow-sm">
+                            <span class="w-2 h-2 rounded-full bg-editorial-gold"></span>
+                            <span class="text-sm font-medium text-zinc-700">Available for Freelance Projects</span>
+                        </div>
 
-                <!-- Name & Title -->
-                <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-editorial-dark mb-1">
-                    Suganya Shenbagam
-                </h1>
-                <p class="text-editorial-gold font-semibold text-sm md:text-base mb-6">
-                    Artificial Intelligence & Data Science Student
-                </p>
+                        <!-- Name and Title -->
+                        <div class="space-y-1">
+                            <h1 class="hero-fade hero-fade-2 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-editorial-dark leading-[1.1]">
+                                Suganya Shenbagam
+                            </h1>
+                            <p class="hero-fade hero-fade-3 text-xl sm:text-2xl text-editorial-gold font-semibold mt-2">
+                                Artificial Intelligence & Data Science Student
+                            </p>
+                        </div>
 
-                <!-- Profile and About Me side-by-side with balanced vertical alignment -->
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center mb-6">
-                    <div class="md:col-span-5 flex justify-center">
-                        <div class="bg-editorial-card p-3 rounded-2xl border border-editorial-border shadow-sm w-48 sm:w-56 md:w-64">
-                            <img src="profile.png" alt="Profile" class="w-full h-auto object-cover rounded-xl" onerror="this.src='https://via.placeholder.com/600x800/EBE7DF/111111?text=Profile'">
+                        <!-- Description -->
+                        <p class="hero-fade hero-fade-4 text-base sm:text-lg text-zinc-600 leading-relaxed max-w-2xl">
+                            Building pragmatic machine learning pipelines, predictive analytics engines, and elegant web solutions designed to translate raw data into clear business outcomes.
+                        </p>
+
+                        <!-- Buttons -->
+                        <div class="hero-fade hero-fade-5 flex flex-wrap gap-3 pt-2">
+                            <button onclick="navigateTo('projects')" class="bg-editorial-dark text-white px-6 py-3 rounded-xl font-semibold hover:bg-zinc-800 transition shadow-md hover:shadow-lg hover:-translate-y-0.5 duration-300 text-sm sm:text-base flex items-center gap-2">
+                                View My Work <i class="fas fa-arrow-right text-xs"></i>
+                            </button>
+                            <button onclick="navigateTo('contact')" class="bg-white border border-[#EAE6DF] text-editorial-dark px-6 py-3 rounded-xl font-semibold hover:border-editorial-dark hover:bg-editorial-goldLight transition shadow-sm hover:-translate-y-0.5 duration-300 text-sm sm:text-base">
+                                Hire Me
+                            </button>
                         </div>
                     </div>
                     
-                    <div class="md:col-span-7 flex flex-col justify-center">
-                        <h2 class="text-xl md:text-2xl font-bold text-editorial-dark mb-3">About Me</h2>
-                        
-                        <div class="space-y-3 text-zinc-600 leading-relaxed text-xs sm:text-sm md:text-base mb-6">
-                            <p>
-                                I am Suganya Shenbagam, a 3rd year Artificial Intelligence & Data Science student, passionate about building intelligent solutions and solving real-world problems. I enjoy working with AI/ML, data analytics, web technologies, and designing clean digital experiences.
-                            </p>
-                            <p>
-                                I am constantly learning, exploring new technologies, and improving my skills to create impactful solutions for businesses and individuals.
-                            </p>
+                    <!-- Profile Image - Right Side with White Frame -->
+                    <div class="lg:col-span-5 flex justify-center lg:justify-end">
+                        <div class="hero-fade hero-fade-3">
+                            <div class="photo-frame w-64 sm:w-72 lg:w-80">
+                                <img src="profile.png" alt="Suganya Shenbagam" class="w-full h-auto object-cover aspect-[4/5] bg-zinc-100" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'">
+                            </div>
                         </div>
+                    </div>
+                </div>
 
-                        <!-- Action Buttons -->
-                        <div class="flex flex-wrap gap-3">
-                            <button onclick="navigateTo('projects')" class="bg-editorial-dark text-white px-5 py-2.5 rounded-xl font-semibold hover:bg-zinc-800 transition shadow-sm text-xs sm:text-sm">
-                                View My Work
-                            </button>
-                            <button onclick="navigateTo('contact')" class="bg-editorial-card border border-editorial-border text-editorial-dark px-5 py-2.5 rounded-xl font-semibold hover:border-editorial-dark transition shadow-sm text-xs sm:text-sm">
-                                Hire Me
-                            </button>
+                <!-- About Me Section - White Card -->
+                <div class="reveal bg-white rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm">
+                    <!-- Section Label with Gold Line -->
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="h-px w-8 bg-editorial-gold"></div>
+                        <span class="text-xs font-bold text-editorial-gold uppercase tracking-[0.15em]">Background</span>
+                    </div>
+
+                    <!-- About Title -->
+                    <h2 class="text-3xl sm:text-4xl font-bold text-editorial-dark mb-6">About Me</h2>
+
+                    <!-- About Text -->
+                    <div class="space-y-4 text-zinc-600 leading-relaxed mb-10 max-w-3xl">
+                        <p class="text-base sm:text-lg">
+                            I am a 3rd-year Artificial Intelligence & Data Science student dedicated to bridging mathematical rigor and software engineering. My interests center on neural networks, computer vision, and building clean, responsive data interfaces.
+                        </p>
+                        <p class="text-base sm:text-lg">
+                            Whether automating large-scale reporting pipelines or architecting diagnostic deep learning models, I approach every project with an emphasis on clarity, high code quality, and measurable impact.
+                        </p>
+                    </div>
+
+                    <!-- Divider -->
+                    <div class="h-px bg-[#EAE6DF] mb-8"></div>
+
+                    <!-- Stats Section -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+                        <div class="text-left">
+                            <div class="text-3xl sm:text-4xl font-bold text-editorial-dark mb-1">06+</div>
+                            <div class="text-sm text-zinc-500">Completed Projects</div>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-3xl sm:text-4xl font-bold text-editorial-dark mb-1">3rd</div>
+                            <div class="text-sm text-zinc-500">Year AI & DS Student</div>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-3xl sm:text-4xl font-bold text-editorial-gold mb-1">100%</div>
+                            <div class="text-sm text-zinc-500">Dedication to Quality</div>
                         </div>
                     </div>
                 </div>
@@ -145,84 +269,84 @@
             </div>
         </section>
 
-        <!-- 2. SERVICES & SKILLS PAGE -->
-        <section id="services" class="page-view flex-grow py-12 lg:py-20">
-            <div class="max-w-4xl mx-auto px-6 lg:px-12 w-full space-y-16">
+        <!-- 2. SKILLS & SERVICES PAGE -->
+        <section id="skills" class="page-view flex-grow">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 w-full space-y-24">
                 
-                <!-- Technical Capabilities: Clean Card Grid Style -->
+                <!-- Technical Capabilities -->
                 <div>
-                    <div class="mb-8">
-                        <h2 class="text-2xl md:text-3xl font-bold text-editorial-dark mb-1">Technical Capabilities</h2>
-                        <p class="text-zinc-500 text-xs md:text-sm">Core domains and technical stack expertise.</p>
+                    <div class="reveal mb-16">
+                        <h2 class="text-4xl sm:text-5xl font-bold text-editorial-dark mb-4">Technical Capabilities</h2>
+                        <p class="text-zinc-500 text-lg">Core domains and technical stack expertise.</p>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Card 1 -->
-                        <div class="bg-editorial-card border border-editorial-border rounded-2xl p-6 shadow-sm hover:border-editorial-gold transition flex flex-col justify-between">
-                            <div>
-                                <div class="flex items-center space-x-3 mb-4">
-                                    <div class="w-10 h-10 rounded-xl bg-amber-50 text-editorial-gold flex items-center justify-center font-bold text-base"><i class="fas fa-brain"></i></div>
-                                    <h3 class="font-bold text-editorial-dark text-base">AI & Machine Learning</h3>
+                    <div class="space-y-12">
+                        <!-- AI & ML -->
+                        <div class="reveal group">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-12 h-12 rounded-full bg-editorial-gold text-white flex items-center justify-center text-lg">
+                                    <i class="fas fa-brain"></i>
                                 </div>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Neural Networks</span>
-                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Computer Vision</span>
-                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Predictive Modeling</span>
-                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Scikit-Learn</span>
-                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">TensorFlow</span>
-                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">PyTorch</span>
-                                </div>
+                                <h3 class="font-bold text-editorial-dark text-2xl">AI & Machine Learning</h3>
+                            </div>
+                            <div class="flex flex-wrap gap-3 pl-16">
+                                <span class="tech-tag text-zinc-600 text-sm px-4 py-2 rounded-full font-medium cursor-default hover:bg-editorial-dark">Neural Networks</span>
+                                <span class="tech-tag text-zinc-600 text-sm px-4 py-2 rounded-full font-medium cursor-default hover:bg-editorial-dark">Computer Vision</span>
+                                <span class="tech-tag text-zinc-600 text-sm px-4 py-2 rounded-full font-medium cursor-default hover:bg-editorial-dark">Predictive Modeling</span>
+                                <span class="tech-tag text-zinc-600 text-sm px-4 py-2 rounded-full font-medium cursor-default hover:bg-editorial-dark">Scikit-Learn</span>
+                                <span class="tech-tag text-zinc-600 text-sm px-4 py-2 rounded-full font-medium cursor-default hover:bg-editorial-dark">TensorFlow</span>
+                                <span class="tech-tag text-zinc-600 text-sm px-4 py-2 rounded-full font-medium cursor-default hover:bg-editorial-dark">PyTorch</span>
                             </div>
                         </div>
 
-                        <!-- Card 2 -->
-                        <div class="bg-editorial-card border border-editorial-border rounded-2xl p-6 shadow-sm hover:border-editorial-gold transition flex flex-col justify-between">
-                            <div>
-                                <div class="flex items-center space-x-3 mb-4">
-                                    <div class="w-10 h-10 rounded-xl bg-zinc-100 text-zinc-800 flex items-center justify-center font-bold text-base"><i class="fas fa-terminal"></i></div>
-                                    <h3 class="font-bold text-editorial-dark text-base">Programming Languages</h3>
+                        <!-- Programming Languages -->
+                        <div class="reveal group" style="transition-delay: 100ms;">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-12 h-12 rounded-full bg-zinc-800 text-white flex items-center justify-center text-lg">
+                                    <i class="fas fa-terminal"></i>
                                 </div>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Python</span>
-                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">JavaScript</span>
-                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">TypeScript</span>
-                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">HTML / CSS</span>
-                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">C++</span>
-                                </div>
+                                <h3 class="font-bold text-editorial-dark text-2xl">Programming Languages</h3>
+                            </div>
+                            <div class="flex flex-wrap gap-3 pl-16">
+                                <span class="tech-tag text-zinc-600 text-sm px-4 py-2 rounded-full font-medium cursor-default hover:bg-editorial-dark">Python</span>
+                                <span class="tech-tag text-zinc-600 text-sm px-4 py-2 rounded-full font-medium cursor-default hover:bg-editorial-dark">JavaScript</span>
+                                <span class="tech-tag text-zinc-600 text-sm px-4 py-2 rounded-full font-medium cursor-default hover:bg-editorial-dark">TypeScript</span>
+                                <span class="tech-tag text-zinc-600 text-sm px-4 py-2 rounded-full font-medium cursor-default hover:bg-editorial-dark">HTML / CSS</span>
+                                <span class="tech-tag text-zinc-600 text-sm px-4 py-2 rounded-full font-medium cursor-default hover:bg-editorial-dark">C++</span>
                             </div>
                         </div>
 
-                        <!-- Card 3 -->
-                        <div class="bg-editorial-card border border-editorial-border rounded-2xl p-6 shadow-sm hover:border-editorial-gold transition flex flex-col justify-between">
-                            <div>
-                                <div class="flex items-center space-x-3 mb-4">
-                                    <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-base"><i class="fas fa-globe"></i></div>
-                                    <h3 class="font-bold text-editorial-dark text-base">Web Development</h3>
+                        <!-- Data & Analytics -->
+                        <div class="reveal group" style="transition-delay: 200ms;">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-12 h-12 rounded-full bg-blue-500 text-white flex items-center justify-center text-lg">
+                                    <i class="fas fa-database"></i>
                                 </div>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Next.js</span>
-                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">React</span>
-                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Node.js</span>
-                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Tailwind CSS</span>
-                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">REST APIs</span>
-                                </div>
+                                <h3 class="font-bold text-editorial-dark text-2xl">Data & Analytics</h3>
+                            </div>
+                            <div class="flex flex-wrap gap-3 pl-16">
+                                <span class="tech-tag text-zinc-600 text-sm px-4 py-2 rounded-full font-medium cursor-default hover:bg-editorial-dark">Pandas & NumPy</span>
+                                <span class="tech-tag text-zinc-600 text-sm px-4 py-2 rounded-full font-medium cursor-default hover:bg-editorial-dark">Matplotlib</span>
+                                <span class="tech-tag text-zinc-600 text-sm px-4 py-2 rounded-full font-medium cursor-default hover:bg-editorial-dark">SQL / PostgreSQL</span>
+                                <span class="tech-tag text-zinc-600 text-sm px-4 py-2 rounded-full font-medium cursor-default hover:bg-editorial-dark">Power BI</span>
+                                <span class="tech-tag text-zinc-600 text-sm px-4 py-2 rounded-full font-medium cursor-default hover:bg-editorial-dark">Excel</span>
                             </div>
                         </div>
 
-                        <!-- Card 4 -->
-                        <div class="bg-editorial-card border border-editorial-border rounded-2xl p-6 shadow-sm hover:border-editorial-gold transition flex flex-col justify-between">
-                            <div>
-                                <div class="flex items-center space-x-3 mb-4">
-                                    <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-base"><i class="fas fa-database"></i></div>
-                                    <h3 class="font-bold text-editorial-dark text-base">Data & Databases</h3>
+                        <!-- Web Development -->
+                        <div class="reveal group" style="transition-delay: 300ms;">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-12 h-12 rounded-full bg-emerald-500 text-white flex items-center justify-center text-lg">
+                                    <i class="fas fa-globe"></i>
                                 </div>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Pandas & NumPy</span>
-                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Matplotlib</span>
-                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">SQL / PostgreSQL</span>
-                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">Supabase</span>
-                                    <span class="bg-[#FAF8F5] border border-editorial-border text-zinc-700 text-xs px-3 py-1.5 rounded-xl font-medium">MongoDB</span>
-                                </div>
+                                <h3 class="font-bold text-editorial-dark text-2xl">Web Development</h3>
+                            </div>
+                            <div class="flex flex-wrap gap-3 pl-16">
+                                <span class="tech-tag text-zinc-600 text-sm px-4 py-2 rounded-full font-medium cursor-default hover:bg-editorial-dark">React</span>
+                                <span class="tech-tag text-zinc-600 text-sm px-4 py-2 rounded-full font-medium cursor-default hover:bg-editorial-dark">Flask</span>
+                                <span class="tech-tag text-zinc-600 text-sm px-4 py-2 rounded-full font-medium cursor-default hover:bg-editorial-dark">REST APIs</span>
+                                <span class="tech-tag text-zinc-600 text-sm px-4 py-2 rounded-full font-medium cursor-default hover:bg-editorial-dark">Tailwind CSS</span>
+                                <span class="tech-tag text-zinc-600 text-sm px-4 py-2 rounded-full font-medium cursor-default hover:bg-editorial-dark">Node.js</span>
                             </div>
                         </div>
                     </div>
@@ -230,33 +354,45 @@
 
                 <!-- Professional Services -->
                 <div>
-                    <div class="mb-8">
-                        <h2 class="text-2xl md:text-3xl font-bold text-editorial-dark mb-1">Services</h2>
-                        <p class="text-zinc-500 text-xs md:text-sm">Professional solutions tailored for modern digital needs.</p>
+                    <div class="reveal mb-16">
+                        <h2 class="text-4xl sm:text-5xl font-bold text-editorial-dark mb-4">Services</h2>
+                        <p class="text-zinc-500 text-lg">Professional solutions tailored for modern digital needs.</p>
                     </div>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border hover:border-editorial-gold transition shadow-sm flex flex-col justify-between">
-                            <div>
-                                <div class="text-editorial-gold text-2xl mb-4"><i class="fas fa-brain"></i></div>
-                                <h3 class="text-base font-bold mb-2 text-editorial-dark">AI & Machine Learning</h3>
-                                <p class="text-zinc-600 text-xs leading-relaxed">Develop intelligent applications, custom ML models, computer vision pipelines, and automated workflows.</p>
+                    <div class="space-y-12">
+                        <div class="reveal group border-b border-[#EAE6DF] pb-8">
+                            <div class="flex items-start gap-6">
+                                <div class="w-14 h-14 rounded-full bg-editorial-gold text-white flex items-center justify-center text-2xl flex-shrink-0">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold mb-3 text-editorial-dark">AI & Machine Learning</h3>
+                                    <p class="text-zinc-600 leading-relaxed max-w-2xl">Develop intelligent applications, custom ML models, computer vision pipelines, and automated workflows.</p>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border hover:border-editorial-gold transition shadow-sm flex flex-col justify-between">
-                            <div>
-                                <div class="text-editorial-gold text-2xl mb-4"><i class="fas fa-code"></i></div>
-                                <h3 class="text-base font-bold mb-2 text-editorial-dark">Full-Stack / Web Apps / Designing / Frontend / Backend</h3>
-                                <p class="text-zinc-600 text-xs leading-relaxed">Build complete web applications with tailored UI/UX designing, responsive frontend development, and robust backend server and database architecture.</p>
+                        <div class="reveal group border-b border-[#EAE6DF] pb-8" style="transition-delay: 100ms;">
+                            <div class="flex items-start gap-6">
+                                <div class="w-14 h-14 rounded-full bg-editorial-gold text-white flex items-center justify-center text-2xl flex-shrink-0">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold mb-3 text-editorial-dark">Full-Stack Web Apps</h3>
+                                    <p class="text-zinc-600 leading-relaxed max-w-2xl">Build complete web applications with responsive frontend development, backend systems, and database architecture.</p>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border hover:border-editorial-gold transition shadow-sm flex flex-col justify-between">
-                            <div>
-                                <div class="text-editorial-gold text-2xl mb-4"><i class="fas fa-chart-pie"></i></div>
-                                <h3 class="text-base font-bold mb-2 text-editorial-dark">Data Analytics & Dashboards</h3>
-                                <p class="text-zinc-600 text-xs leading-relaxed">Transform raw data into clear, actionable insights through processing pipelines, automated reporting, and interactive KPI dashboards.</p>
+                        <div class="reveal group" style="transition-delay: 200ms;">
+                            <div class="flex items-start gap-6">
+                                <div class="w-14 h-14 rounded-full bg-editorial-gold text-white flex items-center justify-center text-2xl flex-shrink-0">
+                                    <i class="fas fa-chart-pie"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold mb-3 text-editorial-dark">Data Analytics</h3>
+                                    <p class="text-zinc-600 leading-relaxed max-w-2xl">Transform raw data into clear, actionable insights through analytics, reporting automation, and interactive dashboards.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -266,147 +402,58 @@
         </section>
 
         <!-- 3. PROJECTS PAGE -->
-        <section id="projects" class="page-view flex-grow py-16 lg:py-24">
-            <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full">
-                <div class="max-w-2xl mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-editorial-dark mb-3">Featured Projects</h2>
-                    <p class="text-zinc-600 text-sm md:text-base">AI, analytics, automation, and development solutions.</p>
+        <section id="projects" class="page-view flex-grow">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 w-full">
+                <div class="reveal max-w-2xl mb-12">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-editorial-dark mb-3">Featured Projects</h2>
+                    <p class="text-zinc-600 text-sm sm:text-base">AI, analytics, automation, and development solutions.</p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
-                    <div class="bg-editorial-card border border-editorial-border rounded-2xl overflow-hidden hover:border-editorial-dark transition-all duration-300 flex flex-col shadow-sm">
-                        <div class="bg-[#F0ECE1] h-48 flex items-center justify-center p-6">
-                            <i class="fas fa-brain text-5xl text-editorial-gold"></i>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col justify-between">
-                            <div>
-                                <h3 class="text-lg font-bold text-editorial-dark mb-2">NeuroVision AI</h3>
-                                <p class="text-zinc-600 text-sm mb-6 leading-relaxed">Brain MRI analysis, tumor type/stage/severity analysis, XAI, heatmap and downloadable report.</p>
-                            </div>
-                            <div class="flex space-x-4 mt-auto pt-4 border-t border-editorial-border">
-                                <a href="https://github.com/suganyas2382006-sketch/NeuroVision-AI/tree/main" target="_blank" class="text-xs font-semibold text-zinc-600 hover:text-editorial-dark flex items-center"><i class="fab fa-github mr-1.5 text-base"></i> GitHub Code</a>
-                                <a href="assets/neuro.jpg" target="_blank" class="text-xs font-semibold text-editorial-gold hover:text-editorial-goldHover flex items-center"><i class="fas fa-external-link-alt mr-1.5"></i> View Result</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-editorial-card border border-editorial-border rounded-2xl overflow-hidden hover:border-editorial-dark transition-all duration-300 flex flex-col shadow-sm">
-                        <div class="bg-[#F0ECE1] h-48 flex items-center justify-center p-6">
-                            <i class="fas fa-users text-5xl text-editorial-gold"></i>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col justify-between">
-                            <div>
-                                <h3 class="text-lg font-bold text-editorial-dark mb-2">Customer Segmentation</h3>
-                                <p class="text-zinc-600 text-sm mb-6 leading-relaxed">Customer grouping and behavior analysis using machine learning clustering algorithms.</p>
-                            </div>
-                            <div class="mt-auto pt-4 border-t border-editorial-border">
-                                <a href="https://github.com/suganyas2382006-sketch/CustomerSegmentation/tree/main" target="_blank" class="text-xs font-semibold text-zinc-600 hover:text-editorial-dark flex items-center"><i class="fab fa-github mr-1.5 text-base"></i> GitHub Code</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-editorial-card border border-editorial-border rounded-2xl overflow-hidden hover:border-editorial-dark transition-all duration-300 flex flex-col shadow-sm">
-                        <div class="bg-[#F0ECE1] h-48 flex items-center justify-center p-6">
-                            <i class="fas fa-file-invoice text-5xl text-editorial-gold"></i>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col justify-between">
-                            <div>
-                                <h3 class="text-lg font-bold text-editorial-dark mb-2">Data Reporting & Automation</h3>
-                                <p class="text-zinc-600 text-sm mb-6 leading-relaxed">End-to-end data processing pipelines and automated reporting generation systems.</p>
-                            </div>
-                            <div class="mt-auto pt-4 border-t border-editorial-border">
-                                <a href="https://github.com/suganyas2382006-sketch/data-cleaning-and-reporting-automation-/tree/main" target="_blank" class="text-xs font-semibold text-zinc-600 hover:text-editorial-dark flex items-center"><i class="fab fa-github mr-1.5 text-base"></i> GitHub Code</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-editorial-card border border-editorial-border rounded-2xl overflow-hidden hover:border-editorial-dark transition-all duration-300 flex flex-col shadow-sm">
-                        <div class="bg-[#F0ECE1] h-48 flex items-center justify-center p-6">
-                            <i class="fas fa-chart-bar text-5xl text-editorial-gold"></i>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col justify-between">
-                            <div>
-                                <h3 class="text-lg font-bold text-editorial-dark mb-2">Sales Dashboard</h3>
-                                <p class="text-zinc-600 text-sm mb-6 leading-relaxed">Interactive sales tracking and Key Performance Indicator (KPI) visualization.</p>
-                            </div>
-                            <div class="mt-auto pt-4 border-t border-editorial-border">
-                                <a href="https://github.com" target="_blank" class="text-xs font-semibold text-zinc-600 hover:text-editorial-dark flex items-center"><i class="fab fa-github mr-1.5 text-base"></i> GitHub Code</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-editorial-card border border-editorial-border rounded-2xl overflow-hidden hover:border-editorial-dark transition-all duration-300 flex flex-col shadow-sm">
-                        <div class="bg-[#F0ECE1] h-48 flex items-center justify-center p-6">
-                            <i class="fas fa-coins text-5xl text-editorial-gold"></i>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col justify-between">
-                            <div>
-                                <h3 class="text-lg font-bold text-editorial-dark mb-2">Sales Revenue Analysis</h3>
-                                <p class="text-zinc-600 text-sm mb-6 leading-relaxed">In-depth sales and revenue performance analysis dashboards for business intelligence.</p>
-                            </div>
-                            <div class="mt-auto pt-4 border-t border-editorial-border">
-                                <a href="https://github.com/suganyas2382006-sketch/Sales-Revenue-Analysis-Dashboard/tree/main" target="_blank" class="text-xs font-semibold text-zinc-600 hover:text-editorial-dark flex items-center"><i class="fab fa-github mr-1.5 text-base"></i> GitHub Code</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-editorial-card border border-editorial-border rounded-2xl overflow-hidden hover:border-editorial-dark transition-all duration-300 flex flex-col shadow-sm">
-                        <div class="bg-[#F0ECE1] h-48 flex items-center justify-center p-6">
-                            <i class="fas fa-project-diagram text-5xl text-editorial-gold"></i>
-                        </div>
-                        <div class="p-6 flex-grow flex flex-col justify-between">
-                            <div>
-                                <h3 class="text-lg font-bold text-editorial-dark mb-2">Predictive Analytics</h3>
-                                <p class="text-zinc-600 text-sm mb-6 leading-relaxed">Historical-data-based prediction models and trend analysis for forecasting.</p>
-                            </div>
-                            <div class="mt-auto pt-4 border-t border-editorial-border">
-                                <a href="https://github.com/suganyas2382006-sketch/Predictive-Analytics/tree/main" target="_blank" class="text-xs font-semibold text-zinc-600 hover:text-editorial-dark flex items-center"><i class="fab fa-github mr-1.5 text-base"></i> GitHub Code</a>
-                            </div>
-                        </div>
-                    </div>
-
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" id="projects-grid">
+                    <!-- Projects injected via JS -->
                 </div>
             </div>
         </section>
 
-        <!-- 4. PAYMENT PAGE (GPay / UPI) -->
-        <section id="payment" class="page-view flex-grow py-16 lg:py-24">
-            <div class="max-w-3xl mx-auto px-6 lg:px-12 w-full">
-                <div class="bg-editorial-card rounded-3xl shadow-sm overflow-hidden flex flex-col md:flex-row border border-editorial-border">
+        <!-- 4. PAYMENT PAGE -->
+        <section id="payment" class="page-view flex-grow">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 w-full">
+                <div class="reveal bg-white rounded-3xl shadow-sm overflow-hidden flex flex-col md:flex-row border border-[#EAE6DF]">
                     
-                    <div class="p-6 md:p-8 md:w-1/2 border-b md:border-b-0 md:border-r border-editorial-border flex flex-col justify-center">
-                        <h2 class="text-2xl font-bold text-editorial-dark mb-2">Make a Payment</h2>
+                    <div class="p-6 sm:p-8 md:w-1/2 border-b md:border-b-0 md:border-r border-[#EAE6DF] flex flex-col justify-center">
+                        <h2 class="text-2xl font-bold text-editorial-dark mb-3">Make a Payment</h2>
                         <p class="text-sm text-zinc-600 mb-6 leading-relaxed">Scan the QR code or click the button below to pay directly via Google Pay or your preferred UPI app.</p>
                         
-                        <div class="bg-[#FAF8F5] border border-editorial-border rounded-2xl p-5 mb-6">
-                            <p class="text-sm text-editorial-dark mb-2 flex items-center font-semibold"><i class="fas fa-info-circle text-editorial-gold mr-2"></i>Payment Policy</p>
-                            <ul class="text-xs text-zinc-600 space-y-1.5 ml-5 list-disc">
-                                <li>All payments are final.</li>
-                                <li>No advance payment installments.</li>
-                                <li>Please pay the exact full amount requested.</li>
+                        <div class="bg-[#F5F3EF] border border-[#EAE6DF] rounded-2xl p-5 mb-6">
+                            <p class="text-sm text-editorial-dark mb-3 flex items-center font-semibold">
+                                <i class="fas fa-info-circle text-editorial-gold mr-2"></i>Payment Policy
+                            </p>
+                            <ul class="text-xs text-zinc-600 space-y-2 ml-1">
+                                <li class="flex items-start"><span class="mr-2">•</span> All payments are final and non-refundable.</li>
+                                <li class="flex items-start"><span class="mr-2">•</span> No advance payment installments accepted.</li>
+                                <li class="flex items-start"><span class="mr-2">•</span> Please pay the exact full amount requested.</li>
                             </ul>
                         </div>
                         
-                        <a href="upi://pay?pa=sugannachiyar216@okaxis&pn=Suganya%20Shenbagam&cu=INR" class="w-full bg-[#FAF8F5] border border-editorial-border hover:border-editorial-dark text-editorial-dark font-semibold py-3 px-4 rounded-xl transition shadow-sm flex items-center justify-center group">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/UPI-Logo-vector.svg" alt="UPI" class="h-4 mr-2 grayscale group-hover:grayscale-0 transition-all">
+                        <a href="upi://pay?pa=sugannachiyar216@okaxis&pn=Suganya%20Shenbagam&cu=INR" class="w-full bg-[#F5F3EF] border border-[#EAE6DF] hover:border-editorial-dark text-editorial-dark font-semibold py-3.5 px-4 rounded-xl transition shadow-sm flex items-center justify-center group">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/UPI-Logo-vector.svg" alt="UPI" class="h-4 mr-3 grayscale group-hover:grayscale-0 transition-all duration-300">
                             Pay via UPI App
                         </a>
                     </div>
                     
-                    <div class="p-6 md:p-8 md:w-1/2 bg-[#FAF8F5] flex flex-col items-center justify-center text-center">
-                        <h3 class="font-semibold text-editorial-dark mb-4 flex items-center">
-                            <i class="fab fa-google text-lg mr-2 text-zinc-800"></i>Pay
+                    <div class="p-6 sm:p-8 md:w-1/2 bg-[#F5F3EF] flex flex-col items-center justify-center text-center">
+                        <h3 class="font-semibold text-editorial-dark mb-5 flex items-center text-sm uppercase tracking-wide">
+                            <i class="fab fa-google text-lg mr-2 text-zinc-800"></i>Scan to Pay
                         </h3>
                         
-                        <div class="bg-editorial-card p-3 rounded-2xl shadow-sm border border-editorial-border mb-4">
+                        <div class="bg-white p-4 rounded-2xl shadow-sm border border-[#EAE6DF] mb-5 hover:shadow-md transition-shadow duration-300">
                             <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=sugannachiyar216@okaxis&pn=Suganya%20Shenbagam&cu=INR" alt="GPay QR Code" class="w-44 h-44 object-cover rounded-xl">
                         </div>
                         
-                        <p class="text-xs text-editorial-gold mb-1 uppercase font-semibold tracking-wider">Scan with any UPI App</p>
-                        <div class="bg-editorial-card px-4 py-2.5 border border-editorial-border rounded-xl mt-2 w-full max-w-[220px]">
-                            <p class="text-xs text-zinc-400 mb-0.5">UPI ID</p>
-                            <p class="text-xs md:text-sm text-editorial-dark font-mono font-medium truncate">sugannachiyar216@okaxis</p>
+                        <p class="text-xs text-editorial-gold mb-3 uppercase font-bold tracking-wider">Scan with any UPI App</p>
+                        <div class="bg-white px-5 py-3 border border-[#EAE6DF] rounded-xl w-full max-w-[240px]">
+                            <p class="text-[10px] text-zinc-400 mb-0.5 uppercase tracking-wider">UPI ID</p>
+                            <p class="text-sm text-editorial-dark font-mono font-medium truncate select-all">sugannachiyar216@okaxis</p>
                         </div>
                     </div>
 
@@ -415,45 +462,53 @@
         </section>
 
         <!-- 5. CONTACT PAGE -->
-        <section id="contact" class="page-view flex-grow py-16 lg:py-24">
-            <div class="max-w-3xl mx-auto px-6 text-center w-full">
-                <h2 class="text-3xl md:text-4xl font-bold text-editorial-dark mb-4">Let's Work Together</h2>
-                <p class="text-zinc-600 mb-10 text-sm md:text-base">Have a project, collaboration, or just want to say hello? I'd love to hear from you.</p>
+        <section id="contact" class="page-view flex-grow">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-24 w-full text-center">
+                <div class="reveal mb-12">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-editorial-dark mb-4">Let's Work Together</h2>
+                    <p class="text-zinc-600 text-sm sm:text-base max-w-lg mx-auto">Have a project, collaboration, or just want to say hello? I'd love to hear from you.</p>
+                </div>
                 
                 <!-- Resume Card -->
-                <div class="bg-editorial-card border border-editorial-border rounded-2xl p-6 shadow-sm w-full mb-10 text-left">
-                    <div class="flex items-center justify-between flex-wrap gap-4">
-                        <div>
-                            <h3 class="text-base font-bold text-editorial-dark mb-1 flex items-center">
-                                <i class="far fa-file-alt text-editorial-gold mr-2.5"></i> My Resume
-                            </h3>
-                            <p class="text-zinc-500 text-xs sm:text-sm">Academic background, technical skills, and experience.</p>
+                <div class="reveal bg-white border border-[#EAE6DF] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow duration-300 mb-12 text-left">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-editorial-goldLight text-editorial-gold flex items-center justify-center text-xl flex-shrink-0">
+                                <i class="far fa-file-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-bold text-editorial-dark mb-1">My Resume</h3>
+                                <p class="text-zinc-500 text-sm">Academic background, technical skills, and professional experience.</p>
+                            </div>
                         </div>
-                        <div class="flex space-x-3">
-                            <a href="assets/cv.pdf" target="_blank" class="bg-editorial-dark text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-medium hover:bg-zinc-800 transition">View CV</a>
-                            <a href="assets/cv.pdf" download class="border border-editorial-border text-editorial-dark px-4 py-2 rounded-xl text-xs sm:text-sm font-medium hover:border-editorial-dark transition">Download</a>
+                        <div class="flex gap-3 w-full sm:w-auto">
+                            <a href="assets/cv.pdf" target="_blank" class="flex-1 sm:flex-none bg-editorial-dark text-white px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-zinc-800 transition text-center">
+                                View CV
+                            </a>
+                            <a href="assets/cv.pdf" download class="flex-1 sm:flex-none border border-[#EAE6DF] text-editorial-dark px-5 py-2.5 rounded-xl text-sm font-medium hover:border-editorial-dark hover:bg-[#F5F3EF] transition text-center">
+                                Download
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="flex justify-center gap-4 md:gap-5 mb-12 flex-wrap">
-                    
-                    <a href="mailto:suganyashenbagam@gmail.com" class="w-14 h-14 md:w-16 md:h-16 bg-editorial-card border border-editorial-border hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-lg md:text-xl shadow-sm transition-all hover:-translate-y-1" title="Email">
+                <!-- Social Links -->
+                <div class="reveal flex justify-center gap-4 sm:gap-5 flex-wrap">
+                    <a href="mailto:suganyashenbagam@gmail.com" class="w-14 h-14 sm:w-16 sm:h-16 bg-white border border-[#EAE6DF] hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-xl sm:text-2xl shadow-sm transition-all duration-300 hover:-translate-y-1" title="Email">
                         <i class="fas fa-envelope"></i>
                     </a>
                     
-                    <a href="https://www.linkedin.com/in/shruthi-s-5b929b42b?utm_source=share_via&utm_content=profile&utm_medium=member_android" class="w-14 h-14 md:w-16 md:h-16 bg-editorial-card border border-editorial-border hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-lg md:text-xl shadow-sm transition-all hover:-translate-y-1" title="LinkedIn">
+                    <a href="https://www.linkedin.com/in/shruthi-s-5b929b42b?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="w-14 h-14 sm:w-16 sm:h-16 bg-white border border-[#EAE6DF] hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-xl sm:text-2xl shadow-sm transition-all duration-300 hover:-translate-y-1" title="LinkedIn">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
 
-                    <a href="https://github.com/suganyas2382006-sketch" class="w-14 h-14 md:w-16 md:h-16 bg-editorial-card border border-editorial-border hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-lg md:text-xl shadow-sm transition-all hover:-translate-y-1" title="GitHub">
+                    <a href="https://github.com/suganyas2382006-sketch" target="_blank" class="w-14 h-14 sm:w-16 sm:h-16 bg-white border border-[#EAE6DF] hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-xl sm:text-2xl shadow-sm transition-all duration-300 hover:-translate-y-1" title="GitHub">
                         <i class="fab fa-github"></i>
                     </a>
 
-                    <a href="https://wa.me/qr/QBOT5I4XWEI3L1" class="w-14 h-14 md:w-16 md:h-16 bg-editorial-card border border-editorial-border hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-lg md:text-xl shadow-sm transition-all hover:-translate-y-1" title="WhatsApp">
+                    <a href="https://wa.me/qr/QBOT5I4XWEI3L1" target="_blank" class="w-14 h-14 sm:w-16 sm:h-16 bg-white border border-[#EAE6DF] hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-xl sm:text-2xl shadow-sm transition-all duration-300 hover:-translate-y-1" title="WhatsApp">
                         <i class="fab fa-whatsapp"></i>
                     </a>
-
                 </div>
             </div>
         </section>
@@ -461,32 +516,283 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-[#FAF8F5] border-t border-editorial-border text-zinc-500 py-6 text-center text-sm">
+    <footer class="bg-[#F5F3EF] border-t border-[#EAE6DF] text-zinc-500 py-8 text-center text-sm">
         <p>&copy; <span id="year"></span> Suganya Shenbagam. All rights reserved.</p>
     </footer>
 
-    <!-- Single File Logic (SPA Routing & Form Submission) -->
-    <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
+    <!-- Project Modal -->
+    <div id="project-modal" class="fixed inset-0 z-50 hidden modal-backdrop flex items-center justify-center p-4 sm:p-6">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto border border-[#EAE6DF] transform transition-all scale-95 opacity-0" id="modal-panel">
+            <div class="sticky top-0 bg-white/95 backdrop-blur-sm border-b border-[#EAE6DF] p-4 sm:p-6 flex justify-between items-center z-10">
+                <h3 class="text-lg font-bold text-editorial-dark" id="modal-title">Project Details</h3>
+                <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-[#F5F3EF] hover:bg-zinc-200 flex items-center justify-center text-zinc-500 hover:text-editorial-dark transition">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="p-4 sm:p-6" id="modal-content">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </div>
 
+    <!-- Scripts -->
+    <script>
+        // Project Data
+        const projectsData = [
+            {
+                id: 1,
+                title: "NeuroVision AI",
+                subtitle: "Brain Tumor Detection & Severity Analysis",
+                description: "Advanced brain MRI analysis system utilizing deep learning for tumor type, stage, and severity analysis. Incorporates Explainable AI (XAI) with heatmaps and generates downloadable diagnostic reports.",
+                icon: "fas fa-brain",
+                tech: ["Python", "TensorFlow", "OpenCV", "Flask", "Scikit-Learn"],
+                features: ["Automated tumor detection and classification", "Explainable AI (XAI) heatmap generation", "Downloadable PDF diagnostic reports", "RESTful API for seamless integration"],
+                github: "https://github.com/suganyas2382006-sketch/NeuroVision-AI/tree/main",
+                demo: "assets/neuro.jpg"
+            },
+            {
+                id: 2,
+                title: "Customer Segmentation",
+                subtitle: "Behavior Analysis & Clustering",
+                description: "Customer grouping and behavior analysis using machine learning clustering algorithms to identify distinct market segments and optimize targeting strategies.",
+                icon: "fas fa-users",
+                tech: ["Python", "Pandas", "Scikit-Learn", "Matplotlib"],
+                features: ["K-Means and Hierarchical clustering", "Customer persona generation", "Interactive data visualizations", "Business insight reporting"],
+                github: "https://github.com/suganyas2382006-sketch/CustomerSegmentation/tree/main",
+                demo: null
+            },
+            {
+                id: 3,
+                title: "Data Reporting Automation",
+                subtitle: "End-to-End Processing Pipelines",
+                description: "End-to-end data processing pipelines and automated reporting generation systems, reducing manual data handling time and improving accuracy.",
+                icon: "fas fa-file-invoice",
+                tech: ["Python", "SQL", "Pandas", "Automation Scripts"],
+                features: ["Automated data cleaning and validation", "Scheduled report generation", "Multi-format export (CSV, Excel, PDF)", "Error logging and monitoring"],
+                github: "https://github.com/suganyas2382006-sketch/data-cleaning-and-reporting-automation-/tree/main",
+                demo: null
+            },
+            {
+                id: 4,
+                title: "Sales Dashboard",
+                subtitle: "Interactive KPI Visualization",
+                description: "Interactive sales tracking and Key Performance Indicator (KPI) visualization dashboard for real-time business monitoring and decision making.",
+                icon: "fas fa-chart-bar",
+                tech: ["Power BI", "SQL", "Excel", "DAX"],
+                features: ["Real-time sales tracking", "Regional performance comparison", "Trend analysis and forecasting", "Drill-down capabilities"],
+                github: "https://github.com",
+                demo: null
+            },
+            {
+                id: 5,
+                title: "Sales Revenue Analysis",
+                subtitle: "Business Intelligence Dashboard",
+                description: "In-depth sales and revenue performance analysis dashboards for business intelligence, identifying growth opportunities and revenue leaks.",
+                icon: "fas fa-coins",
+                tech: ["Python", "Power BI", "SQL", "Pandas"],
+                features: ["Revenue trend identification", "Product performance metrics", "Customer lifetime value analysis", "Automated monthly summaries"],
+                github: "https://github.com/suganyas2382006-sketch/Sales-Revenue-Analysis-Dashboard/tree/main",
+                demo: null
+            },
+            {
+                id: 6,
+                title: "Predictive Analytics",
+                subtitle: "Forecasting & Trend Analysis",
+                description: "Historical-data-based prediction models and trend analysis for forecasting future business outcomes and market behaviors.",
+                icon: "fas fa-project-diagram",
+                tech: ["Python", "TensorFlow", "Scikit-Learn", "NumPy"],
+                features: ["Time-series forecasting", "Regression analysis models", "Feature engineering pipelines", "Model performance evaluation"],
+                github: "https://github.com/suganyas2382006-sketch/Predictive-Analytics/tree/main",
+                demo: null
+            }
+        ];
+
+        // Render Projects
+        const projectsGrid = document.getElementById('projects-grid');
+        projectsData.forEach((project, index) => {
+            const delay = index * 100;
+            const techTags = project.tech.slice(0, 3).map(t => 
+                `<span class="bg-[#F5F3EF] border border-[#EAE6DF] text-zinc-600 text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-md font-medium group-hover:border-editorial-gold/30 group-hover:text-editorial-gold transition-colors duration-300">${t}</span>`
+            ).join('');
+
+            projectsGrid.innerHTML += `
+                <div class="reveal group bg-white border border-[#EAE6DF] rounded-2xl overflow-hidden hover:border-editorial-gold/50 hover:shadow-lg hover:shadow-editorial-gold/5 hover:-translate-y-1 transition-all duration-300" style="transition-delay: ${delay}ms;">
+                    <div class="h-56 bg-gradient-to-br from-editorial-goldLight to-[#F5F3EF] flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-[0.07] bg-[radial-gradient(#C59B27_1px,transparent_1px)] [background-size:16px_16px] group-hover:scale-110 transition-transform duration-700"></div>
+                        <i class="${project.icon} text-5xl text-editorial-gold/70 group-hover:text-editorial-gold group-hover:scale-110 transition-all duration-300"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-editorial-dark mb-1">${project.title}</h3>
+                        <p class="text-editorial-gold text-xs font-semibold mb-3">${project.subtitle}</p>
+                        <p class="text-zinc-600 text-sm mb-5 leading-relaxed line-clamp-2">${project.description}</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            ${techTags}
+                        </div>
+
+                        <div class="flex items-center justify-between pt-4 border-t border-[#EAE6DF]">
+                            <a href="${project.github}" target="_blank" class="text-xs font-semibold text-zinc-500 hover:text-editorial-dark flex items-center transition-colors">
+                                <i class="fab fa-github mr-1.5"></i> Code
+                            </a>
+                            <button onclick="openModal(${project.id})" class="text-xs font-semibold text-editorial-dark bg-[#F5F3EF] hover:bg-editorial-dark hover:text-white px-4 py-2 rounded-lg transition-all duration-300 flex items-center">
+                                View Details <i class="fas fa-arrow-right ml-1.5 text-[10px] transition-transform group-hover:translate-x-0.5"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        // Modal Logic
+        const modal = document.getElementById('project-modal');
+        const modalPanel = document.getElementById('modal-panel');
+        const modalContent = document.getElementById('modal-content');
+        const modalTitle = document.getElementById('modal-title');
+
+        function openModal(projectId) {
+            const project = projectsData.find(p => p.id === projectId);
+            if (!project) return;
+
+            modalTitle.textContent = project.title;
+            modalContent.innerHTML = `
+                <div class="space-y-6">
+                    <div class="h-64 bg-gradient-to-br from-editorial-goldLight to-[#F5F3EF] rounded-xl flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-[0.07] bg-[radial-gradient(#C59B27_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                        <i class="${project.icon} text-6xl text-editorial-gold/80"></i>
+                    </div>
+                    
+                    <div>
+                        <p class="text-editorial-gold text-sm font-semibold mb-2">${project.subtitle}</p>
+                        <p class="text-zinc-600 leading-relaxed">${project.description}</p>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold text-editorial-dark mb-3 text-sm uppercase tracking-wide">Key Features</h4>
+                        <ul class="space-y-2">
+                            ${project.features.map(f => `
+                                <li class="flex items-start text-sm text-zinc-600">
+                                    <i class="fas fa-check text-editorial-gold mt-1 mr-3 text-xs"></i>
+                                    <span>${f}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold text-editorial-dark mb-3 text-sm uppercase tracking-wide">Technology Stack</h4>
+                        <div class="flex flex-wrap gap-2">
+                            ${project.tech.map(t => `<span class="bg-[#F5F3EF] border border-[#EAE6DF] text-zinc-700 text-xs px-3 py-1.5 rounded-lg font-medium">${t}</span>`).join('')}
+                        </div>
+                    </div>
+
+                    <div class="flex gap-3 pt-4 border-t border-[#EAE6DF]">
+                        <a href="${project.github}" target="_blank" class="flex-1 bg-editorial-dark text-white text-center py-3 rounded-xl font-medium hover:bg-zinc-800 transition text-sm">
+                            <i class="fab fa-github mr-2"></i>GitHub Repository
+                        </a>
+                        ${project.demo ? `
+                        <a href="${project.demo}" target="_blank" class="flex-1 border border-[#EAE6DF] text-editorial-dark text-center py-3 rounded-xl font-medium hover:border-editorial-dark hover:bg-[#F5F3EF] transition text-sm">
+                            <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                        </a>` : ''}
+                    </div>
+                </div>
+            `;
+            
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modalPanel.classList.remove('scale-95', 'opacity-0');
+                modalPanel.classList.add('scale-100', 'opacity-100');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modalPanel.classList.remove('scale-100', 'opacity-100');
+            modalPanel.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 200);
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // Navigation Logic
         function navigateTo(pageId) {
             document.querySelectorAll('.page-view').forEach(page => {
                 page.classList.remove('active');
             });
             
-            document.querySelectorAll('.nav-icon-btn').forEach(btn => {
-                btn.classList.remove('active-nav', 'text-editorial-gold');
-            });
-
             const targetPage = document.getElementById(pageId);
-            if(targetPage) targetPage.classList.add('active');
+            if (targetPage) {
+                targetPage.classList.add('active');
+                setTimeout(initScrollReveal, 50);
+            }
 
-            document.querySelectorAll(`.nav-icon-btn[data-target="${pageId}"]`).forEach(btn => {
-                btn.classList.add('active-nav', 'text-editorial-gold');
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active-nav');
             });
+
+            const activeBtn = document.querySelector(`.nav-btn[data-target="${pageId}"]`);
+            if (activeBtn) {
+                activeBtn.classList.add('active-nav');
+                updateIndicator(activeBtn);
+            }
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        // Sliding Indicator Logic
+        const navContainer = document.getElementById('nav-container');
+        const indicator = document.getElementById('nav-indicator');
+
+        function updateIndicator(btn) {
+            if (!btn || !navContainer) return;
+            const containerRect = navContainer.getBoundingClientRect();
+            const btnRect = btn.getBoundingClientRect();
+            
+            indicator.style.width = `${btnRect.width}px`;
+            indicator.style.left = `${btnRect.left - containerRect.left}px`;
+        }
+
+        window.addEventListener('load', () => {
+            const activeBtn = document.querySelector('.nav-btn.active-nav');
+            if (activeBtn) {
+                setTimeout(() => updateIndicator(activeBtn), 100);
+            }
+            initScrollReveal();
+        });
+
+        window.addEventListener('resize', () => {
+            const currentActive = document.querySelector('.nav-btn.active-nav');
+            if (currentActive) updateIndicator(currentActive);
+        });
+
+        function initScrollReveal() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                if (!el.classList.contains('is-visible')) {
+                    observer.observe(el);
+                }
+            });
+        }
+
+        document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
