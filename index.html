@@ -5,40 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suganya Shenbagam | AI & Data Science Portfolio</title>
     
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            DEFAULT: '#8cba70', // Celadon
-                            light: '#b9ddba',   // Mint
-                            dark: '#6a9451',
-                            50: '#f4f9f2',
-                            100: '#e3f1de',
-                            900: '#2d4a22'
-                        },
-                        dark: {
-                            DEFAULT: '#0f172a', // Slate 900
-                            light: '#1e293b',   // Slate 800
-                            850: '#151e2e'
+                        editorial: {
+                            bg: '#FAF8F5',       // Warm Off-White Paper
+                            card: '#FFFFFF',     // Crisp White Surface
+                            border: '#EBE7DF',   // Subtle Warm Border
+                            dark: '#111111',     // Deep Editorial Charcoal
+                            gold: '#C59B27',     // Muted Sophisticated Gold
+                            goldHover: '#A67C1C'
                         }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Plus Jakarta Sans', 'sans-serif'],
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-15px)' },
-                        }
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
                     }
                 }
             }
@@ -46,196 +30,151 @@
     </script>
     
     <!-- Google Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Animate On Scroll (AOS) -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Plus Jakarta Sans', sans-serif; }
-        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #FAF8F5;
+            color: #111111;
+        }
         .page-view { display: none; }
-        .page-view.active { display: block; animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
-        
+        .page-view.active { 
+            display: flex; 
+            animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+        }
         @keyframes fadeIn { 
-            from { opacity: 0; transform: translateY(15px); } 
+            from { opacity: 0; transform: translateY(8px); } 
             to { opacity: 1; transform: translateY(0); } 
         }
         
-        .nav-link.active-nav { 
-            color: #8cba70; 
-            font-weight: 600; 
-            position: relative;
-        }
+        .nav-link { position: relative; transition: color 0.2s ease; }
+        .nav-link.active-nav { color: #C59B27; font-weight: 600; }
         .nav-link.active-nav::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #8cba70;
-            border-radius: 2px;
+            content: ''; position: absolute; width: 100%; height: 2px;
+            bottom: -4px; left: 0; background-color: #C59B27;
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #8cba70; }
-        
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
+        /* Clean Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #FAF8F5; }
+        ::-webkit-scrollbar-thumb { background: #D3CEC4; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #A8A296; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 antialiased min-h-screen flex flex-col">
+<body class="antialiased min-h-screen flex flex-col selection:bg-editorial-gold selection:text-white">
 
     <!-- Navigation -->
-    <nav class="bg-dark/90 backdrop-blur-xl text-slate-100 sticky top-0 z-50 border-b border-white/5 shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav class="bg-[#FAF8F5]/90 backdrop-blur-md border-b border-editorial-border sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="flex items-center justify-between h-20">
-                <div class="flex-shrink-0 cursor-pointer group" onclick="navigateTo('home')">
-                    <span class="text-xl font-display font-bold tracking-tight text-white group-hover:text-brand transition-colors">Suganya<span class="text-brand">.</span></span>
+                <!-- Logo with targeted golden accents -->
+                <div class="flex-shrink-0 cursor-pointer" onclick="navigateTo('home')">
+                    <span class="text-xl font-bold tracking-tight text-editorial-dark">
+                        <span class="text-editorial-gold">S</span>uganya <span class="text-editorial-gold">S</span>h<span class="text-editorial-gold">e</span>nbagam
+                    </span>
                 </div>
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8 text-sm font-medium">
-                        <button onclick="navigateTo('home')" class="nav-link active-nav hover:text-brand transition-colors pb-1" data-target="home">Home</button>
-                        <button onclick="navigateTo('about')" class="nav-link hover:text-brand transition-colors pb-1" data-target="about">About</button>
-                        <button onclick="navigateTo('services')" class="nav-link hover:text-brand transition-colors pb-1" data-target="services">Services</button>
-                        <button onclick="navigateTo('projects')" class="nav-link hover:text-brand transition-colors pb-1" data-target="projects">Projects</button>
-                        <button onclick="navigateTo('payment')" class="nav-link hover:text-brand transition-colors pb-1" data-target="payment">Payment</button>
-                        <button onclick="navigateTo('contact')" class="nav-link hover:text-brand transition-colors pb-1" data-target="contact">Contact</button>
+                    <div class="ml-10 flex items-baseline space-x-8 text-sm font-medium text-zinc-600">
+                        <button onclick="navigateTo('home')" class="nav-link active-nav hover:text-editorial-dark" data-target="home">Home</button>
+                        <button onclick="navigateTo('about')" class="nav-link hover:text-editorial-dark" data-target="about">About</button>
+                        <button onclick="navigateTo('services')" class="nav-link hover:text-editorial-dark" data-target="services">Services & Skills</button>
+                        <button onclick="navigateTo('projects')" class="nav-link hover:text-editorial-dark" data-target="projects">Projects</button>
+                        <button onclick="navigateTo('payment')" class="nav-link hover:text-editorial-dark" data-target="payment">Payment</button>
+                        <button onclick="navigateTo('contact')" class="nav-link hover:text-editorial-dark" data-target="contact">Contact</button>
                     </div>
                 </div>
                 <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-brand p-2 transition-colors">
-                        <i class="fas fa-bars text-2xl"></i>
+                    <button id="mobile-menu-btn" class="text-editorial-dark p-2">
+                        <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-dark-light border-t border-white/5 pb-4 px-4 space-y-1 text-sm font-medium text-slate-100">
-            <button onclick="navigateTo('home')" class="block w-full text-left py-3 px-2 rounded-md hover:bg-white/5 hover:text-brand transition-colors">Home</button>
-            <button onclick="navigateTo('about')" class="block w-full text-left py-3 px-2 rounded-md hover:bg-white/5 hover:text-brand transition-colors">About</button>
-            <button onclick="navigateTo('services')" class="block w-full text-left py-3 px-2 rounded-md hover:bg-white/5 hover:text-brand transition-colors">Services & Skills</button>
-            <button onclick="navigateTo('projects')" class="block w-full text-left py-3 px-2 rounded-md hover:bg-white/5 hover:text-brand transition-colors">Projects</button>
-            <button onclick="navigateTo('payment')" class="block w-full text-left py-3 px-2 rounded-md hover:bg-white/5 hover:text-brand transition-colors">Payment</button>
-            <button onclick="navigateTo('contact')" class="block w-full text-left py-3 px-2 rounded-md hover:bg-white/5 hover:text-brand transition-colors">Contact</button>
+        <div id="mobile-menu" class="hidden md:hidden bg-editorial-card border-b border-editorial-border pb-6 px-6 space-y-3 text-sm">
+            <button onclick="navigateTo('home')" class="block w-full text-left py-2 font-medium text-zinc-700 hover:text-editorial-gold">Home</button>
+            <button onclick="navigateTo('about')" class="block w-full text-left py-2 font-medium text-zinc-700 hover:text-editorial-gold">About</button>
+            <button onclick="navigateTo('services')" class="block w-full text-left py-2 font-medium text-zinc-700 hover:text-editorial-gold">Services & Skills</button>
+            <button onclick="navigateTo('projects')" class="block w-full text-left py-2 font-medium text-zinc-700 hover:text-editorial-gold">Projects</button>
+            <button onclick="navigateTo('payment')" class="block w-full text-left py-2 font-medium text-zinc-700 hover:text-editorial-gold">Payment</button>
+            <button onclick="navigateTo('contact')" class="block w-full text-left py-2 font-medium text-zinc-700 hover:text-editorial-gold">Contact</button>
         </div>
     </nav>
 
     <main class="flex-grow flex flex-col">
 
         <!-- 1. HOME PAGE -->
-        <section id="home" class="page-view active flex-grow bg-dark text-white flex items-center relative overflow-hidden">
-            <!-- Tech Background Grid -->
-            <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
-                <svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <pattern id="tech-grid" width="60" height="60" patternUnits="userSpaceOnUse">
-                            <path d="M60 0L0 0 0 60" fill="none" stroke="#8cba70" stroke-width="0.5" opacity="0.3"/>
-                            <circle cx="60" cy="60" r="1.5" fill="#8cba70" opacity="0.5"/>
-                        </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#tech-grid)" />
-                </svg>
-            </div>
-            <!-- Radial Glow -->
-            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand/10 rounded-full blur-[120px] pointer-events-none"></div>
-            <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none"></div>
-
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
-                <div data-aos="fade-right" data-aos-duration="1000">
-                    <div class="inline-flex items-center space-x-2 bg-white/5 backdrop-blur-sm text-sm px-4 py-2 rounded-full mb-6 border border-white/10">
-                        <span class="w-2 h-2 rounded-full bg-brand animate-pulse"></span>
-                        <span class="text-slate-300">Available for Freelance Projects</span>
+        <section id="home" class="page-view active flex-grow items-center py-20 lg:py-32">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7">
+                    <div class="inline-flex items-center space-x-2 bg-editorial-border/60 text-xs font-semibold px-3.5 py-1.5 rounded-full mb-8 text-zinc-700">
+                        <span class="w-2 h-2 rounded-full bg-editorial-gold"></span>
+                        <span>Available for Freelance Projects</span>
                     </div>
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4 leading-tight tracking-tight text-white">
-                        Suganya <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand to-brand-light">Shenbagam</span>
+                    <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-editorial-dark mb-6 leading-[1.08]">
+                        Suganya Shenbagam
                     </h1>
-                    <h2 class="text-xl md:text-2xl text-slate-400 mb-6 font-light">Artificial Intelligence & Data Science Student</h2>
-                    <p class="text-slate-300 mb-4 max-w-lg leading-relaxed text-base">
-                        Building intelligent solutions, modern digital experiences, and data-driven applications that make an impact.
+                    <p class="text-xl md:text-2xl text-editorial-gold font-medium mb-6">
+                        Artificial Intelligence & Data Science Student
                     </p>
-                    <p class="text-slate-400 mb-10 max-w-lg leading-relaxed text-sm">
-                        Specializing in AI/ML, full-stack development, data analytics, interactive dashboards, and clean UI/UX design.
+                    <p class="text-zinc-600 text-lg mb-10 max-w-xl leading-relaxed">
+                        Building intelligent solutions, modern digital experiences, and data-driven applications with clean architecture and precision.
                     </p>
                     <div class="flex flex-wrap gap-4">
-                        <button onclick="navigateTo('projects')" class="bg-brand text-dark px-8 py-3.5 rounded-lg font-semibold hover:bg-brand-light transition-all duration-300 shadow-lg shadow-brand/20 hover:shadow-brand/40 hover:-translate-y-0.5">
+                        <button onclick="navigateTo('projects')" class="bg-editorial-dark text-white px-8 py-4 rounded-xl font-semibold hover:bg-zinc-800 transition shadow-sm">
                             View My Work
                         </button>
-                        <button onclick="navigateTo('hire-me')" class="border border-slate-600 text-slate-200 px-8 py-3.5 rounded-lg font-semibold hover:bg-white hover:text-dark transition-all duration-300 hover:-translate-y-0.5">
+                        <button onclick="navigateTo('hire-me')" class="bg-editorial-card border border-editorial-border text-editorial-dark px-8 py-4 rounded-xl font-semibold hover:border-editorial-dark transition shadow-sm">
                             Hire Me
                         </button>
                     </div>
                 </div>
                 
-                <div class="flex justify-center lg:justify-end relative" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                    <!-- Professional Tech Rings -->
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full border border-brand/30 bg-brand/5 shadow-[0_0_60px_rgba(140,186,112,0.15)] animate-pulse-slow"></div>
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full border border-brand-light/20 border-dashed animate-[spin_40s_linear_infinite]"></div>
-                    
-                    <!-- Portrait Image -->
-                    <div class="relative z-10 animate-float">
-                        <img src="profile.png" alt="Suganya Shenbagam" class="w-64 md:w-80 max-h-[500px] md:max-h-[600px] object-cover rounded-2xl shadow-2xl border border-white/10" onerror="this.src='https://via.placeholder.com/605x1035/1e293b/8cba70?text=Profile+Photo'">
-                        <!-- Floating Badge -->
-                        <div class="absolute -bottom-4 -left-4 bg-dark-light border border-white/10 p-3 rounded-xl shadow-xl backdrop-blur-md">
-                            <div class="flex items-center space-x-2">
-                                <div class="w-10 h-10 rounded-full bg-brand/20 flex items-center justify-center">
-                                    <i class="fas fa-code text-brand"></i>
-                                </div>
-                                <div>
-                                    <p class="text-xs text-slate-400">Experience</p>
-                                    <p class="text-sm font-bold text-white">3+ Years Learning</p>
-                                </div>
-                            </div>
-                        </div>
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative p-3 bg-editorial-card border border-editorial-border rounded-2xl shadow-xl w-72 md:w-80">
+                        <img src="profile.png" alt="Suganya Shenbagam" class="w-full h-auto object-cover rounded-xl" onerror="this.src='https://via.placeholder.com/600x750/EBE7DF/111111?text=Portrait'">
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- 2. ABOUT PAGE -->
-        <section id="about" class="page-view flex-grow bg-white py-20 md:py-28">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-                    <div class="lg:col-span-4" data-aos="fade-up">
-                        <div class="relative group">
-                            <div class="absolute inset-0 bg-brand rounded-2xl rotate-3 group-hover:rotate-6 transition-transform duration-300 opacity-20"></div>
-                            <img src="profile.png" alt="Profile" class="relative w-full h-auto object-cover rounded-2xl shadow-xl border border-slate-100" onerror="this.src='https://via.placeholder.com/605x1035/f8fafc/8cba70?text=Profile'">
+        <section id="about" class="page-view flex-grow py-24">
+            <div class="max-w-5xl mx-auto px-6 lg:px-12 w-full">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+                    <div class="md:col-span-4">
+                        <div class="bg-editorial-card p-3 rounded-2xl border border-editorial-border shadow-sm">
+                            <img src="profile.png" alt="Profile" class="w-full h-auto object-cover rounded-xl" onerror="this.src='https://via.placeholder.com/600x800/EBE7DF/111111?text=Profile'">
                         </div>
                     </div>
-                    <div class="lg:col-span-8" data-aos="fade-up" data-aos-delay="100">
-                        <h2 class="text-3xl md:text-4xl font-display font-bold text-dark mb-3">About Me</h2>
-                        <p class="text-brand font-semibold mb-6 text-lg">AI & Data Science Student | Problem Solver | Tech Enthusiast</p>
+                    <div class="md:col-span-8 flex flex-col justify-center">
+                        <h2 class="text-4xl font-bold text-editorial-dark mb-2">About Me</h2>
+                        <p class="text-editorial-gold font-semibold mb-6">AI & Data Science Student | Problem Solver | Tech Enthusiast</p>
                         
-                        <p class="text-slate-600 mb-4 leading-relaxed text-base">
-                            I am Suganya Shenbagam, a 3rd year Artificial Intelligence & Data Science student, passionate about building intelligent solutions and solving real-world problems. I enjoy working with AI/ML, data analytics, web technologies, and designing clean digital experiences.
-                        </p>
-                        <p class="text-slate-600 mb-10 leading-relaxed text-base">
-                            I am constantly learning, exploring new technologies, and improving my skills to create impactful, scalable solutions for businesses and individuals.
-                        </p>
+                        <div class="space-y-4 text-zinc-600 leading-relaxed mb-8">
+                            <p>
+                                I am Suganya Shenbagam, a 3rd year Artificial Intelligence & Data Science student, passionate about building intelligent solutions and solving real-world problems. I enjoy working with AI/ML, data analytics, web technologies, and designing clean digital experiences.
+                            </p>
+                            <p>
+                                I am constantly learning, exploring new technologies, and improving my skills to create impactful solutions for businesses and individuals.
+                            </p>
+                        </div>
 
                         <!-- Resume Card -->
-                        <div class="bg-brand-50 border border-brand/20 rounded-2xl p-8 text-center shadow-sm hover:shadow-md transition-shadow duration-300">
-                            <div class="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center shadow-sm mb-4">
-                                <i class="far fa-file-alt text-3xl text-brand"></i>
-                            </div>
-                            <h3 class="text-xl font-display font-bold text-dark mb-2">My Resume</h3>
-                            <p class="text-slate-600 mb-6 text-sm max-w-md mx-auto">Explore my academic background, technical skills, projects, and professional experience in detail.</p>
-                            <div class="flex justify-center space-x-4 flex-wrap gap-y-3">
-                                <a href="assets/cv.pdf" target="_blank" class="bg-dark text-white px-6 py-2.5 rounded-lg hover:bg-dark-light transition-colors font-medium text-sm flex items-center">
-                                    <i class="fas fa-eye mr-2"></i> View CV
-                                </a>
-                                <a href="assets/cv.pdf" download class="border border-dark text-dark px-6 py-2.5 rounded-lg hover:bg-dark hover:text-white transition-colors font-medium text-sm flex items-center">
-                                    <i class="fas fa-download mr-2"></i> Download CV
-                                </a>
+                        <div class="bg-editorial-card border border-editorial-border rounded-2xl p-8 shadow-sm">
+                            <div class="flex items-center justify-between flex-wrap gap-6">
+                                <div>
+                                    <h3 class="text-xl font-bold text-editorial-dark mb-1 flex items-center">
+                                        <i class="far fa-file-alt text-editorial-gold mr-3"></i> My Resume
+                                    </h3>
+                                    <p class="text-zinc-500 text-sm">Academic background, technical skills, and experience.</p>
+                                </div>
+                                <div class="flex space-x-3">
+                                    <a href="assets/cv.pdf" target="_blank" class="bg-editorial-dark text-white px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-zinc-800 transition">View CV</a>
+                                    <a href="assets/cv.pdf" download class="border border-editorial-border text-editorial-dark px-5 py-2.5 rounded-xl text-sm font-medium hover:border-editorial-dark transition">Download</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -244,473 +183,372 @@
         </section>
 
         <!-- 3. SERVICES & SKILLS PAGE -->
-        <section id="services" class="page-view flex-grow bg-slate-50 py-20 md:py-28">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
-                    <h2 class="text-3xl md:text-4xl font-display font-bold text-dark mb-4">Services</h2>
-                    <p class="text-slate-500 text-lg">Professional, end-to-end solutions tailored for your digital needs</p>
+        <section id="services" class="page-view flex-grow py-24">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full mb-20">
+                <div class="max-w-2xl mb-16">
+                    <h2 class="text-4xl font-bold text-editorial-dark mb-3">Services</h2>
+                    <p class="text-zinc-600">Professional services tailored for modern digital needs.</p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Service Cards -->
-                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl hover:border-brand/30 hover:-translate-y-1 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="0">
-                        <div class="w-14 h-14 rounded-xl bg-brand/10 flex items-center justify-center mb-6 group-hover:bg-brand group-hover:scale-110 transition-all duration-300">
-                            <i class="fas fa-brain text-2xl text-brand group-hover:text-white transition-colors"></i>
-                        </div>
-                        <h3 class="text-xl font-display font-bold mb-3 text-dark">AI & Machine Learning</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">Develop intelligent applications, ML solutions, computer vision, and AI-powered automated workflows.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-editorial-card p-8 rounded-2xl border border-editorial-border hover:border-editorial-gold transition shadow-sm">
+                        <i class="fas fa-brain text-2xl text-editorial-gold mb-6"></i>
+                        <h3 class="text-xl font-bold mb-3 text-editorial-dark">AI & Machine Learning</h3>
+                        <p class="text-zinc-600 text-sm leading-relaxed">Develop intelligent applications, ML solutions, computer vision, and AI-powered workflows.</p>
                     </div>
-
-                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl hover:border-brand/30 hover:-translate-y-1 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="100">
-                        <div class="w-14 h-14 rounded-xl bg-brand/10 flex items-center justify-center mb-6 group-hover:bg-brand group-hover:scale-110 transition-all duration-300">
-                            <i class="fas fa-code text-2xl text-brand group-hover:text-white transition-colors"></i>
-                        </div>
-                        <h3 class="text-xl font-display font-bold mb-3 text-dark">Full-Stack Development</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">Build complete web applications with robust frontend, backend, databases, APIs, and cloud deployment.</p>
+                    <div class="bg-editorial-card p-8 rounded-2xl border border-editorial-border hover:border-editorial-gold transition shadow-sm">
+                        <i class="fas fa-code text-2xl text-editorial-gold mb-6"></i>
+                        <h3 class="text-xl font-bold mb-3 text-editorial-dark">Full-Stack Development</h3>
+                        <p class="text-zinc-600 text-sm leading-relaxed">Build complete web applications with robust frontend, backend, databases, APIs, and deployment.</p>
                     </div>
-
-                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl hover:border-brand/30 hover:-translate-y-1 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="200">
-                        <div class="w-14 h-14 rounded-xl bg-brand/10 flex items-center justify-center mb-6 group-hover:bg-brand group-hover:scale-110 transition-all duration-300">
-                            <i class="fas fa-globe text-2xl text-brand group-hover:text-white transition-colors"></i>
-                        </div>
-                        <h3 class="text-xl font-display font-bold mb-3 text-dark">Web Development</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">Create modern, responsive, and SEO-friendly websites for individuals, startups, and organizations.</p>
+                    <div class="bg-editorial-card p-8 rounded-2xl border border-editorial-border hover:border-editorial-gold transition shadow-sm">
+                        <i class="fas fa-globe text-2xl text-editorial-gold mb-6"></i>
+                        <h3 class="text-xl font-bold mb-3 text-editorial-dark">Web Development</h3>
+                        <p class="text-zinc-600 text-sm leading-relaxed">Create modern, responsive websites for individuals, startups, businesses, and organizations.</p>
                     </div>
-
-                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl hover:border-brand/30 hover:-translate-y-1 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="300">
-                        <div class="w-14 h-14 rounded-xl bg-brand/10 flex items-center justify-center mb-6 group-hover:bg-brand group-hover:scale-110 transition-all duration-300">
-                            <i class="fas fa-desktop text-2xl text-brand group-hover:text-white transition-colors"></i>
-                        </div>
-                        <h3 class="text-xl font-display font-bold mb-3 text-dark">Frontend Development</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">Build responsive, accessible, and interactive user interfaces with strong usability and visual design.</p>
+                    <div class="bg-editorial-card p-8 rounded-2xl border border-editorial-border hover:border-editorial-gold transition shadow-sm">
+                        <i class="fas fa-desktop text-2xl text-editorial-gold mb-6"></i>
+                        <h3 class="text-xl font-bold mb-3 text-editorial-dark">Frontend Development</h3>
+                        <p class="text-zinc-600 text-sm leading-relaxed">Build responsive and interactive user interfaces with strong usability and visual design.</p>
                     </div>
-
-                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl hover:border-brand/30 hover:-translate-y-1 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="400">
-                        <div class="w-14 h-14 rounded-xl bg-brand/10 flex items-center justify-center mb-6 group-hover:bg-brand group-hover:scale-110 transition-all duration-300">
-                            <i class="fas fa-chart-pie text-2xl text-brand group-hover:text-white transition-colors"></i>
-                        </div>
-                        <h3 class="text-xl font-display font-bold mb-3 text-dark">Data Analytics</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">Transform raw, complex data into actionable insights through advanced analysis and visualization.</p>
+                    <div class="bg-editorial-card p-8 rounded-2xl border border-editorial-border hover:border-editorial-gold transition shadow-sm">
+                        <i class="fas fa-chart-pie text-2xl text-editorial-gold mb-6"></i>
+                        <h3 class="text-xl font-bold mb-3 text-editorial-dark">Data Analytics</h3>
+                        <p class="text-zinc-600 text-sm leading-relaxed">Transform raw data into useful insights through analysis, visualization, and reporting.</p>
                     </div>
-
-                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl hover:border-brand/30 hover:-translate-y-1 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="500">
-                        <div class="w-14 h-14 rounded-xl bg-brand/10 flex items-center justify-center mb-6 group-hover:bg-brand group-hover:scale-110 transition-all duration-300">
-                            <i class="fas fa-chart-line text-2xl text-brand group-hover:text-white transition-colors"></i>
-                        </div>
-                        <h3 class="text-xl font-display font-bold mb-3 text-dark">Dashboard Development</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">Interactive, real-time dashboards for KPIs, trends, revenue, and performance tracking.</p>
+                    <div class="bg-editorial-card p-8 rounded-2xl border border-editorial-border hover:border-editorial-gold transition shadow-sm">
+                        <i class="fas fa-chart-line text-2xl text-editorial-gold mb-6"></i>
+                        <h3 class="text-xl font-bold mb-3 text-editorial-dark">Dashboard Development</h3>
+                        <p class="text-zinc-600 text-sm leading-relaxed">Interactive dashboards for KPIs, trends, revenue, and performance tracking.</p>
                     </div>
                 </div>
+            </div>
 
-                <!-- Technical Capabilities -->
-                <div class="mt-24 pt-16 border-t border-slate-200">
-                    <h2 class="text-3xl font-display font-bold text-dark mb-12 text-center" data-aos="fade-up">Technical Capabilities</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 border-l-4 border-l-brand hover:shadow-md transition-shadow" data-aos="fade-up">
-                            <h3 class="font-display font-bold text-dark mb-3 flex items-center"><i class="fas fa-microchip text-brand mr-3"></i>AI & Machine Learning</h3>
-                            <p class="text-sm text-slate-600 leading-relaxed">Neural Networks, Computer Vision, Predictive Modeling, Scikit-Learn, TensorFlow, PyTorch</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 border-l-4 border-l-brand-light hover:shadow-md transition-shadow" data-aos="fade-up" data-aos-delay="100">
-                            <h3 class="font-display font-bold text-dark mb-3 flex items-center"><i class="fas fa-laptop-code text-brand-light mr-3"></i>Programming</h3>
-                            <p class="text-sm text-slate-600 leading-relaxed">Python, JavaScript, TypeScript, HTML5, CSS3, C++</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 border-l-4 border-l-slate-700 hover:shadow-md transition-shadow" data-aos="fade-up" data-aos-delay="200">
-                            <h3 class="font-display font-bold text-dark mb-3 flex items-center"><i class="fas fa-server text-slate-700 mr-3"></i>Web Development (Full-Stack)</h3>
-                            <p class="text-sm text-slate-600 leading-relaxed">Next.js, React, Node.js, Tailwind CSS, RESTful API Integration</p>
-                        </div>
-                        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 border-l-4 border-l-slate-400 hover:shadow-md transition-shadow" data-aos="fade-up" data-aos-delay="300">
-                            <h3 class="font-display font-bold text-dark mb-3 flex items-center"><i class="fas fa-database text-slate-400 mr-3"></i>Data Analytics & Databases</h3>
-                            <p class="text-sm text-slate-600 leading-relaxed">Pandas, NumPy, Matplotlib, SQL, PostgreSQL, Supabase, MongoDB</p>
-                        </div>
+            <div class="max-w-4xl mx-auto px-6 lg:px-12 pt-16 border-t border-editorial-border">
+                <h2 class="text-3xl font-bold text-editorial-dark mb-12 text-center">Technical Capabilities</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border border-l-4 border-l-editorial-gold shadow-sm">
+                        <h3 class="font-bold text-editorial-dark mb-3 border-b border-editorial-border pb-2">AI & Machine Learning</h3>
+                        <p class="text-sm text-zinc-600 leading-relaxed">Neural Networks, Computer Vision, Predictive Modeling, Scikit-Learn, TensorFlow, PyTorch</p>
+                    </div>
+                    <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border border-l-4 border-l-zinc-800 shadow-sm">
+                        <h3 class="font-bold text-editorial-dark mb-3 border-b border-editorial-border pb-2">Programming</h3>
+                        <p class="text-sm text-zinc-600 leading-relaxed">Python, JavaScript, TypeScript, HTML, CSS, C++</p>
+                    </div>
+                    <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border border-l-4 border-l-zinc-500 shadow-sm">
+                        <h3 class="font-bold text-editorial-dark mb-3 border-b border-editorial-border pb-2">Web Development (Full-Stack)</h3>
+                        <p class="text-sm text-zinc-600 leading-relaxed">Next.js, React, Node.js, Tailwind CSS, API Integration</p>
+                    </div>
+                    <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border border-l-4 border-l-editorial-gold shadow-sm">
+                        <h3 class="font-bold text-editorial-dark mb-3 border-b border-editorial-border pb-2">Data Analytics & Databases</h3>
+                        <p class="text-sm text-zinc-600 leading-relaxed">Pandas, NumPy, Matplotlib, SQL, PostgreSQL, Supabase, MongoDB</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- 4. PROJECTS PAGE -->
-        <section id="projects" class="page-view flex-grow bg-white py-20 md:py-28">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
-                    <h2 class="text-3xl md:text-4xl font-display font-bold text-dark mb-4">Featured Projects</h2>
-                    <p class="text-slate-500 text-lg">AI, analytics, automation, and development solutions.</p>
+        <section id="projects" class="page-view flex-grow py-24">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full">
+                <div class="max-w-2xl mb-16">
+                    <h2 class="text-4xl font-bold text-editorial-dark mb-3">Featured Projects</h2>
+                    <p class="text-zinc-600">AI, analytics, automation, and development solutions.</p>
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Project 1 -->
-                    <div class="group bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-2xl hover:border-brand/30 transition-all duration-300 flex flex-col" data-aos="fade-up">
-                        <div class="bg-gradient-to-br from-dark to-dark-light h-48 flex items-center justify-center p-6 relative overflow-hidden">
-                            <div class="absolute inset-0 bg-brand/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                            <i class="fas fa-brain text-5xl text-slate-400 group-hover:text-brand-light group-hover:scale-110 transition-all duration-500 relative z-10"></i>
+                    
+                    <div class="bg-editorial-card border border-editorial-border rounded-2xl overflow-hidden hover:border-editorial-dark transition-all duration-300 flex flex-col shadow-sm">
+                        <div class="bg-[#F0ECE1] h-48 flex items-center justify-center p-6">
+                            <i class="fas fa-brain text-5xl text-editorial-gold"></i>
                         </div>
                         <div class="p-6 flex-grow flex flex-col justify-between">
                             <div>
-                                <h3 class="text-lg font-display font-bold text-dark mb-2 group-hover:text-brand transition-colors">NeuroVision AI</h3>
-                                <p class="text-slate-600 text-sm mb-6 leading-relaxed">Brain MRI analysis, tumor type/stage/severity analysis, XAI, heatmap and downloadable report generation.</p>
+                                <h3 class="text-lg font-bold text-editorial-dark mb-2">NeuroVision AI</h3>
+                                <p class="text-zinc-600 text-sm mb-6 leading-relaxed">Brain MRI analysis, tumor type/stage/severity analysis, XAI, heatmap and downloadable report.</p>
                             </div>
-                            <div class="flex space-x-4 mt-auto pt-4 border-t border-slate-100">
-                                <a href="https://github.com/suganyas2382006-sketch/NeuroVision-AI/tree/main" target="_blank" class="text-xs font-semibold text-slate-500 hover:text-dark flex items-center transition-colors">
-                                    <i class="fab fa-github mr-1.5 text-base"></i> GitHub
-                                </a>
-                                <a href="assets/neuro.jpg" target="_blank" class="text-xs font-semibold text-brand hover:text-brand-dark flex items-center transition-colors ml-auto">
-                                    View Result <i class="fas fa-arrow-right ml-1.5 text-[10px]"></i>
-                                </a>
+                            <div class="flex space-x-4 mt-auto pt-4 border-t border-editorial-border">
+                                <a href="https://github.com/suganyas2382006-sketch/NeuroVision-AI/tree/main" target="_blank" class="text-xs font-semibold text-zinc-600 hover:text-editorial-dark flex items-center"><i class="fab fa-github mr-1.5 text-base"></i> GitHub Code</a>
+                                <a href="assets/neuro.jpg" target="_blank" class="text-xs font-semibold text-editorial-gold hover:text-editorial-goldHover flex items-center"><i class="fas fa-external-link-alt mr-1.5"></i> View Result</a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Project 2 -->
-                    <div class="group bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-2xl hover:border-brand/30 transition-all duration-300 flex flex-col" data-aos="fade-up" data-aos-delay="100">
-                        <div class="bg-gradient-to-br from-slate-700 to-slate-800 h-48 flex items-center justify-center p-6 relative overflow-hidden">
-                            <div class="absolute inset-0 bg-brand/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                            <i class="fas fa-users text-5xl text-slate-400 group-hover:text-brand group-hover:scale-110 transition-all duration-500 relative z-10"></i>
+                    <div class="bg-editorial-card border border-editorial-border rounded-2xl overflow-hidden hover:border-editorial-dark transition-all duration-300 flex flex-col shadow-sm">
+                        <div class="bg-[#F0ECE1] h-48 flex items-center justify-center p-6">
+                            <i class="fas fa-users text-5xl text-editorial-gold"></i>
                         </div>
                         <div class="p-6 flex-grow flex flex-col justify-between">
                             <div>
-                                <h3 class="text-lg font-display font-bold text-dark mb-2 group-hover:text-brand transition-colors">Customer Segmentation</h3>
-                                <p class="text-slate-600 text-sm mb-6 leading-relaxed">Customer grouping and behavior analysis using advanced machine learning clustering algorithms.</p>
+                                <h3 class="text-lg font-bold text-editorial-dark mb-2">Customer Segmentation</h3>
+                                <p class="text-zinc-600 text-sm mb-6 leading-relaxed">Customer grouping and behavior analysis using machine learning clustering algorithms.</p>
                             </div>
-                            <div class="flex space-x-4 mt-auto pt-4 border-t border-slate-100">
-                                <a href="https://github.com/suganyas2382006-sketch/CustomerSegmentation/tree/main" target="_blank" class="text-xs font-semibold text-slate-500 hover:text-dark flex items-center transition-colors">
-                                    <i class="fab fa-github mr-1.5 text-base"></i> GitHub Code
-                                </a>
+                            <div class="mt-auto pt-4 border-t border-editorial-border">
+                                <a href="https://github.com/suganyas2382006-sketch/CustomerSegmentation/tree/main" target="_blank" class="text-xs font-semibold text-zinc-600 hover:text-editorial-dark flex items-center"><i class="fab fa-github mr-1.5 text-base"></i> GitHub Code</a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Project 3 -->
-                    <div class="group bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-2xl hover:border-brand/30 transition-all duration-300 flex flex-col" data-aos="fade-up" data-aos-delay="200">
-                        <div class="bg-gradient-to-br from-dark to-dark-light h-48 flex items-center justify-center p-6 relative overflow-hidden">
-                            <div class="absolute inset-0 bg-brand/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                            <i class="fas fa-file-invoice text-5xl text-slate-400 group-hover:text-brand-light group-hover:scale-110 transition-all duration-500 relative z-10"></i>
+                    <div class="bg-editorial-card border border-editorial-border rounded-2xl overflow-hidden hover:border-editorial-dark transition-all duration-300 flex flex-col shadow-sm">
+                        <div class="bg-[#F0ECE1] h-48 flex items-center justify-center p-6">
+                            <i class="fas fa-file-invoice text-5xl text-editorial-gold"></i>
                         </div>
                         <div class="p-6 flex-grow flex flex-col justify-between">
                             <div>
-                                <h3 class="text-lg font-display font-bold text-dark mb-2 group-hover:text-brand transition-colors">Data Reporting & Automation</h3>
-                                <p class="text-slate-600 text-sm mb-6 leading-relaxed">End-to-end data processing pipelines and automated reporting generation systems.</p>
+                                <h3 class="text-lg font-bold text-editorial-dark mb-2">Data Reporting & Automation</h3>
+                                <p class="text-zinc-600 text-sm mb-6 leading-relaxed">End-to-end data processing pipelines and automated reporting generation systems.</p>
                             </div>
-                            <div class="flex space-x-4 mt-auto pt-4 border-t border-slate-100">
-                                <a href="https://github.com/suganyas2382006-sketch/data-cleaning-and-reporting-automation-/tree/main" target="_blank" class="text-xs font-semibold text-slate-500 hover:text-dark flex items-center transition-colors">
-                                    <i class="fab fa-github mr-1.5 text-base"></i> GitHub Code
-                                </a>
+                            <div class="mt-auto pt-4 border-t border-editorial-border">
+                                <a href="https://github.com/suganyas2382006-sketch/data-cleaning-and-reporting-automation-/tree/main" target="_blank" class="text-xs font-semibold text-zinc-600 hover:text-editorial-dark flex items-center"><i class="fab fa-github mr-1.5 text-base"></i> GitHub Code</a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Project 4 -->
-                    <div class="group bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-2xl hover:border-brand/30 transition-all duration-300 flex flex-col" data-aos="fade-up">
-                        <div class="bg-gradient-to-br from-[#5a5c4f] to-[#3f4136] h-48 flex items-center justify-center p-6 relative overflow-hidden">
-                            <div class="absolute inset-0 bg-brand/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                            <i class="fas fa-chart-bar text-5xl text-slate-300 group-hover:text-brand-light group-hover:scale-110 transition-all duration-500 relative z-10"></i>
+                    <div class="bg-editorial-card border border-editorial-border rounded-2xl overflow-hidden hover:border-editorial-dark transition-all duration-300 flex flex-col shadow-sm">
+                        <div class="bg-[#F0ECE1] h-48 flex items-center justify-center p-6">
+                            <i class="fas fa-chart-bar text-5xl text-editorial-gold"></i>
                         </div>
                         <div class="p-6 flex-grow flex flex-col justify-between">
                             <div>
-                                <h3 class="text-lg font-display font-bold text-dark mb-2 group-hover:text-brand transition-colors">Sales Dashboard</h3>
-                                <p class="text-slate-600 text-sm mb-6 leading-relaxed">Interactive sales tracking and Key Performance Indicator (KPI) visualization for stakeholders.</p>
+                                <h3 class="text-lg font-bold text-editorial-dark mb-2">Sales Dashboard</h3>
+                                <p class="text-zinc-600 text-sm mb-6 leading-relaxed">Interactive sales tracking and Key Performance Indicator (KPI) visualization.</p>
                             </div>
-                            <div class="flex space-x-4 mt-auto pt-4 border-t border-slate-100">
-                                <a href="https://github.com" target="_blank" class="text-xs font-semibold text-slate-500 hover:text-dark flex items-center transition-colors">
-                                    <i class="fab fa-github mr-1.5 text-base"></i> GitHub Code
-                                </a>
+                            <div class="mt-auto pt-4 border-t border-editorial-border">
+                                <a href="https://github.com" target="_blank" class="text-xs font-semibold text-zinc-600 hover:text-editorial-dark flex items-center"><i class="fab fa-github mr-1.5 text-base"></i> GitHub Code</a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Project 5 -->
-                    <div class="group bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-2xl hover:border-brand/30 transition-all duration-300 flex flex-col" data-aos="fade-up" data-aos-delay="100">
-                        <div class="bg-gradient-to-br from-slate-700 to-slate-800 h-48 flex items-center justify-center p-6 relative overflow-hidden">
-                            <div class="absolute inset-0 bg-brand/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                            <i class="fas fa-coins text-5xl text-slate-400 group-hover:text-brand group-hover:scale-110 transition-all duration-500 relative z-10"></i>
+                    <div class="bg-editorial-card border border-editorial-border rounded-2xl overflow-hidden hover:border-editorial-dark transition-all duration-300 flex flex-col shadow-sm">
+                        <div class="bg-[#F0ECE1] h-48 flex items-center justify-center p-6">
+                            <i class="fas fa-coins text-5xl text-editorial-gold"></i>
                         </div>
                         <div class="p-6 flex-grow flex flex-col justify-between">
                             <div>
-                                <h3 class="text-lg font-display font-bold text-dark mb-2 group-hover:text-brand transition-colors">Sales Revenue Analysis</h3>
-                                <p class="text-slate-600 text-sm mb-6 leading-relaxed">In-depth sales and revenue performance analysis dashboards for business intelligence.</p>
+                                <h3 class="text-lg font-bold text-editorial-dark mb-2">Sales Revenue Analysis</h3>
+                                <p class="text-zinc-600 text-sm mb-6 leading-relaxed">In-depth sales and revenue performance analysis dashboards for business intelligence.</p>
                             </div>
-                            <div class="flex space-x-4 mt-auto pt-4 border-t border-slate-100">
-                                <a href="https://github.com/suganyas2382006-sketch/Sales-Revenue-Analysis-Dashboard/tree/main" target="_blank" class="text-xs font-semibold text-slate-500 hover:text-dark flex items-center transition-colors">
-                                    <i class="fab fa-github mr-1.5 text-base"></i> GitHub Code
-                                </a>
+                            <div class="mt-auto pt-4 border-t border-editorial-border">
+                                <a href="https://github.com/suganyas2382006-sketch/Sales-Revenue-Analysis-Dashboard/tree/main" target="_blank" class="text-xs font-semibold text-zinc-600 hover:text-editorial-dark flex items-center"><i class="fab fa-github mr-1.5 text-base"></i> GitHub Code</a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Project 6 -->
-                    <div class="group bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-2xl hover:border-brand/30 transition-all duration-300 flex flex-col" data-aos="fade-up" data-aos-delay="200">
-                        <div class="bg-gradient-to-br from-[#4a3f3a] to-[#2d2623] h-48 flex items-center justify-center p-6 relative overflow-hidden">
-                            <div class="absolute inset-0 bg-brand/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                            <i class="fas fa-project-diagram text-5xl text-slate-300 group-hover:text-brand-light group-hover:scale-110 transition-all duration-500 relative z-10"></i>
+                    <div class="bg-editorial-card border border-editorial-border rounded-2xl overflow-hidden hover:border-editorial-dark transition-all duration-300 flex flex-col shadow-sm">
+                        <div class="bg-[#F0ECE1] h-48 flex items-center justify-center p-6">
+                            <i class="fas fa-project-diagram text-5xl text-editorial-gold"></i>
                         </div>
                         <div class="p-6 flex-grow flex flex-col justify-between">
                             <div>
-                                <h3 class="text-lg font-display font-bold text-dark mb-2 group-hover:text-brand transition-colors">Predictive Analytics</h3>
-                                <p class="text-slate-600 text-sm mb-6 leading-relaxed">Historical-data-based prediction models and trend analysis for accurate business forecasting.</p>
+                                <h3 class="text-lg font-bold text-editorial-dark mb-2">Predictive Analytics</h3>
+                                <p class="text-zinc-600 text-sm mb-6 leading-relaxed">Historical-data-based prediction models and trend analysis for forecasting.</p>
                             </div>
-                            <div class="flex space-x-4 mt-auto pt-4 border-t border-slate-100">
-                                <a href="https://github.com/suganyas2382006-sketch/Predictive-Analytics/tree/main" target="_blank" class="text-xs font-semibold text-slate-500 hover:text-dark flex items-center transition-colors">
-                                    <i class="fab fa-github mr-1.5 text-base"></i> GitHub Code
-                                </a>
+                            <div class="mt-auto pt-4 border-t border-editorial-border">
+                                <a href="https://github.com/suganyas2382006-sketch/Predictive-Analytics/tree/main" target="_blank" class="text-xs font-semibold text-zinc-600 hover:text-editorial-dark flex items-center"><i class="fab fa-github mr-1.5 text-base"></i> GitHub Code</a>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
 
         <!-- 5. HIRE ME PAGE -->
-        <section id="hire-me" class="page-view flex-grow bg-dark py-20 md:py-28 relative overflow-hidden">
-            <!-- Background accents -->
-            <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand/5 rounded-full blur-[100px]"></div>
-                <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-[100px]"></div>
-            </div>
-
-            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="text-center mb-12" data-aos="fade-up">
-                    <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-4">Have a project in mind? Let's build it.</h2>
-                    <p class="text-slate-400 max-w-2xl mx-auto">Tell me what you need, and let's discuss how I can turn your idea into a working, scalable digital solution.</p>
+        <section id="hire-me" class="page-view flex-grow py-24">
+            <div class="max-w-4xl mx-auto px-6 lg:px-12 w-full">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-editorial-dark mb-3">Have a project in mind? Let's build it.</h2>
+                    <p class="text-zinc-600">Tell me what you need, and let's discuss how I can turn your idea into a working digital solution.</p>
                 </div>
                 
-                <div class="bg-dark-light/50 backdrop-blur-sm border border-white/10 rounded-2xl shadow-2xl p-6 md:p-10" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-editorial-card border border-editorial-border rounded-3xl p-8 md:p-12 shadow-sm">
                     <form id="hireForm" class="space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-sm font-medium text-slate-300 mb-2">First Name *</label>
-                                <input type="text" id="name" required class="w-full px-4 py-3 bg-dark border border-slate-700 rounded-lg focus:ring-2 focus:ring-brand/50 focus:border-brand outline-none transition-all text-white placeholder-slate-500">
+                                <label class="block text-sm font-semibold text-zinc-700 mb-2">First Name *</label>
+                                <input type="text" id="name" required class="w-full px-4 py-3 bg-[#FAF8F5] border border-editorial-border rounded-xl focus:ring-1 focus:ring-editorial-gold focus:border-editorial-gold outline-none transition">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-slate-300 mb-2">Email Address *</label>
-                                <input type="email" id="email" required class="w-full px-4 py-3 bg-dark border border-slate-700 rounded-lg focus:ring-2 focus:ring-brand/50 focus:border-brand outline-none transition-all text-white placeholder-slate-500">
+                                <label class="block text-sm font-semibold text-zinc-700 mb-2">Email Address *</label>
+                                <input type="email" id="email" required class="w-full px-4 py-3 bg-[#FAF8F5] border border-editorial-border rounded-xl focus:ring-1 focus:ring-editorial-gold focus:border-editorial-gold outline-none transition">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-slate-300 mb-2">Contact Number *</label>
-                                <input type="tel" id="phone" required class="w-full px-4 py-3 bg-dark border border-slate-700 rounded-lg focus:ring-2 focus:ring-brand/50 focus:border-brand outline-none transition-all text-white placeholder-slate-500">
+                                <label class="block text-sm font-semibold text-zinc-700 mb-2">Contact Number *</label>
+                                <input type="tel" id="phone" required class="w-full px-4 py-3 bg-[#FAF8F5] border border-editorial-border rounded-xl focus:ring-1 focus:ring-editorial-gold focus:border-editorial-gold outline-none transition">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-slate-300 mb-2">Project Type *</label>
-                                <select id="projectType" required class="w-full px-4 py-3 bg-dark border border-slate-700 rounded-lg focus:ring-2 focus:ring-brand/50 focus:border-brand outline-none transition-all text-white appearance-none cursor-pointer">
-                                    <option value="" class="bg-dark">Select project type</option>
-                                    <option value="AI/ML" class="bg-dark">AI / Machine Learning</option>
-                                    <option value="Web Development" class="bg-dark">Web Development</option>
-                                    <option value="Data Analytics" class="bg-dark">Data Analytics / Dashboard</option>
-                                    <option value="Other" class="bg-dark">Other</option>
+                                <label class="block text-sm font-semibold text-zinc-700 mb-2">Project Type *</label>
+                                <select id="projectType" required class="w-full px-4 py-3 bg-[#FAF8F5] border border-editorial-border rounded-xl focus:ring-1 focus:ring-editorial-gold focus:border-editorial-gold outline-none transition">
+                                    <option value="">Select project type</option>
+                                    <option value="AI/ML">AI / Machine Learning</option>
+                                    <option value="Web Development">Web Development</option>
+                                    <option value="Data Analytics">Data Analytics / Dashboard</option>
+                                    <option value="Other">Other</option>
                                 </select>
                             </div>
-                            <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-slate-300 mb-2">Budget (Estimated) *</label>
-                                <input type="text" id="budget" placeholder="e.g., $1000 or ₹50,000" required class="w-full px-4 py-3 bg-dark border border-slate-700 rounded-lg focus:ring-2 focus:ring-brand/50 focus:border-brand outline-none transition-all text-white placeholder-slate-500">
+                            <div>
+                                <label class="block text-sm font-semibold text-zinc-700 mb-2">Budget (Estimated) *</label>
+                                <input type="text" id="budget" placeholder="e.g., $1000 or ₹50,000" required class="w-full px-4 py-3 bg-[#FAF8F5] border border-editorial-border rounded-xl focus:ring-1 focus:ring-editorial-gold focus:border-editorial-gold outline-none transition">
                             </div>
                             <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-slate-300 mb-2">Project Description *</label>
-                                <textarea id="description" rows="4" required class="w-full px-4 py-3 bg-dark border border-slate-700 rounded-lg focus:ring-2 focus:ring-brand/50 focus:border-brand outline-none transition-all text-white placeholder-slate-500 resize-none"></textarea>
+                                <label class="block text-sm font-semibold text-zinc-700 mb-2">Project Description *</label>
+                                <textarea id="description" rows="4" required class="w-full px-4 py-3 bg-[#FAF8F5] border border-editorial-border rounded-xl focus:ring-1 focus:ring-editorial-gold focus:border-editorial-gold outline-none transition"></textarea>
                             </div>
                             <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-slate-300 mb-2">File Upload (optional)</label>
-                                <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-slate-700 border-dashed rounded-lg hover:border-brand/50 hover:bg-white/5 transition-all cursor-pointer bg-dark/50">
-                                    <div class="space-y-2 text-center">
-                                        <i class="fas fa-cloud-upload-alt text-slate-400 text-3xl mb-2"></i>
-                                        <div class="flex text-sm text-slate-300 justify-center">
-                                            <label for="fileUpload" class="relative cursor-pointer font-medium text-brand hover:text-brand-light focus-within:outline-none px-2">
+                                <label class="block text-sm font-semibold text-zinc-700 mb-2">File Upload (optional)</label>
+                                <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-editorial-border border-dashed rounded-xl hover:border-editorial-gold transition bg-[#FAF8F5]">
+                                    <div class="space-y-1 text-center">
+                                        <i class="fas fa-upload text-zinc-400 text-2xl mb-2"></i>
+                                        <div class="flex text-sm text-zinc-600 justify-center">
+                                            <label for="fileUpload" class="relative cursor-pointer rounded-md font-medium text-editorial-gold hover:text-editorial-goldHover focus-within:outline-none px-1">
                                                 <span>Upload a file</span>
                                                 <input id="fileUpload" name="fileUpload" type="file" class="sr-only">
                                             </label>
-                                            <span class="text-slate-500 ml-1">or drag and drop</span>
                                         </div>
-                                        <p class="text-xs text-slate-500">PDF, DOCX up to 10MB</p>
+                                        <p class="text-xs text-zinc-500">PDF, DOCX up to 10MB</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-                            <p class="text-xs text-slate-500 text-center sm:text-left">Your information is secure and will never be shared.</p>
-                            <button type="submit" id="submitBtn" class="w-full sm:w-auto bg-brand hover:bg-brand-light text-dark font-bold py-3.5 px-8 rounded-lg transition-all duration-300 flex justify-center items-center shadow-lg shadow-brand/20 hover:shadow-brand/40 hover:-translate-y-0.5">
-                                <span id="btnText">Submit Project Request</span>
+                        <div class="pt-4">
+                            <button type="submit" id="submitBtn" class="w-full md:w-auto bg-editorial-dark hover:bg-zinc-800 text-white font-medium py-3.5 px-8 rounded-xl transition flex justify-center items-center shadow-sm">
+                                <span id="btnText">Submit Project Request &rarr;</span>
                                 <i id="btnSpinner" class="fas fa-spinner fa-spin hidden ml-2"></i>
-                                <i id="btnArrow" class="fas fa-arrow-right ml-2"></i>
                             </button>
                         </div>
-                        <div id="formMessage" class="hidden mt-4 p-4 rounded-lg text-sm font-medium"></div>
+                        <div id="formMessage" class="hidden mt-4 p-4 rounded-xl text-sm"></div>
                     </form>
                 </div>
             </div>
         </section>
 
-        <!-- 6. PAYMENT PAGE -->
-        <section id="payment" class="page-view flex-grow bg-slate-50 py-20 md:py-28">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12" data-aos="fade-up">
-                    <h2 class="text-3xl md:text-4xl font-display font-bold text-dark mb-4">Secure Payment</h2>
-                    <p class="text-slate-500">Fast, secure, and straightforward transactions.</p>
-                </div>
-
-                <div class="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col md:flex-row border border-slate-100" data-aos="fade-up" data-aos-delay="100">
-                    <div class="p-8 md:w-1/2 border-b md:border-b-0 md:border-r border-slate-100 flex flex-col justify-center bg-slate-50/50">
-                        <h3 class="text-2xl font-display font-bold text-dark mb-3">Make a Payment</h3>
-                        <p class="text-sm text-slate-500 mb-8 leading-relaxed">Scan the QR code or click the button below to pay directly via Google Pay or your preferred UPI app.</p>
+        <!-- 6. PAYMENT PAGE (GPay / UPI) -->
+        <section id="payment" class="page-view flex-grow py-24">
+            <div class="max-w-3xl mx-auto px-6 lg:px-12 w-full">
+                <div class="bg-editorial-card rounded-3xl shadow-sm overflow-hidden flex flex-col md:flex-row border border-editorial-border">
+                    
+                    <div class="p-8 md:w-1/2 border-b md:border-b-0 md:border-r border-editorial-border flex flex-col justify-center">
+                        <h2 class="text-2xl font-bold text-editorial-dark mb-2">Make a Payment</h2>
+                        <p class="text-sm text-zinc-600 mb-6 leading-relaxed">Scan the QR code or click the button below to pay directly via Google Pay or your preferred UPI app.</p>
                         
-                        <div class="bg-brand-50 border border-brand/20 rounded-xl p-5 mb-8">
-                            <p class="text-sm text-dark font-semibold mb-3 flex items-center">
-                                <i class="fas fa-shield-alt text-brand mr-2"></i>Payment Policy
-                            </p>
-                            <ul class="text-xs text-slate-600 space-y-2 ml-1">
-                                <li class="flex items-start"><i class="fas fa-check text-brand mt-0.5 mr-2 text-[10px]"></i>All payments are final and secure.</li>
-                                <li class="flex items-start"><i class="fas fa-check text-brand mt-0.5 mr-2 text-[10px]"></i>No advance payment installments required.</li>
-                                <li class="flex items-start"><i class="fas fa-check text-brand mt-0.5 mr-2 text-[10px]"></i>Please pay the exact full amount requested.</li>
+                        <div class="bg-[#FAF8F5] border border-editorial-border rounded-2xl p-5 mb-6">
+                            <p class="text-sm text-editorial-dark mb-2 flex items-center font-semibold"><i class="fas fa-info-circle text-editorial-gold mr-2"></i>Payment Policy</p>
+                            <ul class="text-xs text-zinc-600 space-y-1.5 ml-5 list-disc">
+                                <li>All payments are final.</li>
+                                <li>No advance payment installments.</li>
+                                <li>Please pay the exact full amount requested.</li>
                             </ul>
                         </div>
                         
-                        <a href="upi://pay?pa=sugannachiyar216@okaxis&pn=Suganya%20Shenbagam&cu=INR" class="w-full bg-dark hover:bg-dark-light text-white font-semibold py-3.5 px-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center group">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/UPI-Logo-vector.svg" alt="UPI" class="h-5 mr-3 brightness-0 invert group-hover:scale-105 transition-transform">
+                        <a href="upi://pay?pa=sugannachiyar216@okaxis&pn=Suganya%20Shenbagam&cu=INR" class="w-full bg-[#FAF8F5] border border-editorial-border hover:border-editorial-dark text-editorial-dark font-semibold py-3 px-4 rounded-xl transition shadow-sm flex items-center justify-center group">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/UPI-Logo-vector.svg" alt="UPI" class="h-4 mr-2 grayscale group-hover:grayscale-0 transition-all">
                             Pay via UPI App
                         </a>
                     </div>
                     
-                    <div class="p-8 md:w-1/2 bg-dark flex flex-col items-center justify-center text-center relative overflow-hidden">
-                        <div class="absolute inset-0 bg-brand/5"></div>
-                        <div class="relative z-10 w-full">
-                            <h3 class="font-display font-semibold text-white mb-6 flex items-center justify-center">
-                                <i class="fab fa-google text-xl mr-2 text-blue-400"></i> GPay / UPI
-                            </h3>
-                            
-                            <div class="bg-white p-4 rounded-2xl shadow-2xl inline-block mb-6 border-4 border-white/10">
-                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=sugannachiyar216@okaxis&pn=Suganya%20Shenbagam&cu=INR" alt="GPay QR Code" class="w-44 h-44 object-cover">
-                            </div>
-                            
-                            <p class="text-xs text-brand-light mb-3 uppercase font-bold tracking-widest">Scan with any UPI App</p>
-                            <div class="bg-white/10 backdrop-blur-sm px-5 py-3 border border-white/10 rounded-xl w-full max-w-[240px] mx-auto">
-                                <p class="text-[10px] text-slate-400 mb-1 uppercase tracking-wider">UPI ID</p>
-                                <p class="text-sm text-white font-mono font-medium truncate select-all">sugannachiyar216@okaxis</p>
-                            </div>
+                    <div class="p-8 md:w-1/2 bg-[#FAF8F5] flex flex-col items-center justify-center text-center">
+                        <h3 class="font-semibold text-editorial-dark mb-4 flex items-center">
+                            <i class="fab fa-google text-lg mr-2 text-zinc-800"></i>Pay
+                        </h3>
+                        
+                        <div class="bg-editorial-card p-3 rounded-2xl shadow-sm border border-editorial-border mb-4">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=sugannachiyar216@okaxis&pn=Suganya%20Shenbagam&cu=INR" alt="GPay QR Code" class="w-48 h-48 object-cover rounded-xl">
+                        </div>
+                        
+                        <p class="text-xs text-editorial-gold mb-1 uppercase font-semibold tracking-wider">Scan with any UPI App</p>
+                        <div class="bg-editorial-card px-4 py-2.5 border border-editorial-border rounded-xl mt-2 w-full max-w-[220px]">
+                            <p class="text-xs text-zinc-400 mb-0.5">UPI ID</p>
+                            <p class="text-sm text-editorial-dark font-mono font-medium truncate">sugannachiyar216@okaxis</p>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
 
         <!-- 7. CONTACT PAGE -->
-        <section id="contact" class="page-view flex-grow bg-white py-20 md:py-28">
-            <div class="max-w-3xl mx-auto px-4 text-center">
-                <div data-aos="fade-up">
-                    <h2 class="text-3xl md:text-4xl font-display font-bold text-dark mb-4">Let's Work Together</h2>
-                    <p class="text-slate-600 mb-12 text-lg">Have a project, collaboration, or just want to say hello? I'd love to hear from you.</p>
+        <section id="contact" class="page-view flex-grow py-24">
+            <div class="max-w-3xl mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold text-editorial-dark mb-4">Let's Work Together</h2>
+                <p class="text-zinc-600 mb-12">Have a project, collaboration, or just want to say hello? I'd love to hear from you.</p>
+                
+                <div class="flex justify-center gap-5 mb-12 flex-wrap">
+                    
+                    <a href="mailto:suganyashenbagam@gmail.com" class="w-16 h-16 bg-editorial-card border border-editorial-border hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-xl shadow-sm transition-all hover:-translate-y-1">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    
+                    <a href="https://www.linkedin.com/in/shruthi-s-5b929b42b?utm_source=share_via&utm_content=profile&utm_medium=member_android" class="w-16 h-16 bg-editorial-card border border-editorial-border hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-xl shadow-sm transition-all hover:-translate-y-1">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+
+                    <a href="https://github.com/suganyas2382006-sketch" class="w-16 h-16 bg-editorial-card border border-editorial-border hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-xl shadow-sm transition-all hover:-translate-y-1">
+                        <i class="fab fa-github"></i>
+                    </a>
+
+                    <a href="https://wa.me/qr/QBOT5I4XWEI3L1" class="w-16 h-16 bg-editorial-card border border-editorial-border hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-xl shadow-sm transition-all hover:-translate-y-1">
+                        <i class="fas fa-whatsapp"></i>
+                    </a>
+
                 </div>
                 
-                <div class="flex justify-center gap-6 mb-12 flex-wrap" data-aos="fade-up" data-aos-delay="100">
-                    <a href="mailto:suganyashenbagam@gmail.com" class="group w-16 h-16 bg-slate-50 border border-slate-200 hover:border-brand hover:bg-brand text-slate-600 hover:text-white rounded-2xl flex items-center justify-center text-2xl shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-                        <i class="fas fa-envelope group-hover:scale-110 transition-transform"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/shruthi-s-5b929b42b?utm_source=share_via&utm_content=profile&utm_medium=member_android" class="group w-16 h-16 bg-slate-50 border border-slate-200 hover:border-brand hover:bg-brand text-slate-600 hover:text-white rounded-2xl flex items-center justify-center text-2xl shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-                        <i class="fab fa-linkedin-in group-hover:scale-110 transition-transform"></i>
-                    </a>
-                    <a href="https://github.com/suganyas2382006-sketch" class="group w-16 h-16 bg-slate-50 border border-slate-200 hover:border-brand hover:bg-brand text-slate-600 hover:text-white rounded-2xl flex items-center justify-center text-2xl shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-                        <i class="fab fa-github group-hover:scale-110 transition-transform"></i>
-                    </a>
-                    <a href="https://wa.me/qr/QBOT5I4XWEI3L1" class="group w-16 h-16 bg-slate-50 border border-slate-200 hover:border-brand hover:bg-brand text-slate-600 hover:text-white rounded-2xl flex items-center justify-center text-2xl shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-                        <i class="fab fa-whatsapp group-hover:scale-110 transition-transform"></i>
-                    </a>
-                </div>
-                
-                <div data-aos="fade-up" data-aos-delay="200">
-                    <button onclick="navigateTo('hire-me')" class="bg-dark hover:bg-dark-light text-white px-10 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center mx-auto">
-                        Start a Project <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                    </button>
-                </div>
+                <button onclick="navigateTo('hire-me')" class="bg-editorial-dark hover:bg-zinc-800 text-white px-8 py-3.5 rounded-xl font-medium transition shadow-sm">
+                    Start a Project &rarr;
+                </button>
             </div>
         </section>
 
     </main>
 
     <!-- Footer -->
-    <footer class="bg-dark text-slate-400 py-8 border-t border-white/5 text-center text-sm">
-        <div class="max-w-7xl mx-auto px-4">
-            <p>&copy; <span id="year"></span> <span class="text-slate-200 font-medium">Suganya Shenbagam</span>. All rights reserved.</p>
-            <p class="mt-2 text-xs text-slate-600">Designed & Built with precision.</p>
-        </div>
+    <footer class="bg-[#FAF8F5] border-t border-editorial-border text-zinc-500 py-8 text-center text-sm">
+        <p>&copy; <span id="year"></span> Suganya Shenbagam. All rights reserved.</p>
     </footer>
 
-    <!-- Scroll to Top Button -->
-    <button id="scrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-8 right-8 bg-brand text-dark w-12 h-12 rounded-full shadow-lg flex items-center justify-center translate-y-20 opacity-0 transition-all duration-300 hover:bg-brand-light hover:scale-110 z-50">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Single File Logic (SPA Routing & Form Submission) -->
     <script>
-        // Initialize Animate On Scroll
-        AOS.init({ 
-            duration: 800, 
-            once: true, 
-            offset: 100,
-            easing: 'ease-out-cubic'
-        });
-
         document.getElementById('year').textContent = new Date().getFullYear();
 
         function navigateTo(pageId) {
-            // Hide all pages
             document.querySelectorAll('.page-view').forEach(page => {
                 page.classList.remove('active');
             });
             
-            // Remove active nav states
             document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active-nav');
+                link.classList.remove('active-nav', 'text-editorial-gold', 'font-semibold');
             });
 
-            // Show target page
             const targetPage = document.getElementById(pageId);
-            if(targetPage) {
-                targetPage.classList.add('active');
-                // Refresh AOS to animate elements in the newly visible section
-                setTimeout(() => {
-                    AOS.refresh();
-                }, 100);
-            }
+            if(targetPage) targetPage.classList.add('active');
 
-            // Set active nav state
             document.querySelectorAll(`.nav-link[data-target="${pageId}"]`).forEach(link => {
-                link.classList.add('active-nav');
+                link.classList.add('active-nav', 'text-editorial-gold', 'font-semibold');
             });
 
-            // Close mobile menu if open
             document.getElementById('mobile-menu').classList.add('hidden');
-            
-            // Scroll to top smoothly
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Mobile menu toggle
         document.getElementById('mobile-menu-btn').addEventListener('click', () => {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         });
 
-        // Scroll to Top Button Logic
-        window.addEventListener('scroll', () => {
-            const btn = document.getElementById('scrollTopBtn');
-            if (window.scrollY > 400) {
-                btn.classList.remove('translate-y-20', 'opacity-0');
-            } else {
-                btn.classList.add('translate-y-20', 'opacity-0');
-            }
-        });
-
-        // Form Submission Logic
         document.getElementById('hireForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             
             const btnText = document.getElementById('btnText');
             const btnSpinner = document.getElementById('btnSpinner');
-            const btnArrow = document.getElementById('btnArrow');
             const submitBtn = document.getElementById('submitBtn');
             const formMessage = document.getElementById('formMessage');
             
             submitBtn.disabled = true;
             btnText.textContent = 'Submitting...';
             btnSpinner.classList.remove('hidden');
-            btnArrow.classList.add('hidden');
             formMessage.classList.add('hidden');
 
             const formData = new FormData();
+            
             formData.append("access_key", "98ff650b-d44e-4510-96b9-66420995077d"); 
             formData.append("Name", document.getElementById('name').value);
             formData.append("Email", document.getElementById('email').value);
@@ -734,20 +572,19 @@
 
                 if (data.success) {
                     formMessage.textContent = 'Project request submitted successfully! I will get back to you soon.';
-                    formMessage.className = 'mt-4 p-4 rounded-lg bg-green-50 text-green-800 border border-green-200 block text-center font-medium';
+                    formMessage.className = 'mt-4 p-4 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 block text-sm';
                     document.getElementById('hireForm').reset();
                 } else {
                     throw new Error(data.message || 'Submission failed');
                 }
 
             } catch (error) {
-                formMessage.textContent = 'Error submitting request. Please try again or contact me directly via email.';
-                formMessage.className = 'mt-4 p-4 rounded-lg bg-red-50 text-red-800 border border-red-200 block text-center font-medium';
+                formMessage.textContent = 'Error submitting request. Please try again.';
+                formMessage.className = 'mt-4 p-4 rounded-xl bg-rose-50 text-rose-800 border border-rose-200 block text-sm';
             } finally {
                 submitBtn.disabled = false;
-                btnText.textContent = 'Submit Project Request';
+                btnText.innerHTML = 'Submit Project Request &rarr;';
                 btnSpinner.classList.add('hidden');
-                btnArrow.classList.remove('hidden');
             }
         });
     </script>
