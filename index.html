@@ -65,18 +65,37 @@
 </head>
 <body class="antialiased min-h-screen flex flex-col selection:bg-editorial-gold selection:text-white overflow-x-hidden">
 
-    <!-- Top Minimalist Text Navigation (No Header Logo, Clean Horizontal Links) -->
-    <nav class="bg-[#FAF8F5]/90 backdrop-blur-md border-b border-editorial-border sticky top-0 z-50">
+    <!-- Clean Minimalist Header & Navigation Bar (No Top Logo, Perfectly Aligned) -->
+    <nav class="bg-[#FAF8F5]/95 backdrop-blur-md border-b border-editorial-border sticky top-0 z-50">
         <div class="max-w-4xl mx-auto px-6 lg:px-12">
-            <div class="flex items-center justify-center md:justify-start h-16">
-                <div class="flex items-center space-x-6 sm:space-x-10 text-sm font-medium text-zinc-600 overflow-x-auto py-2">
-                    <button onclick="navigateTo('home')" class="nav-link active-nav hover:text-editorial-dark whitespace-nowrap" data-target="home">Home</button>
-                    <button onclick="navigateTo('services')" class="nav-link hover:text-editorial-dark whitespace-nowrap" data-target="services">Services & Skills</button>
-                    <button onclick="navigateTo('projects')" class="nav-link hover:text-editorial-dark whitespace-nowrap" data-target="projects">Projects</button>
-                    <button onclick="navigateTo('payment')" class="nav-link hover:text-editorial-dark whitespace-nowrap" data-target="payment">Payment</button>
-                    <button onclick="navigateTo('contact')" class="nav-link hover:text-editorial-dark whitespace-nowrap" data-target="contact">Contact</button>
+            <div class="flex items-center justify-between h-16">
+                <!-- Mobile Label -->
+                <span class="text-xs font-bold uppercase tracking-widest text-editorial-gold md:hidden">Menu</span>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-zinc-600 mx-auto">
+                    <button onclick="navigateTo('home')" class="nav-link active-nav hover:text-editorial-dark" data-target="home">Home</button>
+                    <button onclick="navigateTo('services')" class="nav-link hover:text-editorial-dark" data-target="services">Services & Skills</button>
+                    <button onclick="navigateTo('projects')" class="nav-link hover:text-editorial-dark" data-target="projects">Projects</button>
+                    <button onclick="navigateTo('payment')" class="nav-link hover:text-editorial-dark" data-target="payment">Payment</button>
+                    <button onclick="navigateTo('contact')" class="nav-link hover:text-editorial-dark" data-target="contact">Contact</button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-editorial-dark p-2 focus:outline-none bg-editorial-card border border-editorial-border rounded-xl shadow-sm">
+                        <i class="fas fa-bars text-sm"></i>
+                    </button>
                 </div>
             </div>
+        </div>
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-editorial-card border-b border-editorial-border shadow-lg px-6 py-4 grid grid-cols-2 gap-2 text-sm z-50">
+            <button onclick="navigateTo('home')" class="py-2.5 px-3 rounded-xl font-medium bg-[#FAF8F5] text-zinc-700 border border-editorial-border text-center">Home</button>
+            <button onclick="navigateTo('services')" class="py-2.5 px-3 rounded-xl font-medium bg-[#FAF8F5] text-zinc-700 border border-editorial-border text-center">Services & Skills</button>
+            <button onclick="navigateTo('projects')" class="py-2.5 px-3 rounded-xl font-medium bg-[#FAF8F5] text-zinc-700 border border-editorial-border text-center">Projects</button>
+            <button onclick="navigateTo('payment')" class="py-2.5 px-3 rounded-xl font-medium bg-[#FAF8F5] text-zinc-700 border border-editorial-border text-center">Payment</button>
+            <button onclick="navigateTo('contact')" class="col-span-2 py-2.5 px-3 rounded-xl font-medium bg-editorial-dark text-white text-center">Contact</button>
         </div>
     </nav>
 
@@ -151,11 +170,11 @@
             </div>
         </section>
 
-        <!-- 2. SERVICES & SKILLS PAGE -->
+        <!-- 2. SERVICES & SKILLS PAGE (Fixed duplicate data bugs and structured layout) -->
         <section id="services" class="page-view flex-grow py-12 lg:py-20">
             <div class="max-w-4xl mx-auto px-6 lg:px-12 w-full space-y-16">
                 
-                <!-- Technical Capabilities: Executive Minimalist Matrix -->
+                <!-- Technical Capabilities: Clean Tag Rows -->
                 <div>
                     <div class="mb-6">
                         <h2 class="text-2xl md:text-3xl font-bold text-editorial-dark mb-1">Technical Capabilities</h2>
@@ -163,7 +182,7 @@
                     </div>
 
                     <div class="bg-editorial-card border border-editorial-border rounded-3xl p-6 md:p-8 shadow-sm space-y-8">
-                        <!-- Capability Row 1 -->
+                        <!-- Row 1 -->
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-4 pb-6 border-b border-editorial-border items-center">
                             <div class="md:col-span-4 flex items-center space-x-3">
                                 <span class="w-9 h-9 rounded-xl bg-amber-50 text-editorial-gold flex items-center justify-center font-bold text-sm"><i class="fas fa-brain"></i></span>
@@ -179,7 +198,7 @@
                             </div>
                         </div>
 
-                        <!-- Capability Row 2 -->
+                        <!-- Row 2 -->
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-4 pb-6 border-b border-editorial-border items-center">
                             <div class="md:col-span-4 flex items-center space-x-3">
                                 <span class="w-9 h-9 rounded-xl bg-zinc-100 text-zinc-800 flex items-center justify-center font-bold text-sm"><i class="fas fa-terminal"></i></span>
@@ -194,7 +213,7 @@
                             </div>
                         </div>
 
-                        <!-- Capability Row 3 -->
+                        <!-- Row 3 -->
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-4 pb-6 border-b border-editorial-border items-center">
                             <div class="md:col-span-4 flex items-center space-x-3">
                                 <span class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm"><i class="fas fa-globe"></i></span>
@@ -209,7 +228,7 @@
                             </div>
                         </div>
 
-                        <!-- Capability Row 4 -->
+                        <!-- Row 4 -->
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
                             <div class="md:col-span-4 flex items-center space-x-3">
                                 <span class="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-sm"><i class="fas fa-database"></i></span>
@@ -226,7 +245,7 @@
                     </div>
                 </div>
 
-                <!-- Professional Services -->
+                <!-- Professional Services (Unique 3 distinct professional cards) -->
                 <div>
                     <div class="mb-6">
                         <h2 class="text-2xl md:text-3xl font-bold text-editorial-dark mb-1">Services</h2>
@@ -245,8 +264,8 @@
                         <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border hover:border-editorial-gold transition shadow-sm flex flex-col justify-between">
                             <div>
                                 <div class="text-editorial-gold text-2xl mb-4"><i class="fas fa-code"></i></div>
-                                <h3 class="text-base font-bold mb-2 text-editorial-dark">Full-Stack / Web Apps / Designing / Frontend / Backend</h3>
-                                <p class="text-zinc-600 text-xs leading-relaxed">Build complete web applications with tailored UI/UX designing, responsive frontend development, and robust backend server and database architecture.</p>
+                                <h3 class="text-base font-bold mb-2 text-editorial-dark">Full-Stack / Web Apps / UI-UX Designing</h3>
+                                <p class="text-zinc-600 text-xs leading-relaxed">Build complete web applications with tailored UI/UX designing, responsive frontend development, and robust backend server architecture.</p>
                             </div>
                         </div>
 
@@ -531,18 +550,23 @@
             });
             
             document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active-nav', 'text-editorial-gold', 'font-semibold');
+                link.classList.remove('active-nav');
             });
 
             const targetPage = document.getElementById(pageId);
             if(targetPage) targetPage.classList.add('active');
 
             document.querySelectorAll(`.nav-link[data-target="${pageId}"]`).forEach(link => {
-                link.classList.add('active-nav', 'text-editorial-gold', 'font-semibold');
+                link.classList.add('active-nav');
             });
 
+            document.getElementById('mobile-menu').classList.add('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
 
         document.getElementById('hireForm').addEventListener('submit', async (e) => {
             e.preventDefault();
