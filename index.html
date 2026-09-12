@@ -104,35 +104,35 @@
     <main class="flex-grow flex flex-col">
 
         <!-- 1. HOME PAGE -->
-        <section id="home" class="page-view active flex-grow py-12 lg:py-20">
+        <section id="home" class="page-view active flex-grow py-8 lg:py-12">
             <div class="max-w-5xl mx-auto px-6 lg:px-12 w-full">
                 
                 <!-- Freelance Badge -->
-                <div class="inline-flex items-center space-x-2 bg-editorial-border/60 text-xs font-semibold px-3.5 py-1.5 rounded-full mb-6 text-zinc-700">
+                <div class="inline-flex items-center space-x-2 bg-editorial-border/60 text-xs font-semibold px-3 py-1 rounded-full mb-4 text-zinc-700">
                     <span class="w-2 h-2 rounded-full bg-editorial-gold"></span>
                     <span>Available for Freelance Projects</span>
                 </div>
 
                 <!-- Name & Title -->
-                <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-editorial-dark mb-2">
+                <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-editorial-dark mb-1">
                     Suganya Shenbagam
                 </h1>
-                <p class="text-editorial-gold font-semibold text-sm md:text-base mb-8">
+                <p class="text-editorial-gold font-semibold text-sm mb-6">
                     Artificial Intelligence & Data Science Student
                 </p>
 
                 <!-- Profile and About Me side-by-side or stacked on mobile -->
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start mb-8">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start mb-6">
                     <div class="md:col-span-4 flex justify-center">
-                        <div class="bg-editorial-card p-3 rounded-2xl border border-editorial-border shadow-sm w-56 sm:w-64 md:w-full">
+                        <div class="bg-editorial-card p-2.5 rounded-2xl border border-editorial-border shadow-sm w-48 sm:w-56 md:w-full">
                             <img src="profile.png" alt="Profile" class="w-full h-auto object-cover rounded-xl" onerror="this.src='https://via.placeholder.com/600x800/EBE7DF/111111?text=Profile'">
                         </div>
                     </div>
                     
                     <div class="md:col-span-8 flex flex-col justify-center">
-                        <h2 class="text-xl md:text-2xl font-bold text-editorial-dark mb-3">About Me</h2>
+                        <h2 class="text-lg md:text-xl font-bold text-editorial-dark mb-2">About Me</h2>
                         
-                        <div class="space-y-3 text-zinc-600 leading-relaxed text-xs sm:text-sm md:text-base mb-6">
+                        <div class="space-y-2.5 text-zinc-600 leading-relaxed text-xs sm:text-sm mb-5">
                             <p>
                                 I am Suganya Shenbagam, a 3rd year Artificial Intelligence & Data Science student, passionate about building intelligent solutions and solving real-world problems. I enjoy working with AI/ML, data analytics, web technologies, and designing clean digital experiences.
                             </p>
@@ -143,28 +143,28 @@
 
                         <!-- Action Buttons -->
                         <div class="flex flex-wrap gap-3">
-                            <button onclick="navigateTo('projects')" class="bg-editorial-dark text-white px-5 py-2.5 rounded-xl font-semibold hover:bg-zinc-800 transition shadow-sm text-xs sm:text-sm">
+                            <button onclick="navigateTo('projects')" class="bg-editorial-dark text-white px-4 py-2 rounded-xl font-semibold hover:bg-zinc-800 transition shadow-sm text-xs">
                                 View My Work
                             </button>
-                            <button onclick="navigateTo('hire-me')" class="bg-editorial-card border border-editorial-border text-editorial-dark px-5 py-2.5 rounded-xl font-semibold hover:border-editorial-dark transition shadow-sm text-xs sm:text-sm">
+                            <button onclick="navigateTo('hire-me')" class="bg-editorial-card border border-editorial-border text-editorial-dark px-4 py-2 rounded-xl font-semibold hover:border-editorial-dark transition shadow-sm text-xs">
                                 Hire Me
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Resume Card matching your screenshot layout -->
-                <div class="bg-editorial-card border border-editorial-border rounded-2xl p-6 shadow-sm w-full">
-                    <div class="flex items-center justify-between flex-wrap gap-4">
+                <!-- Resume Card -->
+                <div class="bg-editorial-card border border-editorial-border rounded-2xl p-4 sm:p-5 shadow-sm w-full">
+                    <div class="flex items-center justify-between flex-wrap gap-3">
                         <div>
-                            <h3 class="text-base font-bold text-editorial-dark mb-1 flex items-center">
-                                <i class="far fa-file-alt text-editorial-gold mr-2.5"></i> My Resume
+                            <h3 class="text-sm font-bold text-editorial-dark mb-0.5 flex items-center">
+                                <i class="far fa-file-alt text-editorial-gold mr-2"></i> My Resume
                             </h3>
                             <p class="text-zinc-500 text-xs">Academic background, technical skills, and experience.</p>
                         </div>
-                        <div class="flex space-x-3">
-                            <a href="assets/cv.pdf" target="_blank" class="bg-editorial-dark text-white px-4 py-2 rounded-xl text-xs font-medium hover:bg-zinc-800 transition">View CV</a>
-                            <a href="assets/cv.pdf" download class="border border-editorial-border text-editorial-dark px-4 py-2 rounded-xl text-xs font-medium hover:border-editorial-dark transition">Download</a>
+                        <div class="flex space-x-2">
+                            <a href="assets/cv.pdf" target="_blank" class="bg-editorial-dark text-white px-3.5 py-1.5 rounded-xl text-xs font-medium hover:bg-zinc-800 transition">View CV</a>
+                            <a href="assets/cv.pdf" download class="border border-editorial-border text-editorial-dark px-3.5 py-1.5 rounded-xl text-xs font-medium hover:border-editorial-dark transition">Download</a>
                         </div>
                     </div>
                 </div>
@@ -172,80 +172,61 @@
             </div>
         </section>
 
-        <!-- 2. SERVICES & SKILLS PAGE (Fixed single/multi column clean layout) -->
+        <!-- 2. SERVICES & SKILLS PAGE -->
         <section id="services" class="page-view flex-grow py-16 lg:py-24">
-            <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full">
+            <div class="max-w-5xl mx-auto px-6 lg:px-12 w-full">
                 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <!-- Technical Capabilities First -->
+                <div class="mb-20">
+                    <div class="mb-8">
+                        <h2 class="text-3xl md:text-4xl font-bold text-editorial-dark mb-2">Technical Capabilities</h2>
+                        <p class="text-zinc-600 text-sm md:text-base">Core technologies and domains I specialize in.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border border-l-4 border-l-editorial-gold shadow-sm">
+                            <h3 class="font-bold text-editorial-dark mb-2 border-b border-editorial-border pb-2 text-base">AI & Machine Learning</h3>
+                            <p class="text-xs md:text-sm text-zinc-600 leading-relaxed">Neural Networks, Computer Vision, Predictive Modeling, Scikit-Learn, TensorFlow, PyTorch</p>
+                        </div>
+                        <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border border-l-4 border-l-zinc-800 shadow-sm">
+                            <h3 class="font-bold text-editorial-dark mb-2 border-b border-editorial-border pb-2 text-base">Programming</h3>
+                            <p class="text-xs md:text-sm text-zinc-600 leading-relaxed">Python, JavaScript, TypeScript, HTML, CSS, C++</p>
+                        </div>
+                        <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border border-l-4 border-l-zinc-500 shadow-sm">
+                            <h3 class="font-bold text-editorial-dark mb-2 border-b border-editorial-border pb-2 text-base">Web Development (Full-Stack)</h3>
+                            <p class="text-xs md:text-sm text-zinc-600 leading-relaxed">Next.js, React, Node.js, Tailwind CSS, API Integration</p>
+                        </div>
+                        <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border border-l-4 border-l-editorial-gold shadow-sm">
+                            <h3 class="font-bold text-editorial-dark mb-2 border-b border-editorial-border pb-2 text-base">Data Analytics & Databases</h3>
+                            <p class="text-xs md:text-sm text-zinc-600 leading-relaxed">Pandas, NumPy, Matplotlib, SQL, PostgreSQL, Supabase, MongoDB</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Streamlined Services Section with Updated Full-Stack Text -->
+                <div>
+                    <div class="mb-8">
+                        <h2 class="text-3xl md:text-4xl font-bold text-editorial-dark mb-2">Services</h2>
+                        <p class="text-zinc-600 text-sm md:text-base">Professional solutions tailored for modern digital needs.</p>
+                    </div>
                     
-                    <!-- Left Column: Services -->
-                    <div class="lg:col-span-7">
-                        <div class="mb-10">
-                            <h2 class="text-3xl md:text-4xl font-bold text-editorial-dark mb-2">Services</h2>
-                            <p class="text-zinc-600 text-sm md:text-base">Professional services tailored for modern digital needs.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-editorial-card p-6 md:p-8 rounded-2xl border border-editorial-border hover:border-editorial-gold transition shadow-sm flex flex-col">
+                            <i class="fas fa-brain text-2xl text-editorial-gold mb-6"></i>
+                            <h3 class="text-lg font-bold mb-3 text-editorial-dark">AI & Machine Learning</h3>
+                            <p class="text-zinc-600 text-xs md:text-sm leading-relaxed">Develop intelligent applications, custom ML models, computer vision pipelines, and automated workflows.</p>
                         </div>
-                        
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border hover:border-editorial-gold transition shadow-sm">
-                                <i class="fas fa-brain text-2xl text-editorial-gold mb-4"></i>
-                                <h3 class="text-base md:text-lg font-bold mb-2 text-editorial-dark">AI & Machine Learning</h3>
-                                <p class="text-zinc-600 text-xs md:text-sm leading-relaxed">Develop intelligent applications, ML solutions, computer vision, and AI-powered workflows.</p>
-                            </div>
-                            <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border hover:border-editorial-gold transition shadow-sm">
-                                <i class="fas fa-code text-2xl text-editorial-gold mb-4"></i>
-                                <h3 class="text-base md:text-lg font-bold mb-2 text-editorial-dark">Full-Stack Development</h3>
-                                <p class="text-zinc-600 text-xs md:text-sm leading-relaxed">Build complete web applications with robust frontend, backend, databases, APIs, and deployment.</p>
-                            </div>
-                            <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border hover:border-editorial-gold transition shadow-sm">
-                                <i class="fas fa-globe text-2xl text-editorial-gold mb-4"></i>
-                                <h3 class="text-base md:text-lg font-bold mb-2 text-editorial-dark">Web Development</h3>
-                                <p class="text-zinc-600 text-xs md:text-sm leading-relaxed">Create modern, responsive websites for individuals, startups, businesses, and organizations.</p>
-                            </div>
-                            <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border hover:border-editorial-gold transition shadow-sm">
-                                <i class="fas fa-desktop text-2xl text-editorial-gold mb-4"></i>
-                                <h3 class="text-base md:text-lg font-bold mb-2 text-editorial-dark">Frontend Development</h3>
-                                <p class="text-zinc-600 text-xs md:text-sm leading-relaxed">Build responsive and interactive user interfaces with strong usability and visual design.</p>
-                            </div>
-                            <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border hover:border-editorial-gold transition shadow-sm">
-                                <i class="fas fa-chart-pie text-2xl text-editorial-gold mb-4"></i>
-                                <h3 class="text-base md:text-lg font-bold mb-2 text-editorial-dark">Data Analytics</h3>
-                                <p class="text-zinc-600 text-xs md:text-sm leading-relaxed">Transform raw data into useful insights through analysis, visualization, and reporting.</p>
-                            </div>
-                            <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border hover:border-editorial-gold transition shadow-sm">
-                                <i class="fas fa-chart-line text-2xl text-editorial-gold mb-4"></i>
-                                <h3 class="text-base md:text-lg font-bold mb-2 text-editorial-dark">Dashboard Development</h3>
-                                <p class="text-zinc-600 text-xs md:text-sm leading-relaxed">Interactive dashboards for KPIs, trends, revenue, and performance tracking.</p>
-                            </div>
+                        <div class="bg-editorial-card p-6 md:p-8 rounded-2xl border border-editorial-border hover:border-editorial-gold transition shadow-sm flex flex-col">
+                            <i class="fas fa-code text-2xl text-editorial-gold mb-6"></i>
+                            <h3 class="text-lg font-bold mb-3 text-editorial-dark">Full-Stack / Web Apps / Designing / Frontend / Backend</h3>
+                            <p class="text-zinc-600 text-xs md:text-sm leading-relaxed">Build complete web applications with tailored UI/UX designing, responsive frontend development, and robust backend server and database architecture.</p>
+                        </div>
+                        <div class="bg-editorial-card p-6 md:p-8 rounded-2xl border border-editorial-border hover:border-editorial-gold transition shadow-sm flex flex-col">
+                            <i class="fas fa-chart-pie text-2xl text-editorial-gold mb-6"></i>
+                            <h3 class="text-lg font-bold mb-3 text-editorial-dark">Data Analytics & Dashboards</h3>
+                            <p class="text-zinc-600 text-xs md:text-sm leading-relaxed">Transform raw data into clear, actionable insights through processing pipelines, automated reporting, and interactive KPI dashboards.</p>
                         </div>
                     </div>
-
-                    <!-- Right Column: Technical Capabilities -->
-                    <div class="lg:col-span-5">
-                        <div class="mb-10">
-                            <h2 class="text-3xl md:text-4xl font-bold text-editorial-dark mb-2">Technical Capabilities</h2>
-                            <p class="text-zinc-600 text-sm md:text-base">Core technologies and tools I work with.</p>
-                        </div>
-
-                        <div class="space-y-6">
-                            <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border border-l-4 border-l-editorial-gold shadow-sm">
-                                <h3 class="font-bold text-editorial-dark mb-2 border-b border-editorial-border pb-2 text-base">AI & Machine Learning</h3>
-                                <p class="text-xs md:text-sm text-zinc-600 leading-relaxed">Neural Networks, Computer Vision, Predictive Modeling, Scikit-Learn, TensorFlow, PyTorch</p>
-                            </div>
-                            <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border border-l-4 border-l-zinc-800 shadow-sm">
-                                <h3 class="font-bold text-editorial-dark mb-2 border-b border-editorial-border pb-2 text-base">Programming</h3>
-                                <p class="text-xs md:text-sm text-zinc-600 leading-relaxed">Python, JavaScript, TypeScript, HTML, CSS, C++</p>
-                            </div>
-                            <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border border-l-4 border-l-zinc-500 shadow-sm">
-                                <h3 class="font-bold text-editorial-dark mb-2 border-b border-editorial-border pb-2 text-base">Web Development (Full-Stack)</h3>
-                                <p class="text-xs md:text-sm text-zinc-600 leading-relaxed">Next.js, React, Node.js, Tailwind CSS, API Integration</p>
-                            </div>
-                            <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border border-l-4 border-l-editorial-gold shadow-sm">
-                                <h3 class="font-bold text-editorial-dark mb-2 border-b border-editorial-border pb-2 text-base">Data Analytics & Databases</h3>
-                                <p class="text-xs md:text-sm text-zinc-600 leading-relaxed">Pandas, NumPy, Matplotlib, SQL, PostgreSQL, Supabase, MongoDB</p>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
 
             </div>
@@ -505,7 +486,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-[#FAF8F5] border-t border-editorial-border text-zinc-500 py-8 text-center text-sm">
+    <footer class="bg-[#FAF8F5] border-t border-editorial-border text-zinc-500 py-6 text-center text-sm">
         <p>&copy; <span id="year"></span> Suganya Shenbagam. All rights reserved.</p>
     </footer>
 
