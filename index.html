@@ -65,36 +65,18 @@
 </head>
 <body class="antialiased min-h-screen flex flex-col selection:bg-editorial-gold selection:text-white overflow-x-hidden">
 
-    <!-- Navigation -->
-    <nav class="bg-[#FAF8F5]/95 backdrop-blur-md border-b border-editorial-border sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12">
-            <div class="flex items-center justify-end h-20">
-                <!-- Desktop Links -->
-                <div class="hidden md:block">
-                    <div class="flex items-baseline space-x-8 text-sm font-medium text-zinc-600">
-                        <button onclick="navigateTo('home')" class="nav-link active-nav hover:text-editorial-dark" data-target="home">Home</button>
-                        <button onclick="navigateTo('services')" class="nav-link hover:text-editorial-dark" data-target="services">Services & Skills</button>
-                        <button onclick="navigateTo('projects')" class="nav-link hover:text-editorial-dark" data-target="projects">Projects</button>
-                        <button onclick="navigateTo('payment')" class="nav-link hover:text-editorial-dark" data-target="payment">Payment</button>
-                        <button onclick="navigateTo('contact')" class="nav-link hover:text-editorial-dark" data-target="contact">Contact</button>
-                    </div>
-                </div>
-                <!-- Mobile Menu Button (Right Aligned) -->
-                <div class="md:hidden flex items-center justify-between w-full">
-                    <span class="text-xs font-bold uppercase tracking-widest text-editorial-gold">Menu</span>
-                    <button id="mobile-menu-btn" class="text-editorial-dark p-2 focus:outline-none bg-editorial-card border border-editorial-border rounded-xl shadow-sm">
-                        <i class="fas fa-bars text-base"></i>
-                    </button>
+    <!-- Top Minimalist Text Navigation (No Header Logo, Clean Horizontal Links) -->
+    <nav class="bg-[#FAF8F5]/90 backdrop-blur-md border-b border-editorial-border sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-6 lg:px-12">
+            <div class="flex items-center justify-center md:justify-start h-16">
+                <div class="flex items-center space-x-6 sm:space-x-10 text-sm font-medium text-zinc-600 overflow-x-auto py-2">
+                    <button onclick="navigateTo('home')" class="nav-link active-nav hover:text-editorial-dark whitespace-nowrap" data-target="home">Home</button>
+                    <button onclick="navigateTo('services')" class="nav-link hover:text-editorial-dark whitespace-nowrap" data-target="services">Services & Skills</button>
+                    <button onclick="navigateTo('projects')" class="nav-link hover:text-editorial-dark whitespace-nowrap" data-target="projects">Projects</button>
+                    <button onclick="navigateTo('payment')" class="nav-link hover:text-editorial-dark whitespace-nowrap" data-target="payment">Payment</button>
+                    <button onclick="navigateTo('contact')" class="nav-link hover:text-editorial-dark whitespace-nowrap" data-target="contact">Contact</button>
                 </div>
             </div>
-        </div>
-        <!-- Mobile Dropdown Menu (Fixed clean pill-box horizontal alignment layout) -->
-        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-editorial-card border-b border-editorial-border shadow-xl px-6 py-4 grid grid-cols-2 gap-2 text-sm z-50">
-            <button onclick="navigateTo('home')" class="py-2.5 px-3 rounded-xl font-medium bg-[#FAF8F5] text-zinc-700 border border-editorial-border hover:text-editorial-gold text-center transition">Home</button>
-            <button onclick="navigateTo('services')" class="py-2.5 px-3 rounded-xl font-medium bg-[#FAF8F5] text-zinc-700 border border-editorial-border hover:text-editorial-gold text-center transition">Services & Skills</button>
-            <button onclick="navigateTo('projects')" class="py-2.5 px-3 rounded-xl font-medium bg-[#FAF8F5] text-zinc-700 border border-editorial-border hover:text-editorial-gold text-center transition">Projects</button>
-            <button onclick="navigateTo('payment')" class="py-2.5 px-3 rounded-xl font-medium bg-[#FAF8F5] text-zinc-700 border border-editorial-border hover:text-editorial-gold text-center transition">Payment</button>
-            <button onclick="navigateTo('contact')" class="col-span-2 py-2.5 px-3 rounded-xl font-medium bg-editorial-dark text-white hover:bg-zinc-800 text-center transition">Contact</button>
         </div>
     </nav>
 
@@ -173,7 +155,7 @@
         <section id="services" class="page-view flex-grow py-12 lg:py-20">
             <div class="max-w-4xl mx-auto px-6 lg:px-12 w-full space-y-16">
                 
-                <!-- Technical Capabilities -->
+                <!-- Technical Capabilities: Executive Minimalist Matrix -->
                 <div>
                     <div class="mb-6">
                         <h2 class="text-2xl md:text-3xl font-bold text-editorial-dark mb-1">Technical Capabilities</h2>
@@ -559,13 +541,8 @@
                 link.classList.add('active-nav', 'text-editorial-gold', 'font-semibold');
             });
 
-            document.getElementById('mobile-menu').classList.add('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
 
         document.getElementById('hireForm').addEventListener('submit', async (e) => {
             e.preventDefault();
