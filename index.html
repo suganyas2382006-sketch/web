@@ -66,7 +66,7 @@
 <body class="antialiased min-h-screen flex flex-col selection:bg-editorial-gold selection:text-white overflow-x-hidden">
 
     <!-- Navigation -->
-    <nav class="bg-[#FAF8F5]/90 backdrop-blur-md border-b border-editorial-border sticky top-0 z-50">
+    <nav class="bg-[#FAF8F5]/95 backdrop-blur-md border-b border-editorial-border sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="flex items-center justify-between h-20">
                 <!-- Logo with targeted golden accents -->
@@ -84,27 +84,27 @@
                         <button onclick="navigateTo('contact')" class="nav-link hover:text-editorial-dark" data-target="contact">Contact</button>
                     </div>
                 </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-editorial-dark p-2 focus:outline-none">
-                        <i class="fas fa-bars text-xl"></i>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-editorial-dark p-2 focus:outline-none bg-editorial-card border border-editorial-border rounded-xl">
+                        <i class="fas fa-bars text-lg"></i>
                     </button>
                 </div>
             </div>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-editorial-card border-b border-editorial-border pb-6 px-6 space-y-3 text-sm shadow-lg">
-            <button onclick="navigateTo('home')" class="block w-full text-left py-2 font-medium text-zinc-700 hover:text-editorial-gold">Home</button>
-            <button onclick="navigateTo('services')" class="block w-full text-left py-2 font-medium text-zinc-700 hover:text-editorial-gold">Services & Skills</button>
-            <button onclick="navigateTo('projects')" class="block w-full text-left py-2 font-medium text-zinc-700 hover:text-editorial-gold">Projects</button>
-            <button onclick="navigateTo('payment')" class="block w-full text-left py-2 font-medium text-zinc-700 hover:text-editorial-gold">Payment</button>
-            <button onclick="navigateTo('contact')" class="block w-full text-left py-2 font-medium text-zinc-700 hover:text-editorial-gold">Contact</button>
+        <!-- Mobile Dropdown Menu (Fixed overlapping & layout padding) -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-editorial-card border-b border-editorial-border shadow-2xl px-6 py-4 space-y-2 text-sm z-50">
+            <button onclick="navigateTo('home')" class="block w-full text-left py-3 px-4 rounded-xl font-medium text-zinc-700 hover:bg-[#FAF8F5] hover:text-editorial-gold transition">Home</button>
+            <button onclick="navigateTo('services')" class="block w-full text-left py-3 px-4 rounded-xl font-medium text-zinc-700 hover:bg-[#FAF8F5] hover:text-editorial-gold transition">Services & Skills</button>
+            <button onclick="navigateTo('projects')" class="block w-full text-left py-3 px-4 rounded-xl font-medium text-zinc-700 hover:bg-[#FAF8F5] hover:text-editorial-gold transition">Projects</button>
+            <button onclick="navigateTo('payment')" class="block w-full text-left py-3 px-4 rounded-xl font-medium text-zinc-700 hover:bg-[#FAF8F5] hover:text-editorial-gold transition">Payment</button>
+            <button onclick="navigateTo('contact')" class="block w-full text-left py-3 px-4 rounded-xl font-medium text-zinc-700 hover:bg-[#FAF8F5] hover:text-editorial-gold transition">Contact</button>
         </div>
     </nav>
 
     <main class="flex-grow flex flex-col">
 
         <!-- 1. HOME PAGE -->
-        <section id="home" class="page-view active flex-grow py-6 lg:py-10">
+        <section id="home" class="page-view active flex-grow py-8 lg:py-12 items-center">
             <div class="max-w-4xl mx-auto px-6 lg:px-12 w-full">
                 
                 <!-- Freelance Badge -->
@@ -124,15 +124,15 @@
                 <!-- Profile and About Me side-by-side with balanced vertical alignment -->
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center mb-6">
                     <div class="md:col-span-5 flex justify-center">
-                        <div class="bg-editorial-card p-2 rounded-2xl border border-editorial-border shadow-sm w-44 sm:w-52 md:w-56">
+                        <div class="bg-editorial-card p-3 rounded-2xl border border-editorial-border shadow-sm w-48 sm:w-56 md:w-64">
                             <img src="profile.png" alt="Profile" class="w-full h-auto object-cover rounded-xl" onerror="this.src='https://via.placeholder.com/600x800/EBE7DF/111111?text=Profile'">
                         </div>
                     </div>
                     
                     <div class="md:col-span-7 flex flex-col justify-center">
-                        <h2 class="text-lg md:text-xl font-bold text-editorial-dark mb-2">About Me</h2>
+                        <h2 class="text-xl md:text-2xl font-bold text-editorial-dark mb-3">About Me</h2>
                         
-                        <div class="space-y-2.5 text-zinc-600 leading-relaxed text-xs sm:text-sm mb-5">
+                        <div class="space-y-3 text-zinc-600 leading-relaxed text-xs sm:text-sm md:text-base mb-6">
                             <p>
                                 I am Suganya Shenbagam, a 3rd year Artificial Intelligence & Data Science student, passionate about building intelligent solutions and solving real-world problems. I enjoy working with AI/ML, data analytics, web technologies, and designing clean digital experiences.
                             </p>
@@ -143,10 +143,10 @@
 
                         <!-- Action Buttons -->
                         <div class="flex flex-wrap gap-3">
-                            <button onclick="navigateTo('projects')" class="bg-editorial-dark text-white px-4 py-2 rounded-xl font-semibold hover:bg-zinc-800 transition shadow-sm text-xs">
+                            <button onclick="navigateTo('projects')" class="bg-editorial-dark text-white px-5 py-2.5 rounded-xl font-semibold hover:bg-zinc-800 transition shadow-sm text-xs sm:text-sm">
                                 View My Work
                             </button>
-                            <button onclick="navigateTo('hire-me')" class="bg-editorial-card border border-editorial-border text-editorial-dark px-4 py-2 rounded-xl font-semibold hover:border-editorial-dark transition shadow-sm text-xs">
+                            <button onclick="navigateTo('hire-me')" class="bg-editorial-card border border-editorial-border text-editorial-dark px-5 py-2.5 rounded-xl font-semibold hover:border-editorial-dark transition shadow-sm text-xs sm:text-sm">
                                 Hire Me
                             </button>
                         </div>
@@ -154,17 +154,17 @@
                 </div>
 
                 <!-- Resume Card -->
-                <div class="bg-editorial-card border border-editorial-border rounded-2xl p-4 sm:p-5 shadow-sm w-full">
-                    <div class="flex items-center justify-between flex-wrap gap-3">
+                <div class="bg-editorial-card border border-editorial-border rounded-2xl p-6 shadow-sm w-full">
+                    <div class="flex items-center justify-between flex-wrap gap-4">
                         <div>
-                            <h3 class="text-sm font-bold text-editorial-dark mb-0.5 flex items-center">
-                                <i class="far fa-file-alt text-editorial-gold mr-2"></i> My Resume
+                            <h3 class="text-base font-bold text-editorial-dark mb-1 flex items-center">
+                                <i class="far fa-file-alt text-editorial-gold mr-2.5"></i> My Resume
                             </h3>
-                            <p class="text-zinc-500 text-xs">Academic background, technical skills, and experience.</p>
+                            <p class="text-zinc-500 text-xs sm:text-sm">Academic background, technical skills, and experience.</p>
                         </div>
-                        <div class="flex space-x-2">
-                            <a href="assets/cv.pdf" target="_blank" class="bg-editorial-dark text-white px-3.5 py-1.5 rounded-xl text-xs font-medium hover:bg-zinc-800 transition">View CV</a>
-                            <a href="assets/cv.pdf" download class="border border-editorial-border text-editorial-dark px-3.5 py-1.5 rounded-xl text-xs font-medium hover:border-editorial-dark transition">Download</a>
+                        <div class="flex space-x-3">
+                            <a href="assets/cv.pdf" target="_blank" class="bg-editorial-dark text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-medium hover:bg-zinc-800 transition">View CV</a>
+                            <a href="assets/cv.pdf" download class="border border-editorial-border text-editorial-dark px-4 py-2 rounded-xl text-xs sm:text-sm font-medium hover:border-editorial-dark transition">Download</a>
                         </div>
                     </div>
                 </div>
@@ -173,58 +173,173 @@
         </section>
 
         <!-- 2. SERVICES & SKILLS PAGE -->
-        <section id="services" class="page-view flex-grow py-16 lg:py-24">
-            <div class="max-w-5xl mx-auto px-6 lg:px-12 w-full">
+        <section id="services" class="page-view flex-grow py-12 lg:py-20">
+            <div class="max-w-5xl mx-auto px-6 lg:px-12 w-full space-y-16">
                 
-                <!-- Technical Capabilities First -->
-                <div class="mb-20">
-                    <div class="mb-8">
-                        <h2 class="text-3xl md:text-4xl font-bold text-editorial-dark mb-2">Technical Capabilities</h2>
-                        <p class="text-zinc-600 text-sm md:text-base">Core technologies and domains I specialize in.</p>
+                <!-- Technical Capabilities -->
+                <div>
+                    <div class="mb-6">
+                        <h2 class="text-2xl md:text-3xl font-bold text-editorial-dark mb-1">Technical Capabilities</h2>
+                        <p class="text-zinc-500 text-xs md:text-sm">Core technologies, frameworks, and tools I specialize in.</p>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border border-l-4 border-l-editorial-gold shadow-sm">
-                            <h3 class="font-bold text-editorial-dark mb-2 border-b border-editorial-border pb-2 text-base">AI & Machine Learning</h3>
-                            <p class="text-xs md:text-sm text-zinc-600 leading-relaxed">Neural Networks, Computer Vision, Predictive Modeling, Scikit-Learn, TensorFlow, PyTorch</p>
+                        <!-- AI & ML -->
+                        <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border shadow-sm flex flex-col justify-between">
+                            <div class="flex items-center space-x-3 mb-4">
+                                <span class="w-9 h-9 rounded-xl bg-amber-50 text-editorial-gold flex items-center justify-center font-bold text-base"><i class="fas fa-brain"></i></span>
+                                <h3 class="font-bold text-editorial-dark text-base">AI & Machine Learning</h3>
+                            </div>
+                            <div class="grid grid-cols-3 gap-2 py-2">
+                                <div class="bg-[#FAF8F5] border border-editorial-border rounded-xl p-2.5 flex flex-col items-center justify-center text-center">
+                                    <i class="fas fa-network-wired text-editorial-gold text-lg mb-1"></i>
+                                    <span class="text-[11px] font-semibold text-zinc-700">Neural Net</span>
+                                </div>
+                                <div class="bg-[#FAF8F5] border border-editorial-border rounded-xl p-2.5 flex flex-col items-center justify-center text-center">
+                                    <i class="fas fa-eye text-editorial-gold text-lg mb-1"></i>
+                                    <span class="text-[11px] font-semibold text-zinc-700">Computer Vision</span>
+                                </div>
+                                <div class="bg-[#FAF8F5] border border-editorial-border rounded-xl p-2.5 flex flex-col items-center justify-center text-center">
+                                    <i class="fas fa-chart-line text-editorial-gold text-lg mb-1"></i>
+                                    <span class="text-[11px] font-semibold text-zinc-700">Predictive Model</span>
+                                </div>
+                                <div class="bg-[#FAF8F5] border border-editorial-border rounded-xl p-2.5 flex flex-col items-center justify-center text-center">
+                                    <i class="fas fa-cogs text-editorial-gold text-lg mb-1"></i>
+                                    <span class="text-[11px] font-semibold text-zinc-700">Scikit-Learn</span>
+                                </div>
+                                <div class="bg-[#FAF8F5] border border-editorial-border rounded-xl p-2.5 flex flex-col items-center justify-center text-center">
+                                    <i class="fas fa-cube text-editorial-gold text-lg mb-1"></i>
+                                    <span class="text-[11px] font-semibold text-zinc-700">TensorFlow</span>
+                                </div>
+                                <div class="bg-[#FAF8F5] border border-editorial-border rounded-xl p-2.5 flex flex-col items-center justify-center text-center">
+                                    <i class="fas fa-fire text-editorial-gold text-lg mb-1"></i>
+                                    <span class="text-[11px] font-semibold text-zinc-700">PyTorch</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border border-l-4 border-l-zinc-800 shadow-sm">
-                            <h3 class="font-bold text-editorial-dark mb-2 border-b border-editorial-border pb-2 text-base">Programming</h3>
-                            <p class="text-xs md:text-sm text-zinc-600 leading-relaxed">Python, JavaScript, TypeScript, HTML, CSS, C++</p>
+
+                        <!-- Programming -->
+                        <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border shadow-sm flex flex-col justify-between">
+                            <div class="flex items-center space-x-3 mb-4">
+                                <span class="w-9 h-9 rounded-xl bg-zinc-100 text-zinc-800 flex items-center justify-center font-bold text-base"><i class="fas fa-terminal"></i></span>
+                                <h3 class="font-bold text-editorial-dark text-base">Programming Languages</h3>
+                            </div>
+                            <div class="grid grid-cols-3 gap-2 py-2">
+                                <div class="bg-[#FAF8F5] border border-editorial-border rounded-xl p-2.5 flex flex-col items-center justify-center text-center">
+                                    <i class="fab fa-python text-blue-600 text-lg mb-1"></i>
+                                    <span class="text-[11px] font-semibold text-zinc-700">Python</span>
+                                </div>
+                                <div class="bg-[#FAF8F5] border border-editorial-border rounded-xl p-2.5 flex flex-col items-center justify-center text-center">
+                                    <i class="fab fa-js text-amber-500 text-lg mb-1"></i>
+                                    <span class="text-[11px] font-semibold text-zinc-700">JavaScript</span>
+                                </div>
+                                <div class="bg-[#FAF8F5] border border-editorial-border rounded-xl p-2.5 flex flex-col items-center justify-center text-center">
+                                    <i class="fab fa-jsquare text-blue-500 text-lg mb-1"></i>
+                                    <span class="text-[11px] font-semibold text-zinc-700">TypeScript</span>
+                                </div>
+                                <div class="bg-[#FAF8F5] border border-editorial-border rounded-xl p-2.5 flex flex-col items-center justify-center text-center">
+                                    <i class="fab fa-html5 text-orange-600 text-lg mb-1"></i>
+                                    <span class="text-[11px] font-semibold text-zinc-700">HTML / CSS</span>
+                                </div>
+                                <div class="bg-[#FAF8F5] border border-editorial-border rounded-xl p-2.5 flex flex-col items-center justify-center text-center">
+                                    <i class="fas fa-code text-indigo-500 text-lg mb-1"></i>
+                                    <span class="text-[11px] font-semibold text-zinc-700">C++</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border border-l-4 border-l-zinc-500 shadow-sm">
-                            <h3 class="font-bold text-editorial-dark mb-2 border-b border-editorial-border pb-2 text-base">Web Development (Full-Stack)</h3>
-                            <p class="text-xs md:text-sm text-zinc-600 leading-relaxed">Next.js, React, Node.js, Tailwind CSS, API Integration</p>
+
+                        <!-- Web Development -->
+                        <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border shadow-sm flex flex-col justify-between">
+                            <div class="flex items-center space-x-3 mb-4">
+                                <span class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-base"><i class="fas fa-globe"></i></span>
+                                <h3 class="font-bold text-editorial-dark text-base">Web Development (Full-Stack)</h3>
+                            </div>
+                            <div class="grid grid-cols-3 gap-2 py-2">
+                                <div class="bg-[#FAF8F5] border border-editorial-border rounded-xl p-2.5 flex flex-col items-center justify-center text-center">
+                                    <i class="fas fa-layer-group text-zinc-800 text-lg mb-1"></i>
+                                    <span class="text-[11px] font-semibold text-zinc-700">Next.js</span>
+                                </div>
+                                <div class="bg-[#FAF8F5] border border-editorial-border rounded-xl p-2.5 flex flex-col items-center justify-center text-center">
+                                    <i class="fab fa-react text-cyan-500 text-lg mb-1"></i>
+                                    <span class="text-[11px] font-semibold text-zinc-700">React</span>
+                                </div>
+                                <div class="bg-[#FAF8F5] border border-editorial-border rounded-xl p-2.5 flex flex-col items-center justify-center text-center">
+                                    <i class="fab fa-node-js text-emerald-600 text-lg mb-1"></i>
+                                    <span class="text-[11px] font-semibold text-zinc-700">Node.js</span>
+                                </div>
+                                <div class="bg-[#FAF8F5] border border-editorial-border rounded-xl p-2.5 flex flex-col items-center justify-center text-center">
+                                    <i class="fas fa-wind text-sky-400 text-lg mb-1"></i>
+                                    <span class="text-[11px] font-semibold text-zinc-700">Tailwind</span>
+                                </div>
+                                <div class="bg-[#FAF8F5] border border-editorial-border rounded-xl p-2.5 flex flex-col items-center justify-center text-center">
+                                    <i class="fas fa-plug text-amber-500 text-lg mb-1"></i>
+                                    <span class="text-[11px] font-semibold text-zinc-700">REST APIs</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border border-l-4 border-l-editorial-gold shadow-sm">
-                            <h3 class="font-bold text-editorial-dark mb-2 border-b border-editorial-border pb-2 text-base">Data Analytics & Databases</h3>
-                            <p class="text-xs md:text-sm text-zinc-600 leading-relaxed">Pandas, NumPy, Matplotlib, SQL, PostgreSQL, Supabase, MongoDB</p>
+
+                        <!-- Data Analytics & Databases -->
+                        <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border shadow-sm flex flex-col justify-between">
+                            <div class="flex items-center space-x-3 mb-4">
+                                <span class="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-base"><i class="fas fa-database"></i></span>
+                                <h3 class="font-bold text-editorial-dark text-base">Data Analytics & Databases</h3>
+                            </div>
+                            <div class="grid grid-cols-3 gap-2 py-2">
+                                <div class="bg-[#FAF8F5] border border-editorial-border rounded-xl p-2.5 flex flex-col items-center justify-center text-center">
+                                    <i class="fas fa-table text-emerald-600 text-lg mb-1"></i>
+                                    <span class="text-[11px] font-semibold text-zinc-700">Pandas / NumPy</span>
+                                </div>
+                                <div class="bg-[#FAF8F5] border border-editorial-border rounded-xl p-2.5 flex flex-col items-center justify-center text-center">
+                                    <i class="fas fa-chart-bar text-purple-600 text-lg mb-1"></i>
+                                    <span class="text-[11px] font-semibold text-zinc-700">Matplotlib</span>
+                                </div>
+                                <div class="bg-[#FAF8F5] border border-editorial-border rounded-xl p-2.5 flex flex-col items-center justify-center text-center">
+                                    <i class="fas fa-server text-indigo-600 text-lg mb-1"></i>
+                                    <span class="text-[11px] font-semibold text-zinc-700">SQL / Postgres</span>
+                                </div>
+                                <div class="bg-[#FAF8F5] border border-editorial-border rounded-xl p-2.5 flex flex-col items-center justify-center text-center">
+                                    <i class="fas fa-bolt text-amber-600 text-lg mb-1"></i>
+                                    <span class="text-[11px] font-semibold text-zinc-700">Supabase</span>
+                                </div>
+                                <div class="bg-[#FAF8F5] border border-editorial-border rounded-xl p-2.5 flex flex-col items-center justify-center text-center">
+                                    <i class="fas fa-leaf text-green-600 text-lg mb-1"></i>
+                                    <span class="text-[11px] font-semibold text-zinc-700">MongoDB</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Streamlined Services Section -->
+                <!-- Professional Services -->
                 <div>
-                    <div class="mb-8">
-                        <h2 class="text-3xl md:text-4xl font-bold text-editorial-dark mb-2">Services</h2>
-                        <p class="text-zinc-600 text-sm md:text-base">Professional solutions tailored for modern digital needs.</p>
+                    <div class="mb-6">
+                        <h2 class="text-2xl md:text-3xl font-bold text-editorial-dark mb-1">Services</h2>
+                        <p class="text-zinc-500 text-xs md:text-sm">Professional solutions tailored for modern digital needs.</p>
                     </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="bg-editorial-card p-6 md:p-8 rounded-2xl border border-editorial-border hover:border-editorial-gold transition shadow-sm flex flex-col">
-                            <i class="fas fa-brain text-2xl text-editorial-gold mb-6"></i>
-                            <h3 class="text-lg font-bold mb-3 text-editorial-dark">AI & Machine Learning</h3>
-                            <p class="text-zinc-600 text-xs md:text-sm leading-relaxed">Develop intelligent applications, custom ML models, computer vision pipelines, and automated workflows.</p>
+                        <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border hover:border-editorial-gold transition shadow-sm flex flex-col justify-between">
+                            <div>
+                                <div class="text-editorial-gold text-2xl mb-4"><i class="fas fa-brain"></i></div>
+                                <h3 class="text-base font-bold mb-2 text-editorial-dark">AI & Machine Learning</h3>
+                                <p class="text-zinc-600 text-xs leading-relaxed">Develop intelligent applications, custom ML models, computer vision pipelines, and automated workflows.</p>
+                            </div>
                         </div>
-                        <div class="bg-editorial-card p-6 md:p-8 rounded-2xl border border-editorial-border hover:border-editorial-gold transition shadow-sm flex flex-col">
-                            <i class="fas fa-code text-2xl text-editorial-gold mb-6"></i>
-                            <h3 class="text-lg font-bold mb-3 text-editorial-dark">Full-Stack / Web Apps / Designing / Frontend / Backend</h3>
-                            <p class="text-zinc-600 text-xs md:text-sm leading-relaxed">Build complete web applications with tailored UI/UX designing, responsive frontend development, and robust backend server and database architecture.</p>
+
+                        <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border hover:border-editorial-gold transition shadow-sm flex flex-col justify-between">
+                            <div>
+                                <div class="text-editorial-gold text-2xl mb-4"><i class="fas fa-code"></i></div>
+                                <h3 class="text-base font-bold mb-2 text-editorial-dark">Full-Stack / Web Apps / Designing / Frontend / Backend</h3>
+                                <p class="text-zinc-600 text-xs leading-relaxed">Build complete web applications with tailored UI/UX designing, responsive frontend development, and robust backend server and database architecture.</p>
+                            </div>
                         </div>
-                        <div class="bg-editorial-card p-6 md:p-8 rounded-2xl border border-editorial-border hover:border-editorial-gold transition shadow-sm flex flex-col">
-                            <i class="fas fa-chart-pie text-2xl text-editorial-gold mb-6"></i>
-                            <h3 class="text-lg font-bold mb-3 text-editorial-dark">Data Analytics & Dashboards</h3>
-                            <p class="text-zinc-600 text-xs md:text-sm leading-relaxed">Transform raw data into clear, actionable insights through processing pipelines, automated reporting, and interactive KPI dashboards.</p>
+
+                        <div class="bg-editorial-card p-6 rounded-2xl border border-editorial-border hover:border-editorial-gold transition shadow-sm flex flex-col justify-between">
+                            <div>
+                                <div class="text-editorial-gold text-2xl mb-4"><i class="fas fa-chart-pie"></i></div>
+                                <h3 class="text-base font-bold mb-2 text-editorial-dark">Data Analytics & Dashboards</h3>
+                                <p class="text-zinc-600 text-xs leading-relaxed">Transform raw data into clear, actionable insights through processing pipelines, automated reporting, and interactive KPI dashboards.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -459,20 +574,20 @@
                 
                 <div class="flex justify-center gap-4 md:gap-5 mb-12 flex-wrap">
                     
-                    <a href="mailto:suganyashenbagam@gmail.com" class="w-14 h-14 md:w-16 md:h-16 bg-editorial-card border border-editorial-border hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-lg md:text-xl shadow-sm transition-all hover:-translate-y-1">
+                    <a href="mailto:suganyashenbagam@gmail.com" class="w-14 h-14 md:w-16 md:h-16 bg-editorial-card border border-editorial-border hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-lg md:text-xl shadow-sm transition-all hover:-translate-y-1" title="Email">
                         <i class="fas fa-envelope"></i>
                     </a>
                     
-                    <a href="https://www.linkedin.com/in/shruthi-s-5b929b42b?utm_source=share_via&utm_content=profile&utm_medium=member_android" class="w-14 h-14 md:w-16 md:h-16 bg-editorial-card border border-editorial-border hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-lg md:text-xl shadow-sm transition-all hover:-translate-y-1">
+                    <a href="https://www.linkedin.com/in/shruthi-s-5b929b42b?utm_source=share_via&utm_content=profile&utm_medium=member_android" class="w-14 h-14 md:w-16 md:h-16 bg-editorial-card border border-editorial-border hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-lg md:text-xl shadow-sm transition-all hover:-translate-y-1" title="LinkedIn">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
 
-                    <a href="https://github.com/suganyas2382006-sketch" class="w-14 h-14 md:w-16 md:h-16 bg-editorial-card border border-editorial-border hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-lg md:text-xl shadow-sm transition-all hover:-translate-y-1">
+                    <a href="https://github.com/suganyas2382006-sketch" class="w-14 h-14 md:w-16 md:h-16 bg-editorial-card border border-editorial-border hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-lg md:text-xl shadow-sm transition-all hover:-translate-y-1" title="GitHub">
                         <i class="fab fa-github"></i>
                     </a>
 
-                    <a href="https://wa.me/qr/QBOT5I4XWEI3L1" class="w-14 h-14 md:w-16 md:h-16 bg-editorial-card border border-editorial-border hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-lg md:text-xl shadow-sm transition-all hover:-translate-y-1">
-                        <i class="fas fa-whatsapp"></i>
+                    <a href="https://wa.me/qr/QBOT5I4XWEI3L1" class="w-14 h-14 md:w-16 md:h-16 bg-editorial-card border border-editorial-border hover:bg-editorial-dark hover:text-white text-editorial-dark rounded-2xl flex items-center justify-center text-lg md:text-xl shadow-sm transition-all hover:-translate-y-1" title="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
                     </a>
 
                 </div>
