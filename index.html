@@ -126,26 +126,30 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
-        /* ===== HERO SECTION LAYOUT ===== */
+        /* ===== EXACT MATCH HERO SECTION LAYOUT (PORTRAIT CENTERED) ===== */
         .home-container {
-            max-width: 1100px;
+            max-width: 720px;
             margin: 0 auto;
-            padding: clamp(20px, 4vw, 40px) clamp(16px, 3vw, 24px) clamp(40px, 6vw, 60px);
+            padding: clamp(24px, 5vw, 48px) clamp(16px, 4vw, 24px) clamp(48px, 8vw, 80px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
 
         .home-badge {
             display: inline-flex;
             align-items: center;
-            align-self: flex-start;
             gap: 8px;
             background: var(--card-bg);
-            padding: 6px 16px;
+            padding: 6px 18px;
             border-radius: 50px;
             font-size: 13px;
             font-weight: 500;
             color: var(--text-muted);
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-            margin-bottom: 16px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
             animation: badgeEntrance 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             transition: var(--transition-smooth);
         }
@@ -176,158 +180,54 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .hero-content-box {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: clamp(30px, 5vw, 60px);
-            margin-bottom: clamp(40px, 6vw, 64px);
-        }
-
-        .hero-text-box {
-            flex: 1 1 500px;
-            max-width: 580px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .hero-text-box h1 {
-            font-size: clamp(32px, 4.5vw, 46px);
+        .hero-title {
+            font-size: clamp(30px, 4.5vw, 40px);
             font-weight: 800;
             color: var(--text-dark);
             line-height: 1.15;
-            margin-bottom: 8px;
-            animation: textEntrance 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+            margin-bottom: 6px;
         }
 
-        .hero-text-box h2 {
-            font-size: clamp(17px, 2.2vw, 20px);
+        .hero-subtitle {
+            font-size: clamp(15px, 2vw, 17px);
             font-weight: 600;
             color: var(--gold);
-            margin-bottom: 16px;
-            animation: textEntrance 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+            margin-bottom: 28px;
         }
 
-        .hero-text-box p {
-            font-size: clamp(14px, 1.5vw, 15px);
-            color: var(--text-muted);
-            line-height: 1.7;
-            margin-bottom: 24px;
-            max-width: 500px;
-            animation: textEntrance 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
-        }
-
-        @keyframes textEntrance {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            animation: textEntrance 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
-        }
-
-        .home-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            transition: var(--transition-smooth);
-            text-decoration: none;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .home-btn-dark {
-            background: var(--text-dark);
-            color: #ffffff;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .home-btn-dark:hover {
-            background: #2b2b2b;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-        }
-
-        .home-btn-dark:active {
-            transform: translateY(0);
-        }
-
-        .home-btn-light {
-            background: var(--card-bg);
-            color: var(--text-dark);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-            border: 1px solid var(--border-color);
-        }
-
-        .home-btn-light:hover {
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-            transform: translateY(-2px);
-            background: #fdfdfd;
-        }
-
-        .home-btn-light:active {
-            transform: translateY(0);
-        }
-
-        /* ===== PHOTO BORDER & AMBIENT EFFECTS ===== */
+        /* Photo Frame Match */
         .hero-image-box {
-            flex: 0 0 auto;
             position: relative;
-            padding: 6px;
+            margin-bottom: 28px;
+            padding: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .hero-image-box::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            border-radius: 24px;
-            background: radial-gradient(circle, rgba(201, 168, 76, 0.25) 0%, rgba(201, 168, 76, 0.04) 60%, transparent 80%);
-            filter: blur(12px);
-            z-index: 0;
-            animation: ambientPulse 6s ease-in-out infinite alternate;
-        }
-
-        @keyframes ambientPulse {
-            0% { opacity: 0.5; transform: scale(0.98); }
-            100% { opacity: 0.85; transform: scale(1.02); }
         }
 
         .photo-border-wrapper {
             position: relative;
             z-index: 1;
-            padding: 2px;
-            border-radius: 18px;
-            background: var(--border-color);
-            overflow: hidden;
+            padding: 3px;
+            border-radius: 24px;
+            background: var(--card-bg);
             display: inline-block;
-            box-shadow: var(--shadow-subtle);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
+            border: 1px solid var(--border-color);
             transition: var(--transition-smooth);
         }
 
         .photo-border-wrapper:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(201, 168, 76, 0.18), 0 6px 16px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 16px 36px rgba(201, 168, 76, 0.15), 0 6px 16px rgba(0, 0, 0, 0.06);
         }
 
         .photo-inner-container {
             position: relative;
-            width: clamp(160px, 18vw, 205px);
-            aspect-ratio: 605 / 1035;
-            background: var(--card-bg);
-            border-radius: 16px;
+            width: clamp(200px, 28vw, 240px);
+            aspect-ratio: 4 / 5;
+            background: #eae6df;
+            border-radius: 20px;
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -337,29 +237,89 @@
         .photo-inner-container img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            border-radius: 16px;
+            object-fit: cover;
+            object-position: center top;
+            border-radius: 20px;
             display: block;
             transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .photo-border-wrapper:hover .photo-inner-container img {
             transform: scale(1.02);
-            filter: contrast(102%) brightness(101%);
         }
 
-        /* ===== ABOUT ME SECTION ===== */
+        .hero-description {
+            font-size: clamp(13px, 1.5vw, 14.5px);
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 32px;
+            max-width: 580px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+            max-width: 360px;
+            margin-bottom: 54px;
+        }
+
+        .home-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 13px 24px;
+            border-radius: 14px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+            width: 100%;
+        }
+
+        .home-btn-dark {
+            background: var(--text-dark);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+        }
+
+        .home-btn-dark:hover {
+            background: #2b2b2b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+        }
+
+        .home-btn-light {
+            background: var(--card-bg);
+            color: var(--text-dark);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--border-color);
+        }
+
+        .home-btn-light:hover {
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+            background: #fdfdfd;
+        }
+
+        /* ===== ABOUT ME CARD SECTION (MATCHING IMAGE) ===== */
         .about-card-box {
             background: var(--card-bg);
-            border-radius: 20px;
-            padding: clamp(30px, 4.5vw, 48px);
-            box-shadow: var(--shadow-subtle);
+            border-radius: 24px;
+            padding: clamp(28px, 5vw, 44px) clamp(20px, 4vw, 40px);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.03);
             border: 1px solid var(--border-color);
+            text-align: left;
+            width: 100%;
             transition: var(--transition-smooth);
         }
 
         .about-card-box:hover {
-            box-shadow: var(--shadow-hover);
+            box-shadow: 0 10px 32px rgba(0, 0, 0, 0.05);
         }
 
         .section-tagline {
@@ -368,10 +328,10 @@
             gap: 10px;
             font-size: 11px;
             font-weight: 700;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             color: var(--gold);
             text-transform: uppercase;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .section-tagline::before {
@@ -388,34 +348,36 @@
         }
 
         .about-card-box h2 {
-            font-size: clamp(26px, 3.2vw, 34px);
+            font-size: clamp(24px, 3vw, 30px);
             font-weight: 800;
             color: var(--text-dark);
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .about-card-box p {
-            font-size: clamp(14px, 1.5vw, 15px);
+            font-size: clamp(13.5px, 1.4vw, 14.5px);
             color: var(--text-muted);
             line-height: 1.75;
-            margin-bottom: 14px;
-            max-width: 720px;
+            margin-bottom: 16px;
         }
 
         .about-card-divider {
             height: 1px;
             background: var(--border-color);
-            margin: 28px 0;
+            margin: 32px 0;
         }
 
         .stats-wrap {
             display: flex;
-            gap: clamp(30px, 6vw, 60px);
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 24px;
+            align-items: center;
+            text-align: center;
         }
 
         .stat-block {
             transition: var(--transition-smooth);
+            width: 100%;
         }
 
         .stat-block:hover {
@@ -423,15 +385,10 @@
         }
 
         .stat-block h3 {
-            font-size: clamp(28px, 3.5vw, 34px);
+            font-size: clamp(26px, 3.2vw, 32px);
             font-weight: 800;
             color: var(--text-dark);
             margin-bottom: 2px;
-            transition: color 0.3s ease;
-        }
-
-        .stat-block:hover h3 {
-            color: var(--gold);
         }
 
         .stat-block h3.gold {
@@ -442,60 +399,6 @@
             font-size: 13px;
             color: #999999;
             margin-bottom: 0;
-        }
-
-        /* ===== MOBILE & TABLET RESPONSIVE REORDERING ===== */
-        @media (max-width: 860px) {
-            .hero-content-box {
-                flex-direction: column;
-                text-align: center;
-                gap: 24px;
-                margin-bottom: 40px;
-            }
-            .hero-image-box {
-                order: -1;
-                margin-bottom: 4px;
-            }
-            .home-badge {
-                align-self: center;
-            }
-            .hero-text-box {
-                max-width: 100%;
-            }
-            .hero-text-box p {
-                max-width: 100%;
-            }
-            .hero-actions {
-                justify-content: center;
-            }
-            .photo-inner-container {
-                width: 170px;
-            }
-            .stats-wrap {
-                justify-content: space-around;
-                gap: 20px;
-            }
-            .stat-block {
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .photo-inner-container {
-                width: 150px;
-            }
-            .hero-actions {
-                flex-direction: column;
-                width: 100%;
-            }
-            .home-btn {
-                width: 100%;
-                justify-content: center;
-            }
-            .stats-wrap {
-                flex-direction: column;
-                gap: 16px;
-            }
         }
     </style>
 </head>
@@ -535,57 +438,51 @@
 
     <main class="flex-grow flex flex-col">
 
-        <!-- 1. HOME PAGE -->
+        <!-- 1. HOME PAGE (PIXEL-PERFECT MATCH TO DESIGN) -->
         <section id="home" class="page-view active flex-grow">
             <div class="home-container">
 
-                <!-- Hero Section -->
-                <div class="hero-content-box">
-                    <div class="hero-text-box">
-                        <div class="home-badge">Available for Freelance Projects</div>
+                <!-- Freelance Badge -->
+                <div class="home-badge">Available for Freelance Projects</div>
 
-                        <h1>Suganya Shenbagam</h1>
-                        <h2>Artificial Intelligence &amp; Data Science Student</h2>
-                        <p>
-                            Building pragmatic machine learning pipelines, predictive analytics
-                            engines, and elegant web solutions designed to translate raw data
-                            into clear business outcomes.
-                        </p>
-                        <div class="hero-actions">
-                            <button onclick="navigateTo('projects')" class="home-btn home-btn-dark">
-                                View My Work &rarr;
-                            </button>
-                            <button onclick="navigateTo('contact')" class="home-btn home-btn-light">
-                                Hire Me
-                            </button>
-                        </div>
-                    </div>
+                <!-- Name & Title -->
+                <h1 class="hero-title">Suganya Shenbagam</h1>
+                <h2 class="hero-subtitle">Artificial Intelligence &amp; Data Science Student</h2>
 
-                    <!-- Photo with Ratio, Ambient Glow & Animated Gradient Border -->
-                    <div class="hero-image-box">
-                        <div class="photo-border-wrapper">
-                            <div class="photo-inner-container">
-                                <img src="profile.png" alt="Suganya Shenbagam" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'" />
-                            </div>
+                <!-- Profile Photo Card -->
+                <div class="hero-image-box">
+                    <div class="photo-border-wrapper">
+                        <div class="photo-inner-container">
+                            <img src="profile.png" alt="Suganya Shenbagam" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'" />
                         </div>
                     </div>
                 </div>
 
-                <!-- About Me Section -->
+                <!-- Intro Description -->
+                <p class="hero-description">
+                    Building pragmatic machine learning pipelines, predictive analytics engines, and elegant web solutions designed to translate raw data into clear business outcomes.
+                </p>
+
+                <!-- Action Buttons -->
+                <div class="hero-actions">
+                    <button onclick="navigateTo('projects')" class="home-btn home-btn-dark">
+                        View My Work &rarr;
+                    </button>
+                    <button onclick="navigateTo('contact')" class="home-btn home-btn-light">
+                        Hire Me
+                    </button>
+                </div>
+
+                <!-- About Me Background Card Section -->
                 <div class="about-card-box reveal">
                     <div class="section-tagline">Background</div>
                     <h2>About Me</h2>
 
                     <p>
-                        I am a 3rd-year Artificial Intelligence &amp; Data Science student
-                        dedicated to bridging mathematical rigor and software engineering.
-                        My interests center on neural networks, computer vision, and building
-                        clean, responsive data interfaces.
+                        I am a 3rd-year Artificial Intelligence &amp; Data Science student dedicated to bridging mathematical rigor and software engineering. My interests center on neural networks, computer vision, and building clean, responsive data interfaces.
                     </p>
                     <p>
-                        Whether automating large-scale reporting pipelines or architecting
-                        diagnostic deep learning models, I approach every project with an
-                        emphasis on clarity, high code quality, and measurable impact.
+                        Whether automating large-scale reporting pipelines or architecting diagnostic deep learning models, I approach every project with an emphasis on clarity, high code quality, and measurable impact.
                     </p>
 
                     <div class="about-card-divider"></div>
@@ -614,12 +511,12 @@
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 w-full space-y-16">
                 
                 <div>
-                    <div class="reveal mb-10">
+                    <div class="reveal mb-10 text-left">
                         <h2 class="text-3xl sm:text-4xl font-bold text-editorial-dark mb-2">Technical Capabilities</h2>
                         <p class="text-zinc-500 text-base">Core domains and technical stack expertise.</p>
                     </div>
 
-                    <div class="space-y-10">
+                    <div class="space-y-10 text-left">
                         <!-- AI & ML -->
                         <div class="reveal group">
                             <div class="flex items-center gap-4 mb-4">
@@ -692,12 +589,12 @@
                 </div>
 
                 <div>
-                    <div class="reveal mb-10">
+                    <div class="reveal mb-10 text-left">
                         <h2 class="text-3xl sm:text-4xl font-bold text-editorial-dark mb-2">Services</h2>
                         <p class="text-zinc-500 text-base">Professional solutions tailored for modern digital needs.</p>
                     </div>
                     
-                    <div class="space-y-8">
+                    <div class="space-y-8 text-left">
                         <div class="reveal group border-b border-[#eae6df] pb-6">
                             <div class="flex items-start gap-5">
                                 <div class="w-12 h-12 rounded-full bg-editorial-gold text-white flex items-center justify-center text-xl flex-shrink-0">
@@ -741,7 +638,7 @@
 
         <!-- 3. PROJECTS PAGE -->
         <section id="projects" class="page-view flex-grow">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 w-full">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 w-full text-left">
                 <div class="reveal max-w-2xl mb-10">
                     <h2 class="text-3xl sm:text-4xl font-bold text-editorial-dark mb-2">Featured Projects</h2>
                     <p class="text-zinc-600 text-sm sm:text-base">AI, analytics, automation, and development solutions.</p>
@@ -753,7 +650,7 @@
 
         <!-- 4. PAYMENT PAGE -->
         <section id="payment" class="page-view flex-grow">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 w-full">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 w-full text-left">
                 <div class="reveal bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col md:flex-row border border-[#eae6df]">
                     
                     <div class="p-6 sm:p-8 md:w-1/2 border-b md:border-b-0 md:border-r border-[#eae6df] flex flex-col justify-center">
@@ -817,10 +714,10 @@
                             </div>
                         </div>
                         <div class="flex gap-2.5 w-full sm:w-auto">
-                            <a href="assets/cv.pdf" target="_blank" class="flex-1 sm:flex-none bg-editorial-dark text-white px-4.5 py-2.5 rounded-xl text-sm font-medium hover:bg-zinc-800 transition text-center">
+                            <a href="assets/cv.pdf" target="_blank" class="flex-1 sm:flex-none bg-editorial-dark text-white px-4.5 py-2.5 rounded-xl text-sm font-medium hover:bg-zinc-800 transition text-center shadow-sm">
                                 View CV
                             </a>
-                            <a href="assets/cv.pdf" download class="flex-1 sm:flex-none border border-[#eae6df] text-editorial-dark px-4.5 py-2.5 rounded-xl text-sm font-medium hover:border-editorial-dark hover:bg-[#f4f2ed] transition text-center">
+                            <a href="assets/cv.pdf" download class="flex-1 sm:flex-none bg-white border border-[#eae6df] text-editorial-dark px-4.5 py-2.5 rounded-xl text-sm font-medium hover:border-editorial-dark hover:bg-[#f4f2ed] transition text-center shadow-sm">
                                 Download
                             </a>
                         </div>
@@ -860,7 +757,7 @@
                     <i class="fas fa-times text-xs"></i>
                 </button>
             </div>
-            <div class="p-4 sm:p-6" id="modal-content"></div>
+            <div class="p-4 sm:p-6 text-left" id="modal-content"></div>
         </div>
     </div>
 
