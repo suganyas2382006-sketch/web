@@ -306,7 +306,7 @@
             background: #fdfdfd;
         }
 
-        /* ===== ABOUT ME CARD SECTION (MATCHING IMAGE) ===== */
+        /* ===== ABOUT ME CARD SECTION ===== */
         .about-card-box {
             background: var(--card-bg);
             border-radius: 24px;
@@ -438,18 +438,15 @@
 
     <main class="flex-grow flex flex-col">
 
-        <!-- 1. HOME PAGE (PIXEL-PERFECT MATCH TO DESIGN) -->
+        <!-- 1. HOME PAGE -->
         <section id="home" class="page-view active flex-grow">
             <div class="home-container">
 
-                <!-- Freelance Badge -->
                 <div class="home-badge">Available for Freelance Projects</div>
 
-                <!-- Name & Title -->
                 <h1 class="hero-title">Suganya Shenbagam</h1>
                 <h2 class="hero-subtitle">Artificial Intelligence &amp; Data Science Student</h2>
 
-                <!-- Profile Photo Card -->
                 <div class="hero-image-box">
                     <div class="photo-border-wrapper">
                         <div class="photo-inner-container">
@@ -458,12 +455,10 @@
                     </div>
                 </div>
 
-                <!-- Intro Description -->
                 <p class="hero-description">
                     Building pragmatic machine learning pipelines, predictive analytics engines, and elegant web solutions designed to translate raw data into clear business outcomes.
                 </p>
 
-                <!-- Action Buttons -->
                 <div class="hero-actions">
                     <button onclick="navigateTo('projects')" class="home-btn home-btn-dark">
                         View My Work &rarr;
@@ -473,7 +468,6 @@
                     </button>
                 </div>
 
-                <!-- About Me Background Card Section -->
                 <div class="about-card-box reveal">
                     <div class="section-tagline">Background</div>
                     <h2>About Me</h2>
@@ -517,7 +511,6 @@
                     </div>
 
                     <div class="space-y-10 text-left">
-                        <!-- AI & ML -->
                         <div class="reveal group">
                             <div class="flex items-center gap-4 mb-4">
                                 <div class="w-10 h-10 rounded-full bg-editorial-gold text-white flex items-center justify-center text-base">
@@ -535,7 +528,6 @@
                             </div>
                         </div>
 
-                        <!-- Programming Languages -->
                         <div class="reveal group" style="transition-delay: 80ms;">
                             <div class="flex items-center gap-4 mb-4">
                                 <div class="w-10 h-10 rounded-full bg-zinc-800 text-white flex items-center justify-center text-base">
@@ -552,7 +544,6 @@
                             </div>
                         </div>
 
-                        <!-- Data & Analytics -->
                         <div class="reveal group" style="transition-delay: 160ms;">
                             <div class="flex items-center gap-4 mb-4">
                                 <div class="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center text-base">
@@ -569,7 +560,6 @@
                             </div>
                         </div>
 
-                        <!-- Web Development -->
                         <div class="reveal group" style="transition-delay: 240ms;">
                             <div class="flex items-center gap-4 mb-4">
                                 <div class="w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center text-base">
@@ -699,7 +689,13 @@
             <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-20 w-full text-center">
                 <div class="reveal mb-10">
                     <h2 class="text-3xl sm:text-4xl font-bold text-editorial-dark mb-3">Let's Work Together</h2>
-                    <p class="text-zinc-600 text-sm sm:text-base max-w-md mx-auto">Have a project, collaboration, or just want to say hello? I'd love to hear from you.</p>
+                    <p class="text-zinc-600 text-sm sm:text-base max-w-md mx-auto mb-6">Have a project, collaboration, or just want to say hello? I'd love to hear from you.</p>
+                    
+                    <!-- Start Project Action Button -->
+                    <button onclick="openStartProjectModal()" class="inline-flex items-center justify-center gap-2 bg-editorial-gold hover:bg-editorial-dark text-white font-semibold py-3.5 px-8 rounded-xl shadow-md transition-all duration-300 hover:-translate-y-0.5">
+                        <i class="fas fa-rocket text-sm"></i>
+                        <span>Start Project</span>
+                    </button>
                 </div>
                 
                 <div class="reveal bg-white border border-[#eae6df] rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow duration-300 mb-10 text-left">
@@ -748,7 +744,7 @@
         <p>&copy; <span id="year"></span> Suganya Shenbagam. All rights reserved.</p>
     </footer>
 
-    <!-- Project Modal -->
+    <!-- Project Details Modal -->
     <div id="project-modal" class="fixed inset-0 z-50 hidden modal-backdrop flex items-center justify-center p-4">
         <div class="bg-white rounded-2xl shadow-2xl w-full max-w-xl max-h-[85vh] overflow-y-auto border border-[#eae6df] transform transition-all scale-95 opacity-0" id="modal-panel">
             <div class="sticky top-0 bg-white/95 backdrop-blur-sm border-b border-[#eae6df] p-4 sm:p-5 flex justify-between items-center z-10">
@@ -758,6 +754,72 @@
                 </button>
             </div>
             <div class="p-4 sm:p-6 text-left" id="modal-content"></div>
+        </div>
+    </div>
+
+    <!-- Start Project Web3Forms Modal -->
+    <div id="start-project-modal" class="fixed inset-0 z-50 hidden modal-backdrop flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-xl max-h-[90vh] overflow-y-auto border border-[#eae6df] transform transition-all scale-95 opacity-0" id="start-project-panel">
+            <div class="sticky top-0 bg-white/95 backdrop-blur-sm border-b border-[#eae6df] p-4 sm:p-5 flex justify-between items-center z-10">
+                <div>
+                    <h3 class="text-base sm:text-lg font-bold text-editorial-dark">Start a Project</h3>
+                    <p class="text-xs text-zinc-500">Fill in the details to request a new project quote.</p>
+                </div>
+                <button onclick="closeStartProjectModal()" class="w-7 h-7 rounded-full bg-[#f4f2ed] hover:bg-zinc-200 flex items-center justify-center text-zinc-500 hover:text-editorial-dark transition">
+                    <i class="fas fa-times text-xs"></i>
+                </button>
+            </div>
+            <div class="p-4 sm:p-6 text-left">
+                <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+                    <input type="hidden" name="access_key" value="98ff650b-d44e-4510-96b9-66420995077d">
+                    <input type="hidden" name="subject" value="New Project Inquiry - Portfolio">
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                    <div>
+                        <label class="block text-xs font-semibold text-editorial-dark uppercase tracking-wider mb-1.5">Full Name *</label>
+                        <input type="text" name="name" required placeholder="John Doe" class="w-full bg-[#f4f2ed] border border-[#eae6df] rounded-xl px-4 py-2.5 text-sm text-editorial-dark focus:outline-none focus:border-editorial-dark transition">
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-editorial-dark uppercase tracking-wider mb-1.5">Email Address *</label>
+                            <input type="email" name="email" required placeholder="john@example.com" class="w-full bg-[#f4f2ed] border border-[#eae6df] rounded-xl px-4 py-2.5 text-sm text-editorial-dark focus:outline-none focus:border-editorial-dark transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-editorial-dark uppercase tracking-wider mb-1.5">Contact Number *</label>
+                            <input type="tel" name="phone" required placeholder="+91 98765 43210" class="w-full bg-[#f4f2ed] border border-[#eae6df] rounded-xl px-4 py-2.5 text-sm text-editorial-dark focus:outline-none focus:border-editorial-dark transition">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-editorial-dark uppercase tracking-wider mb-1.5">Project Type *</label>
+                            <select name="project_type" required class="w-full bg-[#f4f2ed] border border-[#eae6df] rounded-xl px-4 py-2.5 text-sm text-editorial-dark focus:outline-none focus:border-editorial-dark transition">
+                                <option value="" disabled selected>Select service...</option>
+                                <option value="AI & Machine Learning">AI & Machine Learning</option>
+                                <option value="Full-Stack Web Application">Full-Stack Web Application</option>
+                                <option value="Data Analytics & Dashboard">Data Analytics & Dashboard</option>
+                                <option value="Automation Pipeline">Automation Pipeline</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-editorial-dark uppercase tracking-wider mb-1.5">Budget Range *</label>
+                            <input type="text" name="budget" required placeholder="e.g. ₹15,000 or $200" class="w-full bg-[#f4f2ed] border border-[#eae6df] rounded-xl px-4 py-2.5 text-sm text-editorial-dark focus:outline-none focus:border-editorial-dark transition">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-editorial-dark uppercase tracking-wider mb-1.5">Project Description *</label>
+                        <textarea name="message" rows="4" required placeholder="Describe your project requirements, goals, and timeline..." class="w-full bg-[#f4f2ed] border border-[#eae6df] rounded-xl px-4 py-2.5 text-sm text-editorial-dark focus:outline-none focus:border-editorial-dark transition"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-editorial-dark hover:bg-zinc-800 text-white font-semibold py-3 px-4 rounded-xl transition shadow-md flex items-center justify-center gap-2">
+                        <i class="fas fa-paper-plane text-xs"></i>
+                        <span>Submit Project Request</span>
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -939,6 +1001,32 @@
 
         modal.addEventListener('click', (e) => {
             if (e.target === modal) closeModal();
+        });
+
+        // Start Project Modal Logic
+        const startProjectModal = document.getElementById('start-project-modal');
+        const startProjectPanel = document.getElementById('start-project-panel');
+
+        function openStartProjectModal() {
+            startProjectModal.classList.remove('hidden');
+            setTimeout(() => {
+                startProjectPanel.classList.remove('scale-95', 'opacity-0');
+                startProjectPanel.classList.add('scale-100', 'opacity-100');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeStartProjectModal() {
+            startProjectPanel.classList.remove('scale-100', 'opacity-100');
+            startProjectPanel.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                startProjectModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 200);
+        }
+
+        startProjectModal.addEventListener('click', (e) => {
+            if (e.target === startProjectModal) closeStartProjectModal();
         });
 
         function navigateTo(pageId) {
