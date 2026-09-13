@@ -492,36 +492,29 @@
             margin-bottom: 0;
         }
 
-        /* ===== MOBILE & TABLET RESPONSIVE SPACING & REORDERING ===== */
+        /* ===== MOBILE & TABLET RESPONSIVE REORDERING ===== */
         @media (max-width: 900px) {
-            .home-container {
-                padding: 12px 20px 32px;
-            }
             .hero-content-box {
                 flex-direction: column;
                 text-align: center;
-                gap: 16px;
-                margin-bottom: 24px;
+                gap: 28px;
             }
+            /* Move photo to top on mobile */
             .hero-image-box {
-                order: unset;
-                padding: 4px;
-                margin-bottom: 0px;
+                order: -1;
+                margin-bottom: 8px;
             }
             .home-badge {
                 align-self: center;
-                margin-bottom: 10px;
             }
             .hero-text-box {
                 max-width: 100%;
             }
             .hero-text-box p {
                 max-width: 100%;
-                margin-bottom: 18px;
             }
             .hero-actions {
                 justify-content: center;
-                margin-bottom: 4px;
             }
             .photo-inner-container {
                 width: 190px;
@@ -530,7 +523,7 @@
                 font-size: 38px;
             }
             .about-card-box {
-                padding: 30px 20px;
+                padding: 30px;
             }
             .stats-wrap {
                 gap: 30px;
@@ -538,33 +531,17 @@
         }
 
         @media (max-width: 600px) {
-            .home-container {
-                padding: 8px 16px 24px;
-            }
-            .hero-content-box {
-                gap: 14px;
-                margin-bottom: 20px;
-            }
             .photo-inner-container {
                 width: 165px;
             }
             .hero-text-box h1 {
                 font-size: 32px;
-                margin-bottom: 6px;
             }
             .hero-text-box h2 {
                 font-size: 17px;
-                margin-bottom: 14px;
-            }
-            .hero-text-box p {
-                margin-bottom: 16px;
-            }
-            .about-card-box {
-                padding: 24px 18px;
             }
             .about-card-box h2 {
                 font-size: 28px;
-                margin-bottom: 16px;
             }
             .stat-block h3 {
                 font-size: 28px;
@@ -638,7 +615,7 @@
                     <div class="hero-image-box">
                         <div class="photo-border-wrapper">
                             <div class="photo-inner-container">
-                                <img src="profile.png" alt="Suganya Shenbagam" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'" />
+                                <img src="photo.jpg" alt="Suganya Shenbagam" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'" />
                             </div>
                         </div>
                     </div>
