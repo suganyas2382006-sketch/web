@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suganya Shenbagam | AI & Data Science Portfolio</title>
+    <title>Suganya Shenbagam | AI & Data Science</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -13,9 +13,9 @@
                 extend: {
                     colors: {
                         tech: {
-                            base: '#0B0F17',
-                            card: '#111726',
-                            cardHover: '#161F33',
+                            base: '#06080F',
+                            card: '#0D1322',
+                            cardHover: '#131C31',
                             border: '#1E293B',
                             gold: '#D4AF37',
                             goldGlow: '#F59E0B',
@@ -41,10 +41,9 @@
     
     <style>
         :root {
-            --bg-base: #0a0d14;
+            --bg-base: #06080f;
             --tech-gold: #d4af37;
             --tech-cyan: #38bdf8;
-            --border-glow: rgba(212, 175, 55, 0.25);
         }
 
         body { 
@@ -54,98 +53,104 @@
             overflow-x: hidden;
         }
 
-        /* Subtle Technical Background Grid & Vignette */
+        /* Seamless Technical Cyber Grid */
         .tech-bg {
-            background-color: #07090e;
+            background-color: #06080f;
             background-image: 
-                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(56, 189, 248, 0.12), transparent),
-                radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.06), transparent),
+                radial-gradient(ellipse 90% 55% at 50% -15%, rgba(56, 189, 248, 0.16), transparent 70%),
+                radial-gradient(ellipse 70% 45% at 85% 105%, rgba(212, 175, 55, 0.12), transparent 65%),
+                radial-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px),
+                linear-gradient(135deg, rgba(56, 189, 248, 0.035) 25%, transparent 25%),
+                linear-gradient(225deg, rgba(56, 189, 248, 0.035) 25%, transparent 25%),
                 linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
+            background-size: 
+                100% 100%, 
+                100% 100%, 
+                24px 24px, 
+                48px 48px, 
+                48px 48px, 
+                48px 48px, 
+                48px 48px;
+            background-attachment: fixed;
         }
 
         .font-signature {
             font-family: 'Playwrite IT Moderna', 'Brush Script MT', cursive;
         }
 
-        /* Glassmorphism Pill Buttons */
+        /* Glassmorphic Capsule Nav Buttons */
         .nav-pill-btn {
             position: relative;
-            background: rgba(17, 24, 39, 0.65);
-            backdrop-filter: blur(8px);
+            background: rgba(13, 19, 34, 0.75);
+            backdrop-filter: blur(12px);
             border: 1.5px solid rgba(212, 175, 55, 0.35);
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
             border-radius: 9999px;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .nav-pill-btn:hover {
             border-color: #d4af37;
-            box-shadow: 0 0 18px rgba(212, 175, 55, 0.4), inset 0 0 8px rgba(212, 175, 55, 0.2);
-            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 0 18px rgba(212, 175, 55, 0.45), inset 0 0 8px rgba(212, 175, 55, 0.2);
+            transform: translateY(-2px);
         }
 
         .nav-pill-btn.active-nav {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(15, 23, 42, 0.8));
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(13, 19, 34, 0.9));
             border-color: #d4af37;
             color: #ffffff;
             font-weight: 600;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.35);
+            box-shadow: 0 0 22px rgba(212, 175, 55, 0.4);
         }
 
-        /* Golden Beveled Image Frame */
+        /* Golden Framed Portrait */
         .photo-gold-frame {
             position: relative;
             border-radius: 36px;
             padding: 3px;
-            background: linear-gradient(145deg, #d4af37, #243048, #d4af37);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.25);
+            background: linear-gradient(145deg, #d4af37, #1e293b, #d4af37);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 24px rgba(212, 175, 55, 0.25);
         }
 
-        /* Page Switch Transitions */
+        /* Page Switch Animation */
         .page-view { display: none; }
         .page-view.active { 
             display: block; 
-            animation: pageFade 0.4s ease-out forwards; 
+            animation: pageFade 0.35s ease-out forwards; 
         }
 
         @keyframes pageFade {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Modal Backdrop Blur */
         .modal-backdrop {
-            background-color: rgba(7, 9, 14, 0.82);
-            backdrop-filter: blur(10px);
+            background-color: rgba(4, 6, 12, 0.88);
+            backdrop-filter: blur(14px);
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: #07090e; }
-        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 2px; }
         ::-webkit-scrollbar-thumb:hover { background: #d4af37; }
     </style>
 </head>
 <body class="tech-bg min-h-screen flex flex-col justify-between selection:bg-tech-gold selection:text-black">
 
-    <!-- MAIN CARD WRAPPER -->
-    <main class="flex-grow flex items-center justify-center p-4 sm:p-8">
-        <div class="w-full max-w-[540px] bg-[#0d131f]/90 border border-[#1e293b] rounded-[42px] p-6 sm:p-10 shadow-2xl backdrop-blur-xl relative overflow-hidden">
+    <!-- SEAMLESS FULL SCREEN APP CONTAINER -->
+    <main class="w-full max-w-xl mx-auto px-5 sm:px-8 py-6 sm:py-10 flex-grow flex flex-col justify-between">
+        
+        <!-- ================= 1. HOME TAB ================= -->
+        <div id="home" class="page-view active flex-grow flex flex-col justify-between">
             
-            <!-- Technical Accent Glows -->
-            <div class="absolute -top-24 -right-24 w-60 h-60 bg-tech-cyan/10 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="absolute -bottom-24 -left-24 w-60 h-60 bg-tech-gold/10 rounded-full blur-3xl pointer-events-none"></div>
-
-            <!-- ================= HOME TAB ================= -->
-            <div id="home" class="page-view active">
-                
-                <!-- Dual Column: Portrait (Left) & Pill Navigation (Right) -->
-                <div class="grid grid-cols-2 gap-4 sm:gap-6 items-center mb-8">
+            <div>
+                <!-- Top Section: Photo (Left) & Compact Navigation Pills (Right) -->
+                <div class="flex items-center justify-between gap-4 mb-7">
                     
-                    <div class="flex justify-center">
-                        <div class="photo-gold-frame w-full max-w-[190px] aspect-[4/5] overflow-hidden">
+                    <!-- Left: Portrait Photo -->
+                    <div class="flex-shrink-0">
+                        <div class="photo-gold-frame w-[165px] sm:w-[190px] aspect-[4/5] overflow-hidden">
                             <img 
                                 src="profile.png" 
                                 alt="Suganya Shenbagam" 
@@ -155,192 +160,202 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-col gap-3 justify-center">
-                        <button onclick="navigateTo('home')" class="nav-pill-btn active-nav py-2.5 px-4 text-xs sm:text-sm tracking-wide text-zinc-300 flex items-center justify-center text-center">
+                    <!-- Right: Compact Pill Buttons -->
+                    <div class="flex flex-col items-center gap-2.5 flex-grow">
+                        <button onclick="navigateTo('home')" class="nav-pill-btn active-nav w-32 sm:w-36 py-2 px-3 text-xs sm:text-sm tracking-wide text-zinc-300 text-center">
                             Home
                         </button>
-                        <button onclick="navigateTo('skills')" class="nav-pill-btn py-2.5 px-4 text-xs sm:text-sm tracking-wide text-zinc-300 flex items-center justify-center text-center">
+                        <button onclick="navigateTo('skills')" class="nav-pill-btn w-32 sm:w-36 py-2 px-3 text-xs sm:text-sm tracking-wide text-zinc-300 text-center">
                             Services
                         </button>
-                        <button onclick="navigateTo('projects')" class="nav-pill-btn py-2.5 px-4 text-xs sm:text-sm tracking-wide text-zinc-300 flex items-center justify-center text-center">
+                        <button onclick="navigateTo('projects')" class="nav-pill-btn w-32 sm:w-36 py-2 px-3 text-xs sm:text-sm tracking-wide text-zinc-300 text-center">
                             Projects
                         </button>
-                        <button onclick="navigateTo('contact')" class="nav-pill-btn py-2.5 px-4 text-xs sm:text-sm tracking-wide text-zinc-300 flex items-center justify-center text-center">
+                        <button onclick="navigateTo('contact')" class="nav-pill-btn w-32 sm:w-36 py-2 px-3 text-xs sm:text-sm tracking-wide text-zinc-300 text-center">
                             Contact
                         </button>
                     </div>
                 </div>
 
-                <!-- Signature & Bio -->
-                <div class="text-left space-y-4 mb-8">
+                <!-- Signature & About Section -->
+                <div class="text-left space-y-3.5 mb-7">
                     <h1 class="font-signature text-3xl sm:text-4xl text-tech-gold tracking-wide leading-relaxed">
                         Suganya Shenbagam
                     </h1>
 
-                    <h2 class="font-serif text-2xl sm:text-3xl font-medium text-white tracking-tight">
-                        About Me
-                    </h2>
+                    <div class="flex items-center gap-2">
+                        <h2 class="font-serif text-2xl sm:text-3xl font-medium text-white tracking-tight">
+                            About Me
+                        </h2>
+                        <span class="h-[1px] flex-grow bg-gradient-to-r from-tech-gold/40 to-transparent ml-2"></span>
+                    </div>
 
-                    <p class="text-tech-muted text-sm sm:text-base leading-relaxed">
-                        I’m a 3rd-year B.Tech Artificial Intelligence & Data Science student and freelance developer passionate about technology, creativity, and building practical digital solutions. I work across AI & ML, Web Development, Full-Stack Development, UI/UX & Graphic Design, and Data Analytics.
-
-I enjoy turning ideas into modern, functional, and user-friendly websites, applications, designs, and data-driven solutions while continuously learning and exploring new technologies.
+                    <p class="text-tech-muted text-xs sm:text-sm leading-relaxed">
+                        I am an AI &amp; Data Science engineer and creative developer with a focus on building production-ready machine learning architectures, automated predictive analytics, and clean digital experiences.
+                    </p>
+                    
+                    <p class="text-tech-muted text-xs sm:text-sm leading-relaxed">
+                        From designing diagnostic deep learning systems with explainable AI to crafting sleek user interfaces, branding assets, and high-performance full-stack web applications, I bring technical accuracy, structured logic, and modern design together.
                     </p>
                 </div>
 
-                <!-- Action Shortcut to Project Modal -->
-                <div class="mb-10">
-                    <button onclick="openStartProjectModal()" class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-tech-gold/20 via-tech-gold/10 to-transparent border border-tech-gold/40 hover:border-tech-gold text-white font-medium text-xs tracking-wider uppercase transition flex items-center justify-center gap-2 group shadow-lg shadow-tech-gold/5">
+                <!-- Fitted Compact Action Button -->
+                <div class="mb-8 flex justify-center">
+                    <button onclick="openStartProjectModal()" class="inline-flex items-center justify-center gap-2 py-2.5 px-6 rounded-full bg-gradient-to-r from-tech-gold/20 via-tech-gold/10 to-transparent border border-tech-gold/40 hover:border-tech-gold text-white font-medium text-xs tracking-wider uppercase transition group shadow-lg shadow-tech-gold/5">
                         <i class="fas fa-rocket text-tech-gold group-hover:scale-110 transition-transform"></i>
                         <span>Start a Project with Me</span>
                     </button>
                 </div>
-
-                <!-- Bottom Stats Bar -->
-                <div class="grid grid-cols-3 gap-2 text-center pt-6 border-t border-[#1e293b]">
-                    <div class="space-y-1">
-                        <div class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">8+</div>
-                        <div class="text-[11px] sm:text-xs text-tech-muted uppercase tracking-wider font-semibold">Certifications</div>
-                    </div>
-                    <div class="space-y-1 border-x border-[#1e293b]">
-                        <div class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">6+</div>
-                        <div class="text-[11px] sm:text-xs text-tech-muted uppercase tracking-wider font-semibold">Projects</div>
-                    </div>
-                    <div class="space-y-1">
-                        <div class="text-3xl sm:text-4xl font-extrabold text-tech-gold tracking-tight">100%</div>
-                        <div class="text-[11px] sm:text-xs text-tech-muted uppercase tracking-wider font-semibold">Dedication</div>
-                    </div>
-                </div>
-
             </div>
 
-            <!-- ================= SERVICES / SKILLS TAB ================= -->
-            <div id="skills" class="page-view space-y-5">
-                <div class="flex items-center justify-between border-b border-[#1e293b] pb-3">
-                    <h2 class="font-serif text-2xl font-bold text-white">Services</h2>
-                    <button onclick="navigateTo('home')" class="text-xs text-tech-gold hover:underline flex items-center gap-1">
-                        <i class="fas fa-arrow-left"></i> Back
-                    </button>
+            <!-- Bottom Stats Bar -->
+            <div class="grid grid-cols-3 gap-2 text-center pt-5 border-t border-[#1e293b]">
+                <div class="space-y-1">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">8+</div>
+                    <div class="text-[11px] sm:text-xs text-tech-muted uppercase tracking-wider font-semibold">Certifications</div>
                 </div>
-
-                <div class="space-y-3 max-h-[440px] overflow-y-auto pr-1">
-                    
-                    <!-- 1. AI & Machine Learning -->
-                    <div class="p-3.5 rounded-2xl bg-[#141b2d] border border-[#1e293b] hover:border-tech-gold/40 transition flex items-start gap-3.5">
-                        <div class="w-10 h-10 rounded-xl bg-tech-gold/10 border border-tech-gold/30 flex items-center justify-center flex-shrink-0 text-tech-gold text-lg">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-white text-sm">AI &amp; Machine Learning</h3>
-                            <p class="text-tech-muted text-xs leading-relaxed mt-0.5">Deep neural networks, computer vision, diagnostic AI models, Scikit-Learn, TensorFlow, and PyTorch solutions.</p>
-                        </div>
-                    </div>
-
-                    <!-- 2. Web Development -->
-                    <div class="p-3.5 rounded-2xl bg-[#141b2d] border border-[#1e293b] hover:border-tech-cyan/40 transition flex items-start gap-3.5">
-                        <div class="w-10 h-10 rounded-xl bg-tech-cyan/10 border border-tech-cyan/30 flex items-center justify-center flex-shrink-0 text-tech-cyan text-lg">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-white text-sm">Web Development</h3>
-                            <p class="text-tech-muted text-xs leading-relaxed mt-0.5">Modern, mobile-first responsive web pages, interactive landing sites, HTML5, CSS3, Tailwind CSS, and JavaScript.</p>
-                        </div>
-                    </div>
-
-                    <!-- 3. Designing -->
-                    <div class="p-3.5 rounded-2xl bg-[#141b2d] border border-[#1e293b] hover:border-pink-500/40 transition flex items-start gap-3.5">
-                        <div class="w-10 h-10 rounded-xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-center flex-shrink-0 text-pink-400 text-lg">
-                            <i class="fas fa-bezier-curve"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-white text-sm">Designing</h3>
-                            <p class="text-tech-muted text-xs leading-relaxed mt-0.5">Brand logos, UI/UX interface design, vector banners, creative posters, and modern brand design assets.</p>
-                        </div>
-                    </div>
-
-                    <!-- 4. Full Stack Development -->
-                    <div class="p-3.5 rounded-2xl bg-[#141b2d] border border-[#1e293b] hover:border-purple-500/40 transition flex items-start gap-3.5">
-                        <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center flex-shrink-0 text-purple-400 text-lg">
-                            <i class="fas fa-layer-group"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-white text-sm">Full Stack Development</h3>
-                            <p class="text-tech-muted text-xs leading-relaxed mt-0.5">End-to-end applications integrating frontend UI with Python/Flask backend APIs, database schemas, and cloud deployment.</p>
-                        </div>
-                    </div>
-
-                    <!-- 5. Data Analytics -->
-                    <div class="p-3.5 rounded-2xl bg-[#141b2d] border border-[#1e293b] hover:border-emerald-500/40 transition flex items-start gap-3.5">
-                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center flex-shrink-0 text-emerald-400 text-lg">
-                            <i class="fas fa-chart-pie"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-white text-sm">Data Analytics</h3>
-                            <p class="text-tech-muted text-xs leading-relaxed mt-0.5">Automated reporting pipelines, Power BI interactive KPI dashboards, exploratory data analysis, and predictive forecasting.</p>
-                        </div>
-                    </div>
-
+                <div class="space-y-1 border-x border-[#1e293b]">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">6+</div>
+                    <div class="text-[11px] sm:text-xs text-tech-muted uppercase tracking-wider font-semibold">Projects</div>
                 </div>
-
-                <button onclick="openStartProjectModal()" class="w-full py-3 rounded-xl bg-tech-card border border-tech-border text-xs text-tech-gold font-semibold uppercase tracking-wider hover:border-tech-gold transition">
-                    Request a Service Quote &rarr;
-                </button>
-            </div>
-
-            <!-- ================= PROJECTS TAB ================= -->
-            <div id="projects" class="page-view space-y-6">
-                <div class="flex items-center justify-between border-b border-[#1e293b] pb-4">
-                    <h2 class="font-serif text-2xl font-bold text-white">Featured Projects</h2>
-                    <button onclick="navigateTo('home')" class="text-xs text-tech-gold hover:underline flex items-center gap-1">
-                        <i class="fas fa-arrow-left"></i> Back
-                    </button>
-                </div>
-
-                <div class="space-y-3 max-h-[420px] overflow-y-auto pr-1" id="projects-container"></div>
-            </div>
-
-            <!-- ================= CONTACT TAB ================= -->
-            <div id="contact" class="page-view space-y-6 text-center">
-                <div class="flex items-center justify-between border-b border-[#1e293b] pb-4 text-left">
-                    <h2 class="font-serif text-2xl font-bold text-white">Get in Touch</h2>
-                    <button onclick="navigateTo('home')" class="text-xs text-tech-gold hover:underline flex items-center gap-1">
-                        <i class="fas fa-arrow-left"></i> Back
-                    </button>
-                </div>
-
-                <p class="text-sm text-tech-muted">Open for freelance projects, AI/ML integrations, design, and collaborations.</p>
-
-                <!-- Project Inquiry Trigger Button -->
-                <button onclick="openStartProjectModal()" class="w-full py-3.5 px-4 rounded-xl bg-tech-gold text-black font-semibold text-xs tracking-wider uppercase hover:bg-yellow-400 transition flex items-center justify-center gap-2 shadow-lg shadow-tech-gold/10">
-                    <i class="fas fa-paper-plane"></i>
-                    <span>Start a Project</span>
-                </button>
-
-                <!-- Social Links Grid -->
-                <div class="grid grid-cols-4 gap-3">
-                    <a href="mailto:suganyashenbagam@gmail.com" class="p-3.5 bg-[#141b2d] border border-[#1e293b] hover:border-tech-gold rounded-2xl text-tech-gold transition flex items-center justify-center" title="Email">
-                        <i class="fas fa-envelope text-lg"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/shruthi-s-5b929b42b" target="_blank" class="p-3.5 bg-[#141b2d] border border-[#1e293b] hover:border-tech-cyan rounded-2xl text-tech-cyan transition flex items-center justify-center" title="LinkedIn">
-                        <i class="fab fa-linkedin-in text-lg"></i>
-                    </a>
-                    <a href="https://github.com/suganyas2382006-sketch" target="_blank" class="p-3.5 bg-[#141b2d] border border-[#1e293b] hover:border-white rounded-2xl text-white transition flex items-center justify-center" title="GitHub">
-                        <i class="fab fa-github text-lg"></i>
-                    </a>
-                    <a href="https://wa.me/qr/QBOT5I4XWEI3L1" target="_blank" class="p-3.5 bg-[#141b2d] border border-[#1e293b] hover:border-emerald-400 rounded-2xl text-emerald-400 transition flex items-center justify-center" title="WhatsApp">
-                        <i class="fab fa-whatsapp text-lg"></i>
-                    </a>
-                </div>
-
-                <!-- UPI Payment Modal Trigger (Opens QR Card on Click) -->
-                <div class="pt-4 border-t border-[#1e293b]">
-                    <button onclick="openPaymentModal()" class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl border border-tech-gold text-tech-gold hover:bg-tech-gold hover:text-black font-semibold text-xs tracking-wider uppercase transition duration-300 shadow-md">
-                        <i class="fas fa-qrcode text-sm"></i> Pay via UPI
-                    </button>
+                <div class="space-y-1">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-tech-gold tracking-tight">100%</div>
+                    <div class="text-[11px] sm:text-xs text-tech-muted uppercase tracking-wider font-semibold">Dedication</div>
                 </div>
             </div>
 
         </div>
+
+        <!-- ================= 2. SERVICES TAB ================= -->
+        <div id="skills" class="page-view space-y-5">
+            <div class="flex items-center justify-between border-b border-[#1e293b] pb-3">
+                <h2 class="font-serif text-2xl font-bold text-white">Services</h2>
+                <button onclick="navigateTo('home')" class="text-xs text-tech-gold hover:underline flex items-center gap-1">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+
+            <div class="space-y-3 max-h-[500px] overflow-y-auto pr-1">
+                
+                <!-- 1. AI & ML -->
+                <div class="p-3.5 rounded-2xl bg-[#0d1322]/80 border border-[#1e293b] hover:border-tech-gold/40 transition flex items-start gap-3.5">
+                    <div class="w-10 h-10 rounded-xl bg-tech-gold/10 border border-tech-gold/30 flex items-center justify-center flex-shrink-0 text-tech-gold text-lg">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white text-sm">AI &amp; ML</h3>
+                        <p class="text-tech-muted text-xs leading-relaxed mt-0.5">Deep neural networks, computer vision, diagnostic AI models, Scikit-Learn, TensorFlow, and PyTorch solutions.</p>
+                    </div>
+                </div>
+
+                <!-- 2. Web Development -->
+                <div class="p-3.5 rounded-2xl bg-[#0d1322]/80 border border-[#1e293b] hover:border-tech-cyan/40 transition flex items-start gap-3.5">
+                    <div class="w-10 h-10 rounded-xl bg-tech-cyan/10 border border-tech-cyan/30 flex items-center justify-center flex-shrink-0 text-tech-cyan text-lg">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white text-sm">Web Development</h3>
+                        <p class="text-tech-muted text-xs leading-relaxed mt-0.5">Modern, mobile-first responsive web pages, interactive landing sites, HTML5, CSS3, Tailwind CSS, and JavaScript.</p>
+                    </div>
+                </div>
+
+                <!-- 3. Designing -->
+                <div class="p-3.5 rounded-2xl bg-[#0d1322]/80 border border-[#1e293b] hover:border-pink-500/40 transition flex items-start gap-3.5">
+                    <div class="w-10 h-10 rounded-xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-center flex-shrink-0 text-pink-400 text-lg">
+                        <i class="fas fa-bezier-curve"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white text-sm">Designing</h3>
+                        <p class="text-tech-muted text-xs leading-relaxed mt-0.5">Creative brand logos, intuitive UI/UX design, promotional posters, and sleek digital graphic assets.</p>
+                    </div>
+                </div>
+
+                <!-- 4. Full Stack Development -->
+                <div class="p-3.5 rounded-2xl bg-[#0d1322]/80 border border-[#1e293b] hover:border-purple-500/40 transition flex items-start gap-3.5">
+                    <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center flex-shrink-0 text-purple-400 text-lg">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white text-sm">Full Stack Development</h3>
+                        <p class="text-tech-muted text-xs leading-relaxed mt-0.5">End-to-end applications integrating frontend UI with Python/Flask backend APIs, database schemas, and cloud deployment.</p>
+                    </div>
+                </div>
+
+                <!-- 5. Data Analytics -->
+                <div class="p-3.5 rounded-2xl bg-[#0d1322]/80 border border-[#1e293b] hover:border-emerald-500/40 transition flex items-start gap-3.5">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center flex-shrink-0 text-emerald-400 text-lg">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white text-sm">Data Analytics</h3>
+                        <p class="text-tech-muted text-xs leading-relaxed mt-0.5">Automated reporting pipelines, Power BI interactive KPI dashboards, exploratory data analysis, and predictive forecasting.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="flex justify-center pt-2">
+                <button onclick="openStartProjectModal()" class="py-2.5 px-6 rounded-full bg-[#0d1322] border border-tech-border text-xs text-tech-gold font-semibold uppercase tracking-wider hover:border-tech-gold transition">
+                    Request a Service Quote &rarr;
+                </button>
+            </div>
+        </div>
+
+        <!-- ================= 3. PROJECTS TAB ================= -->
+        <div id="projects" class="page-view space-y-6">
+            <div class="flex items-center justify-between border-b border-[#1e293b] pb-4">
+                <h2 class="font-serif text-2xl font-bold text-white">Featured Projects</h2>
+                <button onclick="navigateTo('home')" class="text-xs text-tech-gold hover:underline flex items-center gap-1">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+
+            <div class="space-y-3 max-h-[500px] overflow-y-auto pr-1" id="projects-container"></div>
+        </div>
+
+        <!-- ================= 4. CONTACT TAB ================= -->
+        <div id="contact" class="page-view space-y-6 text-center">
+            <div class="flex items-center justify-between border-b border-[#1e293b] pb-4 text-left">
+                <h2 class="font-serif text-2xl font-bold text-white">Get in Touch</h2>
+                <button onclick="navigateTo('home')" class="text-xs text-tech-gold hover:underline flex items-center gap-1">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+
+            <p class="text-sm text-tech-muted">Open for freelance projects, AI/ML integrations, design, and collaborations.</p>
+
+            <!-- Project Inquiry Trigger Button -->
+            <div class="flex justify-center">
+                <button onclick="openStartProjectModal()" class="py-3 px-8 rounded-full bg-tech-gold text-black font-semibold text-xs tracking-wider uppercase hover:bg-yellow-400 transition flex items-center justify-center gap-2 shadow-lg shadow-tech-gold/10">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>Start a Project</span>
+                </button>
+            </div>
+
+            <!-- Social Links Grid -->
+            <div class="grid grid-cols-4 gap-3">
+                <a href="mailto:suganyashenbagam@gmail.com" class="p-3.5 bg-[#0d1322] border border-[#1e293b] hover:border-tech-gold rounded-2xl text-tech-gold transition flex items-center justify-center" title="Email">
+                    <i class="fas fa-envelope text-lg"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/shruthi-s-5b929b42b" target="_blank" class="p-3.5 bg-[#0d1322] border border-[#1e293b] hover:border-tech-cyan rounded-2xl text-tech-cyan transition flex items-center justify-center" title="LinkedIn">
+                    <i class="fab fa-linkedin-in text-lg"></i>
+                </a>
+                <a href="https://github.com/suganyas2382006-sketch" target="_blank" class="p-3.5 bg-[#0d1322] border border-[#1e293b] hover:border-white rounded-2xl text-white transition flex items-center justify-center" title="GitHub">
+                    <i class="fab fa-github text-lg"></i>
+                </a>
+                <a href="https://wa.me/qr/QBOT5I4XWEI3L1" target="_blank" class="p-3.5 bg-[#0d1322] border border-[#1e293b] hover:border-emerald-400 rounded-2xl text-emerald-400 transition flex items-center justify-center" title="WhatsApp">
+                    <i class="fab fa-whatsapp text-lg"></i>
+                </a>
+            </div>
+
+            <!-- UPI Payment Trigger -->
+            <div class="pt-4 border-t border-[#1e293b] flex justify-center">
+                <button onclick="openPaymentModal(true)" class="inline-flex items-center justify-center gap-2 py-3 px-8 rounded-full border border-tech-gold text-tech-gold hover:bg-tech-gold hover:text-black font-semibold text-xs tracking-wider uppercase transition duration-300 shadow-md">
+                    <i class="fas fa-qrcode text-sm"></i> Pay via UPI
+                </button>
+            </div>
+        </div>
+
     </main>
 
     <!-- ================= GOOGLE PAY QR PAYMENT MODAL ================= -->
@@ -352,26 +367,26 @@ I enjoy turning ideas into modern, functional, and user-friendly websites, appli
             </button>
 
             <div class="pt-7 pb-6 px-6">
-                <div class="flex items-center justify-center gap-2.5 mb-5">
+                <!-- User Header -->
+                <div class="flex items-center justify-center gap-2.5 mb-4">
                     <div class="w-9 h-9 rounded-full bg-[#1EA362] flex items-center justify-center text-white shadow-sm ring-2 ring-white">
                         <i class="fas fa-camera text-sm"></i>
                     </div>
                     <h3 class="text-xl font-bold text-[#1E293B] tracking-tight">S.Suganya Nachiyar</h3>
                 </div>
 
-                <div class="bg-white rounded-[28px] p-5 shadow-sm border border-slate-100 flex flex-col items-center">
-                    <div class="relative w-56 h-56 flex items-center justify-center my-1">
+                <!-- Card with assets/payment.png -->
+                <div class="bg-white rounded-[28px] p-4 shadow-sm border border-slate-100 flex flex-col items-center">
+                    <div class="w-60 h-60 flex items-center justify-center rounded-2xl overflow-hidden bg-slate-50">
                         <img 
-                            src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=upi%3A%2F%2Fpay%3Fpa%3Dssuganyanachiyar%40oksbi%26pn%3DS.Suganya%2520Nachiyar%26cu%3DINR" 
-                            alt="Suganya Nachiyar UPI QR Code" 
-                            class="w-full h-full object-contain rounded-lg"
+                            src="assets/payment.png" 
+                            alt="Scan to pay Suganya Nachiyar" 
+                            class="w-full h-full object-contain"
+                            onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=upi%3A%2F%2Fpay%3Fpa%3Dssuganyanachiyar%40oksbi%26pn%3DS.Suganya%2520Nachiyar%26cu%3DINR'"
                         />
-                        <div class="absolute inset-0 m-auto w-10 h-10 bg-white rounded-full p-1 shadow-md flex items-center justify-center border border-slate-100">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg" alt="GPay" class="w-6 h-6 object-contain">
-                        </div>
                     </div>
 
-                    <div class="mt-4 pt-3 border-t border-slate-100 w-full flex items-center justify-center gap-2 text-slate-700 text-sm font-medium">
+                    <div class="mt-3 pt-3 border-t border-slate-100 w-full flex items-center justify-center gap-2 text-slate-700 text-sm font-medium">
                         <span>UPI ID: <strong class="font-mono text-slate-900">ssuganyanachiyar@oksbi</strong></span>
                         <button onclick="copyUpiId()" class="text-slate-400 hover:text-tech-gold transition" title="Copy UPI ID">
                             <i class="far fa-copy text-xs" id="copy-icon"></i>
@@ -379,13 +394,14 @@ I enjoy turning ideas into modern, functional, and user-friendly websites, appli
                     </div>
                 </div>
 
-                <p class="text-xs text-slate-500 font-medium mt-4 tracking-wide">
+                <p class="text-xs text-slate-500 font-medium mt-3.5 tracking-wide">
                     Scan to pay with any UPI app
                 </p>
 
-                <div class="mt-4">
-                    <a href="upi://pay?pa=ssuganyanachiyar@oksbi&pn=S.Suganya%20Nachiyar&cu=INR" class="inline-flex items-center justify-center gap-2 w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-semibold uppercase tracking-wider transition shadow-sm">
-                        <i class="fas fa-external-link-alt text-[10px]"></i> Open in UPI App
+                <!-- Direct Intent Launch Button -->
+                <div class="mt-3.5">
+                    <a id="upi-direct-link" href="upi://pay?pa=ssuganyanachiyar@oksbi&pn=S.Suganya%20Nachiyar&cu=INR" class="inline-flex items-center justify-center gap-2 w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-semibold uppercase tracking-wider transition shadow-sm">
+                        <i class="fas fa-wallet text-[11px]"></i> Open in UPI App
                     </a>
                 </div>
             </div>
@@ -436,7 +452,7 @@ I enjoy turning ideas into modern, functional, and user-friendly websites, appli
                             <label class="block text-[11px] font-semibold text-tech-gold uppercase tracking-wider mb-1.5">Project Type *</label>
                             <select name="project_type" required class="w-full bg-[#162033] border border-[#1e293b] focus:border-tech-gold text-white rounded-xl px-3 py-2.5 text-xs sm:text-sm focus:outline-none transition">
                                 <option value="" disabled selected class="bg-[#0f172a]">Select service...</option>
-                                <option value="AI & Machine Learning" class="bg-[#0f172a]">AI &amp; Machine Learning</option>
+                                <option value="AI & ML" class="bg-[#0f172a]">AI &amp; ML</option>
                                 <option value="Web Development" class="bg-[#0f172a]">Web Development</option>
                                 <option value="Designing (Logo, UI/UX, Poster)" class="bg-[#0f172a]">Designing (Logo, UI/UX, Poster)</option>
                                 <option value="Full Stack Development" class="bg-[#0f172a]">Full Stack Development</option>
@@ -464,8 +480,8 @@ I enjoy turning ideas into modern, functional, and user-friendly websites, appli
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="text-center py-4 text-xs text-tech-muted">
+    <!-- Minimal Footer -->
+    <footer class="text-center py-3 text-xs text-tech-muted">
         &copy; <span id="year"></span> Suganya Shenbagam. All rights reserved.
     </footer>
 
@@ -501,7 +517,7 @@ I enjoy turning ideas into modern, functional, and user-friendly websites, appli
         const pContainer = document.getElementById('projects-container');
         projects.forEach(p => {
             pContainer.innerHTML += `
-                <div class="p-3.5 bg-[#141b2d] border border-[#1e293b] rounded-2xl flex flex-col gap-1.5 hover:border-tech-gold/50 transition">
+                <div class="p-3.5 bg-[#0d1322] border border-[#1e293b] rounded-2xl flex flex-col gap-1.5 hover:border-tech-gold/50 transition">
                     <div class="flex justify-between items-center">
                         <h4 class="text-white font-semibold text-sm">${p.title}</h4>
                         <a href="${p.link}" target="_blank" class="text-tech-cyan text-xs hover:underline flex items-center gap-1">
@@ -554,17 +570,27 @@ I enjoy turning ideas into modern, functional, and user-friendly websites, appli
             if (e.target === startProjectModal) closeStartProjectModal();
         });
 
-        // Payment Modal Controls
+        // Payment Modal & Auto-Trigger Logic
         const paymentModal = document.getElementById('payment-modal');
         const paymentPanel = document.getElementById('payment-panel');
+        const upiUri = "upi://pay?pa=ssuganyanachiyar@oksbi&pn=S.Suganya%20Nachiyar&cu=INR";
 
-        function openPaymentModal() {
+        function openPaymentModal(autoLaunch = false) {
             paymentModal.classList.remove('hidden');
             setTimeout(() => {
                 paymentPanel.classList.remove('scale-95', 'opacity-0');
                 paymentPanel.classList.add('scale-100', 'opacity-100');
             }, 10);
             document.body.style.overflow = 'hidden';
+
+            if (autoLaunch) {
+                const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+                if (isMobile) {
+                    setTimeout(() => {
+                        window.location.href = upiUri;
+                    }, 400);
+                }
+            }
         }
 
         function closePaymentModal() {
@@ -593,3 +619,4 @@ I enjoy turning ideas into modern, functional, and user-friendly websites, appli
     </script>
 </body>
 </html>
+
