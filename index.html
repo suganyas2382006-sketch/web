@@ -51,9 +51,8 @@
             background-color: var(--bg-base);
             color: #f1f5f9;
             font-family: 'Inter', sans-serif;
-            min-height: 100vh;
+            min-height: 100%;
             overflow-x: hidden;
-            overflow-y: auto;
         }
 
         /* Pure Dark Aurora Light Diffusion (No Grids, No Lines, No Dots/Nodes) */
@@ -184,8 +183,8 @@
         <span class="text-xs sm:text-sm font-medium tracking-wide">Successfully sent! I will get back to you soon.</span>
     </div>
 
-    <!-- RESPONSIVE PAGE CONTAINER -->
-    <div class="w-full max-w-xl md:max-w-4xl lg:max-w-5xl mx-auto px-5 sm:px-8 md:px-12 pt-7 md:pt-12 pb-16 min-h-screen flex flex-col justify-between">
+    <!-- RESPONSIVE PAGE CONTAINER (Fixed: Removed min-h-screen and justify-between to eliminate bottom scroll voids) -->
+    <div class="w-full max-w-xl md:max-w-4xl lg:max-w-5xl mx-auto px-5 sm:px-8 md:px-12 pt-7 md:pt-12 pb-12 flex flex-col">
         
         <div>
             <!-- HEADER: PHOTO (LEFT) + RIGHT CONTENT STACK -->
@@ -206,7 +205,7 @@
                 <!-- Right: Mobile Stacked Pills / Desktop Name + Subtitle + Bottom Navigation Row -->
                 <div class="flex flex-col justify-between self-stretch md:self-center flex-grow py-1 md:py-2">
                     
-                    <!-- Desktop Name and Title -->
+                    <!-- Desktop Name and Title (Enhanced vertical separation) -->
                     <div class="hidden md:block space-y-5 mb-6">
                         <h1 class="font-signature text-4xl lg:text-5xl text-tech-gold tracking-wide leading-tight">
                             Suganya Shenbagam
@@ -289,7 +288,7 @@
                     </div>
                 </section>
 
-                <!-- 2. SERVICES TAB -->
+                <!-- 2. SERVICES TAB (Unboxed Clean Layout) -->
                 <section id="tab-services" class="sub-view space-y-6">
                     <div class="flex items-center gap-3 mb-2">
                         <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl font-medium text-white tracking-tight">
@@ -657,6 +656,9 @@
                     btn.classList.add('active-nav');
                 }
             });
+
+            // Resets scroll to top cleanly when toggling tabs
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // Web3Forms Modal & In-Place AJAX Form Submission
