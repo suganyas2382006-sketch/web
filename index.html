@@ -2,7 +2,7 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Suganya Shenbagam | AI & Data Science </title>
     
     <!-- Tailwind CSS -->
@@ -47,15 +47,24 @@
             --bezier-smooth: cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        html, body {
-            background-color: var(--bg-base);
-            color: #f1f5f9;
-            font-family: 'Inter', sans-serif;
-            min-height: 100%;
-            overflow-x: hidden;
+        html {
+            background-color: #030508;
+            height: auto;
         }
 
-        /* Pure Dark Aurora Light Diffusion (No Grids, No Lines, No Dots/Nodes) */
+        body {
+            background-color: #030508;
+            color: #f1f5f9;
+            font-family: 'Inter', sans-serif;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Pure Dark Aurora Light Diffusion */
         .tech-bg {
             background-color: #030508;
             background-image: 
@@ -105,45 +114,25 @@
             box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 24px rgba(212, 175, 55, 0.2);
             transition: transform 0.4s var(--bezier-smooth);
         }
-        .photo-gold-frame:hover {
-            transform: translateY(-3px) scale(1.01);
-        }
 
-        /* Subview Transitions */
+        /* Subview Transitions: Pure opacity to avoid phantom scroll bounds */
         .sub-view { 
             display: none; 
             opacity: 0;
-            transform: translateY(18px);
         }
 
         .sub-view.active { 
             display: block; 
-            animation: viewFadeSlide 0.45s var(--bezier-smooth) forwards; 
+            animation: viewFade 0.35s ease-out forwards; 
         }
 
-        @keyframes viewFadeSlide {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
+        @keyframes viewFade {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
-
-        .stagger-item {
-            opacity: 0;
-            animation: itemCascade 0.4s var(--bezier-smooth) forwards;
-        }
-
-        @keyframes itemCascade {
-            from { opacity: 0; transform: translateY(14px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .stagger-item:nth-child(1) { animation-delay: 50ms; }
-        .stagger-item:nth-child(2) { animation-delay: 100ms; }
-        .stagger-item:nth-child(3) { animation-delay: 150ms; }
-        .stagger-item:nth-child(4) { animation-delay: 200ms; }
-        .stagger-item:nth-child(5) { animation-delay: 250ms; }
 
         .service-row {
-            transition: all 0.3s var(--bezier-smooth);
+            transition: transform 0.3s var(--bezier-smooth);
         }
         .service-row:hover {
             transform: translateX(5px);
@@ -183,254 +172,249 @@
         <span class="text-xs sm:text-sm font-medium tracking-wide">Successfully sent! I will get back to you soon.</span>
     </div>
 
-    <!-- RESPONSIVE PAGE CONTAINER (Fixed: Removed min-h-screen and justify-between to eliminate bottom scroll voids) -->
-    <div class="w-full max-w-xl md:max-w-4xl lg:max-w-5xl mx-auto px-5 sm:px-8 md:px-12 pt-7 md:pt-12 pb-12 flex flex-col">
+    <!-- MAIN APP CONTAINER -->
+    <div class="w-full max-w-xl md:max-w-4xl lg:max-w-5xl mx-auto px-5 sm:px-8 md:px-12 pt-7 md:pt-12 pb-8 flex-1 flex flex-col justify-start">
         
-        <div>
-            <!-- HEADER: PHOTO (LEFT) + RIGHT CONTENT STACK -->
-            <header class="flex items-start md:items-center gap-5 sm:gap-8 md:gap-10 mb-8 md:mb-12">
-                
-                <!-- Left: Portrait Photo -->
-                <div class="flex-shrink-0">
-                    <div class="photo-gold-frame w-[160px] sm:w-[185px] md:w-[210px] aspect-[4/5] overflow-hidden">
-                        <img 
-                            src="profile.jpg" 
-                            alt="Suganya Shenbagam" 
-                            class="w-full h-full object-cover rounded-[33px] transition-transform duration-700 hover:scale-105" 
-                            onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80'"
-                        />
-                    </div>
+        <!-- HEADER: PHOTO (LEFT) + RIGHT CONTENT STACK -->
+        <header class="flex items-start md:items-center gap-5 sm:gap-8 md:gap-10 mb-8 md:mb-12">
+            
+            <!-- Left: Portrait Photo -->
+            <div class="flex-shrink-0">
+                <div class="photo-gold-frame w-[160px] sm:w-[185px] md:w-[210px] aspect-[4/5] overflow-hidden">
+                    <img 
+                        src="profile.jpg" 
+                        alt="Suganya Shenbagam" 
+                        class="w-full h-full object-cover rounded-[33px] transition-transform duration-700 hover:scale-105" 
+                        onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80'"
+                    />
                 </div>
-
-                <!-- Right: Mobile Stacked Pills / Desktop Name + Subtitle + Bottom Navigation Row -->
-                <div class="flex flex-col justify-between self-stretch md:self-center flex-grow py-1 md:py-2">
-                    
-                    <!-- Desktop Name and Title (Enhanced vertical separation) -->
-                    <div class="hidden md:block space-y-5 mb-6">
-                        <h1 class="font-signature text-4xl lg:text-5xl text-tech-gold tracking-wide leading-tight">
-                            Suganya Shenbagam
-                        </h1>
-                        <p class="text-xs lg:text-sm text-tech-muted font-mono tracking-wider uppercase">
-                            AI &amp; Data Science Engineer • Full-Stack Developer
-                        </p>
-                    </div>
-
-                    <!-- Navigation Pills: Vertical stack on Mobile; Positioned directly underneath title on Desktop -->
-                    <nav class="flex flex-col md:flex-row items-center md:items-center gap-2.5 md:gap-3">
-                        <button onclick="switchTab('home')" class="nav-pill-btn active-nav w-32 sm:w-36 md:w-auto md:px-6 py-2 md:py-2.5 text-xs sm:text-sm tracking-wide text-zinc-300 text-center" data-tab="home">
-                            Home
-                        </button>
-                        <button onclick="switchTab('services')" class="nav-pill-btn w-32 sm:w-36 md:w-auto md:px-6 py-2 md:py-2.5 text-xs sm:text-sm tracking-wide text-zinc-300 text-center" data-tab="services">
-                            Services
-                        </button>
-                        <button onclick="switchTab('projects')" class="nav-pill-btn w-32 sm:w-36 md:w-auto md:px-6 py-2 md:py-2.5 text-xs sm:text-sm tracking-wide text-zinc-300 text-center" data-tab="projects">
-                            Projects
-                        </button>
-                        <button onclick="switchTab('contact')" class="nav-pill-btn w-32 sm:w-36 md:w-auto md:px-6 py-2 md:py-2.5 text-xs sm:text-sm tracking-wide text-zinc-300 text-center" data-tab="contact">
-                            Contact
-                        </button>
-                    </nav>
-
-                </div>
-            </header>
-
-            <!-- MOBILE SIGNATURE (hidden on desktop) -->
-            <div class="text-left mb-6 md:hidden">
-                <h1 class="font-signature text-3xl sm:text-4xl text-tech-gold tracking-wide leading-relaxed">
-                    Suganya Shenbagam
-                </h1>
             </div>
 
-            <!-- NATURAL FULL SCREEN DYNAMIC SECTIONS -->
-            <main id="dynamic-content">
+            <!-- Right: Title & Nav -->
+            <div class="flex flex-col justify-between self-stretch md:self-center flex-grow py-1 md:py-2">
                 
-                <!-- 1. HOME TAB -->
-                <section id="tab-home" class="sub-view active space-y-6 md:space-y-8">
-                    <div class="space-y-4 stagger-item max-w-3xl">
-                        <div class="flex items-center gap-3">
-                            <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl font-medium text-white tracking-tight">
-                                About Me
-                            </h2>
-                            <span class="h-[1px] flex-grow bg-gradient-to-r from-tech-gold/40 to-transparent"></span>
-                        </div>
+                <!-- Desktop Name and Title -->
+                <div class="hidden md:block space-y-5 mb-6">
+                    <h1 class="font-signature text-4xl lg:text-5xl text-tech-gold tracking-wide leading-tight">
+                        Suganya Shenbagam
+                    </h1>
+                    <p class="text-xs lg:text-sm text-tech-muted font-mono tracking-wider uppercase">
+                        AI &amp; Data Science Engineer • Full-Stack Developer
+                    </p>
+                </div>
 
-                        <p class="text-tech-muted text-xs sm:text-sm md:text-base leading-relaxed">
-                            I’m a 3rd-year B.Tech AI &amp; Data Science student and freelance developer passionate about turning ideas into practical digital solutions.
-                        </p>
-                        
-                        <p class="text-tech-muted text-xs sm:text-sm md:text-base leading-relaxed">
-                            I work in AI &amp; ML, Web Development, Full-Stack Development, UI/UX &amp; Graphic Design, and Data Analytics, creating modern, functional, and user-friendly solutions.
-                        </p>
-                    </div>
+                <!-- Navigation Pills -->
+                <nav class="flex flex-col md:flex-row items-center md:items-center gap-2.5 md:gap-3">
+                    <button onclick="switchTab('home')" class="nav-pill-btn active-nav w-32 sm:w-36 md:w-auto md:px-6 py-2 md:py-2.5 text-xs sm:text-sm tracking-wide text-zinc-300 text-center" data-tab="home">
+                        Home
+                    </button>
+                    <button onclick="switchTab('services')" class="nav-pill-btn w-32 sm:w-36 md:w-auto md:px-6 py-2 md:py-2.5 text-xs sm:text-sm tracking-wide text-zinc-300 text-center" data-tab="services">
+                        Services
+                    </button>
+                    <button onclick="switchTab('projects')" class="nav-pill-btn w-32 sm:w-36 md:w-auto md:px-6 py-2 md:py-2.5 text-xs sm:text-sm tracking-wide text-zinc-300 text-center" data-tab="projects">
+                        Projects
+                    </button>
+                    <button onclick="switchTab('contact')" class="nav-pill-btn w-32 sm:w-36 md:w-auto md:px-6 py-2 md:py-2.5 text-xs sm:text-sm tracking-wide text-zinc-300 text-center" data-tab="contact">
+                        Contact
+                    </button>
+                </nav>
 
-                    <!-- Compact Project Action Button -->
-                    <div class="pt-2 flex justify-start stagger-item">
-                        <button onclick="openStartProjectModal()" class="inline-flex items-center justify-center gap-2 py-3 px-8 rounded-full bg-gradient-to-r from-tech-gold/20 via-tech-gold/10 to-transparent border border-tech-gold/40 hover:border-tech-gold text-white font-medium text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 hover:scale-105 group shadow-lg shadow-tech-gold/5">
-                            <i class="fas fa-rocket text-tech-gold group-hover:scale-110 transition-transform"></i>
-                            <span>Start a Project with Me</span>
-                        </button>
-                    </div>
+            </div>
+        </header>
 
-                    <!-- EXCLUSIVE STATS BAR -->
-                    <div class="grid grid-cols-3 gap-4 text-center pt-6 mt-8 border-t border-[#1b2333] stagger-item max-w-2xl">
-                        <div class="space-y-1">
-                            <div class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">8+</div>
-                            <div class="text-[11px] sm:text-xs md:text-sm text-tech-muted uppercase tracking-wider font-semibold">Certifications</div>
-                        </div>
-                        <div class="space-y-1 border-x border-[#1b2333]">
-                            <div class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">6+</div>
-                            <div class="text-[11px] sm:text-xs md:text-sm text-tech-muted uppercase tracking-wider font-semibold">Projects</div>
-                        </div>
-                        <div class="space-y-1">
-                            <div class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-tech-gold tracking-tight">100%</div>
-                            <div class="text-[11px] sm:text-xs md:text-sm text-tech-muted uppercase tracking-wider font-semibold">Dedication</div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 2. SERVICES TAB (Unboxed Clean Layout) -->
-                <section id="tab-services" class="sub-view space-y-6">
-                    <div class="flex items-center gap-3 mb-2">
-                        <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl font-medium text-white tracking-tight">
-                            Services
-                        </h2>
-                        <span class="h-[1px] flex-grow bg-gradient-to-r from-tech-gold/40 to-transparent"></span>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12">
-                        <!-- AI & ML -->
-                        <div class="stagger-item service-row flex items-start gap-4">
-                            <div class="w-11 h-11 rounded-xl bg-tech-gold/10 flex items-center justify-center flex-shrink-0 text-tech-gold text-xl mt-0.5 shadow-sm">
-                                <i class="fas fa-brain"></i>
-                            </div>
-                            <div class="space-y-1">
-                                <h3 class="font-semibold text-white text-base md:text-lg transition-colors">AI &amp; ML</h3>
-                                <p class="text-tech-muted text-xs sm:text-[13px] md:text-sm leading-relaxed">Deep neural networks, computer vision, diagnostic AI models, Scikit-Learn, TensorFlow, and PyTorch solutions.</p>
-                            </div>
-                        </div>
-
-                        <!-- Web Development -->
-                        <div class="stagger-item service-row flex items-start gap-4">
-                            <div class="w-11 h-11 rounded-xl bg-tech-cyan/10 flex items-center justify-center flex-shrink-0 text-tech-cyan text-xl mt-0.5 shadow-sm">
-                                <i class="fas fa-laptop-code"></i>
-                            </div>
-                            <div class="space-y-1">
-                                <h3 class="font-semibold text-white text-base md:text-lg transition-colors">Web Development</h3>
-                                <p class="text-tech-muted text-xs sm:text-[13px] md:text-sm leading-relaxed">Modern, mobile-first responsive web pages, interactive landing sites, HTML5, CSS3, Tailwind CSS, and JavaScript.</p>
-                            </div>
-                        </div>
-
-                        <!-- Designing -->
-                        <div class="stagger-item service-row flex items-start gap-4">
-                            <div class="w-11 h-11 rounded-xl bg-pink-500/10 flex items-center justify-center flex-shrink-0 text-pink-400 text-xl mt-0.5 shadow-sm">
-                                <i class="fas fa-bezier-curve"></i>
-                            </div>
-                            <div class="space-y-1">
-                                <h3 class="font-semibold text-white text-base md:text-lg transition-colors">Designing</h3>
-                                <p class="text-tech-muted text-xs sm:text-[13px] md:text-sm leading-relaxed">Creative brand logos, intuitive UI/UX design, promotional posters, and sleek digital graphic assets.</p>
-                            </div>
-                        </div>
-
-                        <!-- Full Stack Development -->
-                        <div class="stagger-item service-row flex items-start gap-4">
-                            <div class="w-11 h-11 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0 text-purple-400 text-xl mt-0.5 shadow-sm">
-                                <i class="fas fa-layer-group"></i>
-                            </div>
-                            <div class="space-y-1">
-                                <h3 class="font-semibold text-white text-base md:text-lg transition-colors">Full Stack Development</h3>
-                                <p class="text-tech-muted text-xs sm:text-[13px] md:text-sm leading-relaxed">End-to-end applications integrating frontend UI with Python/Flask backend APIs, database schemas, and cloud deployment.</p>
-                            </div>
-                        </div>
-
-                        <!-- Data Analytics (Spans 2 columns on wide screens) -->
-                        <div class="stagger-item service-row flex items-start gap-4 md:col-span-2">
-                            <div class="w-11 h-11 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0 text-emerald-400 text-xl mt-0.5 shadow-sm">
-                                <i class="fas fa-chart-pie"></i>
-                            </div>
-                            <div class="space-y-1">
-                                <h3 class="font-semibold text-white text-base md:text-lg transition-colors">Data Analytics</h3>
-                                <p class="text-tech-muted text-xs sm:text-[13px] md:text-sm leading-relaxed">Automated reporting pipelines, Power BI interactive KPI dashboards, exploratory data analysis, and predictive forecasting.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flex justify-center pt-6">
-                        <button onclick="openStartProjectModal()" class="py-3 px-8 rounded-full bg-[#0c101a] border border-tech-border text-xs sm:text-sm text-tech-gold font-semibold uppercase tracking-wider hover:border-tech-gold transition-all duration-300 hover:scale-105">
-                            Request a Service Quote &rarr;
-                        </button>
-                    </div>
-                </section>
-
-                <!-- 3. PROJECTS TAB -->
-                <section id="tab-projects" class="sub-view space-y-6">
-                    <div class="flex items-center gap-3 mb-2">
-                        <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl font-medium text-white tracking-tight">
-                            Featured Projects
-                        </h2>
-                        <span class="h-[1px] flex-grow bg-gradient-to-r from-tech-gold/40 to-transparent"></span>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5" id="projects-container"></div>
-                </section>
-
-                <!-- 4. CONTACT TAB -->
-                <section id="tab-contact" class="sub-view space-y-8 text-center max-w-2xl mx-auto">
-                    <div class="flex items-center gap-3 text-left mb-2">
-                        <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl font-medium text-white tracking-tight">
-                            Get in Touch
-                        </h2>
-                        <span class="h-[1px] flex-grow bg-gradient-to-r from-tech-gold/40 to-transparent"></span>
-                    </div>
-
-                    <p class="text-xs sm:text-sm md:text-base text-tech-muted stagger-item">Open for freelance projects, AI/ML integrations, design, and collaborations.</p>
-
-                    <div class="flex justify-center stagger-item">
-                        <button onclick="openStartProjectModal()" class="py-3.5 px-10 rounded-full bg-tech-gold text-black font-semibold text-xs sm:text-sm tracking-wider uppercase hover:bg-yellow-400 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 shadow-lg shadow-tech-gold/15">
-                            <i class="fas fa-paper-plane"></i>
-                            <span>Start a Project</span>
-                        </button>
-                    </div>
-
-                    <div class="grid grid-cols-4 gap-4 pt-2 max-w-md mx-auto">
-                        <a href="mailto:suganyashenbagam@gmail.com" class="stagger-item p-4 md:p-5 bg-[#0c101a] border border-[#1b2333] hover:border-tech-gold rounded-2xl text-tech-gold flex items-center justify-center transition-all duration-300 hover:-translate-y-1 shadow-sm" title="Email">
-                            <i class="fas fa-envelope text-xl"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/shruthi-s-5b929b42b" target="_blank" class="stagger-item p-4 md:p-5 bg-[#0c101a] border border-[#1b2333] hover:border-tech-cyan rounded-2xl text-tech-cyan flex items-center justify-center transition-all duration-300 hover:-translate-y-1 shadow-sm" title="LinkedIn">
-                            <i class="fab fa-linkedin-in text-xl"></i>
-                        </a>
-                        <a href="https://github.com/suganyas2382006-sketch" target="_blank" class="stagger-item p-4 md:p-5 bg-[#0c101a] border border-[#1b2333] hover:border-white rounded-2xl text-white flex items-center justify-center transition-all duration-300 hover:-translate-y-1 shadow-sm" title="GitHub">
-                            <i class="fab fa-github text-xl"></i>
-                        </a>
-                        <a href="https://wa.me/qr/QBOT5I4XWEI3L1" target="_blank" class="stagger-item p-4 md:p-5 bg-[#0c101a] border border-[#1b2333] hover:border-emerald-400 rounded-2xl text-emerald-400 flex items-center justify-center transition-all duration-300 hover:-translate-y-1 shadow-sm" title="WhatsApp">
-                            <i class="fab fa-whatsapp text-xl"></i>
-                        </a>
-                    </div>
-
-                    <div class="pt-4 flex justify-center stagger-item">
-                        <button onclick="openPaymentModal(true)" class="inline-flex items-center justify-center gap-2 py-3 px-8 rounded-full border border-tech-gold text-tech-gold hover:bg-tech-gold hover:text-black font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 hover:scale-105 shadow-md">
-                            <i class="fas fa-qrcode text-sm"></i> Pay via UPI
-                        </button>
-                    </div>
-                </section>
-
-            </main>
+        <!-- MOBILE SIGNATURE -->
+        <div class="text-left mb-6 md:hidden">
+            <h1 class="font-signature text-3xl sm:text-4xl text-tech-gold tracking-wide leading-relaxed">
+                Suganya Shenbagam
+            </h1>
         </div>
 
-        <!-- MINIMAL FOOTER -->
-        <footer class="text-center pt-10 text-xs text-tech-muted border-t border-[#1b2333]/50 mt-14">
-            &copy; <span id="year"></span> Suganya Shenbagam. All rights reserved.
-        </footer>
+        <!-- DYNAMIC CONTENT -->
+        <main id="dynamic-content" class="w-full">
+            
+            <!-- 1. HOME TAB -->
+            <section id="tab-home" class="sub-view active space-y-6 md:space-y-8">
+                <div class="space-y-4 max-w-3xl">
+                    <div class="flex items-center gap-3">
+                        <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl font-medium text-white tracking-tight">
+                            About Me
+                        </h2>
+                        <span class="h-[1px] flex-grow bg-gradient-to-r from-tech-gold/40 to-transparent"></span>
+                    </div>
 
+                    <p class="text-tech-muted text-xs sm:text-sm md:text-base leading-relaxed">
+                        I’m a 3rd-year B.Tech AI &amp; Data Science student and freelance developer passionate about turning ideas into practical digital solutions.
+                    </p>
+                    
+                    <p class="text-tech-muted text-xs sm:text-sm md:text-base leading-relaxed">
+                        I work in AI &amp; ML, Web Development, Full-Stack Development, UI/UX &amp; Graphic Design, and Data Analytics, creating modern, functional, and user-friendly solutions.
+                    </p>
+                </div>
+
+                <!-- Action Button -->
+                <div class="pt-2 flex justify-start">
+                    <button onclick="openStartProjectModal()" class="inline-flex items-center justify-center gap-2 py-3 px-8 rounded-full bg-gradient-to-r from-tech-gold/20 via-tech-gold/10 to-transparent border border-tech-gold/40 hover:border-tech-gold text-white font-medium text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 hover:scale-105 group shadow-lg shadow-tech-gold/5">
+                        <i class="fas fa-rocket text-tech-gold group-hover:scale-110 transition-transform"></i>
+                        <span>Start a Project with Me</span>
+                    </button>
+                </div>
+
+                <!-- STATS BAR -->
+                <div class="grid grid-cols-3 gap-4 text-center pt-6 mt-8 border-t border-[#1b2333] max-w-2xl">
+                    <div class="space-y-1">
+                        <div class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">8+</div>
+                        <div class="text-[11px] sm:text-xs md:text-sm text-tech-muted uppercase tracking-wider font-semibold">Certifications</div>
+                    </div>
+                    <div class="space-y-1 border-x border-[#1b2333]">
+                        <div class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">6+</div>
+                        <div class="text-[11px] sm:text-xs md:text-sm text-tech-muted uppercase tracking-wider font-semibold">Projects</div>
+                    </div>
+                    <div class="space-y-1">
+                        <div class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-tech-gold tracking-tight">100%</div>
+                        <div class="text-[11px] sm:text-xs md:text-sm text-tech-muted uppercase tracking-wider font-semibold">Dedication</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. SERVICES TAB -->
+            <section id="tab-services" class="sub-view space-y-6">
+                <div class="flex items-center gap-3 mb-2">
+                    <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl font-medium text-white tracking-tight">
+                        Services
+                    </h2>
+                    <span class="h-[1px] flex-grow bg-gradient-to-r from-tech-gold/40 to-transparent"></span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12">
+                    <!-- AI & ML -->
+                    <div class="service-row flex items-start gap-4">
+                        <div class="w-11 h-11 rounded-xl bg-tech-gold/10 flex items-center justify-center flex-shrink-0 text-tech-gold text-xl mt-0.5 shadow-sm">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-semibold text-white text-base md:text-lg transition-colors">AI &amp; ML</h3>
+                            <p class="text-tech-muted text-xs sm:text-[13px] md:text-sm leading-relaxed">Deep neural networks, computer vision, diagnostic AI models, Scikit-Learn, TensorFlow, and PyTorch solutions.</p>
+                        </div>
+                    </div>
+
+                    <!-- Web Development -->
+                    <div class="service-row flex items-start gap-4">
+                        <div class="w-11 h-11 rounded-xl bg-tech-cyan/10 flex items-center justify-center flex-shrink-0 text-tech-cyan text-xl mt-0.5 shadow-sm">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-semibold text-white text-base md:text-lg transition-colors">Web Development</h3>
+                            <p class="text-tech-muted text-xs sm:text-[13px] md:text-sm leading-relaxed">Modern, mobile-first responsive web pages, interactive landing sites, HTML5, CSS3, Tailwind CSS, and JavaScript.</p>
+                        </div>
+                    </div>
+
+                    <!-- Designing -->
+                    <div class="service-row flex items-start gap-4">
+                        <div class="w-11 h-11 rounded-xl bg-pink-500/10 flex items-center justify-center flex-shrink-0 text-pink-400 text-xl mt-0.5 shadow-sm">
+                            <i class="fas fa-bezier-curve"></i>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-semibold text-white text-base md:text-lg transition-colors">Designing</h3>
+                            <p class="text-tech-muted text-xs sm:text-[13px] md:text-sm leading-relaxed">Creative brand logos, intuitive UI/UX design, promotional posters, and sleek digital graphic assets.</p>
+                        </div>
+                    </div>
+
+                    <!-- Full Stack Development -->
+                    <div class="service-row flex items-start gap-4">
+                        <div class="w-11 h-11 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0 text-purple-400 text-xl mt-0.5 shadow-sm">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-semibold text-white text-base md:text-lg transition-colors">Full Stack Development</h3>
+                            <p class="text-tech-muted text-xs sm:text-[13px] md:text-sm leading-relaxed">End-to-end applications integrating frontend UI with Python/Flask backend APIs, database schemas, and cloud deployment.</p>
+                        </div>
+                    </div>
+
+                    <!-- Data Analytics -->
+                    <div class="service-row flex items-start gap-4 md:col-span-2">
+                        <div class="w-11 h-11 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0 text-emerald-400 text-xl mt-0.5 shadow-sm">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-semibold text-white text-base md:text-lg transition-colors">Data Analytics</h3>
+                            <p class="text-tech-muted text-xs sm:text-[13px] md:text-sm leading-relaxed">Automated reporting pipelines, Power BI interactive KPI dashboards, exploratory data analysis, and predictive forecasting.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-center pt-6">
+                    <button onclick="openStartProjectModal()" class="py-3 px-8 rounded-full bg-[#0c101a] border border-tech-border text-xs sm:text-sm text-tech-gold font-semibold uppercase tracking-wider hover:border-tech-gold transition-all duration-300 hover:scale-105">
+                        Request a Service Quote &rarr;
+                    </button>
+                </div>
+            </section>
+
+            <!-- 3. PROJECTS TAB -->
+            <section id="tab-projects" class="sub-view space-y-6">
+                <div class="flex items-center gap-3 mb-2">
+                    <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl font-medium text-white tracking-tight">
+                        Featured Projects
+                    </h2>
+                    <span class="h-[1px] flex-grow bg-gradient-to-r from-tech-gold/40 to-transparent"></span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5" id="projects-container"></div>
+            </section>
+
+            <!-- 4. CONTACT TAB -->
+            <section id="tab-contact" class="sub-view space-y-8 text-center max-w-2xl mx-auto">
+                <div class="flex items-center gap-3 text-left mb-2">
+                    <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl font-medium text-white tracking-tight">
+                        Get in Touch
+                    </h2>
+                    <span class="h-[1px] flex-grow bg-gradient-to-r from-tech-gold/40 to-transparent"></span>
+                </div>
+
+                <p class="text-xs sm:text-sm md:text-base text-tech-muted">Open for freelance projects, AI/ML integrations, design, and collaborations.</p>
+
+                <div class="flex justify-center">
+                    <button onclick="openStartProjectModal()" class="py-3.5 px-10 rounded-full bg-tech-gold text-black font-semibold text-xs sm:text-sm tracking-wider uppercase hover:bg-yellow-400 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 shadow-lg shadow-tech-gold/15">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Start a Project</span>
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-4 gap-4 pt-2 max-w-md mx-auto">
+                    <a href="mailto:suganyashenbagam@gmail.com" class="p-4 md:p-5 bg-[#0c101a] border border-[#1b2333] hover:border-tech-gold rounded-2xl text-tech-gold flex items-center justify-center transition-all duration-300 hover:-translate-y-1 shadow-sm" title="Email">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/shruthi-s-5b929b42b" target="_blank" class="p-4 md:p-5 bg-[#0c101a] border border-[#1b2333] hover:border-tech-cyan rounded-2xl text-tech-cyan flex items-center justify-center transition-all duration-300 hover:-translate-y-1 shadow-sm" title="LinkedIn">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="https://github.com/suganyas2382006-sketch" target="_blank" class="p-4 md:p-5 bg-[#0c101a] border border-[#1b2333] hover:border-white rounded-2xl text-white flex items-center justify-center transition-all duration-300 hover:-translate-y-1 shadow-sm" title="GitHub">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://wa.me/qr/QBOT5I4XWEI3L1" target="_blank" class="p-4 md:p-5 bg-[#0c101a] border border-[#1b2333] hover:border-emerald-400 rounded-2xl text-emerald-400 flex items-center justify-center transition-all duration-300 hover:-translate-y-1 shadow-sm" title="WhatsApp">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                    </a>
+                </div>
+
+                <div class="pt-4 flex justify-center">
+                    <button onclick="openPaymentModal(true)" class="inline-flex items-center justify-center gap-2 py-3 px-8 rounded-full border border-tech-gold text-tech-gold hover:bg-tech-gold hover:text-black font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 hover:scale-105 shadow-md">
+                        <i class="fas fa-qrcode text-sm"></i> Pay via UPI
+                    </button>
+                </div>
+            </section>
+
+        </main>
     </div>
+
+    <!-- MINIMAL FOOTER: Placed directly in document flow at page bottom -->
+    <footer class="w-full text-center py-6 text-xs text-tech-muted border-t border-[#1b2333]/50 mt-auto">
+        &copy; <span id="year"></span> Suganya Shenbagam. All rights reserved.
+    </footer>
 
     <!-- ================= GOOGLE PAY QR PAYMENT MODAL ================= -->
     <div id="payment-modal" class="fixed inset-0 z-50 hidden modal-backdrop flex items-center justify-center p-4">
         <div class="bg-[#F0F4FA] rounded-[36px] shadow-2xl w-full max-w-sm overflow-hidden transform transition-all duration-300 scale-95 opacity-0 text-center relative border border-slate-200" id="payment-panel">
-            
             <button onclick="closePaymentModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/80 hover:bg-white text-slate-500 hover:text-slate-800 flex items-center justify-center shadow-sm transition z-10">
                 <i class="fas fa-times text-xs"></i>
             </button>
-
             <div class="pt-7 pb-6 px-6">
                 <div class="flex items-center justify-center gap-2.5 mb-4">
                     <div class="w-9 h-9 rounded-full bg-[#1EA362] flex items-center justify-center text-white shadow-sm ring-2 ring-white">
@@ -438,7 +422,6 @@
                     </div>
                     <h3 class="text-xl font-bold text-[#1E293B] tracking-tight">S.Suganya Nachiyar</h3>
                 </div>
-
                 <div class="bg-white rounded-[28px] p-4 shadow-sm border border-slate-100 flex flex-col items-center">
                     <div class="w-60 h-60 flex items-center justify-center rounded-2xl overflow-hidden bg-slate-50">
                         <img 
@@ -448,7 +431,6 @@
                             onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=upi%3A%2F%2Fpay%3Fpa%3Dssuganyanachiyar%40oksbi%26pn%3DS.Suganya%2520Nachiyar%26cu%3DINR'"
                         />
                     </div>
-
                     <div class="mt-3 pt-3 border-t border-slate-100 w-full flex items-center justify-center gap-2 text-slate-700 text-sm font-medium">
                         <span>UPI ID: <strong class="font-mono text-slate-900">ssuganyanachiyar@oksbi</strong></span>
                         <button onclick="copyUpiId()" class="text-slate-400 hover:text-tech-gold transition" title="Copy UPI ID">
@@ -456,25 +438,19 @@
                         </button>
                     </div>
                 </div>
-
-                <p class="text-xs text-slate-500 font-medium mt-3.5 tracking-wide">
-                    Scan to pay with any UPI app
-                </p>
-
+                <p class="text-xs text-slate-500 font-medium mt-3.5 tracking-wide">Scan to pay with any UPI app</p>
                 <div class="mt-3.5">
                     <a id="upi-direct-link" href="upi://pay?pa=ssuganyanachiyar@oksbi&pn=S.Suganya%20Nachiyar&cu=INR" class="inline-flex items-center justify-center gap-2 w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-semibold uppercase tracking-wider transition-all duration-300 hover:scale-102 shadow-sm">
                         <i class="fas fa-wallet text-[11px]"></i> Open in UPI App
                     </a>
                 </div>
             </div>
-
         </div>
     </div>
 
     <!-- ================= INQUIRY MODAL (Web3Forms AJAX) ================= -->
     <div id="start-project-modal" class="fixed inset-0 z-50 hidden modal-backdrop flex items-center justify-center p-4">
         <div class="bg-[#0c101a] border border-[#1b2333] rounded-3xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto transform transition-all duration-300 scale-95 opacity-0 text-left" id="start-project-panel">
-            
             <div class="sticky top-0 bg-[#0c101a]/95 backdrop-blur-md border-b border-[#1b2333] p-5 flex justify-between items-center z-10">
                 <div>
                     <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
@@ -486,18 +462,15 @@
                     <i class="fas fa-times text-xs"></i>
                 </button>
             </div>
-
             <div class="p-5 sm:p-7">
                 <form id="project-inquiry-form" class="space-y-4">
                     <input type="hidden" name="access_key" value="98ff650b-d44e-4510-96b9-66420995077d">
                     <input type="hidden" name="subject" value="New Project Request - Portfolio">
                     <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
                     <div>
                         <label class="block text-[11px] font-semibold text-tech-gold uppercase tracking-wider mb-1.5">Full Name *</label>
                         <input type="text" name="name" required placeholder="John Doe" class="w-full bg-[#131826] border border-[#1b2333] focus:border-tech-gold text-white rounded-xl px-4 py-2.5 text-xs sm:text-sm focus:outline-none transition">
                     </div>
-
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-[11px] font-semibold text-tech-gold uppercase tracking-wider mb-1.5">Email Address *</label>
@@ -508,7 +481,6 @@
                             <input type="tel" name="phone" required placeholder="+91 98765 43210" class="w-full bg-[#131826] border border-[#1b2333] focus:border-tech-gold text-white rounded-xl px-4 py-2.5 text-xs sm:text-sm focus:outline-none transition">
                         </div>
                     </div>
-
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-[11px] font-semibold text-tech-gold uppercase tracking-wider mb-1.5">Project Type *</label>
@@ -527,12 +499,10 @@
                             <input type="text" name="budget" required placeholder="e.g. ₹15,000 / $250" class="w-full bg-[#131826] border border-[#1b2333] focus:border-tech-gold text-white rounded-xl px-4 py-2.5 text-xs sm:text-sm focus:outline-none transition">
                         </div>
                     </div>
-
                     <div>
                         <label class="block text-[11px] font-semibold text-tech-gold uppercase tracking-wider mb-1.5">Project Description *</label>
                         <textarea name="message" rows="3" required placeholder="Outline your project scope, goals, and delivery timeframe..." class="w-full bg-[#131826] border border-[#1b2333] focus:border-tech-gold text-white rounded-xl px-4 py-2.5 text-xs sm:text-sm focus:outline-none transition resize-none"></textarea>
                     </div>
-
                     <button type="submit" id="submit-btn" class="w-full bg-tech-gold hover:bg-yellow-400 text-black font-semibold py-3 px-4 rounded-xl transition-all duration-300 shadow-lg shadow-tech-gold/15 flex items-center justify-center gap-2 text-xs uppercase tracking-wider hover:scale-[1.02]">
                         <i class="fas fa-paper-plane text-xs"></i>
                         <span id="submit-text">Submit Project Request</span>
@@ -596,7 +566,7 @@
             ).join('');
 
             pContainer.innerHTML += `
-                <div class="stagger-item p-4 sm:p-5 bg-[#0c101a]/90 border border-[#1b2333] hover:border-tech-gold/50 rounded-2xl flex flex-col justify-between gap-3 shadow-md transition-all duration-300 hover:-translate-y-1">
+                <div class="p-4 sm:p-5 bg-[#0c101a]/90 border border-[#1b2333] hover:border-tech-gold/50 rounded-2xl flex flex-col justify-between gap-3 shadow-md transition-all duration-300 hover:-translate-y-1">
                     <div class="space-y-3">
                         <div class="flex justify-between items-center border-b border-[#1b2333]/70 pb-2.5">
                             <h3 class="text-white font-semibold text-base flex items-center gap-2">
@@ -657,8 +627,8 @@
                 }
             });
 
-            // Resets scroll to top cleanly when toggling tabs
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Instant reset so the viewport recalibrates document flow accurately
+            window.scrollTo(0, 0);
         }
 
         // Web3Forms Modal & In-Place AJAX Form Submission
