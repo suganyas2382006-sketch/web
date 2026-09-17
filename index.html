@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suganya Shenbagam | AI & Data Science</title>
+    <title>Suganya Shenbagam | AI & Data Science Portfolio</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -13,10 +13,10 @@
                 extend: {
                     colors: {
                         tech: {
-                            base: '#0B0F19',
-                            card: '#111827',
-                            cardHover: '#172033',
-                            border: '#1F2937',
+                            base: '#030508',
+                            card: '#0c101a',
+                            cardHover: '#131826',
+                            border: '#1b2333',
                             gold: '#D4AF37',
                             goldGlow: '#F59E0B',
                             cyan: '#38BDF8',
@@ -41,7 +41,7 @@
     
     <style>
         :root {
-            --bg-base: #0B0F19;
+            --bg-base: #030508;
             --tech-gold: #D4AF37;
             --tech-cyan: #38BDF8;
             --bezier-smooth: cubic-bezier(0.16, 1, 0.3, 1);
@@ -56,17 +56,16 @@
             overflow-y: auto;
         }
 
-        /* Executive Slate & Obsidian Tech Gradient Mesh */
+        /* Pure Dark Aurora Light Diffusion - Responsive Ultra Wide */
         .tech-bg {
-            background-color: #0B0F19;
+            background-color: #030508;
             background-image: 
-                radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 85% 20%, rgba(212, 175, 55, 0.06) 0%, transparent 35%),
-                radial-gradient(circle at 50% 85%, rgba(30, 41, 59, 0.35) 0%, transparent 60%),
-                linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+                radial-gradient(1200px circle at 75% 10%, rgba(56, 189, 248, 0.085) 0%, transparent 60%),
+                radial-gradient(1000px circle at 15% 45%, rgba(212, 175, 55, 0.065) 0%, transparent 55%),
+                radial-gradient(1400px circle at 50% 90%, rgba(30, 41, 59, 0.45) 0%, transparent 70%),
+                linear-gradient(180deg, rgba(3, 5, 8, 0.3) 0%, #030508 100%);
             background-attachment: fixed;
+            background-repeat: no-repeat;
         }
 
         .font-signature {
@@ -76,8 +75,8 @@
         /* Glassmorphic Capsule Nav Buttons */
         .nav-pill-btn {
             position: relative;
-            background: rgba(17, 24, 39, 0.8);
-            backdrop-filter: blur(16px);
+            background: rgba(14, 19, 31, 0.85);
+            backdrop-filter: blur(20px);
             border: 1.5px solid rgba(212, 175, 55, 0.3);
             box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.06);
             border-radius: 9999px;
@@ -91,7 +90,7 @@
         }
 
         .nav-pill-btn.active-nav {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(17, 24, 39, 0.95));
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.22), rgba(14, 19, 31, 0.95));
             border-color: #D4AF37;
             color: #ffffff;
             font-weight: 600;
@@ -103,8 +102,8 @@
             position: relative;
             border-radius: 36px;
             padding: 3px;
-            background: linear-gradient(145deg, #D4AF37, #1F2937, #D4AF37);
-            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.2);
+            background: linear-gradient(145deg, #D4AF37, #1f293d, #D4AF37);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 24px rgba(212, 175, 55, 0.2);
             transition: transform 0.4s var(--bezier-smooth);
         }
         .photo-gold-frame:hover {
@@ -143,20 +142,21 @@
         .stagger-item:nth-child(3) { animation-delay: 150ms; }
         .stagger-item:nth-child(4) { animation-delay: 200ms; }
         .stagger-item:nth-child(5) { animation-delay: 250ms; }
+        .stagger-item:nth-child(6) { animation-delay: 300ms; }
 
         .service-row {
             transition: all 0.3s var(--bezier-smooth);
         }
         .service-row:hover {
-            transform: translateX(5px);
+            transform: translateX(6px);
         }
         .service-row:hover h3 {
             color: #D4AF37;
         }
 
         .modal-backdrop {
-            background-color: rgba(7, 11, 20, 0.88);
-            backdrop-filter: blur(14px);
+            background-color: rgba(3, 5, 8, 0.88);
+            backdrop-filter: blur(16px);
         }
 
         /* Toast notification */
@@ -171,225 +171,259 @@
 
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #1F2937; border-radius: 9999px; }
+        ::-webkit-scrollbar-thumb { background: #1b2333; border-radius: 9999px; }
         ::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
     </style>
 </head>
 <body class="tech-bg selection:bg-tech-gold selection:text-black">
 
     <!-- SUBMISSION TOAST NOTIFICATION -->
-    <div id="toast-notification" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] opacity-0 pointer-events-none flex items-center gap-3 bg-[#111827] border border-tech-gold/60 text-white px-6 py-3.5 rounded-full shadow-2xl">
+    <div id="toast-notification" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] opacity-0 pointer-events-none flex items-center gap-3 bg-[#0c101a] border border-tech-gold/60 text-white px-6 py-3.5 rounded-full shadow-2xl">
         <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs">
             <i class="fas fa-check"></i>
         </div>
         <span class="text-xs sm:text-sm font-medium tracking-wide">Successfully sent! I will get back to you soon.</span>
     </div>
 
-    <!-- FULL PAGE SCROLLING WRAPPER -->
-    <div class="w-full max-w-xl mx-auto px-5 sm:px-8 pt-7 pb-16 min-h-screen flex flex-col justify-between">
+    <!-- RESPONSIVE PAGE CONTAINER (max-w-xl on Mobile, max-w-4xl / 5xl on Desktop) -->
+    <div class="w-full max-w-xl md:max-w-4xl lg:max-w-5xl mx-auto px-5 sm:px-8 md:px-12 pt-7 md:pt-12 pb-16 min-h-screen flex flex-col justify-between">
         
         <div>
-            <!-- FIXED HEADER: Photo (Left) & Compact Navigation Pills (Right) -->
-            <header class="flex items-center justify-between gap-4 mb-7">
-                <div class="flex-shrink-0">
-                    <div class="photo-gold-frame w-[165px] sm:w-[190px] aspect-[4/5] overflow-hidden">
-                        <img 
-                            src="profile.jpg" 
-                            alt="Suganya Shenbagam" 
-                            class="w-full h-full object-cover rounded-[33px] transition-transform duration-700 hover:scale-105" 
-                            onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80'"
-                        />
+            <!-- RESPONSIVE HEADER: Balanced on both Mobile and Desktop -->
+            <header class="flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-10 mb-8 md:mb-12">
+                
+                <div class="flex items-center justify-between md:justify-start gap-5 sm:gap-8">
+                    <!-- Left: Portrait Photo with responsive scaling -->
+                    <div class="flex-shrink-0">
+                        <div class="photo-gold-frame w-[160px] sm:w-[185px] md:w-[210px] aspect-[4/5] overflow-hidden">
+                            <img 
+                                src="profile.jpg" 
+                                alt="Suganya Shenbagam" 
+                                class="w-full h-full object-cover rounded-[33px] transition-transform duration-700 hover:scale-105" 
+                                onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80'"
+                            />
+                        </div>
+                    </div>
+
+                    <!-- Mobile Navigation Pills (hidden on desktop) -->
+                    <nav class="flex md:hidden flex-col items-center gap-2.5 flex-grow">
+                        <button onclick="switchTab('home')" class="nav-pill-btn active-nav w-32 sm:w-36 py-2 px-3 text-xs sm:text-sm tracking-wide text-zinc-300 text-center" data-tab="home">
+                            Home
+                        </button>
+                        <button onclick="switchTab('services')" class="nav-pill-btn w-32 sm:w-36 py-2 px-3 text-xs sm:text-sm tracking-wide text-zinc-300 text-center" data-tab="services">
+                            Services
+                        </button>
+                        <button onclick="switchTab('projects')" class="nav-pill-btn w-32 sm:w-36 py-2 px-3 text-xs sm:text-sm tracking-wide text-zinc-300 text-center" data-tab="projects">
+                            Projects
+                        </button>
+                        <button onclick="switchTab('contact')" class="nav-pill-btn w-32 sm:w-36 py-2 px-3 text-xs sm:text-sm tracking-wide text-zinc-300 text-center" data-tab="contact">
+                            Contact
+                        </button>
+                    </nav>
+
+                    <!-- Desktop Header Title & Intro (shown on md/lg only) -->
+                    <div class="hidden md:block text-left space-y-2">
+                        <h1 class="font-signature text-4xl lg:text-5xl text-tech-gold tracking-wide leading-tight">
+                            Suganya Shenbagam
+                        </h1>
+                        <p class="text-xs lg:text-sm text-tech-muted font-mono tracking-wider uppercase">
+                            AI &amp; Data Science Engineer • Full-Stack Developer
+                        </p>
                     </div>
                 </div>
 
-                <nav class="flex flex-col items-center gap-2.5 flex-grow">
-                    <button onclick="switchTab('home')" class="nav-pill-btn active-nav w-32 sm:w-36 py-2 px-3 text-xs sm:text-sm tracking-wide text-zinc-300 text-center" data-tab="home">
+                <!-- Desktop Horizontal Navigation Pills (shown on md/lg only) -->
+                <nav class="hidden md:flex items-center gap-3 bg-[#0c101a]/80 p-2 rounded-full border border-[#1b2333]">
+                    <button onclick="switchTab('home')" class="nav-pill-btn active-nav px-6 py-2.5 text-xs lg:text-sm tracking-wide text-zinc-300 text-center" data-tab="home">
                         Home
                     </button>
-                    <button onclick="switchTab('services')" class="nav-pill-btn w-32 sm:w-36 py-2 px-3 text-xs sm:text-sm tracking-wide text-zinc-300 text-center" data-tab="services">
+                    <button onclick="switchTab('services')" class="nav-pill-btn px-6 py-2.5 text-xs lg:text-sm tracking-wide text-zinc-300 text-center" data-tab="services">
                         Services
                     </button>
-                    <button onclick="switchTab('projects')" class="nav-pill-btn w-32 sm:w-36 py-2 px-3 text-xs sm:text-sm tracking-wide text-zinc-300 text-center" data-tab="projects">
+                    <button onclick="switchTab('projects')" class="nav-pill-btn px-6 py-2.5 text-xs lg:text-sm tracking-wide text-zinc-300 text-center" data-tab="projects">
                         Projects
                     </button>
-                    <button onclick="switchTab('contact')" class="nav-pill-btn w-32 sm:w-36 py-2 px-3 text-xs sm:text-sm tracking-wide text-zinc-300 text-center" data-tab="contact">
+                    <button onclick="switchTab('contact')" class="nav-pill-btn px-6 py-2.5 text-xs lg:text-sm tracking-wide text-zinc-300 text-center" data-tab="contact">
                         Contact
                     </button>
                 </nav>
             </header>
 
-            <!-- PERSISTENT SIGNATURE -->
-            <div class="text-left mb-6">
+            <!-- MOBILE PERSISTENT SIGNATURE (hidden on desktop to avoid duplicate) -->
+            <div class="text-left mb-6 md:hidden">
                 <h1 class="font-signature text-3xl sm:text-4xl text-tech-gold tracking-wide leading-relaxed">
                     Suganya Shenbagam
                 </h1>
             </div>
 
-            <!-- NATURAL FULL SCREEN SECTIONS -->
+            <!-- NATURAL FULL SCREEN DYNAMIC SECTIONS -->
             <main id="dynamic-content">
                 
                 <!-- 1. HOME TAB -->
-                <section id="tab-home" class="sub-view active space-y-6">
-                    <div class="space-y-3.5 stagger-item">
-                        <div class="flex items-center gap-2">
-                            <h2 class="font-serif text-2xl sm:text-3xl font-medium text-white tracking-tight">
+                <section id="tab-home" class="sub-view active space-y-6 md:space-y-8">
+                    <div class="space-y-4 stagger-item max-w-3xl">
+                        <div class="flex items-center gap-3">
+                            <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl font-medium text-white tracking-tight">
                                 About Me
                             </h2>
-                            <span class="h-[1px] flex-grow bg-gradient-to-r from-tech-gold/40 to-transparent ml-2"></span>
+                            <span class="h-[1px] flex-grow bg-gradient-to-r from-tech-gold/40 to-transparent"></span>
                         </div>
 
-                        <p class="text-tech-muted text-xs sm:text-sm leading-relaxed">
+                        <p class="text-tech-muted text-xs sm:text-sm md:text-base leading-relaxed">
                             I’m a 3rd-year B.Tech AI &amp; Data Science student and freelance developer passionate about turning ideas into practical digital solutions.
                         </p>
                         
-                        <p class="text-tech-muted text-xs sm:text-sm leading-relaxed">
+                        <p class="text-tech-muted text-xs sm:text-sm md:text-base leading-relaxed">
                             I work in AI &amp; ML, Web Development, Full-Stack Development, UI/UX &amp; Graphic Design, and Data Analytics, creating modern, functional, and user-friendly solutions.
                         </p>
                     </div>
 
-                    <div class="pt-2 flex justify-center stagger-item">
-                        <button onclick="openStartProjectModal()" class="inline-flex items-center justify-center gap-2 py-2.5 px-6 rounded-full bg-gradient-to-r from-tech-gold/20 via-tech-gold/10 to-transparent border border-tech-gold/40 hover:border-tech-gold text-white font-medium text-xs tracking-wider uppercase transition-all duration-300 hover:scale-105 group shadow-lg shadow-tech-gold/5">
+                    <!-- Compact Project Action Button -->
+                    <div class="pt-2 flex justify-start stagger-item">
+                        <button onclick="openStartProjectModal()" class="inline-flex items-center justify-center gap-2 py-3 px-8 rounded-full bg-gradient-to-r from-tech-gold/20 via-tech-gold/10 to-transparent border border-tech-gold/40 hover:border-tech-gold text-white font-medium text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 hover:scale-105 group shadow-lg shadow-tech-gold/5">
                             <i class="fas fa-rocket text-tech-gold group-hover:scale-110 transition-transform"></i>
                             <span>Start a Project with Me</span>
                         </button>
                     </div>
 
-                    <div class="grid grid-cols-3 gap-2 text-center pt-6 mt-6 border-t border-[#1F2937] stagger-item">
+                    <!-- EXCLUSIVE STATS BAR: Adapts cleanly to Desktop Grid -->
+                    <div class="grid grid-cols-3 gap-4 text-center pt-6 mt-8 border-t border-[#1b2333] stagger-item max-w-2xl">
                         <div class="space-y-1">
-                            <div class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">8+</div>
-                            <div class="text-[11px] sm:text-xs text-tech-muted uppercase tracking-wider font-semibold">Certifications</div>
+                            <div class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">8+</div>
+                            <div class="text-[11px] sm:text-xs md:text-sm text-tech-muted uppercase tracking-wider font-semibold">Certifications</div>
                         </div>
-                        <div class="space-y-1 border-x border-[#1F2937]">
-                            <div class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">6+</div>
-                            <div class="text-[11px] sm:text-xs text-tech-muted uppercase tracking-wider font-semibold">Projects</div>
+                        <div class="space-y-1 border-x border-[#1b2333]">
+                            <div class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">6+</div>
+                            <div class="text-[11px] sm:text-xs md:text-sm text-tech-muted uppercase tracking-wider font-semibold">Projects</div>
                         </div>
                         <div class="space-y-1">
-                            <div class="text-3xl sm:text-4xl font-extrabold text-tech-gold tracking-tight">100%</div>
-                            <div class="text-[11px] sm:text-xs text-tech-muted uppercase tracking-wider font-semibold">Dedication</div>
+                            <div class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-tech-gold tracking-tight">100%</div>
+                            <div class="text-[11px] sm:text-xs md:text-sm text-tech-muted uppercase tracking-wider font-semibold">Dedication</div>
                         </div>
                     </div>
                 </section>
 
-                <!-- 2. SERVICES TAB -->
-                <section id="tab-services" class="sub-view space-y-4">
-                    <div class="flex items-center gap-2 mb-2">
-                        <h2 class="font-serif text-2xl sm:text-3xl font-medium text-white tracking-tight">
+                <!-- 2. SERVICES TAB (Single column on Mobile, 2-Column Grid on Desktop) -->
+                <section id="tab-services" class="sub-view space-y-6">
+                    <div class="flex items-center gap-3 mb-2">
+                        <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl font-medium text-white tracking-tight">
                             Services
                         </h2>
-                        <span class="h-[1px] flex-grow bg-gradient-to-r from-tech-gold/40 to-transparent ml-2"></span>
+                        <span class="h-[1px] flex-grow bg-gradient-to-r from-tech-gold/40 to-transparent"></span>
                     </div>
 
-                    <div class="divide-y divide-[#1F2937]/70">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8 divide-y md:divide-y-0 divide-[#1b2333]/70">
                         <!-- AI & ML -->
-                        <div class="stagger-item service-row py-4 flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-xl bg-tech-gold/10 flex items-center justify-center flex-shrink-0 text-tech-gold text-lg mt-0.5">
+                        <div class="stagger-item service-row py-4 md:p-5 md:bg-[#0c101a]/70 md:border md:border-[#1b2333] md:rounded-2xl flex items-start gap-4">
+                            <div class="w-11 h-11 rounded-xl bg-tech-gold/10 flex items-center justify-center flex-shrink-0 text-tech-gold text-xl mt-0.5 shadow-sm">
                                 <i class="fas fa-brain"></i>
                             </div>
                             <div class="space-y-1">
-                                <h3 class="font-semibold text-white text-base transition-colors">AI &amp; ML</h3>
-                                <p class="text-tech-muted text-xs sm:text-[13px] leading-relaxed">Deep neural networks, computer vision, diagnostic AI models, Scikit-Learn, TensorFlow, and PyTorch solutions.</p>
+                                <h3 class="font-semibold text-white text-base md:text-lg transition-colors">AI &amp; ML</h3>
+                                <p class="text-tech-muted text-xs sm:text-[13px] md:text-sm leading-relaxed">Deep neural networks, computer vision, diagnostic AI models, Scikit-Learn, TensorFlow, and PyTorch solutions.</p>
                             </div>
                         </div>
 
                         <!-- Web Development -->
-                        <div class="stagger-item service-row py-4 flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-xl bg-tech-cyan/10 flex items-center justify-center flex-shrink-0 text-tech-cyan text-lg mt-0.5">
+                        <div class="stagger-item service-row py-4 md:p-5 md:bg-[#0c101a]/70 md:border md:border-[#1b2333] md:rounded-2xl flex items-start gap-4">
+                            <div class="w-11 h-11 rounded-xl bg-tech-cyan/10 flex items-center justify-center flex-shrink-0 text-tech-cyan text-xl mt-0.5 shadow-sm">
                                 <i class="fas fa-laptop-code"></i>
                             </div>
                             <div class="space-y-1">
-                                <h3 class="font-semibold text-white text-base transition-colors">Web Development</h3>
-                                <p class="text-tech-muted text-xs sm:text-[13px] leading-relaxed">Modern, mobile-first responsive web pages, interactive landing sites, HTML5, CSS3, Tailwind CSS, and JavaScript.</p>
+                                <h3 class="font-semibold text-white text-base md:text-lg transition-colors">Web Development</h3>
+                                <p class="text-tech-muted text-xs sm:text-[13px] md:text-sm leading-relaxed">Modern, mobile-first responsive web pages, interactive landing sites, HTML5, CSS3, Tailwind CSS, and JavaScript.</p>
                             </div>
                         </div>
 
                         <!-- Designing -->
-                        <div class="stagger-item service-row py-4 flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-xl bg-pink-500/10 flex items-center justify-center flex-shrink-0 text-pink-400 text-lg mt-0.5">
+                        <div class="stagger-item service-row py-4 md:p-5 md:bg-[#0c101a]/70 md:border md:border-[#1b2333] md:rounded-2xl flex items-start gap-4">
+                            <div class="w-11 h-11 rounded-xl bg-pink-500/10 flex items-center justify-center flex-shrink-0 text-pink-400 text-xl mt-0.5 shadow-sm">
                                 <i class="fas fa-bezier-curve"></i>
                             </div>
                             <div class="space-y-1">
-                                <h3 class="font-semibold text-white text-base transition-colors">Designing</h3>
-                                <p class="text-tech-muted text-xs sm:text-[13px] leading-relaxed">Creative brand logos, intuitive UI/UX design, promotional posters, and sleek digital graphic assets.</p>
+                                <h3 class="font-semibold text-white text-base md:text-lg transition-colors">Designing</h3>
+                                <p class="text-tech-muted text-xs sm:text-[13px] md:text-sm leading-relaxed">Creative brand logos, intuitive UI/UX design, promotional posters, and sleek digital graphic assets.</p>
                             </div>
                         </div>
 
                         <!-- Full Stack Development -->
-                        <div class="stagger-item service-row py-4 flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0 text-purple-400 text-lg mt-0.5">
+                        <div class="stagger-item service-row py-4 md:p-5 md:bg-[#0c101a]/70 md:border md:border-[#1b2333] md:rounded-2xl flex items-start gap-4">
+                            <div class="w-11 h-11 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0 text-purple-400 text-xl mt-0.5 shadow-sm">
                                 <i class="fas fa-layer-group"></i>
                             </div>
                             <div class="space-y-1">
-                                <h3 class="font-semibold text-white text-base transition-colors">Full Stack Development</h3>
-                                <p class="text-tech-muted text-xs sm:text-[13px] leading-relaxed">End-to-end applications integrating frontend UI with Python/Flask backend APIs, database schemas, and cloud deployment.</p>
+                                <h3 class="font-semibold text-white text-base md:text-lg transition-colors">Full Stack Development</h3>
+                                <p class="text-tech-muted text-xs sm:text-[13px] md:text-sm leading-relaxed">End-to-end applications integrating frontend UI with Python/Flask backend APIs, database schemas, and cloud deployment.</p>
                             </div>
                         </div>
 
-                        <!-- Data Analytics -->
-                        <div class="stagger-item service-row py-4 flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0 text-emerald-400 text-lg mt-0.5">
+                        <!-- Data Analytics (Spans 2 columns on wide screens) -->
+                        <div class="stagger-item service-row py-4 md:p-5 md:bg-[#0c101a]/70 md:border md:border-[#1b2333] md:rounded-2xl flex items-start gap-4 md:col-span-2">
+                            <div class="w-11 h-11 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0 text-emerald-400 text-xl mt-0.5 shadow-sm">
                                 <i class="fas fa-chart-pie"></i>
                             </div>
                             <div class="space-y-1">
-                                <h3 class="font-semibold text-white text-base transition-colors">Data Analytics</h3>
-                                <p class="text-tech-muted text-xs sm:text-[13px] leading-relaxed">Automated reporting pipelines, Power BI interactive KPI dashboards, exploratory data analysis, and predictive forecasting.</p>
+                                <h3 class="font-semibold text-white text-base md:text-lg transition-colors">Data Analytics</h3>
+                                <p class="text-tech-muted text-xs sm:text-[13px] md:text-sm leading-relaxed">Automated reporting pipelines, Power BI interactive KPI dashboards, exploratory data analysis, and predictive forecasting.</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="flex justify-center pt-5">
-                        <button onclick="openStartProjectModal()" class="py-2.5 px-7 rounded-full bg-[#111827] border border-tech-border text-xs text-tech-gold font-semibold uppercase tracking-wider hover:border-tech-gold transition-all duration-300 hover:scale-105">
+                    <div class="flex justify-center pt-6">
+                        <button onclick="openStartProjectModal()" class="py-3 px-8 rounded-full bg-[#0c101a] border border-tech-border text-xs sm:text-sm text-tech-gold font-semibold uppercase tracking-wider hover:border-tech-gold transition-all duration-300 hover:scale-105">
                             Request a Service Quote &rarr;
                         </button>
                     </div>
                 </section>
 
-                <!-- 3. PROJECTS TAB -->
-                <section id="tab-projects" class="sub-view space-y-5">
-                    <div class="flex items-center gap-2 mb-3">
-                        <h2 class="font-serif text-2xl sm:text-3xl font-medium text-white tracking-tight">
+                <!-- 3. PROJECTS TAB (Single column on Mobile, 2-Column Grid on Desktop) -->
+                <section id="tab-projects" class="sub-view space-y-6">
+                    <div class="flex items-center gap-3 mb-2">
+                        <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl font-medium text-white tracking-tight">
                             Featured Projects
                         </h2>
-                        <span class="h-[1px] flex-grow bg-gradient-to-r from-tech-gold/40 to-transparent ml-2"></span>
+                        <span class="h-[1px] flex-grow bg-gradient-to-r from-tech-gold/40 to-transparent"></span>
                     </div>
 
-                    <div class="space-y-4" id="projects-container"></div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5" id="projects-container"></div>
                 </section>
 
                 <!-- 4. CONTACT TAB -->
-                <section id="tab-contact" class="sub-view space-y-6 text-center">
-                    <div class="flex items-center gap-2 text-left mb-2">
-                        <h2 class="font-serif text-2xl sm:text-3xl font-medium text-white tracking-tight">
+                <section id="tab-contact" class="sub-view space-y-8 text-center max-w-2xl mx-auto">
+                    <div class="flex items-center gap-3 text-left mb-2">
+                        <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl font-medium text-white tracking-tight">
                             Get in Touch
                         </h2>
-                        <span class="h-[1px] flex-grow bg-gradient-to-r from-tech-gold/40 to-transparent ml-2"></span>
+                        <span class="h-[1px] flex-grow bg-gradient-to-r from-tech-gold/40 to-transparent"></span>
                     </div>
 
-                    <p class="text-xs sm:text-sm text-tech-muted stagger-item">Open for freelance projects, AI/ML integrations, design, and collaborations.</p>
+                    <p class="text-xs sm:text-sm md:text-base text-tech-muted stagger-item">Open for freelance projects, AI/ML integrations, design, and collaborations.</p>
 
                     <div class="flex justify-center stagger-item">
-                        <button onclick="openStartProjectModal()" class="py-3 px-8 rounded-full bg-tech-gold text-black font-semibold text-xs tracking-wider uppercase hover:bg-yellow-400 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 shadow-lg shadow-tech-gold/15">
+                        <button onclick="openStartProjectModal()" class="py-3.5 px-10 rounded-full bg-tech-gold text-black font-semibold text-xs sm:text-sm tracking-wider uppercase hover:bg-yellow-400 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 shadow-lg shadow-tech-gold/15">
                             <i class="fas fa-paper-plane"></i>
                             <span>Start a Project</span>
                         </button>
                     </div>
 
-                    <div class="grid grid-cols-4 gap-3.5 pt-2">
-                        <a href="mailto:suganyashenbagam@gmail.com" class="stagger-item p-4 bg-[#111827] border border-[#1F2937] hover:border-tech-gold rounded-2xl text-tech-gold flex items-center justify-center transition-all duration-300 hover:-translate-y-1" title="Email">
-                            <i class="fas fa-envelope text-lg"></i>
+                    <!-- Social Links Grid with responsive padding -->
+                    <div class="grid grid-cols-4 gap-4 pt-2 max-w-md mx-auto">
+                        <a href="mailto:suganyashenbagam@gmail.com" class="stagger-item p-4 md:p-5 bg-[#0c101a] border border-[#1b2333] hover:border-tech-gold rounded-2xl text-tech-gold flex items-center justify-center transition-all duration-300 hover:-translate-y-1 shadow-sm" title="Email">
+                            <i class="fas fa-envelope text-xl"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/shruthi-s-5b929b42b" target="_blank" class="stagger-item p-4 bg-[#111827] border border-[#1F2937] hover:border-tech-cyan rounded-2xl text-tech-cyan flex items-center justify-center transition-all duration-300 hover:-translate-y-1" title="LinkedIn">
-                            <i class="fab fa-linkedin-in text-lg"></i>
+                        <a href="https://www.linkedin.com/in/shruthi-s-5b929b42b" target="_blank" class="stagger-item p-4 md:p-5 bg-[#0c101a] border border-[#1b2333] hover:border-tech-cyan rounded-2xl text-tech-cyan flex items-center justify-center transition-all duration-300 hover:-translate-y-1 shadow-sm" title="LinkedIn">
+                            <i class="fab fa-linkedin-in text-xl"></i>
                         </a>
-                        <a href="https://github.com/suganyas2382006-sketch" target="_blank" class="stagger-item p-4 bg-[#111827] border border-[#1F2937] hover:border-white rounded-2xl text-white flex items-center justify-center transition-all duration-300 hover:-translate-y-1" title="GitHub">
-                            <i class="fab fa-github text-lg"></i>
+                        <a href="https://github.com/suganyas2382006-sketch" target="_blank" class="stagger-item p-4 md:p-5 bg-[#0c101a] border border-[#1b2333] hover:border-white rounded-2xl text-white flex items-center justify-center transition-all duration-300 hover:-translate-y-1 shadow-sm" title="GitHub">
+                            <i class="fab fa-github text-xl"></i>
                         </a>
-                        <a href="https://wa.me/qr/QBOT5I4XWEI3L1" target="_blank" class="stagger-item p-4 bg-[#111827] border border-[#1F2937] hover:border-emerald-400 rounded-2xl text-emerald-400 flex items-center justify-center transition-all duration-300 hover:-translate-y-1" title="WhatsApp">
-                            <i class="fab fa-whatsapp text-lg"></i>
+                        <a href="https://wa.me/qr/QBOT5I4XWEI3L1" target="_blank" class="stagger-item p-4 md:p-5 bg-[#0c101a] border border-[#1b2333] hover:border-emerald-400 rounded-2xl text-emerald-400 flex items-center justify-center transition-all duration-300 hover:-translate-y-1 shadow-sm" title="WhatsApp">
+                            <i class="fab fa-whatsapp text-xl"></i>
                         </a>
                     </div>
 
                     <div class="pt-4 flex justify-center stagger-item">
-                        <button onclick="openPaymentModal(true)" class="inline-flex items-center justify-center gap-2 py-3 px-8 rounded-full border border-tech-gold text-tech-gold hover:bg-tech-gold hover:text-black font-semibold text-xs tracking-wider uppercase transition-all duration-300 hover:scale-105 shadow-md">
+                        <button onclick="openPaymentModal(true)" class="inline-flex items-center justify-center gap-2 py-3 px-8 rounded-full border border-tech-gold text-tech-gold hover:bg-tech-gold hover:text-black font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 hover:scale-105 shadow-md">
                             <i class="fas fa-qrcode text-sm"></i> Pay via UPI
                         </button>
                     </div>
@@ -399,7 +433,7 @@
         </div>
 
         <!-- MINIMAL FOOTER -->
-        <footer class="text-center pt-10 text-xs text-tech-muted border-t border-[#1F2937]/50 mt-12">
+        <footer class="text-center pt-10 text-xs text-tech-muted border-t border-[#1b2333]/50 mt-14">
             &copy; <span id="year"></span> Suganya Shenbagam. All rights reserved.
         </footer>
 
@@ -455,16 +489,16 @@
 
     <!-- ================= INQUIRY MODAL (Web3Forms AJAX) ================= -->
     <div id="start-project-modal" class="fixed inset-0 z-50 hidden modal-backdrop flex items-center justify-center p-4">
-        <div class="bg-[#111827] border border-[#1F2937] rounded-3xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto transform transition-all duration-300 scale-95 opacity-0 text-left" id="start-project-panel">
+        <div class="bg-[#0c101a] border border-[#1b2333] rounded-3xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto transform transition-all duration-300 scale-95 opacity-0 text-left" id="start-project-panel">
             
-            <div class="sticky top-0 bg-[#111827]/95 backdrop-blur-md border-b border-[#1F2937] p-5 flex justify-between items-center z-10">
+            <div class="sticky top-0 bg-[#0c101a]/95 backdrop-blur-md border-b border-[#1b2333] p-5 flex justify-between items-center z-10">
                 <div>
                     <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
                         <i class="fas fa-cube text-tech-gold"></i> Start a Project
                     </h3>
                     <p class="text-xs text-tech-muted mt-0.5">Submit your project details and requirements.</p>
                 </div>
-                <button onclick="closeStartProjectModal()" class="w-8 h-8 rounded-full bg-[#1F2937] hover:bg-slate-700 flex items-center justify-center text-zinc-400 hover:text-white transition">
+                <button onclick="closeStartProjectModal()" class="w-8 h-8 rounded-full bg-[#1b2333] hover:bg-slate-700 flex items-center justify-center text-zinc-400 hover:text-white transition">
                     <i class="fas fa-times text-xs"></i>
                 </button>
             </div>
@@ -477,42 +511,42 @@
 
                     <div>
                         <label class="block text-[11px] font-semibold text-tech-gold uppercase tracking-wider mb-1.5">Full Name *</label>
-                        <input type="text" name="name" required placeholder="John Doe" class="w-full bg-[#172033] border border-[#1F2937] focus:border-tech-gold text-white rounded-xl px-4 py-2.5 text-xs sm:text-sm focus:outline-none transition">
+                        <input type="text" name="name" required placeholder="John Doe" class="w-full bg-[#131826] border border-[#1b2333] focus:border-tech-gold text-white rounded-xl px-4 py-2.5 text-xs sm:text-sm focus:outline-none transition">
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-[11px] font-semibold text-tech-gold uppercase tracking-wider mb-1.5">Email Address *</label>
-                            <input type="email" name="email" required placeholder="john@example.com" class="w-full bg-[#172033] border border-[#1F2937] focus:border-tech-gold text-white rounded-xl px-4 py-2.5 text-xs sm:text-sm focus:outline-none transition">
+                            <input type="email" name="email" required placeholder="john@example.com" class="w-full bg-[#131826] border border-[#1b2333] focus:border-tech-gold text-white rounded-xl px-4 py-2.5 text-xs sm:text-sm focus:outline-none transition">
                         </div>
                         <div>
                             <label class="block text-[11px] font-semibold text-tech-gold uppercase tracking-wider mb-1.5">Contact Number *</label>
-                            <input type="tel" name="phone" required placeholder="+91 98765 43210" class="w-full bg-[#172033] border border-[#1F2937] focus:border-tech-gold text-white rounded-xl px-4 py-2.5 text-xs sm:text-sm focus:outline-none transition">
+                            <input type="tel" name="phone" required placeholder="+91 98765 43210" class="w-full bg-[#131826] border border-[#1b2333] focus:border-tech-gold text-white rounded-xl px-4 py-2.5 text-xs sm:text-sm focus:outline-none transition">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-[11px] font-semibold text-tech-gold uppercase tracking-wider mb-1.5">Project Type *</label>
-                            <select name="project_type" required class="w-full bg-[#172033] border border-[#1F2937] focus:border-tech-gold text-white rounded-xl px-3 py-2.5 text-xs sm:text-sm focus:outline-none transition">
-                                <option value="" disabled selected class="bg-[#111827]">Select service...</option>
-                                <option value="AI & ML" class="bg-[#111827]">AI &amp; ML</option>
-                                <option value="Web Development" class="bg-[#111827]">Web Development</option>
-                                <option value="Designing (Logo, UI/UX, Poster)" class="bg-[#111827]">Designing (Logo, UI/UX, Poster)</option>
-                                <option value="Full Stack Development" class="bg-[#111827]">Full Stack Development</option>
-                                <option value="Data Analytics" class="bg-[#111827]">Data Analytics</option>
-                                <option value="Other" class="bg-[#111827]">Other</option>
+                            <select name="project_type" required class="w-full bg-[#131826] border border-[#1b2333] focus:border-tech-gold text-white rounded-xl px-3 py-2.5 text-xs sm:text-sm focus:outline-none transition">
+                                <option value="" disabled selected class="bg-[#0c101a]">Select service...</option>
+                                <option value="AI & ML" class="bg-[#0c101a]">AI &amp; ML</option>
+                                <option value="Web Development" class="bg-[#0c101a]">Web Development</option>
+                                <option value="Designing (Logo, UI/UX, Poster)" class="bg-[#0c101a]">Designing (Logo, UI/UX, Poster)</option>
+                                <option value="Full Stack Development" class="bg-[#0c101a]">Full Stack Development</option>
+                                <option value="Data Analytics" class="bg-[#0c101a]">Data Analytics</option>
+                                <option value="Other" class="bg-[#0c101a]">Other</option>
                             </select>
                         </div>
                         <div>
                             <label class="block text-[11px] font-semibold text-tech-gold uppercase tracking-wider mb-1.5">Budget Range *</label>
-                            <input type="text" name="budget" required placeholder="e.g. ₹15,000 / $250" class="w-full bg-[#172033] border border-[#1F2937] focus:border-tech-gold text-white rounded-xl px-4 py-2.5 text-xs sm:text-sm focus:outline-none transition">
+                            <input type="text" name="budget" required placeholder="e.g. ₹15,000 / $250" class="w-full bg-[#131826] border border-[#1b2333] focus:border-tech-gold text-white rounded-xl px-4 py-2.5 text-xs sm:text-sm focus:outline-none transition">
                         </div>
                     </div>
 
                     <div>
                         <label class="block text-[11px] font-semibold text-tech-gold uppercase tracking-wider mb-1.5">Project Description *</label>
-                        <textarea name="message" rows="3" required placeholder="Outline your project scope, goals, and delivery timeframe..." class="w-full bg-[#172033] border border-[#1F2937] focus:border-tech-gold text-white rounded-xl px-4 py-2.5 text-xs sm:text-sm focus:outline-none transition resize-none"></textarea>
+                        <textarea name="message" rows="3" required placeholder="Outline your project scope, goals, and delivery timeframe..." class="w-full bg-[#131826] border border-[#1b2333] focus:border-tech-gold text-white rounded-xl px-4 py-2.5 text-xs sm:text-sm focus:outline-none transition resize-none"></textarea>
                     </div>
 
                     <button type="submit" id="submit-btn" class="w-full bg-tech-gold hover:bg-yellow-400 text-black font-semibold py-3 px-4 rounded-xl transition-all duration-300 shadow-lg shadow-tech-gold/15 flex items-center justify-center gap-2 text-xs uppercase tracking-wider hover:scale-[1.02]">
@@ -526,7 +560,7 @@
 
     <!-- Logic -->
     <script>
-        // ALL 6 PROJECTS WITH NEUROVISION AI AT 1ST POSITION
+        // ALL 6 PROJECTS
         const projects = [
             {
                 title: "NeuroVision AI",
@@ -575,41 +609,43 @@
         const pContainer = document.getElementById('projects-container');
         projects.forEach(p => {
             const techTags = p.tech.map(t => 
-                `<span class="px-2 py-0.5 rounded-md bg-[#172033] border border-[#1F2937] text-[10px] font-mono text-tech-cyan tracking-wide">${t}</span>`
+                `<span class="px-2 py-0.5 rounded-md bg-[#131826] border border-[#1b2333] text-[10px] font-mono text-tech-cyan tracking-wide">${t}</span>`
             ).join('');
 
             pContainer.innerHTML += `
-                <div class="stagger-item p-4 sm:p-5 bg-[#111827]/90 border border-[#1F2937] hover:border-tech-gold/50 rounded-2xl flex flex-col gap-3 shadow-md transition-all duration-300 hover:-translate-y-1">
-                    <div class="flex justify-between items-center border-b border-[#1F2937]/70 pb-2.5">
-                        <h3 class="text-white font-semibold text-base flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-tech-gold"></span>
-                            ${p.title}
-                        </h3>
-                        <a href="${p.link}" target="_blank" class="text-tech-cyan hover:text-white text-xs font-mono transition-colors flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#172033] border border-tech-border">
-                            <span>Code</span>
-                            <i class="fab fa-github text-xs"></i>
-                        </a>
-                    </div>
-
-                    <div class="space-y-1">
-                        <div class="text-[11px] font-mono uppercase tracking-wider text-rose-400 font-semibold flex items-center gap-1.5">
-                            <i class="fas fa-exclamation-circle text-[10px]"></i> Problem
+                <div class="stagger-item p-4 sm:p-5 bg-[#0c101a]/90 border border-[#1b2333] hover:border-tech-gold/50 rounded-2xl flex flex-col justify-between gap-3 shadow-md transition-all duration-300 hover:-translate-y-1">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center border-b border-[#1b2333]/70 pb-2.5">
+                            <h3 class="text-white font-semibold text-base flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-tech-gold"></span>
+                                ${p.title}
+                            </h3>
+                            <a href="${p.link}" target="_blank" class="text-tech-cyan hover:text-white text-xs font-mono transition-colors flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#131826] border border-tech-border">
+                                <span>Code</span>
+                                <i class="fab fa-github text-xs"></i>
+                            </a>
                         </div>
-                        <p class="text-tech-muted text-xs leading-relaxed pl-3.5 border-l-2 border-rose-500/30">
-                            ${p.problem}
-                        </p>
-                    </div>
 
-                    <div class="space-y-1">
-                        <div class="text-[11px] font-mono uppercase tracking-wider text-emerald-400 font-semibold flex items-center gap-1.5">
-                            <i class="fas fa-check-circle text-[10px]"></i> Solution
+                        <div class="space-y-1">
+                            <div class="text-[11px] font-mono uppercase tracking-wider text-rose-400 font-semibold flex items-center gap-1.5">
+                                <i class="fas fa-exclamation-circle text-[10px]"></i> Problem
+                            </div>
+                            <p class="text-tech-muted text-xs leading-relaxed pl-3.5 border-l-2 border-rose-500/30">
+                                ${p.problem}
+                            </p>
                         </div>
-                        <p class="text-tech-muted text-xs leading-relaxed pl-3.5 border-l-2 border-emerald-500/30">
-                            ${p.solution}
-                        </p>
+
+                        <div class="space-y-1">
+                            <div class="text-[11px] font-mono uppercase tracking-wider text-emerald-400 font-semibold flex items-center gap-1.5">
+                                <i class="fas fa-check-circle text-[10px]"></i> Solution
+                            </div>
+                            <p class="text-tech-muted text-xs leading-relaxed pl-3.5 border-l-2 border-emerald-500/30">
+                                ${p.solution}
+                            </p>
+                        </div>
                     </div>
 
-                    <div class="pt-2 border-t border-[#1F2937]/50">
+                    <div class="pt-2 border-t border-[#1b2333]/50">
                         <div class="text-[10px] font-mono uppercase tracking-wider text-tech-gold/90 font-semibold mb-1.5">
                             Tech Stack
                         </div>
@@ -754,3 +790,4 @@
     </script>
 </body>
 </html>
+
