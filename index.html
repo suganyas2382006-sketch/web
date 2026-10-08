@@ -41,7 +41,7 @@ body {
   flex-direction: column;
 }
 
-/* Background & Atmosphere */
+/* Background & Atmosphere (Static) */
 .cyber-bg {
   position: fixed;
   inset: 0;
@@ -55,8 +55,7 @@ body {
   position: absolute;
   border-radius: 50%;
   filter: blur(80px);
-  opacity: 0.4;
-  animation: pulseGlow 8s ease-in-out infinite alternate;
+  opacity: 0.3;
 }
 
 .glow-tl {
@@ -73,41 +72,6 @@ body {
   background: radial-gradient(circle, #0284c7 0%, transparent 70%);
   bottom: -150px;
   right: -150px;
-  animation-delay: -4s;
-}
-
-@keyframes pulseGlow {
-  0% { opacity: 0.25; transform: scale(0.9); }
-  100% { opacity: 0.48; transform: scale(1.15); }
-}
-
-#constellationCanvas {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50vw;
-  height: 50vh;
-  opacity: 0.85;
-}
-
-.hud-layer {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.wave-line {
-  stroke-dasharray: 800;
-  stroke-dashoffset: 800;
-  animation: waveFloat 14s linear infinite alternate, drawWave 4s ease-out forwards;
-}
-
-@keyframes drawWave { to { stroke-dashoffset: 0; } }
-@keyframes waveFloat {
-  0% { transform: translateY(0) scaleY(1); }
-  50% { transform: translateY(-12px) scaleY(1.08); }
-  100% { transform: translateY(8px) scaleY(0.94); }
 }
 
 /* Header & Nav */
@@ -151,32 +115,14 @@ body {
   color: #94a3b8;
   text-decoration: none;
   cursor: pointer;
-  transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   padding: 0.2rem 0;
   outline: none;
 }
 
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0;
-  height: 2px;
-  background: var(--grad);
-  border-radius: 999px;
-  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
 .nav-links a:hover,
 .nav-links a.active {
   color: var(--cyan);
-}
-
-.nav-links a.active::after,
-.nav-links a:hover::after {
-  width: 100%;
 }
 
 .nav-cta {
@@ -189,12 +135,6 @@ body {
   text-decoration: none;
   cursor: pointer;
   outline: none;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.nav-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 229, 255, 0.45);
 }
 
 .menu-toggle {
@@ -215,7 +155,6 @@ body {
   height: 2px;
   background: var(--text-main);
   border-radius: 2px;
-  transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .menu-toggle span:nth-child(1) { top: 15px; }
@@ -229,12 +168,9 @@ body {
   background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(10px);
   z-index: 101;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
+  display: none;
 }
-
-.nav-overlay.active { opacity: 1; visibility: visible; }
+.nav-overlay.active { display: block; }
 
 .mobile-nav {
   position: fixed;
@@ -248,12 +184,12 @@ body {
   box-shadow: -15px 0 35px rgba(0, 0, 0, 0.8);
   z-index: 102;
   transform: translateX(100%);
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
   padding: 1.5rem 1.3rem;
   overflow-y: auto;
 }
+.mobile-nav.active { transform: translateX(0); }
 
 .mobile-nav::before {
   content: '';
@@ -264,8 +200,6 @@ body {
   height: 3px;
   background: var(--grad);
 }
-
-.mobile-nav.active { transform: translateX(0); }
 
 .drawer-head {
   display: flex;
@@ -287,10 +221,7 @@ body {
   justify-content: center;
   cursor: pointer;
   outline: none;
-  transition: all 0.25s ease;
 }
-
-.drawer-close:hover { color: var(--cyan); transform: rotate(90deg); }
 .drawer-close svg { width: 20px; height: 20px; }
 
 .status-card {
@@ -300,12 +231,7 @@ body {
   gap: 0.85rem;
   margin-bottom: 1.75rem;
   border-bottom: 1px solid rgba(0, 229, 255, 0.1);
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
 }
-
-.mobile-nav.active .status-card { opacity: 1; transform: translateY(0); }
 
 .status-dot {
   width: 9px;
@@ -313,13 +239,7 @@ body {
   background: #10b981;
   border-radius: 50%;
   box-shadow: 0 0 12px #10b981;
-  animation: pulse 2s infinite;
   flex-shrink: 0;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.45; transform: scale(0.85); }
 }
 
 .status-title { font-size: 0.9rem; font-weight: 600; color: var(--text-main); }
@@ -332,20 +252,6 @@ body {
   gap: 0.5rem;
   margin-bottom: 2rem;
 }
-
-.drawer-links li {
-  opacity: 0;
-  transform: translateX(18px);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.mobile-nav.active .drawer-links li:nth-child(1) { transition-delay: 0.15s; opacity: 1; transform: translateX(0); }
-.mobile-nav.active .drawer-links li:nth-child(2) { transition-delay: 0.20s; opacity: 1; transform: translateX(0); }
-.mobile-nav.active .drawer-links li:nth-child(3) { transition-delay: 0.25s; opacity: 1; transform: translateX(0); }
-.mobile-nav.active .drawer-links li:nth-child(4) { transition-delay: 0.30s; opacity: 1; transform: translateX(0); }
-.mobile-nav.active .drawer-links li:nth-child(5) { transition-delay: 0.35s; opacity: 1; transform: translateX(0); }
-.mobile-nav.active .drawer-links li:nth-child(6) { transition-delay: 0.40s; opacity: 1; transform: translateX(0); }
-.mobile-nav.active .drawer-links li:nth-child(7) { transition-delay: 0.45s; opacity: 1; transform: translateX(0); }
 
 .drawer-link-btn {
   width: 100%;
@@ -363,10 +269,9 @@ body {
   cursor: pointer;
   outline: none;
   text-align: left;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease;
 }
 
-.drawer-link-btn:hover { transform: translateX(8px); color: #fff; }
+.drawer-link-btn:hover, .drawer-link-btn.active { color: #fff; }
 .drawer-link-btn.active { color: var(--cyan); border-bottom-color: rgba(0, 229, 255, 0.3); }
 
 .num-tag {
@@ -374,14 +279,7 @@ body {
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--cyan);
-  opacity: 0.6;
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
-.drawer-link-btn:hover .num-tag,
-.drawer-link-btn.active .num-tag {
-  opacity: 1;
-  transform: scale(1.1);
+  opacity: 0.8;
 }
 
 .drawer-footer {
@@ -417,10 +315,8 @@ body {
   font-weight: 500;
   text-decoration: none;
   outline: none;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
-.connect-btn:hover { color: var(--cyan); transform: translateX(3px); }
+.connect-btn:hover { color: var(--cyan); }
 .connect-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
 
 /* Page Views */
@@ -433,13 +329,9 @@ body {
   margin: 0 auto;
   width: 100%;
   flex: 1;
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .page-view.active { display: block; }
-.page-view.in-view { opacity: 1; transform: translateY(0); }
 
 .page-head {
   text-align: center;
@@ -482,18 +374,7 @@ body {
   color: transparent;
 }
 
-.reveal-item {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal-item.revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Home Section Layout */
+/* Home + About Combined Section */
 .hero-container {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
@@ -501,45 +382,47 @@ body {
   align-items: center;
 }
 
-.hero-disciplines {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.75rem 1.5rem;
-  margin: 1.8rem 0 2.2rem;
-  padding-left: 0.2rem;
+.hero-text-content {
+  padding-right: 1rem;
 }
 
-.discipline-item {
+.hero-bio {
+  color: #cbd5e1;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 1.5rem 0;
+  max-width: 580px;
+}
+
+.simple-stats {
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 0.95rem;
-  font-weight: 500;
+  gap: 3rem;
+  margin-bottom: 2.2rem;
+  margin-top: 1rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-val {
+  font-size: 1.8rem;
+  font-weight: 800;
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--cyan);
+  line-height: 1.2;
+}
+
+.stat-name {
+  font-size: 0.85rem;
   color: #94a3b8;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  cursor: default;
-}
-
-.discipline-bullet {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(0, 229, 255, 0.3);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  flex-shrink: 0;
-}
-
-.discipline-item:hover { color: #fff; transform: translateX(4px); }
-.discipline-item:hover .discipline-bullet {
-  background: var(--cyan);
-  box-shadow: 0 0 10px var(--cyan);
-  transform: scale(1.5);
+  font-weight: 500;
 }
 
 .btn-group {
   display: flex;
   gap: 1rem;
-  margin-top: 2rem;
   flex-wrap: wrap;
 }
 
@@ -554,19 +437,12 @@ body {
   gap: 0.5rem;
   cursor: pointer;
   outline: none;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-primary {
   background: var(--grad);
   color: #01040d;
-  font-weight: 700;
   border: none;
-}
-
-.btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(0, 229, 255, 0.45);
 }
 
 .btn-ghost {
@@ -575,29 +451,12 @@ body {
   color: var(--text-main);
 }
 
-.btn-ghost:hover {
-  border-color: var(--cyan);
-  transform: translateY(-2px);
-  box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
-}
-
 /* 4:5 Profile Frame */
 .hero-portrait-stage {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-}
-
-.hero-portrait-stage::before {
-  content: '';
-  position: absolute;
-  width: 75%;
-  height: 75%;
-  background: radial-gradient(circle, rgba(0, 229, 255, 0.35) 0%, rgba(2, 132, 199, 0.15) 50%, transparent 70%);
-  filter: blur(50px);
-  z-index: 0;
-  pointer-events: none;
 }
 
 .portrait-frame {
@@ -611,12 +470,6 @@ body {
   background: linear-gradient(145deg, rgba(0, 229, 255, 0.2) 0%, rgba(2, 6, 18, 0.8) 100%);
   border: 1px solid var(--card-border);
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.45s ease;
-}
-
-.portrait-frame:hover {
-  transform: translateY(-8px) scale(1.01);
-  border-color: rgba(0, 229, 255, 0.5);
 }
 
 .portrait-img-inner {
@@ -633,90 +486,45 @@ body {
   object-fit: cover;
   object-position: center top;
   display: block;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
-.portrait-frame:hover .portrait-img-inner img { transform: scale(1.04); }
 
 .portrait-floating-status {
   position: absolute;
-  bottom: 18px;
-  left: 18px;
-  right: 18px;
-  padding: 0.75rem 1rem;
-  background: rgba(2, 6, 18, 0.85);
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--card-border);
-  border-radius: 14px;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  padding: 0.85rem 1.2rem;
+  background: rgba(10, 15, 25, 0.9);
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .portrait-status-text {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.85rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
   font-weight: 600;
   color: #fff;
+  line-height: 1.3;
 }
 
 .portrait-status-pulse {
   display: flex;
   align-items: center;
   gap: 0.45rem;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: #10b981;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .portrait-status-pulse .live-dot {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   background: #10b981;
   border-radius: 50%;
-  box-shadow: 0 0 8px #10b981;
-  animation: pulse 2s infinite;
 }
-
-/* Stats Cards */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  margin-top: 3.5rem;
-}
-
-.stat-card {
-  padding: 2.2rem 1.5rem;
-  background: rgba(4, 15, 34, 0.45);
-  border: 1px solid var(--card-border);
-  border-radius: 20px;
-  text-align: center;
-  backdrop-filter: blur(12px);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.stat-card:hover {
-  transform: translateY(-6px) scale(1.02);
-  border-color: var(--cyan);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 229, 255, 0.2);
-}
-
-.stat-num {
-  font-size: 2.8rem;
-  font-weight: 800;
-  font-family: 'Space Grotesk', sans-serif;
-  background: var(--grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  display: inline-block;
-  line-height: 1;
-  margin-bottom: 0.5rem;
-}
-
-.stat-label { color: #94a3b8; font-size: 0.9rem; font-weight: 500; }
 
 /* Skills Minimal List */
 .skills-minimal-list {
@@ -733,10 +541,7 @@ body {
   gap: 0.6rem;
   padding-bottom: 1.25rem;
   border-bottom: 1px solid rgba(0, 229, 255, 0.08);
-  transition: transform 0.25s ease;
 }
-
-.skill-row:hover { transform: translateX(4px); }
 
 .skill-row-head {
   display: flex;
@@ -771,8 +576,6 @@ body {
   height: 100%;
   background: var(--grad);
   border-radius: 999px;
-  width: 0%;
-  transition: width 1.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Projects Showcase */
@@ -792,28 +595,7 @@ body {
   backdrop-filter: blur(16px);
   position: relative;
   overflow: hidden;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
-.project-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background: var(--grad);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.project-item:hover {
-  transform: translateY(-4px);
-  border-color: rgba(0, 229, 255, 0.4);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 229, 255, 0.15);
-}
-
-.project-item:hover::before { opacity: 1; }
 
 .project-top-meta {
   display: flex;
@@ -885,9 +667,7 @@ body {
   font-weight: 500;
 }
 
-/* =========================================================
-   PAGE 5: UPDATED 5 CORE SERVICES (AI, DATA, WEB, UI/UX, LOGO)
-   ========================================================= */
+/* Services Section */
 .services-container {
   display: flex;
   flex-direction: column;
@@ -909,28 +689,7 @@ body {
   overflow: hidden;
   cursor: pointer;
   outline: none;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
-.service-row::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: var(--grad);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.service-row:hover {
-  background: rgba(0, 229, 255, 0.08);
-  border-color: rgba(0, 229, 255, 0.4);
-  transform: translateX(8px);
-}
-
-.service-row:hover::before { opacity: 1; }
 
 .service-main {
   display: flex;
@@ -969,14 +728,8 @@ body {
   justify-content: center;
   color: #94a3b8;
   flex-shrink: 0;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 .service-action-icon svg { width: 20px; height: 20px; }
-.service-row:hover .service-action-icon {
-  color: var(--cyan);
-  transform: rotate(-45deg);
-}
 
 /* Contact Minimal List */
 .contact-minimal-list {
@@ -996,7 +749,6 @@ body {
   color: var(--text-main);
   background: transparent;
   outline: none;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .contact-line-item:first-child {
@@ -1014,9 +766,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 .contact-line-icon svg { width: 22px; height: 22px; }
 
 .contact-line-text {
@@ -1031,7 +781,6 @@ body {
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: #94a3b8;
-  transition: color 0.3s ease;
 }
 
 .contact-line-val {
@@ -1039,27 +788,13 @@ body {
   font-size: 1.15rem;
   font-weight: 600;
   color: var(--text-main);
-  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .contact-line-arrow {
   color: #94a3b8;
   opacity: 0.4;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 .contact-line-arrow svg { width: 20px; height: 20px; }
-
-.contact-line-item:hover {
-  border-bottom-color: var(--cyan);
-  padding-left: 0.75rem;
-  padding-right: 0.25rem;
-}
-
-.contact-line-item:hover .contact-line-val { color: #fff; transform: translateX(4px); }
-.contact-line-item:hover .contact-line-tag { color: var(--cyan); }
-.contact-line-item:hover .contact-line-icon { color: var(--cyan); transform: scale(1.15); }
-.contact-line-item:hover .contact-line-arrow { opacity: 1; color: var(--cyan); transform: translateX(4px); }
 
 /* Start Project Form Section */
 .project-form-wrap {
@@ -1070,19 +805,8 @@ body {
   border-radius: 24px;
   padding: 2.8rem 2.4rem;
   backdrop-filter: blur(20px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
   position: relative;
   overflow: hidden;
-}
-
-.project-form-wrap::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--grad);
 }
 
 .form-grid {
@@ -1126,15 +850,6 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
   font-size: 0.95rem;
   outline: none;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.form-input:focus,
-.form-select:focus,
-.form-textarea:focus {
-  border-color: var(--cyan);
-  box-shadow: 0 0 15px rgba(0, 229, 255, 0.25);
-  background: rgba(3, 10, 28, 0.95);
 }
 
 .form-input::placeholder,
@@ -1173,23 +888,12 @@ body {
   font-size: 1.05rem;
   letter-spacing: 0.5px;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 10px 30px rgba(0, 229, 255, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
 }
-
-.submit-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 35px rgba(0, 229, 255, 0.5);
-}
-
-.submit-btn svg {
-  width: 20px;
-  height: 20px;
-}
+.submit-btn svg { width: 20px; height: 20px; }
 
 footer {
   padding: 2rem;
@@ -1220,47 +924,10 @@ footer {
 </head>
 <body>
 
-<!-- CYBERNETIC ANIMATED BACKGROUND -->
+<!-- STATIC BACKGROUND -->
 <div class="cyber-bg">
   <div class="glow-spot glow-tl"></div>
   <div class="glow-spot glow-br"></div>
-  <canvas id="constellationCanvas"></canvas>
-  <svg class="hud-layer" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1440 900">
-    <defs>
-      <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.8"/>
-        <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.1"/>
-      </linearGradient>
-      <linearGradient id="waveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.35"/>
-        <stop offset="50%" stop-color="#0284c7" stop-opacity="0.2"/>
-        <stop offset="100%" stop-color="#00e5ff" stop-opacity="0"/>
-      </linearGradient>
-    </defs>
-    <path d="M 0,220 A 240,240 0 0,1 240,0" fill="none" stroke="url(#cyanGrad)" stroke-width="1.2" opacity="0.6"/>
-    <path d="M 0,120 L 160,120 L 175,105" fill="none" stroke="#00e5ff" stroke-width="1.2" opacity="0.5"/>
-    <circle cx="175" cy="105" r="2.5" fill="#00e5ff" opacity="0.8"/>
-    <g fill="#00e5ff" opacity="0.5">
-      <circle cx="32" cy="300" r="1.8"/><circle cx="32" cy="320" r="1.8"/><circle cx="32" cy="340" r="1.8"/><circle cx="32" cy="360" r="1.8"/><circle cx="32" cy="380" r="1.8"/>
-    </g>
-    <path d="M 1250,900 A 200,200 0 0,1 1440,710" fill="none" stroke="url(#cyanGrad)" stroke-width="1.2" opacity="0.5"/>
-    <path d="M 1040,820 L 1210,820 L 1225,845" fill="none" stroke="#00e5ff" stroke-width="1.2" opacity="0.5"/>
-    <circle cx="1225" cy="845" r="2.5" fill="#00e5ff" opacity="0.8"/>
-    <g fill="#00e5ff" opacity="0.5">
-      <circle cx="1050" cy="805" r="1.5"/><circle cx="1065" cy="805" r="1.5"/><circle cx="1080" cy="805" r="1.5"/><circle cx="1095" cy="805" r="1.5"/><circle cx="1110" cy="805" r="1.5"/>
-    </g>
-    <g stroke="#00e5ff" stroke-width="2.5" opacity="0.65">
-      <line x1="1382" y1="440" x2="1382" y2="610" stroke-width="1.2"/>
-      <line x1="1392" y1="520" x2="1402" y2="528"/><line x1="1392" y1="535" x2="1402" y2="543"/><line x1="1392" y1="550" x2="1402" y2="558"/><line x1="1392" y1="565" x2="1402" y2="573"/>
-    </g>
-    <g fill="none" stroke="url(#waveGrad)" opacity="0.85">
-      <path class="wave-line" stroke-width="1" d="M -50,680 C 150,780 200,900 480,910 C 650,915 780,820 950,890"/>
-      <path class="wave-line" stroke-width="1" d="M -50,650 C 130,730 240,860 520,870 C 680,875 790,790 990,870" style="animation-delay:-2s"/>
-      <path class="wave-line" stroke-width="1" d="M -50,620 C 110,680 280,820 560,830 C 710,835 800,760 1030,850" style="animation-delay:-4s"/>
-      <path class="wave-line" stroke-width="1" d="M -50,590 C 90,630 320,780 600,790 C 740,795 810,730 1070,830" style="animation-delay:-6s"/>
-      <path class="wave-line" stroke-width="1" d="M -50,560 C 70,580 360,740 640,750 C 770,755 820,700 1110,810" style="animation-delay:-8s"/>
-    </g>
-  </svg>
 </div>
 
 <!-- TOP NAVIGATION -->
@@ -1268,7 +935,6 @@ footer {
   <a class="nav-logo route-trigger" data-target="home">Suganya.</a>
   <ul class="nav-links">
     <li><a class="nav-item active route-trigger" data-target="home">Home</a></li>
-    <li><a class="nav-item route-trigger" data-target="about">About</a></li>
     <li><a class="nav-item route-trigger" data-target="skills">Skills</a></li>
     <li><a class="nav-item route-trigger" data-target="projects">Projects</a></li>
     <li><a class="nav-item route-trigger" data-target="services">Services</a></li>
@@ -1303,12 +969,11 @@ footer {
 
   <ul class="drawer-links">
     <li><button class="drawer-link-btn route-trigger active" data-target="home"><span class="num-tag">01</span><span>Home</span></button></li>
-    <li><button class="drawer-link-btn route-trigger" data-target="about"><span class="num-tag">02</span><span>About</span></button></li>
-    <li><button class="drawer-link-btn route-trigger" data-target="skills"><span class="num-tag">03</span><span>Skills</span></button></li>
-    <li><button class="drawer-link-btn route-trigger" data-target="projects"><span class="num-tag">04</span><span>Projects</span></button></li>
-    <li><button class="drawer-link-btn route-trigger" data-target="services"><span class="num-tag">05</span><span>Services</span></button></li>
-    <li><button class="drawer-link-btn route-trigger" data-target="contact"><span class="num-tag">06</span><span>Contact</span></button></li>
-    <li><button class="drawer-link-btn route-trigger" data-target="project-form"><span class="num-tag">07</span><span>Start Project</span></button></li>
+    <li><button class="drawer-link-btn route-trigger" data-target="skills"><span class="num-tag">02</span><span>Skills</span></button></li>
+    <li><button class="drawer-link-btn route-trigger" data-target="projects"><span class="num-tag">03</span><span>Projects</span></button></li>
+    <li><button class="drawer-link-btn route-trigger" data-target="services"><span class="num-tag">04</span><span>Services</span></button></li>
+    <li><button class="drawer-link-btn route-trigger" data-target="contact"><span class="num-tag">05</span><span>Contact</span></button></li>
+    <li><button class="drawer-link-btn route-trigger" data-target="project-form"><span class="num-tag">06</span><span>Start Project</span></button></li>
   </ul>
 
   <div class="drawer-footer">
@@ -1334,39 +999,44 @@ footer {
   </div>
 </aside>
 
-<!-- PAGE 1: HOME -->
-<main class="page-view active in-view" id="view-home">
+<!-- COMBINED PAGE 1: HOME + ABOUT -->
+<main class="page-view active" id="view-home">
   <div class="hero-container">
-    <div>
-      <span class="page-label reveal-item">Available for Work</span>
-      <h1 class="page-title reveal-item">Hi, I'm a <span class="grad">Freelance Developer</span></h1>
+    <div class="hero-text-content">
+      <h1 class="page-title">Hi, I'm a <span class="grad">Freelance Developer</span></h1>
       
-      <!-- 5 Core Disciplines Focus Rail -->
-      <div class="hero-disciplines reveal-item">
-        <div class="discipline-item"><span class="discipline-bullet"></span><span>AI & Machine Learning</span></div>
-        <div class="discipline-item"><span class="discipline-bullet"></span><span>Data Science & Analytics</span></div>
-        <div class="discipline-item"><span class="discipline-bullet"></span><span>Full-Stack Web Development</span></div>
-        <div class="discipline-item"><span class="discipline-bullet"></span><span>UI/UX Interface Design</span></div>
-        <div class="discipline-item"><span class="discipline-bullet"></span><span>Logo & Brand Identity</span></div>
-      </div>
-
-      <p class="page-sub reveal-item" style="margin: 0; text-align: left;">
-        3rd Year BTech AI & DS student crafting intelligent systems, data analytics pipelines, and bespoke digital experiences.
+      <p class="hero-bio">
+        I am a dedicated 3rd Year BTech student specializing in Artificial Intelligence and Data Science. I bridge analytical precision with clean interface design to deliver intelligent systems, structured data analytics pipelines, and complete digital brand identities.
       </p>
 
-      <div class="btn-group reveal-item">
+      <div class="simple-stats">
+        <div class="stat-item">
+          <span class="stat-val">6+</span>
+          <span class="stat-name">Projects Completed</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">8+</span>
+          <span class="stat-name">Certifications</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">5</span>
+          <span class="stat-name">Core Services</span>
+        </div>
+      </div>
+
+      <div class="btn-group">
         <button class="btn btn-primary route-trigger" data-target="project-form">Start a Project</button>
         <button class="btn btn-ghost route-trigger" data-target="projects">Explore Work</button>
       </div>
     </div>
 
-    <!-- 4:5 Portrait Stage -->
-    <div class="hero-portrait-stage reveal-item">
+    <!-- 4:5 Portrait Stage (Image + Floating Badge) -->
+    <div class="hero-portrait-stage">
       <div class="portrait-frame">
         <div class="portrait-img-inner">
           <img src="profile.jpg" alt="Suganya Shenbagam — Portrait" />
           <div class="portrait-floating-status">
-            <span class="portrait-status-text">Suganya Shenbagam</span>
+            <span class="portrait-status-text">Suganya<br>Shenbagam</span>
             <div class="portrait-status-pulse">
               <span class="live-dot"></span>
               <span>Available</span>
@@ -1378,106 +1048,69 @@ footer {
   </div>
 </main>
 
-<!-- PAGE 2: ABOUT -->
-<main class="page-view" id="view-about">
-  <div class="page-head">
-    <span class="page-label reveal-item">Background</span>
-    <h1 class="page-title reveal-item">About <span class="grad">Me</span></h1>
-    <p class="page-sub reveal-item">Bridging artificial intelligence with clean product design.</p>
-  </div>
-
-  <div style="max-width: 760px; margin: 0 auto; text-align: center; color: #94a3b8;" class="reveal-item">
-    <p style="margin-bottom: 1.2rem;">
-      I'm a dedicated third-year BTech student specializing in Artificial Intelligence and Data Science. I combine analytical precision with intuitive interface design to deliver intelligent, production-ready solutions.
-    </p>
-    <p>
-      My technical focus spans computer vision and machine learning models, structured data analytics pipelines, modern responsive web applications, and complete digital brand identities.
-    </p>
-  </div>
-
-  <div class="stats-grid">
-    <div class="stat-card reveal-item">
-      <div class="stat-num" data-target="6" data-suffix="+">0</div>
-      <div class="stat-label">Projects Completed</div>
-    </div>
-    <div class="stat-card reveal-item">
-      <div class="stat-num" data-target="8" data-suffix="+">0</div>
-      <div class="stat-label">Certifications</div>
-    </div>
-    <div class="stat-card reveal-item">
-      <div class="stat-num" data-target="5" data-suffix=" Core">0</div>
-      <div class="stat-label">Specialized Services</div>
-    </div>
-    <div class="stat-card reveal-item">
-      <div class="stat-num" data-target="100" data-suffix="%">0</div>
-      <div class="stat-label">Dedication</div>
-    </div>
-  </div>
-</main>
-
-<!-- PAGE 3: SKILLS -->
+<!-- PAGE 2: SKILLS -->
 <main class="page-view" id="view-skills">
   <div class="page-head">
-    <span class="page-label reveal-item">Expertise</span>
-    <h1 class="page-title reveal-item">Technical <span class="grad">Proficiency</span></h1>
-    <p class="page-sub reveal-item">Core toolsets used across data, analytics, and software stacks.</p>
+    <span class="page-label">Expertise</span>
+    <h1 class="page-title">Technical <span class="grad">Proficiency</span></h1>
+    <p class="page-sub">Core toolsets used across data, analytics, and software stacks.</p>
   </div>
   
   <div class="skills-minimal-list">
-    <div class="skill-row reveal-item">
+    <div class="skill-row">
       <div class="skill-row-head">
         <span class="skill-name">Python & Machine Learning</span>
         <span class="skill-pct">90%</span>
       </div>
-      <div class="skill-track"><div class="skill-bar-fill" data-width="90%"></div></div>
+      <div class="skill-track"><div class="skill-bar-fill" style="width: 90%;"></div></div>
     </div>
-    <div class="skill-row reveal-item">
+    <div class="skill-row">
       <div class="skill-row-head">
         <span class="skill-name">Deep Learning (TensorFlow)</span>
         <span class="skill-pct">85%</span>
       </div>
-      <div class="skill-track"><div class="skill-bar-fill" data-width="85%"></div></div>
+      <div class="skill-track"><div class="skill-bar-fill" style="width: 85%;"></div></div>
     </div>
-    <div class="skill-row reveal-item">
+    <div class="skill-row">
       <div class="skill-row-head">
         <span class="skill-name">Data Science & SQL Pipelines</span>
         <span class="skill-pct">88%</span>
       </div>
-      <div class="skill-track"><div class="skill-bar-fill" data-width="88%"></div></div>
+      <div class="skill-track"><div class="skill-bar-fill" style="width: 88%;"></div></div>
     </div>
-    <div class="skill-row reveal-item">
+    <div class="skill-row">
       <div class="skill-row-head">
         <span class="skill-name">Full-Stack Web Development</span>
         <span class="skill-pct">82%</span>
       </div>
-      <div class="skill-track"><div class="skill-bar-fill" data-width="82%"></div></div>
+      <div class="skill-track"><div class="skill-bar-fill" style="width: 82%;"></div></div>
     </div>
-    <div class="skill-row reveal-item">
+    <div class="skill-row">
       <div class="skill-row-head">
         <span class="skill-name">UI/UX & Visual Design</span>
         <span class="skill-pct">80%</span>
       </div>
-      <div class="skill-track"><div class="skill-bar-fill" data-width="80%"></div></div>
+      <div class="skill-track"><div class="skill-bar-fill" style="width: 80%;"></div></div>
     </div>
-    <div class="skill-row reveal-item">
+    <div class="skill-row">
       <div class="skill-row-head">
         <span class="skill-name">Power BI & Business Analytics</span>
         <span class="skill-pct">87%</span>
       </div>
-      <div class="skill-track"><div class="skill-bar-fill" data-width="87%"></div></div>
+      <div class="skill-track"><div class="skill-bar-fill" style="width: 87%;"></div></div>
     </div>
   </div>
 </main>
 
-<!-- PAGE 4: FEATURED PROJECTS -->
+<!-- PAGE 3: FEATURED PROJECTS -->
 <main class="page-view" id="view-projects">
   <div class="page-head">
-    <h1 class="page-title reveal-item">Featured <span class="grad">Projects</span></h1>
-    <p class="page-sub reveal-item">Selected engineering builds across deep learning, business analytics, and pipeline engineering.</p>
+    <h1 class="page-title">Featured <span class="grad">Projects</span></h1>
+    <p class="page-sub">Selected engineering builds across deep learning, business analytics, and pipeline engineering.</p>
   </div>
 
   <div class="projects-showcase">
-    <div class="project-item reveal-item">
+    <div class="project-item">
       <div class="project-top-meta">
         <h3 class="project-title">NeuroVision AI</h3>
         <span class="project-num">01 / COMPUTER VISION</span>
@@ -1502,7 +1135,7 @@ footer {
       </div>
     </div>
 
-    <div class="project-item reveal-item">
+    <div class="project-item">
       <div class="project-top-meta">
         <h3 class="project-title">Sales & Revenue Analysis Dashboard</h3>
         <span class="project-num">02 / BUSINESS INTELLIGENCE</span>
@@ -1526,7 +1159,7 @@ footer {
       </div>
     </div>
 
-    <div class="project-item reveal-item">
+    <div class="project-item">
       <div class="project-top-meta">
         <h3 class="project-title">Customer Segmentation Engine</h3>
         <span class="project-num">03 / MACHINE LEARNING</span>
@@ -1551,7 +1184,7 @@ footer {
       </div>
     </div>
 
-    <div class="project-item reveal-item">
+    <div class="project-item">
       <div class="project-top-meta">
         <h3 class="project-title">Predictive Analytics Demand Forecaster</h3>
         <span class="project-num">04 / TIME SERIES</span>
@@ -1575,7 +1208,7 @@ footer {
       </div>
     </div>
 
-    <div class="project-item reveal-item">
+    <div class="project-item">
       <div class="project-top-meta">
         <h3 class="project-title">Data Sanitization & ETL Reporting Automation</h3>
         <span class="project-num">05 / PIPELINE AUTOMATION</span>
@@ -1599,7 +1232,7 @@ footer {
       </div>
     </div>
 
-    <div class="project-item reveal-item">
+    <div class="project-item">
       <div class="project-top-meta">
         <h3 class="project-title">Sales Operations KPI Matrix</h3>
         <span class="project-num">06 / ANALYTICS</span>
@@ -1625,17 +1258,16 @@ footer {
   </div>
 </main>
 
-<!-- PAGE 5: YOUR 5 CORE SERVICES -->
+<!-- PAGE 4: YOUR 5 CORE SERVICES -->
 <main class="page-view" id="view-services">
   <div class="page-head">
-    <span class="page-label reveal-item">Solutions</span>
-    <h1 class="page-title reveal-item">Services <span class="grad">Offered</span></h1>
-    <p class="page-sub reveal-item">Production-oriented solutions tailored to your technical and business goals.</p>
+    <span class="page-label">Solutions</span>
+    <h1 class="page-title">Services <span class="grad">Offered</span></h1>
+    <p class="page-sub">Production-oriented solutions tailored to your technical and business goals.</p>
   </div>
 
   <div class="services-container">
-    <!-- Service 01 -->
-    <div class="service-row route-trigger reveal-item" data-target="project-form">
+    <div class="service-row route-trigger" data-target="project-form">
       <div class="service-main">
         <div class="service-idx">01</div>
         <div class="service-info">
@@ -1648,8 +1280,7 @@ footer {
       </div>
     </div>
 
-    <!-- Service 02 -->
-    <div class="service-row route-trigger reveal-item" data-target="project-form">
+    <div class="service-row route-trigger" data-target="project-form">
       <div class="service-main">
         <div class="service-idx">02</div>
         <div class="service-info">
@@ -1662,8 +1293,7 @@ footer {
       </div>
     </div>
 
-    <!-- Service 03 -->
-    <div class="service-row route-trigger reveal-item" data-target="project-form">
+    <div class="service-row route-trigger" data-target="project-form">
       <div class="service-main">
         <div class="service-idx">03</div>
         <div class="service-info">
@@ -1676,8 +1306,7 @@ footer {
       </div>
     </div>
 
-    <!-- Service 04 -->
-    <div class="service-row route-trigger reveal-item" data-target="project-form">
+    <div class="service-row route-trigger" data-target="project-form">
       <div class="service-main">
         <div class="service-idx">04</div>
         <div class="service-info">
@@ -1690,8 +1319,7 @@ footer {
       </div>
     </div>
 
-    <!-- Service 05 -->
-    <div class="service-row route-trigger reveal-item" data-target="project-form">
+    <div class="service-row route-trigger" data-target="project-form">
       <div class="service-main">
         <div class="service-idx">05</div>
         <div class="service-info">
@@ -1706,17 +1334,17 @@ footer {
   </div>
 </main>
 
-<!-- PAGE 6: CONTACT -->
+<!-- PAGE 5: CONTACT -->
 <main class="page-view" id="view-contact">
   <div class="page-head">
-    <span class="page-label reveal-item">Inquiries</span>
-    <h1 class="page-title reveal-item">Let's <span class="grad">Connect</span></h1>
-    <p class="page-sub reveal-item">Available for freelance consulting, research collaborations, and internships.</p>
+    <span class="page-label">Inquiries</span>
+    <h1 class="page-title">Let's <span class="grad">Connect</span></h1>
+    <p class="page-sub">Available for freelance consulting, research collaborations, and internships.</p>
   </div>
   
   <div class="contact-minimal-list">
     <!-- Email -->
-    <a href="mailto:Suganyas2382006@gmail.com" class="contact-line-item reveal-item">
+    <a href="mailto:Suganyas2382006@gmail.com" class="contact-line-item">
       <div class="contact-line-left">
         <div class="contact-line-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1735,7 +1363,7 @@ footer {
     </a>
 
     <!-- Phone -->
-    <a href="tel:+919894796046" class="contact-line-item reveal-item">
+    <a href="tel:+919894796046" class="contact-line-item">
       <div class="contact-line-left">
         <div class="contact-line-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1753,7 +1381,7 @@ footer {
     </a>
 
     <!-- LinkedIn -->
-    <a href="https://linkedin.com/in/suganya-s-809231390" target="_blank" rel="noopener noreferrer" class="contact-line-item reveal-item">
+    <a href="https://linkedin.com/in/suganya-s-809231390" target="_blank" rel="noopener noreferrer" class="contact-line-item">
       <div class="contact-line-left">
         <div class="contact-line-icon">
           <svg viewBox="0 0 24 24" fill="currentColor">
@@ -1771,7 +1399,7 @@ footer {
     </a>
 
     <!-- GitHub -->
-    <a href="https://github.com/suganyas2382006-sketch" target="_blank" rel="noopener noreferrer" class="contact-line-item reveal-item">
+    <a href="https://github.com/suganyas2382006-sketch" target="_blank" rel="noopener noreferrer" class="contact-line-item">
       <div class="contact-line-left">
         <div class="contact-line-icon">
           <svg viewBox="0 0 24 24" fill="currentColor">
@@ -1789,7 +1417,7 @@ footer {
     </a>
 
     <!-- WhatsApp -->
-    <a href="https://wa.me/919894796046" target="_blank" rel="noopener noreferrer" class="contact-line-item reveal-item">
+    <a href="https://wa.me/919894796046" target="_blank" rel="noopener noreferrer" class="contact-line-item">
       <div class="contact-line-left">
         <div class="contact-line-icon">
           <svg viewBox="0 0 24 24" fill="currentColor">
@@ -1808,40 +1436,35 @@ footer {
   </div>
 </main>
 
-<!-- PAGE 7: START PROJECT / WEB3FORMS (LINKED TO ALL 5 SERVICES) -->
+<!-- PAGE 6: START PROJECT / WEB3FORMS -->
 <main class="page-view" id="view-project-form">
   <div class="page-head">
-    <span class="page-label reveal-item">Hire Me</span>
-    <h1 class="page-title reveal-item">Start a <span class="grad">Project</span></h1>
-    <p class="page-sub reveal-item">Fill out the details below and I will review your requirements within 24 hours.</p>
+    <span class="page-label">Hire Me</span>
+    <h1 class="page-title">Start a <span class="grad">Project</span></h1>
+    <p class="page-sub">Fill out the details below and I will review your requirements within 24 hours.</p>
   </div>
 
-  <div class="project-form-wrap reveal-item">
+  <div class="project-form-wrap">
     <form action="https://api.web3forms.com/submit" method="POST">
-      <!-- Web3Forms Access Key -->
       <input type="hidden" name="access_key" value="98ff650b-d44e-4510-96b9-66420995077d">
       <input type="hidden" name="from_name" value="Suganya Portfolio Project Inquiry">
       
       <div class="form-grid">
-        <!-- Full Name -->
         <div class="form-group">
           <label for="name">Full Name <span>*</span></label>
           <input type="text" id="name" name="name" class="form-input" placeholder="e.g. Alex Mercer" required>
         </div>
 
-        <!-- Email Address -->
         <div class="form-group">
           <label for="email">Email Address <span>*</span></label>
           <input type="email" id="email" name="email" class="form-input" placeholder="Suganyas2382006@gmail.com" required>
         </div>
 
-        <!-- Contact Number -->
         <div class="form-group">
           <label for="phone">Contact Number <span>*</span></label>
           <input type="tel" id="phone" name="phone" class="form-input" placeholder="+91 9894796046" required>
         </div>
 
-        <!-- Project Type (Covering all 5 Core Services) -->
         <div class="form-group">
           <label for="project_type">Project Type <span>*</span></label>
           <select id="project_type" name="project_type" class="form-select" required>
@@ -1855,20 +1478,17 @@ footer {
           </select>
         </div>
 
-        <!-- Budget Range (Manual Type) -->
         <div class="form-group full-width">
           <label for="budget">Budget Range <span>*</span></label>
           <input type="text" id="budget" name="budget" class="form-input" placeholder="e.g. ₹20,000 - ₹50,000 or $500 - $1,500 USD" required>
         </div>
 
-        <!-- Project Description -->
         <div class="form-group full-width">
           <label for="message">Project Description <span>*</span></label>
           <textarea id="message" name="message" class="form-textarea" placeholder="Describe the scope, deliverables, timeline, and key requirements..." required></textarea>
         </div>
       </div>
 
-      <!-- Submit Button -->
       <button type="submit" class="submit-btn">
         <span>Send Project Proposal</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1883,130 +1503,16 @@ footer {
 <footer>&copy; Suganya Shenbagam. All rights reserved.</footer>
 
 <script>
-// Canvas Neural Animation
-const canvas = document.getElementById('constellationCanvas');
-const ctx = canvas.getContext('2d');
-
-let width, height;
-function resizeCanvas() {
-  width = canvas.width = canvas.parentElement.offsetWidth * 0.5;
-  height = canvas.height = canvas.parentElement.offsetHeight * 0.5;
-}
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
-
-const nodes = [];
-const nodeCount = 28;
-
-for (let i = 0; i < nodeCount; i++) {
-  nodes.push({
-    x: width * 0.2 + Math.random() * width * 0.8,
-    y: Math.random() * height * 0.85,
-    vx: (Math.random() - 0.5) * 0.45,
-    vy: (Math.random() - 0.5) * 0.45,
-    radius: Math.random() * 2 + 1.2,
-    pulseSpeed: Math.random() * 0.03 + 0.01,
-    pulseOffset: Math.random() * Math.PI * 2
-  });
-}
-
-function drawConstellation(time) {
-  ctx.clearRect(0, 0, width, height);
-
-  for (let i = 0; i < nodes.length; i++) {
-    for (let j = i + 1; j < nodes.length; j++) {
-      const dx = nodes[i].x - nodes[j].x;
-      const dy = nodes[i].y - nodes[j].y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-
-      if (dist < 110) {
-        const alpha = (1 - dist / 110) * 0.45;
-        ctx.beginPath();
-        ctx.moveTo(nodes[i].x, nodes[i].y);
-        ctx.lineTo(nodes[j].x, nodes[j].y);
-        ctx.strokeStyle = `rgba(0, 229, 255, ${alpha})`;
-        ctx.lineWidth = 0.8;
-        ctx.stroke();
-      }
-    }
-  }
-
-  nodes.forEach(node => {
-    node.x += node.vx;
-    node.y += node.vy;
-
-    if (node.x < width * 0.15 || node.x > width) node.vx *= -1;
-    if (node.y < 0 || node.y > height * 0.9) node.vy *= -1;
-
-    const pulse = Math.sin(time * node.pulseSpeed + node.pulseOffset) * 0.5 + 0.5;
-    const r = node.radius + pulse * 1.5;
-
-    ctx.beginPath();
-    ctx.arc(node.x, node.y, r, 0, Math.PI * 2);
-    ctx.fillStyle = '#00e5ff';
-    ctx.shadowBlur = 12;
-    ctx.shadowColor = '#00e5ff';
-    ctx.fill();
-    ctx.shadowBlur = 0;
-  });
-
-  requestAnimationFrame((t) => drawConstellation(t * 0.001));
-}
-requestAnimationFrame((t) => drawConstellation(t * 0.001));
-
-// Scroll Reveal
-let scrollObserver;
-
-function initScrollObserver() {
-  if (scrollObserver) scrollObserver.disconnect();
-
-  scrollObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-      }
-    });
-  }, {
-    threshold: 0.12,
-    rootMargin: '0px 0px -30px 0px'
-  });
-
-  const activePage = document.querySelector('.page-view.active');
-  if (activePage) {
-    activePage.querySelectorAll('.reveal-item').forEach(el => {
-      scrollObserver.observe(el);
-    });
-  }
-}
-
-// Page Router
+// Page Router (Simplified & Static)
 function switchPage(pageId) {
-  const currentView = document.querySelector('.page-view.active');
+  const views = document.querySelectorAll('.page-view');
+  views.forEach(view => {
+    view.classList.remove('active');
+  });
+  
   const targetView = document.getElementById('view-' + pageId);
-
-  if (!targetView || currentView === targetView) return;
-
-  if (currentView) {
-    currentView.classList.remove('in-view');
-    currentView.querySelectorAll('.reveal-item').forEach(el => el.classList.remove('revealed'));
-    
-    setTimeout(() => {
-      currentView.classList.remove('active');
-      targetView.classList.add('active');
-      
-      requestAnimationFrame(() => {
-        targetView.classList.add('in-view');
-        initScrollObserver();
-        triggerAnimations(pageId);
-      });
-    }, 200);
-  } else {
+  if (targetView) {
     targetView.classList.add('active');
-    requestAnimationFrame(() => {
-      targetView.classList.add('in-view');
-      initScrollObserver();
-      triggerAnimations(pageId);
-    });
   }
 
   document.querySelectorAll('.route-trigger').forEach(el => {
@@ -2017,43 +1523,7 @@ function switchPage(pageId) {
     }
   });
 
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function triggerAnimations(pageId) {
-  if (pageId === 'about') {
-    document.querySelectorAll('#view-about .stat-num').forEach(el => {
-      const target = +el.getAttribute('data-target');
-      const suffix = el.getAttribute('data-suffix') || '';
-      const duration = 1200;
-      const start = performance.now();
-
-      const updateCounter = (now) => {
-        const progress = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        const current = Math.floor(eased * target);
-
-        el.textContent = current + suffix;
-
-        if (progress < 1) {
-          requestAnimationFrame(updateCounter);
-        } else {
-          el.textContent = target + suffix;
-        }
-      };
-
-      requestAnimationFrame(updateCounter);
-    });
-  }
-
-  if (pageId === 'skills') {
-    document.querySelectorAll('#view-skills .skill-bar-fill').forEach(bar => {
-      bar.style.width = '0%';
-      setTimeout(() => {
-        bar.style.width = bar.getAttribute('data-width');
-      }, 80);
-    });
-  }
+  window.scrollTo(0, 0);
 }
 
 // Drawer Controls
@@ -2091,10 +1561,6 @@ document.querySelectorAll('.route-trigger').forEach(trigger => {
       closeDrawer();
     }
   });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  initScrollObserver();
 });
 </script>
 </body>
